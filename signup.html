@@ -113,26 +113,49 @@
   </footer>
 
 
-  <script>
-    const signupForm = document.getElementById("signupForm");
-    const signupMessage = document.getElementById("signupMessage");
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    signupForm.addEventListener("submit", function(event) {
-      event.preventDefault();
+<script>
+  const SUPABASE_URL = "https://tkmqgroogytpxfaofuuk.supabase.co";
 
-      const password = document.getElementById("password").value;
-      const confirmPassword =
-        document.getElementById("confirmPassword").value;
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_pkqIG8u09lklnqCCwaN-qQ_z59LU1-r";
 
-      if (password !== confirmPassword) {
-        signupMessage.textContent = "Passwords do not match.";
-        return;
-      }
+  const supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
 
-      signupMessage.textContent =
-        "Your account form is ready. We will connect it to the GTH database next.";
+  const signupForm = document.getElementById("signupForm");
+  const signupMessage = document.getElementById("signupMessage");
+
+  signupForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword =
+      document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+      signupMessage.textContent = "Passwords do not match.";
+      return;
+    }
+
+    signupMessage.textContent = "Creating your GTH account...";
+
+    const { data, error } = await supabase.auth.signUp({
+      email: email,
+      password: password
     });
-  </script>
 
+    if (error) {
+      signupMessage.textContent = error.message;
+      return;
+    }
+
+    signupMessage.textContent =
+      "Account created successfully. Please check your email to verify your account.";
+  });
+</script>
 </body>
       </html>
