@@ -3,231 +3,282 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTH | God'stime Holdings</title>
-  <meta name="description" content="God'stime Holdings — connecting people, media, finance and technology.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#111111">
+  <title>GTH | God’stime Holdings</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <header class="site-header">
+    <a href="#" class="brand" id="brandLink">GTH</a>
 
-  <!-- HEADER -->
-  <header class="header">
-    <a href="index.html" class="logo">
-      <span>GT</span>H
-    </a>
-
-    <nav class="nav">
-      <a href="#home">Home</a>
-      <a href="#connect">GT Connect</a>
-      <a href="#services">Our Services</a>
-      <a href="login.html">Login</a>
-      <a href="signup.html" class="nav-button">Sign Up</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#home" data-page="home">Home</a>
+      <a href="#about" data-page="about">About</a>
+      <a href="#platforms" data-page="platforms">Platforms</a>
+      <a href="#connect" data-page="connect">GT Connect</a>
     </nav>
 
-    <button class="menu-button" onclick="toggleMenu()">☰</button>
+    <div class="theme-controls">
+      <button id="themeButton" type="button" aria-label="Change theme">
+        Theme
+      </button>
+
+      <div id="themeMenu" class="theme-menu hidden">
+        <button type="button" data-theme="gold">Gold</button>
+        <button type="button" data-theme="blue">Blue</button>
+        <button type="button" data-theme="green">Green</button>
+        <button type="button" data-theme="system">System</button>
+      </div>
+    </div>
   </header>
 
-
-  <!-- HERO -->
   <main>
 
-    <section class="hero" id="home">
-      <div class="hero-content">
+    <!-- ACCESS GATE -->
+    <section id="gateScreen" class="screen active">
+      <div class="gate-card">
 
-        <p class="eyebrow">GOD'STIME HOLDINGS</p>
+        <div class="logo-mark">GTH</div>
 
-        <h1>One ecosystem.<br><span>Many possibilities.</span></h1>
-
-        <p class="hero-text">
-          Welcome to GTH — an ecosystem bringing people, media,
-          finance and technology together in one platform.
+        <h1>Welcome to GTH</h1>
+        <p class="subtitle">
+          God’stime Holdings
         </p>
 
-        <div class="hero-buttons">
-          <a href="signup.html" class="primary-button">Create Account</a>
-          <a href="#services" class="secondary-button">Explore GTH</a>
+        <!-- HUMAN VERIFICATION -->
+        <div id="humanStep" class="step">
+          <h2>Are you human?</h2>
+
+          <p>
+            Enter the characters shown below to continue.
+          </p>
+
+          <div id="humanChallenge" class="challenge">
+            Loading...
+          </div>
+
+          <input
+            id="humanInput"
+            type="text"
+            autocomplete="off"
+            maxlength="5"
+            placeholder="Enter the characters"
+          >
+
+          <p id="humanError" class="error"></p>
+
+          <button id="humanButton" class="primary-button" type="button">
+            Continue
+          </button>
+        </div>
+
+        <!-- POLICY -->
+        <div id="policyStep" class="step hidden">
+          <h2>GTH Policies</h2>
+
+          <div class="policy-box">
+            <p>
+              By continuing, you agree to follow the policies,
+              rules and requirements of GTH.
+            </p>
+          </div>
+
+          <label class="policy-check">
+            <input id="policyCheckbox" type="checkbox">
+            <span>I agree to GTH Policies.</span>
+          </label>
+
+          <p id="policyError" class="error"></p>
+
+          <button id="policyButton" class="primary-button" type="button">
+            Continue
+          </button>
+        </div>
+
+        <!-- ACCOUNT CHOICE -->
+        <div id="choiceStep" class="step hidden">
+          <h2>Choose an option</h2>
+
+          <button id="newUserButton" class="choice-button" type="button">
+            <strong>I’m New</strong>
+            <span>Create a new GTH account</span>
+          </button>
+
+          <button id="existingUserButton" class="choice-button" type="button">
+            <strong>I Have an Account</strong>
+            <span>Continue with an existing account</span>
+          </button>
+        </div>
+
+        <!-- NEW USER TALLY -->
+        <div id="newUserStep" class="step hidden">
+          <h2>Create Your GTH Account</h2>
+
+          <p>
+            Complete the registration form below.
+          </p>
+
+          <a
+            id="newUserFormLink"
+            class="primary-button link-button"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
+            Open Registration Form
+          </a>
+
+          <button id="newUserSubmittedButton" class="secondary-button" type="button">
+            I Have Submitted the Form
+          </button>
+        </div>
+
+        <!-- EXISTING USER TALLY -->
+        <div id="existingUserStep" class="step hidden">
+          <h2>Existing Account</h2>
+
+          <p>
+            Submit your account details for verification.
+          </p>
+
+          <a
+            id="existingUserFormLink"
+            class="primary-button link-button"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
+            Open Verification Form
+          </a>
+
+          <button id="existingUserSubmittedButton" class="secondary-button" type="button">
+            I Have Submitted My Details
+          </button>
         </div>
 
       </div>
     </section>
 
 
-    <!-- GT CONNECT -->
-    <section class="connect-section" id="connect">
+    <!-- HOLDING / VERIFICATION -->
+    <section id="holdingScreen" class="screen hidden">
+      <div class="holding-card">
 
-      <div class="section-heading">
-        <p class="eyebrow">GT CONNECT</p>
+        <div class="status-icon" id="statusIcon">⌛</div>
 
-        <h2>Connect with GTH.</h2>
+        <h1 id="holdingTitle">Verification Pending</h1>
 
-        <p>
-          GT Connect is the people and networking hub of GTH.
-          Apply to become a member or worker, go through the
-          interview process, and connect with people within the GTH ecosystem.
+        <p id="holdingMessage">
+          Your information has been submitted successfully.
+          Please wait while your information is reviewed.
         </p>
-      </div>
 
-      <div class="connect-cards">
-
-        <div class="info-card">
-          <div class="card-icon">01</div>
-          <h3>Become a Member</h3>
-          <p>
-            Apply to join the GTH community as a member,
-            connect with others and participate in the ecosystem.
-          </p>
-          <a href="signup.html">Apply as Member →</a>
+        <div id="countdownBox" class="countdown-box">
+          <span>Waiting period</span>
+          <strong id="countdown">Calculating...</strong>
         </div>
 
-        <div class="info-card">
-          <div class="card-icon">02</div>
-          <h3>Become a Worker</h3>
-          <p>
-            Apply to work with GTH, complete the screening
-            and interview process, and become part of the team.
-          </p>
-          <a href="signup.html">Apply as Worker →</a>
-        </div>
+        <button
+          id="loginButton"
+          class="primary-button hidden"
+          type="button"
+        >
+          LOGIN
+        </button>
 
-        <div class="info-card">
-          <div class="card-icon">03</div>
-          <h3>Communicate & Network</h3>
-          <p>
-            Accepted members and workers can communicate,
-            network and discover opportunities within GTH.
-          </p>
-          <a href="login.html">Enter GT Connect →</a>
-        </div>
+        <button
+          id="abandonButton"
+          class="danger-button"
+          type="button"
+        >
+          I Don’t Want to Wait — Create a New Account
+        </button>
 
       </div>
-
     </section>
 
 
-    <!-- SERVICES -->
-    <section class="services-section" id="services">
+    <!-- HOME -->
+    <section id="homeScreen" class="page-screen hidden">
 
-      <div class="section-heading">
-        <p class="eyebrow">THE GTH ECOSYSTEM</p>
-
-        <h2>Explore GTH.</h2>
-
+      <div class="hero">
+        <p class="eyebrow">GOD’STIME HOLDINGS</p>
+        <h1>Welcome to GTH</h1>
         <p>
-          You don't have to become a GTH member to use our services.
-          Everyone can explore the GTH ecosystem, while members and
-          workers have additional access through GT Connect.
+          A connected ecosystem built around people,
+          ideas, technology and opportunity.
         </p>
       </div>
 
-
-      <div class="service-grid">
-
-        <!-- GTC -->
-        <a href="#" class="service-card">
-          <div class="service-number">01</div>
-          <h3>GTC</h3>
-          <h4>GT Channels</h4>
-          <p>
-            A media and channel platform where users can discover,
-            watch and engage with content.
-          </p>
-          <span>Explore GTC →</span>
-        </a>
-
-
-        <!-- GTF -->
-        <a href="#" class="service-card">
-          <div class="service-number">02</div>
-          <h3>GTF</h3>
-          <h4>God'stime Fund</h4>
-          <p>
-            The financial and investment side of the GTH ecosystem,
-            designed to provide access to GTF services.
-          </p>
-          <span>Explore GTF →</span>
-        </a>
-
-
-        <!-- GTS -->
-        <a href="#" class="service-card">
-          <div class="service-number">03</div>
-          <h3>GTS</h3>
-          <h4>GT Softwares</h4>
-          <p>
-            The technology side of GTH, bringing software,
-            applications and digital tools to users.
-          </p>
-          <span>Explore GTS →</span>
-        </a>
-
-
-        <!-- GT CONNECT -->
-        <a href="#connect" class="service-card connect-card">
-          <div class="service-number">04</div>
-          <h3>GT CONNECT</h3>
-          <h4>People & Network</h4>
-          <p>
-            Apply as a member or worker, complete the interview
-            process and connect with the GTH community.
-          </p>
-          <span>Explore GT Connect →</span>
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- CTA -->
-    <section class="cta-section">
-
-      <div>
-        <p class="eyebrow">JOIN THE ECOSYSTEM</p>
-
-        <h2>Your GTH journey starts here.</h2>
-
+      <section id="about" class="content-section">
+        <h2>About GTH</h2>
         <p>
-          Create your free account and explore what GTH has to offer.
+          God’stime Holdings is an online ecosystem connecting
+          people, platforms and opportunities.
         </p>
-      </div>
+      </section>
 
-      <a href="signup.html" class="primary-button">Get Started</a>
+      <section id="platforms" class="content-section">
+        <h2>GTH Platforms</h2>
+
+        <div class="platform-grid">
+
+          <article class="platform-card">
+            <span class="platform-code">GTF</span>
+            <h3>God’stime Fund</h3>
+            <p>
+              The GTH financial and investment platform.
+            </p>
+          </article>
+
+          <article class="platform-card">
+            <span class="platform-code">GTC</span>
+            <h3>GT Channels</h3>
+            <p>
+              A platform for media and video content.
+            </p>
+          </article>
+
+          <article class="platform-card">
+            <span class="platform-code">GTS</span>
+            <h3>GT Softwares</h3>
+            <p>
+              A platform for software and digital applications.
+            </p>
+          </article>
+
+          <article class="platform-card">
+            <span class="platform-code">GT CONNECT</span>
+            <h3>GT Connect</h3>
+            <p>
+              The networking and membership side of GTH.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="connect" class="content-section connect-section">
+        <h2>GT Connect</h2>
+        <p>
+          Connect with members, discover opportunities,
+          apply to join the GTH network and grow together.
+        </p>
+      </section>
 
     </section>
 
   </main>
 
 
-  <!-- FOOTER -->
-  <footer class="footer">
-
-    <div class="footer-logo">
-      <span>GT</span>H
-    </div>
-
-    <p>God'stime Holdings</p>
-
-    <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="#connect">GT Connect</a>
-      <a href="#services">Services</a>
-      <a href="login.html">Login</a>
-      <a href="signup.html">Sign Up</a>
-    </div>
-
-    <p class="copyright">
-      © 2026 God'stime Holdings. All rights reserved.
-    </p>
-
+  <footer class="site-footer">
+    <p>© <span id="currentYear"></span> God’stime Holdings (GTH)</p>
   </footer>
 
 
-  <script>
-    function toggleMenu() {
-      const nav = document.querySelector('.nav');
-      nav.classList.toggle('active');
-    }
-  </script>
-
+  <script src="data/gth-config.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
