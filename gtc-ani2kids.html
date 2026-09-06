@@ -3,248 +3,251 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>ANI2KIDS | GT Channels</title>
-
+  <title>ANI2KIDS | GTC</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body data-theme="gold">
+<body>
 
 <header class="site-header">
-
-  <div class="brand">
-    <strong>ANI2KIDS</strong>
-    <span>GT Channels</span>
-  </div>
+  <a href="index.html" class="brand">GTH</a>
 
   <nav class="top-nav">
+    <a href="index.html">Home</a>
     <a href="gtc.html">GTC</a>
-    <a href="index.html">GTH Home</a>
   </nav>
-
 </header>
-
 
 <main>
 
-  <!-- CHANNEL HEADER -->
-
   <section class="hero">
-
-    <div class="hero-content">
-
-      <p class="eyebrow">GT CHANNELS</p>
-
-      <h1>ANI2KIDS</h1>
-
-      <p>
-        Animation, fun and family-friendly entertainment
-        for kids and families.
-      </p>
-
-    </div>
-
+    <span class="platform-code">GTC</span>
+    <h1>ANI2KIDS</h1>
+    <p>
+      Animation and entertainment for kids.
+    </p>
   </section>
 
-
-  <!-- VIDEO CONTENT -->
-
-  <section class="content-section">
-
-    <div class="section-heading">
-
-      <p class="eyebrow">SHORT VIDEOS</p>
-
-      <h2>Shorts</h2>
-
-      <p>
-        Enjoy short ANI2KIDS videos.
-      </p>
-
+  <!-- SEARCH -->
+  <section class="section">
+    <div class="search-box">
+      <input
+        type="search"
+        id="gallerySearch"
+        placeholder="Search ANI2KIDS videos..."
+        autocomplete="off"
+      >
     </div>
+  </section>
 
+  <!-- GALLERY -->
+  <section class="section">
+    <div id="gallery"></div>
 
-    <!-- SHORT VIDEO GRID -->
-
-    <div
-      id="shortsGrid"
-      class="shorts-grid">
-    </div>
-
-
-    <!-- FULL VIDEOS -->
-
-    <div class="section-heading">
-
-      <p class="eyebrow">FULL VIDEOS</p>
-
-      <h2>Watch Full Videos</h2>
-
-    </div>
-
-
-    <div
-      id="fullVideos"
-      class="full-video-list">
-    </div>
-
-
-    <!-- ADVERTISEMENT -->
-
-    <div class="gtc-ad">
-
-      <span>ADVERTISEMENT</span>
-
-      <div class="ad-placeholder">
-        <p>Your advertisement can appear here.</p>
-      </div>
-
-    </div>
-
-
-    <!-- SECOND CONTENT AREA -->
-
-    <div
-      id="secondContent"
-      class="full-video-list">
-    </div>
-
-
-    <!-- SECOND AD -->
-
-    <div class="gtc-ad">
-
-      <span>ADVERTISEMENT</span>
-
-      <div class="ad-placeholder">
-        <p>Your advertisement can appear here.</p>
-      </div>
-
-    </div>
-
+    <p id="noResults" style="display:none; text-align:center; opacity:.7;">
+      No videos found.
+    </p>
   </section>
 
 </main>
 
-
 <footer class="site-footer">
-
-  <p>
-    © 2026 God’stime Holdings. All rights reserved.
-  </p>
-
+  <p>© GTH — God’stime Holdings</p>
 </footer>
-
 
 <script src="data/gtc-ani2kids.js"></script>
 
-
 <script>
+const gallery = document.getElementById("gallery");
+const searchInput = document.getElementById("gallerySearch");
+const noResults = document.getElementById("noResults");
 
-const shortsGrid =
-  document.getElementById("shortsGrid");
+const shorts = GTC_ANI2KIDS.shorts || [];
+const fullVideos = GTC_ANI2KIDS.fullVideos || [];
 
-const fullVideos =
-  document.getElementById("fullVideos");
+/*
+  Creates a YouTube video card.
+*/
+function createVideo(video, type) {
+  const article = document.createElement("article");
+  article.className = type === "short"
+    ? "video-card short-card"
+    : "video-card full-card";
 
-const secondContent =
-  document.getElementById("secondContent");
+  article.dataset.title = video.title.toLowerCase();
 
-
-/* -----------------------------
-   SHORT VIDEOS
------------------------------- */
-
-GTC_ANI2KIDS.shorts.forEach(video => {
-
-  const card =
-    document.createElement("article");
-
-  card.className =
-    "short-video-card";
-
-  card.innerHTML = `
-
-    <div class="short-video-frame">
-
+  article.innerHTML = `
+    <div class="video-frame">
       <iframe
         src="https://www.youtube.com/embed/${video.id}"
         title="${video.title}"
         loading="lazy"
         allowfullscreen>
       </iframe>
-
     </div>
 
     <h3>${video.title}</h3>
-
   `;
 
-  shortsGrid.appendChild(card);
-
-});
-
-
-/* -----------------------------
-   FULL VIDEOS
------------------------------- */
-
-function createFullVideo(video) {
-
-  const card =
-    document.createElement("article");
-
-  card.className =
-    "full-video-card";
-
-  card.innerHTML = `
-
-    <div class="full-video-frame">
-
-      <iframe
-        src="https://www.youtube.com/embed/${video.id}"
-        title="${video.title}"
-        loading="lazy"
-        allowfullscreen>
-      </iframe>
-
-    </div>
-
-    <h3>${video.title}</h3>
-
-  `;
-
-  return card;
-
+  return article;
 }
 
+/*
+  Advertisement block.
+  This can later be replaced with a GTH promotional image
+  or Google advertising.
+*/
+function createAdvertisement() {
+  const ad = document.createElement("div");
+  ad.className = "gtc-ad";
 
-/* FIRST FOUR FULL VIDEOS */
+  ad.innerHTML = `
+    <div class="ad-placeholder">
+      <strong>Advertisement</strong>
+      <span>GTH promotional space</span>
+    </div>
+  `;
 
-GTC_ANI2KIDS.fullVideos
-  .slice(0, 4)
-  .forEach(video => {
+  return ad;
+}
 
-    fullVideos.appendChild(
-      createFullVideo(video)
+/*
+  Build one complete formation:
+
+  2 Shorts
+  2 Shorts
+  4 Full Videos
+  Advertisement
+*/
+function createFormation(shortItems, fullItems) {
+
+  const formation = document.createElement("section");
+  formation.className = "gtc-formation";
+
+  // First 2 shorts
+  if (shortItems.length > 0) {
+    const row1 = document.createElement("div");
+    row1.className = "shorts-grid";
+
+    shortItems.slice(0, 2).forEach(video => {
+      row1.appendChild(createVideo(video, "short"));
+    });
+
+    formation.appendChild(row1);
+  }
+
+  // Second 2 shorts
+  if (shortItems.length > 2) {
+    const row2 = document.createElement("div");
+    row2.className = "shorts-grid";
+
+    shortItems.slice(2, 4).forEach(video => {
+      row2.appendChild(createVideo(video, "short"));
+    });
+
+    formation.appendChild(row2);
+  }
+
+  // Four full videos
+  if (fullItems.length > 0) {
+    const fullList = document.createElement("div");
+    fullList.className = "full-video-list";
+
+    fullItems.slice(0, 4).forEach(video => {
+      fullList.appendChild(createVideo(video, "full"));
+    });
+
+    formation.appendChild(fullList);
+  }
+
+  // Advertisement
+  formation.appendChild(createAdvertisement());
+
+  return formation;
+}
+
+/*
+  Build the complete gallery.
+  The available videos are divided into repeating formations.
+*/
+function buildGallery() {
+
+  gallery.innerHTML = "";
+
+  const totalShorts = shorts.length;
+  const totalFull = fullVideos.length;
+
+  let shortIndex = 0;
+  let fullIndex = 0;
+
+  while (shortIndex < totalShorts || fullIndex < totalFull) {
+
+    const formationShorts = shorts.slice(
+      shortIndex,
+      shortIndex + 4
     );
 
-  });
-
-
-/* REPEAT CONTENT */
-
-GTC_ANI2KIDS.fullVideos
-  .slice(4)
-  .forEach(video => {
-
-    secondContent.appendChild(
-      createFullVideo(video)
+    const formationFull = fullVideos.slice(
+      fullIndex,
+      fullIndex + 4
     );
 
+    if (
+      formationShorts.length === 0 &&
+      formationFull.length === 0
+    ) {
+      break;
+    }
+
+    gallery.appendChild(
+      createFormation(
+        formationShorts,
+        formationFull
+      )
+    );
+
+    shortIndex += 4;
+    fullIndex += 4;
+  }
+
+  applySearch();
+}
+
+/*
+  Gallery search.
+*/
+function applySearch() {
+
+  const query = searchInput.value
+    .trim()
+    .toLowerCase();
+
+  const cards = gallery.querySelectorAll(".video-card");
+
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+
+    const title = card.dataset.title || "";
+
+    if (!query || title.includes(query)) {
+      card.style.display = "";
+      visibleCount++;
+    } else {
+      card.style.display = "none";
+    }
   });
 
+  noResults.style.display =
+    visibleCount === 0 ? "block" : "none";
+}
+
+searchInput.addEventListener(
+  "input",
+  applySearch
+);
+
+buildGallery();
 </script>
 
 </body>
