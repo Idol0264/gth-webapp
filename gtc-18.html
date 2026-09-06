@@ -92,19 +92,36 @@ function createVideo(video, type) {
 
 function createAdvertisement() {
   const ad = document.createElement("div");
-
   ad.className = "gtc-ad";
 
+  const randomAd =
+    GTC_ADS[Math.floor(Math.random() * GTC_ADS.length)];
+
+  if (!randomAd) {
+    ad.innerHTML = `
+      <div class="ad-placeholder">
+        <strong>Advertisement</strong>
+        <span>GTH promotional space</span>
+      </div>
+    `;
+    return ad;
+  }
+
   ad.innerHTML = `
-    <div class="ad-placeholder">
-      <strong>Advertisement</strong>
-      <span>GTH promotional space</span>
-    </div>
+    <a
+      href="${randomAd.link}"
+      style="display:block; text-decoration:none; color:inherit;"
+    >
+      <img
+        src="${randomAd.image}"
+        alt="${randomAd.title}"
+        style="width:100%; display:block; border-radius:14px;"
+      >
+    </a>
   `;
 
   return ad;
 }
-
 /*
   Formation:
 
