@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTF Videos | God’stime Fund</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-theme="gold">
+
+<header class="site-header">
+
+  <div class="brand">
+    <strong>GTF</strong>
+    <span>God’stime Fund</span>
+  </div>
+
+  <nav class="top-nav">
+    <a href="gtf.html">GTF Home</a>
+    <a href="index.html">GTH Home</a>
+  </nav>
+
+</header>
+
+
+<main>
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <p class="eyebrow">GTF MEDIA</p>
+
+      <h1>Investment Videos</h1>
+
+      <p>
+        Explore investment, financial education,
+        market and business videos selected for GTF.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="content-section">
+
+    <div class="section-heading">
+
+      <p class="eyebrow">VIDEO LIBRARY</p>
+
+      <h2>GTF Video Collection</h2>
+
+      <p>
+        Browse the latest GTF investment and financial videos.
+      </p>
+
+    </div>
+
+
+    <div
+      id="videoLibrary"
+      class="video-library">
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <p>
+    © 2026 God’stime Holdings. All rights reserved.
+  </p>
+
+</footer>
+
+
+<script src="data/gtf-videos.js"></script>
+
+
+<script>
+
+const videoLibrary =
+  document.getElementById("videoLibrary");
+
+
+function loadVideos() {
+
+  if (
+    !window.GTF_VIDEOS ||
+    GTF_VIDEOS.length === 0
+  ) {
+
+    videoLibrary.innerHTML =
+      "<p>No GTF videos available yet.</p>";
+
+    return;
+  }
+
+
+  videoLibrary.innerHTML = "";
+
+
+  GTF_VIDEOS.forEach(video => {
+
+    const card =
+      document.createElement("article");
+
+    card.className =
+      "video-library-card";
+
+
+    card.innerHTML = `
+
+      <div class="video-frame">
+
+        <iframe
+          src="https://www.youtube.com/embed/${video.id}"
+          title="${video.title}"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+      <div class="video-info">
+
+        <span class="video-category">
+          ${video.category}
+        </span>
+
+        <h3>${video.title}</h3>
+
+        <p>${video.description}</p>
+
+      </div>
+
+    `;
+
+
+    videoLibrary.appendChild(card);
+
+  });
+
+}
+
+
+loadVideos();
+
+</script>
+
+</body>
+  </html>
