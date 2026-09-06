@@ -11,8 +11,8 @@
 
 <header class="site-header">
   <div class="brand">
-    <strong>GTH</strong>
-    <span>God’stime Holdings</span>
+    <strong>GTF</strong>
+    <span>God’stime Fund</span>
   </div>
 
   <nav class="top-nav">
@@ -22,22 +22,19 @@
 
 <main>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <p class="eyebrow">GTH PLATFORM</p>
+      <p class="eyebrow">GTH INVESTMENT PLATFORM</p>
 
       <h1>God’stime Fund</h1>
 
       <p>
-        A dedicated GTH platform for managing and exploring
-        investment opportunities, funds and financial growth.
+        Explore investment platforms, financial information,
+        market education and investment-related opportunities.
       </p>
 
       <div class="hero-actions">
-        <button type="button" onclick="showMessage()">
-          Explore GTF
-        </button>
-
         <a class="secondary-btn" href="index.html">
           Back to GTH
         </a>
@@ -45,76 +42,271 @@
     </div>
   </section>
 
+
+  <!-- INVESTMENT PLATFORMS -->
   <section class="content-section">
+
     <div class="section-heading">
-      <p class="eyebrow">GTF</p>
-      <h2>God’stime Fund</h2>
+      <p class="eyebrow">EXPLORE</p>
+
+      <h2>Investment Platforms</h2>
+
       <p>
-        GTF is the investment-focused platform within God’stime Holdings.
+        Discover investment platforms and financial services
+        that may be useful to GTF members.
       </p>
     </div>
 
     <div class="platform-grid">
 
       <article class="platform-card">
-        <h3>Investment</h3>
+        <h3>NGX</h3>
         <p>
-          A future space for members to view and participate in
-          approved investment opportunities.
+          Nigerian Exchange information and market resources.
         </p>
-        <button type="button" onclick="showMessage()">Coming Soon</button>
+
+        <a class="secondary-btn" href="#" onclick="comingSoon(event)">
+          Explore
+        </a>
       </article>
 
-      <article class="platform-card">
-        <h3>My Fund</h3>
-        <p>
-          A personal area where users will eventually be able to
-          monitor their fund information and activity.
-        </p>
-        <button type="button" onclick="showMessage()">Coming Soon</button>
-      </article>
 
       <article class="platform-card">
-        <h3>Fund Growth</h3>
+        <h3>Investment Apps</h3>
         <p>
-          Tools and information designed to help members understand
-          their investment growth.
+          A future directory of investment platforms and applications.
         </p>
-        <button type="button" onclick="showMessage()">Coming Soon</button>
+
+        <a class="secondary-btn" href="#" onclick="comingSoon(event)">
+          Explore
+        </a>
       </article>
 
+
       <article class="platform-card">
-        <h3>GTF Information</h3>
+        <h3>Market Information</h3>
         <p>
-          Learn about GTF, its purpose, available opportunities and
-          future development.
+          Financial markets, companies, stocks and investment information.
         </p>
-        <button type="button" onclick="showMessage()">Learn More</button>
+
+        <a class="secondary-btn" href="#" onclick="comingSoon(event)">
+          Explore
+        </a>
+      </article>
+
+
+      <article class="platform-card">
+        <h3>Investment Education</h3>
+        <p>
+          Resources designed to help members understand investing
+          and financial markets.
+        </p>
+
+        <a class="secondary-btn" href="#" onclick="comingSoon(event)">
+          Explore
+        </a>
       </article>
 
     </div>
+
   </section>
 
+
+  <!-- GTF VIDEOS -->
   <section class="content-section">
+
+    <div class="section-heading">
+      <p class="eyebrow">GTF MEDIA</p>
+
+      <h2>Investment Videos</h2>
+
+      <p>
+        Watch selected investment and financial education videos.
+      </p>
+    </div>
+
+
+    <div class="video-slider">
+
+      <button class="slider-btn prev-btn" onclick="previousVideo()">
+        ‹
+      </button>
+
+      <div id="featuredVideo" class="featured-video"></div>
+
+      <button class="slider-btn next-btn" onclick="nextVideo()">
+        ›
+      </button>
+
+    </div>
+
+
+    <div class="slider-dots" id="sliderDots"></div>
+
+
+    <div class="see-more-container">
+
+      <a href="gtf-videos.html" class="see-more-btn">
+        SEE MORE
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- DEVELOPMENT NOTICE -->
+  <section class="content-section">
+
     <div class="info-box">
+
       <h2>GTF is under development</h2>
+
       <p>
         The GTF platform will be developed separately from the main
         GTH website. More features will be added as the platform grows.
       </p>
+
     </div>
+
   </section>
 
 </main>
+
 
 <footer class="site-footer">
   <p>© 2026 God’stime Holdings. All rights reserved.</p>
 </footer>
 
+
+<script src="data/gtf-videos.js"></script>
+
 <script>
-function showMessage() {
-  alert("This GTF feature is currently under development.");
+
+let currentVideo = 0;
+
+const featuredVideo =
+  document.getElementById("featuredVideo");
+
+const sliderDots =
+  document.getElementById("sliderDots");
+
+
+function showVideo(index) {
+
+  if (!window.GTF_VIDEOS || GTF_VIDEOS.length === 0) {
+
+    featuredVideo.innerHTML =
+      "<p>No videos available yet.</p>";
+
+    return;
+  }
+
+  currentVideo =
+    (index + GTF_VIDEOS.length) %
+    GTF_VIDEOS.length;
+
+  const video = GTF_VIDEOS[currentVideo];
+
+  featuredVideo.innerHTML = `
+
+    <div class="video-card">
+
+      <div class="video-frame">
+
+        <iframe
+          src="https://www.youtube.com/embed/${video.id}"
+          title="${video.title}"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+      <div class="video-info">
+
+        <span class="video-category">
+          ${video.category}
+        </span>
+
+        <h3>${video.title}</h3>
+
+        <p>${video.description}</p>
+
+      </div>
+
+    </div>
+
+  `;
+
+  createDots();
+
 }
+
+
+function createDots() {
+
+  sliderDots.innerHTML = "";
+
+  const count =
+    Math.min(GTF_VIDEOS.length, 8);
+
+  for (let i = 0; i < count; i++) {
+
+    const dot =
+      document.createElement("button");
+
+    dot.className =
+      i === currentVideo ? "active" : "";
+
+    dot.onclick = () =>
+      showVideo(i);
+
+    sliderDots.appendChild(dot);
+  }
+
+}
+
+
+function nextVideo() {
+
+  const count =
+    Math.min(GTF_VIDEOS.length, 8);
+
+  currentVideo =
+    (currentVideo + 1) % count;
+
+  showVideo(currentVideo);
+
+}
+
+
+function previousVideo() {
+
+  const count =
+    Math.min(GTF_VIDEOS.length, 8);
+
+  currentVideo =
+    (currentVideo - 1 + count) % count;
+
+  showVideo(currentVideo);
+
+}
+
+
+function comingSoon(event) {
+
+  event.preventDefault();
+
+  alert(
+    "This GTF feature is currently under development."
+  );
+
+}
+
+
+showVideo(0);
+
 </script>
 
 </body>
