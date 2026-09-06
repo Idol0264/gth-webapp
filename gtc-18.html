@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="GT Channels +18 Series">
+
+  <title>+18 Series | GT Channels</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-theme="gold">
+
+<header class="site-header">
+
+  <div class="brand">
+    <strong>+18</strong>
+    <span>GT Channels</span>
+  </div>
+
+  <nav class="top-nav">
+    <a href="gtc.html">GTC</a>
+    <a href="index.html">GTH Home</a>
+  </nav>
+
+</header>
+
+
+<main>
+
+  <!-- CHANNEL HEADER -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <p class="eyebrow">GT CHANNELS</p>
+
+      <h1>+18 Series</h1>
+
+      <p>
+        Series and entertainment intended for adult audiences.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTENT -->
+
+  <section class="content-section">
+
+    <div class="section-heading">
+
+      <p class="eyebrow">SHORT VIDEOS</p>
+
+      <h2>Shorts</h2>
+
+      <p>
+        Explore short videos from the +18 Series channel.
+      </p>
+
+    </div>
+
+
+    <!-- SHORTS -->
+
+    <div
+      id="shortsGrid"
+      class="shorts-grid">
+    </div>
+
+
+    <!-- FULL VIDEOS -->
+
+    <div class="section-heading">
+
+      <p class="eyebrow">FULL VIDEOS</p>
+
+      <h2>Full Series Videos</h2>
+
+    </div>
+
+
+    <div
+      id="fullVideos"
+      class="full-video-list">
+    </div>
+
+
+    <!-- ADVERTISEMENT -->
+
+    <div class="gtc-ad">
+
+      <span>ADVERTISEMENT</span>
+
+      <div class="ad-placeholder">
+
+        <p>
+          Your advertisement can appear here.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- MORE FULL VIDEOS -->
+
+    <div
+      id="secondContent"
+      class="full-video-list">
+    </div>
+
+
+    <!-- SECOND AD -->
+
+    <div class="gtc-ad">
+
+      <span>ADVERTISEMENT</span>
+
+      <div class="ad-placeholder">
+
+        <p>
+          Your advertisement can appear here.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <p>
+    © 2026 God’stime Holdings. All rights reserved.
+  </p>
+
+</footer>
+
+
+<script src="data/gtc-18.js"></script>
+
+
+<script>
+
+/* -----------------------------
+   ELEMENTS
+------------------------------ */
+
+const shortsGrid =
+  document.getElementById("shortsGrid");
+
+const fullVideos =
+  document.getElementById("fullVideos");
+
+const secondContent =
+  document.getElementById("secondContent");
+
+
+/* -----------------------------
+   SHORT VIDEOS
+------------------------------ */
+
+GTC_18.shorts.forEach(video => {
+
+  const card =
+    document.createElement("article");
+
+  card.className =
+    "short-video-card";
+
+  card.innerHTML = `
+
+    <div class="short-video-frame">
+
+      <iframe
+        src="https://www.youtube.com/embed/${video.id}"
+        title="${video.title}"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+    <h3>${video.title}</h3>
+
+  `;
+
+  shortsGrid.appendChild(card);
+
+});
+
+
+/* -----------------------------
+   FULL VIDEO FUNCTION
+------------------------------ */
+
+function createFullVideo(video) {
+
+  const card =
+    document.createElement("article");
+
+  card.className =
+    "full-video-card";
+
+  card.innerHTML = `
+
+    <div class="full-video-frame">
+
+      <iframe
+        src="https://www.youtube.com/embed/${video.id}"
+        title="${video.title}"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+    <h3>${video.title}</h3>
+
+  `;
+
+  return card;
+
+}
+
+
+/* -----------------------------
+   FIRST FULL VIDEOS
+------------------------------ */
+
+GTC_18.fullVideos
+  .slice(0, 4)
+  .forEach(video => {
+
+    fullVideos.appendChild(
+      createFullVideo(video)
+    );
+
+  });
+
+
+/* -----------------------------
+   REMAINING FULL VIDEOS
+------------------------------ */
+
+GTC_18.fullVideos
+  .slice(4)
+  .forEach(video => {
+
+    secondContent.appendChild(
+      createFullVideo(video)
+    );
+
+  });
+
+</script>
+
+</body>
+</html>
