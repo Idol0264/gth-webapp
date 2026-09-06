@@ -3,266 +3,255 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="L.O.LDay | GT Channels">
-
-  <title>L.O.LDay | GT Channels</title>
-
+  <title>L.O.LDay | GTC</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body data-theme="gold">
+<body>
 
 <header class="site-header">
-
-  <div class="brand">
-    <strong>L.O.LDay</strong>
-    <span>GT Channels</span>
-  </div>
+  <a href="index.html" class="brand">GTH</a>
 
   <nav class="top-nav">
+    <a href="index.html">Home</a>
     <a href="gtc.html">GTC</a>
-    <a href="index.html">GTH Home</a>
   </nav>
-
 </header>
-
 
 <main>
 
-  <!-- CHANNEL HEADER -->
-
   <section class="hero">
-
-    <div class="hero-content">
-
-      <p class="eyebrow">GT CHANNELS</p>
-
-      <h1>L.O.LDay</h1>
-
-      <p>
-        Fun, entertainment and interesting video content
-        from the L.O.LDay channel.
-      </p>
-
-    </div>
-
+    <span class="platform-code">GTC</span>
+    <h1>L.O.LDay</h1>
+    <p>
+      Entertainment, comedy and fun.
+    </p>
   </section>
 
-
-  <!-- CONTENT -->
-
-  <section class="content-section">
-
-    <div class="section-heading">
-
-      <p class="eyebrow">SHORT VIDEOS</p>
-
-      <h2>Shorts</h2>
-
-      <p>
-        Enjoy short videos from L.O.LDay.
-      </p>
-
+  <section class="section">
+    <div class="search-box">
+      <input
+        type="search"
+        id="gallerySearch"
+        placeholder="Search L.O.LDay videos..."
+        autocomplete="off"
+      >
     </div>
+  </section>
 
+  <section class="section">
+    <div id="gallery"></div>
 
-    <!-- SHORT VIDEO GRID -->
-
-    <div
-      id="shortsGrid"
-      class="shorts-grid">
-    </div>
-
-
-    <!-- FULL VIDEOS -->
-
-    <div class="section-heading">
-
-      <p class="eyebrow">FULL VIDEOS</p>
-
-      <h2>Full Videos</h2>
-
-    </div>
-
-
-    <div
-      id="fullVideos"
-      class="full-video-list">
-    </div>
-
-
-    <!-- ADVERTISEMENT -->
-
-    <div class="gtc-ad">
-
-      <span>ADVERTISEMENT</span>
-
-      <div class="ad-placeholder">
-
-        <p>
-          Your advertisement can appear here.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <!-- MORE FULL VIDEOS -->
-
-    <div
-      id="secondContent"
-      class="full-video-list">
-    </div>
-
-
-    <!-- SECOND ADVERTISEMENT -->
-
-    <div class="gtc-ad">
-
-      <span>ADVERTISEMENT</span>
-
-      <div class="ad-placeholder">
-
-        <p>
-          Your advertisement can appear here.
-        </p>
-
-      </div>
-
-    </div>
-
+    <p id="noResults" style="display:none; text-align:center; opacity:.7;">
+      No videos found.
+    </p>
   </section>
 
 </main>
 
-
 <footer class="site-footer">
-
-  <p>
-    © 2026 God’stime Holdings. All rights reserved.
-  </p>
-
+  <p>© GTH — God’stime Holdings</p>
 </footer>
-
 
 <script src="data/gtc-lolday.js"></script>
 
-
 <script>
+const gallery = document.getElementById("gallery");
+const searchInput = document.getElementById("gallerySearch");
+const noResults = document.getElementById("noResults");
 
-/* -----------------------------
-   ELEMENTS
------------------------------- */
+const shorts = GTC_LOLDAY.shorts || [];
+const fullVideos = GTC_LOLDAY.fullVideos || [];
 
-const shortsGrid =
-  document.getElementById("shortsGrid");
+function createVideo(video, type) {
+  const article = document.createElement("article");
 
-const fullVideos =
-  document.getElementById("fullVideos");
+  article.className =
+    type === "short"
+      ? "video-card short-card"
+      : "video-card full-card";
 
-const secondContent =
-  document.getElementById("secondContent");
+  article.dataset.title = video.title.toLowerCase();
 
-
-/* -----------------------------
-   SHORT VIDEOS
------------------------------- */
-
-GTC_LOLDAY.shorts.forEach(video => {
-
-  const card =
-    document.createElement("article");
-
-  card.className =
-    "short-video-card";
-
-  card.innerHTML = `
-
-    <div class="short-video-frame">
-
+  article.innerHTML = `
+    <div class="video-frame">
       <iframe
         src="https://www.youtube.com/embed/${video.id}"
         title="${video.title}"
         loading="lazy"
         allowfullscreen>
       </iframe>
-
     </div>
 
     <h3>${video.title}</h3>
-
   `;
 
-  shortsGrid.appendChild(card);
-
-});
-
-
-/* -----------------------------
-   FULL VIDEO FUNCTION
------------------------------- */
-
-function createFullVideo(video) {
-
-  const card =
-    document.createElement("article");
-
-  card.className =
-    "full-video-card";
-
-  card.innerHTML = `
-
-    <div class="full-video-frame">
-
-      <iframe
-        src="https://www.youtube.com/embed/${video.id}"
-        title="${video.title}"
-        loading="lazy"
-        allowfullscreen>
-      </iframe>
-
-    </div>
-
-    <h3>${video.title}</h3>
-
-  `;
-
-  return card;
-
+  return article;
 }
 
+function createAdvertisement() {
+  const ad = document.createElement("div");
 
-/* -----------------------------
-   FIRST FOUR FULL VIDEOS
------------------------------- */
+  ad.className = "gtc-ad";
 
-GTC_LOLDAY.fullVideos
-  .slice(0, 4)
-  .forEach(video => {
+  ad.innerHTML = `
+    <div class="ad-placeholder">
+      <strong>Advertisement</strong>
+      <span>GTH promotional space</span>
+    </div>
+  `;
 
-    fullVideos.appendChild(
-      createFullVideo(video)
+  return ad;
+}
+
+/*
+  Formation:
+
+  2 Shorts
+  2 Shorts
+  4 Full Videos
+  Advertisement
+*/
+function createFormation(shortItems, fullItems) {
+
+  const formation = document.createElement("section");
+
+  formation.className = "gtc-formation";
+
+  if (shortItems.length > 0) {
+
+    const row1 = document.createElement("div");
+
+    row1.className = "shorts-grid";
+
+    shortItems.slice(0, 2).forEach(video => {
+      row1.appendChild(
+        createVideo(video, "short")
+      );
+    });
+
+    formation.appendChild(row1);
+  }
+
+  if (shortItems.length > 2) {
+
+    const row2 = document.createElement("div");
+
+    row2.className = "shorts-grid";
+
+    shortItems.slice(2, 4).forEach(video => {
+      row2.appendChild(
+        createVideo(video, "short")
+      );
+    });
+
+    formation.appendChild(row2);
+  }
+
+  if (fullItems.length > 0) {
+
+    const fullList = document.createElement("div");
+
+    fullList.className = "full-video-list";
+
+    fullItems.slice(0, 4).forEach(video => {
+      fullList.appendChild(
+        createVideo(video, "full")
+      );
+    });
+
+    formation.appendChild(fullList);
+  }
+
+  formation.appendChild(
+    createAdvertisement()
+  );
+
+  return formation;
+}
+
+function buildGallery() {
+
+  gallery.innerHTML = "";
+
+  let shortIndex = 0;
+  let fullIndex = 0;
+
+  while (
+    shortIndex < shorts.length ||
+    fullIndex < fullVideos.length
+  ) {
+
+    const formationShorts = shorts.slice(
+      shortIndex,
+      shortIndex + 4
     );
 
-  });
-
-
-/* -----------------------------
-   REMAINING FULL VIDEOS
------------------------------- */
-
-GTC_LOLDAY.fullVideos
-  .slice(4)
-  .forEach(video => {
-
-    secondContent.appendChild(
-      createFullVideo(video)
+    const formationFull = fullVideos.slice(
+      fullIndex,
+      fullIndex + 4
     );
 
+    if (
+      formationShorts.length === 0 &&
+      formationFull.length === 0
+    ) {
+      break;
+    }
+
+    gallery.appendChild(
+      createFormation(
+        formationShorts,
+        formationFull
+      )
+    );
+
+    shortIndex += 4;
+    fullIndex += 4;
+  }
+
+  applySearch();
+}
+
+function applySearch() {
+
+  const query = searchInput.value
+    .trim()
+    .toLowerCase();
+
+  const cards =
+    gallery.querySelectorAll(".video-card");
+
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+
+    const title =
+      card.dataset.title || "";
+
+    if (
+      !query ||
+      title.includes(query)
+    ) {
+      card.style.display = "";
+      visibleCount++;
+    } else {
+      card.style.display = "none";
+    }
   });
 
+  noResults.style.display =
+    visibleCount === 0
+      ? "block"
+      : "none";
+}
+
+searchInput.addEventListener(
+  "input",
+  applySearch
+);
+
+buildGallery();
 </script>
 
 </body>
