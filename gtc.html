@@ -7,7 +7,19 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body data-theme="gold">
+<body>
+
+<script>
+const savedTheme = localStorage.getItem("gth_theme_v1");
+
+if (
+  savedTheme === "gold" ||
+  savedTheme === "blue" ||
+  savedTheme === "green"
+) {
+  document.body.setAttribute("data-theme", savedTheme);
+}
+</script>
 
 <header class="site-header">
 
