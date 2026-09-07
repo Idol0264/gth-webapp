@@ -202,6 +202,9 @@ function createSoftwareCard(software) {
   card.dataset.name =
     software.name.toLowerCase();
 
+  card.dataset.category =
+  software.category;
+
   let platformButtons = "";
 
   if (software.platforms?.web) {
