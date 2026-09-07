@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GTS | GT Softwares</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<script>
+const savedTheme = localStorage.getItem("gth_theme_v1");
+
+if (
+  savedTheme === "gold" ||
+  savedTheme === "blue" ||
+  savedTheme === "green"
+) {
+  document.body.setAttribute("data-theme", savedTheme);
+}
+</script>
+
+
+<header class="site-header">
+
+  <a href="index.html" class="brand">
+    <strong>GTH</strong>
+    <span>God’stime Holdings</span>
+  </a>
+
+  <nav class="top-nav">
+
+    <a href="index.html">Home</a>
+
+    <a href="gts.html">GTS</a>
+
+  </nav>
+
+</header>
+
+
+<main>
+
+
+  <!-- TOP ADVERTISEMENT -->
+
+  <section class="gts-top-ad">
+
+    <div id="gtsAdSlider" class="gts-ad-slider">
+
+      <a href="#" class="gts-ad-slide">
+
+        <img
+          src="images/gts-ad-1.jpg"
+          alt="GTS Software Advertisement"
+        >
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- GTS INTRO -->
+
+  <section class="hero">
+
+    <span class="platform-code">
+      GTS
+    </span>
+
+    <h1>
+      GT Softwares
+    </h1>
+
+    <p>
+      Discover useful software and digital applications
+      from the GTH software platform.
+    </p>
+
+  </section>
+
+
+  <!-- SEARCH -->
+
+  <section class="content-section">
+
+    <div class="section-heading">
+
+      <p class="eyebrow">
+        SOFTWARE
+      </p>
+
+      <h2>
+        Find Software
+      </h2>
+
+    </div>
+
+
+    <div class="gts-search">
+
+      <input
+        type="search"
+        id="softwareSearch"
+        placeholder="Search software..."
+        autocomplete="off"
+      >
+
+    </div>
+
+
+    <!-- SOFTWARE GRID -->
+
+    <div
+      id="softwareGrid"
+      class="gts-software-grid">
+    </div>
+
+
+    <p
+      id="noSoftware"
+      style="display:none; text-align:center; opacity:.7;">
+      No software found.
+    </p>
+
+  </section>
+
+
+</main>
+
+
+<footer class="site-footer">
+
+  <p>
+    © 2026 God’stime Holdings. All rights reserved.
+  </p>
+
+</footer>
+
+
+<script src="data/gts-software.js"></script>
+
+
+<script>
+
+/* =========================
+   SOFTWARE
+========================= */
+
+const softwareGrid =
+  document.getElementById("softwareGrid");
+
+const softwareSearch =
+  document.getElementById("softwareSearch");
+
+const noSoftware =
+  document.getElementById("noSoftware");
+
+
+function createSoftwareCard(software) {
+
+  const card =
+    document.createElement("article");
+
+  card.className =
+    "gts-software-card";
+
+  card.dataset.name =
+    software.name.toLowerCase();
+
+  card.innerHTML = `
+
+    <a
+      href="${software.page}"
+      class="gts-software-link"
+    >
+
+      <img
+        src="${software.image}"
+        alt="${software.name}"
+        class="gts-software-image"
+        loading="lazy"
+      >
+
+      <div class="gts-software-info">
+
+        <span class="platform-code">
+          ${software.category}
+        </span>
+
+        <h3>
+          ${software.name}
+        </h3>
+
+        <p>
+          ${software.description}
+        </p>
+
+        <span class="gts-open">
+          View Software →
+        </span>
+
+      </div>
+
+    </a>
+
+  `;
+
+  return card;
+}
+
+
+function displaySoftware() {
+
+  softwareGrid.innerHTML = "";
+
+  GTS_SOFTWARE.forEach(software => {
+
+    softwareGrid.appendChild(
+      createSoftwareCard(software)
+    );
+
+  });
+
+}
+
+
+function searchSoftware() {
+
+  const query =
+    softwareSearch.value
+      .trim()
+      .toLowerCase();
+
+  const cards =
+    softwareGrid.querySelectorAll(
+      ".gts-software-card"
+    );
+
+  let visible = 0;
+
+  cards.forEach(card => {
+
+    const name =
+      card.dataset.name || "";
+
+    if (
+      !query ||
+      name.includes(query)
+    ) {
+
+      card.style.display = "";
+
+      visible++;
+
+    } else {
+
+      card.style.display = "none";
+
+    }
+
+  });
+
+  noSoftware.style.display =
+    visible === 0
+      ? "block"
+      : "none";
+
+}
+
+
+softwareSearch.addEventListener(
+  "input",
+  searchSoftware
+);
+
+
+/* Start */
+
+displaySoftware();
+
+</script>
+
+
+</body>
+
+</html>
