@@ -809,3 +809,53 @@ a {
     font-size: 0.85rem;
   }
 }
+/* =========================
+   GTC CHANNEL BUTTONS
+========================= */
+
+.gtc-channel-list {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gtc-channel-card {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.gtc-channel-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.gtc-channel-info {
+  padding: 16px;
+}
+
+.gtc-channel-info h3 {
+  margin: 0 0 6px;
+}
+
+.gtc-channel-info p {
+  margin: 0 0 10px;
+}
+
+.gtc-channel-info span {
+  font-weight: 600;
+  color: var(--accent);
+   }
