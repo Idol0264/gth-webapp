@@ -179,6 +179,14 @@
 </footer>
 
 
+<script>
+const savedTheme = localStorage.getItem("gth_theme_v1");
+
+if (savedTheme) {
+  document.documentElement.setAttribute("data-theme", savedTheme);
+}
+</script>
+  
 <script src="data/gtf-videos.js"></script>
 
 <script>
