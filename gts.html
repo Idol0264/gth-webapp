@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -321,7 +320,10 @@ function displaySoftware() {
 }
 
 
-function searchSoftware() {
+let selectedCategory = "all";
+
+
+function filterSoftware() {
 
   const query =
     softwareSearch.value
@@ -340,9 +342,20 @@ function searchSoftware() {
     const name =
       card.dataset.name || "";
 
-    if (
+    const category =
+      card.dataset.category || "";
+
+    const matchesSearch =
       !query ||
-      name.includes(query)
+      name.includes(query);
+
+    const matchesCategory =
+      selectedCategory === "all" ||
+      category === selectedCategory;
+
+    if (
+      matchesSearch &&
+      matchesCategory
     ) {
 
       card.style.display = "";
@@ -361,14 +374,42 @@ function searchSoftware() {
     visible === 0
       ? "block"
       : "none";
-
 }
 
 
 softwareSearch.addEventListener(
   "input",
-  searchSoftware
+  filterSoftware
 );
+
+
+document
+  .querySelectorAll(".gts-category-button")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        selectedCategory =
+          button.dataset.category;
+
+        document
+          .querySelectorAll(
+            ".gts-category-button"
+          )
+          .forEach(item => {
+            item.classList.remove("active");
+          });
+
+        button.classList.add("active");
+
+        filterSoftware();
+
+      }
+    );
+
+  });
 
 
 /* Start */
