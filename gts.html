@@ -165,21 +165,74 @@ const noSoftware =
 
 function createSoftwareCard(software) {
 
-  const card =
-    document.createElement("article");
+  const card = document.createElement("article");
 
-  card.className =
-    "gts-software-card";
+  card.className = "gts-software-card";
 
   card.dataset.name =
     software.name.toLowerCase();
 
+  let platformButtons = "";
+
+  if (software.platforms?.web) {
+
+    platformButtons += `
+      <a
+        href="${software.platforms.web}"
+        class="gts-platform-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open Web App →
+      </a>
+    `;
+  }
+
+  if (software.platforms?.android) {
+
+    platformButtons += `
+      <a
+        href="${software.platforms.android}"
+        class="gts-platform-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get Android App →
+      </a>
+    `;
+  }
+
+  if (software.platforms?.ios) {
+
+    platformButtons += `
+      <a
+        href="${software.platforms.ios}"
+        class="gts-platform-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get iOS App →
+      </a>
+    `;
+  }
+
+  if (software.platforms?.windows) {
+
+    platformButtons += `
+      <a
+        href="${software.platforms.windows}"
+        class="gts-platform-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download for Windows →
+      </a>
+    `;
+  }
+
   card.innerHTML = `
 
-    <a
-      href="${software.page}"
-      class="gts-software-link"
-    >
+    <div class="gts-software-link">
 
       <img
         src="${software.image}"
@@ -202,18 +255,25 @@ function createSoftwareCard(software) {
           ${software.description}
         </p>
 
-        <span class="gts-open">
-          View Software →
-        </span>
+        <div class="gts-platform-buttons">
+          ${platformButtons}
+        </div>
+
+        <a
+          href="${software.page}"
+          class="gts-open"
+        >
+          View Software Details →
+        </a>
 
       </div>
 
-    </a>
+    </div>
 
   `;
 
   return card;
-}
+      }
 
 
 function displaySoftware() {
