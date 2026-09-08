@@ -1812,4 +1812,13 @@ const GTS_SOFTWARE_INFO = {
       "Shopify",
 
     developerInfo:
-      "Shopify develops commerce technology for businesses of different sizes
+      "Shopify develops commerce technology for businesses of different sizes and helps merchants start, grow, manage and scale their businesses online.",
+
+    platformReach:
+      "Millions of businesses",
+
+    platformReachLabel:
+      "Businesses using Shopify"
+  }
+
+};
