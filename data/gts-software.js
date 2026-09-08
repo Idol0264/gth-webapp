@@ -1942,3 +1942,22 @@ const GTS_SOFTWARE_INFO = {
   }
 
 };
+
+
+/* =========================================================
+   ADD THE INFORMATION TO THE EXISTING SOFTWARE CATALOG
+========================================================= */
+
+GTS_SOFTWARE.forEach(software => {
+
+  const info =
+    GTS_SOFTWARE_INFO[software.id];
+
+  if (!info) return;
+
+  Object.assign(
+    software,
+    info
+  );
+
+});
