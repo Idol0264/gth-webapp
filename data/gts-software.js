@@ -121,4 +121,26 @@ const GTS_SOFTWARE = [
     page: "gts-software.html"
   },
 
+
+    {
+    id: "zoom",
+
+    name: "Zoom",
+
+    category: "COMMUNICATION",
+
+    description:
+      "Meet, communicate and collaborate online with Zoom for video meetings, chat, webinars and more.",
+
+    image: "images/zoom.jpg",
+
+    type: "web",
+
+    platforms: {
+      web: "https://zoom.us/"
+    },
+
+    page: "gts-software.html"
+  },
+
 ];
