@@ -209,4 +209,26 @@ const GTS_SOFTWARE = [
     page: "gts-software.html"
   },
 
+
+    {
+    id: "dropbox",
+
+    name: "Dropbox",
+
+    category: "CLOUD STORAGE",
+
+    description:
+      "Store, sync, organize and share files securely with Dropbox across your devices.",
+
+    image: "images/dropbox.jpg",
+
+    type: "web",
+
+    platforms: {
+      web: "https://www.dropbox.com/"
+    },
+
+    page: "gts-software.html"
+  },
+
 ];
