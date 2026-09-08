@@ -187,4 +187,26 @@ const GTS_SOFTWARE = [
     page: "gts-software.html"
   },
 
+
+    {
+    id: "figma",
+
+    name: "Figma",
+
+    category: "DESIGN",
+
+    description:
+      "Design, prototype and collaborate on digital products with Figma's collaborative design platform.",
+
+    image: "images/figma.jpg",
+
+    type: "web",
+
+    platforms: {
+      web: "https://www.figma.com/"
+    },
+
+    page: "gts-software.html"
+  },
+
 ];
