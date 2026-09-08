@@ -99,4 +99,26 @@ const GTS_SOFTWARE = [
     page: "gts-software.html"
   },
 
+
+    {
+    id: "google-drive",
+
+    name: "Google Drive",
+
+    category: "CLOUD STORAGE",
+
+    description:
+      "Store, manage, share and collaborate on files securely with Google Drive across your devices.",
+
+    image: "images/google-drive.jpg",
+
+    type: "web",
+
+    platforms: {
+      web: "https://drive.google.com/"
+    },
+
+    page: "gts-software.html"
+  },
+
 ];
