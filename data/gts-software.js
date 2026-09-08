@@ -253,4 +253,26 @@ const GTS_SOFTWARE = [
     page: "gts-software.html"
   },
 
+
+    {
+    id: "slack",
+
+    name: "Slack",
+
+    category: "COMMUNICATION",
+
+    description:
+      "Communicate and collaborate with teams through channels, messaging, file sharing, voice, video and connected work tools.",
+
+    image: "images/slack.jpg",
+
+    type: "web",
+
+    platforms: {
+      web: "https://app.slack.com/"
+    },
+
+    page: "gts-software.html"
+  },
+
 ];
