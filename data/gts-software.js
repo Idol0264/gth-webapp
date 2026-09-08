@@ -231,4 +231,26 @@ const GTS_SOFTWARE = [
     page: "gts-software.html"
   },
 
+
+    {
+    id: "microsoft-365",
+
+    name: "Microsoft 365",
+
+    category: "PRODUCTIVITY",
+
+    description:
+      "Create, edit, collaborate and work across Word, Excel, PowerPoint, Outlook, OneDrive and other Microsoft 365 apps and services.",
+
+    image: "images/microsoft-365.jpg",
+
+    type: "web",
+
+    platforms: {
+      web: "https://www.microsoft.com/microsoft-365"
+    },
+
+    page: "gts-software.html"
+  },
+
 ];
