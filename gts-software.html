@@ -2,50 +2,84 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Software | GTS</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
 </head>
+
 
 <body>
 
+
 <script>
-const savedTheme = localStorage.getItem("gth_theme_v1");
+
+const savedTheme =
+  localStorage.getItem("gth_theme_v1");
 
 if (
   savedTheme === "gold" ||
   savedTheme === "blue" ||
   savedTheme === "green"
 ) {
-  document.body.setAttribute("data-theme", savedTheme);
+
+  document.body.setAttribute(
+    "data-theme",
+    savedTheme
+  );
+
 }
+
 </script>
 
 
 <header class="site-header">
 
-  <div class="brand">
+  <a
+    href="gts.html"
+    class="brand"
+  >
+
     <strong>GTS</strong>
-    <span>GT Softwares</span>
-  </div>
+
+    <span>
+      GT Softwares
+    </span>
+
+  </a>
+
 
   <nav class="top-nav">
 
-    <a href="index.html">GTH Home</a>
+    <a href="index.html">
+      GTH Home
+    </a>
 
-    <a href="gts.html">GTS</a>
+    <a href="gts.html">
+      GTS
+    </a>
 
   </nav>
 
 </header>
 
 
+
 <main>
 
-  <!-- SOFTWARE DETAILS -->
+
+  <!-- SOFTWARE HERO -->
 
   <section class="hero">
 
@@ -55,9 +89,11 @@ if (
         GTS SOFTWARE
       </p>
 
+
       <h1 id="softwareName">
         Loading...
       </h1>
+
 
       <p id="softwareDescription">
         Loading software information...
@@ -67,6 +103,9 @@ if (
 
   </section>
 
+
+
+  <!-- SOFTWARE DETAILS -->
 
   <section class="content-section">
 
@@ -84,6 +123,9 @@ if (
   </section>
 
 
+
+  <!-- BACK BUTTON -->
+
   <section class="content-section">
 
     <div class="hero-actions">
@@ -99,7 +141,9 @@ if (
 
   </section>
 
+
 </main>
+
 
 
 <footer class="site-footer">
@@ -111,35 +155,54 @@ if (
 </footer>
 
 
+
 <script src="data/gts-software.js"></script>
 
 
+
 <script>
+
+
+/* =========================================
+   GET SOFTWARE FROM URL
+========================================= */
 
 const params =
   new URLSearchParams(
     window.location.search
   );
 
+
 const softwareId =
   params.get("id");
 
 
+/* =========================================
+   FIND SOFTWARE
+========================================= */
+
 const software =
   GTS_SOFTWARE.find(
-    item => item.id === softwareId
+    item =>
+      item.id === softwareId
   );
 
+
+/* =========================================
+   PAGE ELEMENTS
+========================================= */
 
 const softwareName =
   document.getElementById(
     "softwareName"
   );
 
+
 const softwareDescription =
   document.getElementById(
     "softwareDescription"
   );
+
 
 const softwareDetails =
   document.getElementById(
@@ -147,19 +210,31 @@ const softwareDetails =
   );
 
 
+
+/* =========================================
+   SOFTWARE NOT FOUND
+========================================= */
+
 if (!software) {
+
+  document.title =
+    "Software Not Found | GTS";
+
 
   softwareName.textContent =
     "Software Not Found";
 
+
   softwareDescription.textContent =
     "The requested software could not be found.";
+
 
   softwareDetails.innerHTML = `
 
     <h3>
       Software unavailable
     </h3>
+
 
     <p>
       This software listing does not exist
@@ -168,19 +243,40 @@ if (!software) {
 
   `;
 
-} else {
+
+}
+
+
+/* =========================================
+   SOFTWARE FOUND
+========================================= */
+
+else {
+
+
+  /* PAGE TITLE */
 
   document.title =
     `${software.name} | GTS`;
 
+
+  /* HERO */
+
   softwareName.textContent =
     software.name;
+
 
   softwareDescription.textContent =
     software.description;
 
 
+
+  /* =======================================
+     PLATFORM BUTTONS
+  ======================================= */
+
   let platformButtons = "";
+
 
 
   if (software.platforms?.web) {
@@ -201,6 +297,7 @@ if (!software) {
   }
 
 
+
   if (software.platforms?.android) {
 
     platformButtons += `
@@ -217,6 +314,7 @@ if (!software) {
     `;
 
   }
+
 
 
   if (software.platforms?.ios) {
@@ -237,6 +335,7 @@ if (!software) {
   }
 
 
+
   if (software.platforms?.windows) {
 
     platformButtons += `
@@ -255,35 +354,88 @@ if (!software) {
   }
 
 
+
+  /* =======================================
+     SOFTWARE DETAILS
+  ======================================= */
+
   softwareDetails.innerHTML = `
+
 
     <img
       src="${software.image}"
       alt="${software.name}"
       class="gts-software-image"
+      loading="lazy"
     >
 
 
+
     <span class="platform-code">
+
       ${software.category}
+
     </span>
 
 
+
     <h2>
-      ${software.name}
+
+      About ${software.name}
+
     </h2>
 
 
+
     <p>
+
       ${software.description}
+
     </p>
 
 
-    <div class="gts-platform-buttons">
 
-      ${platformButtons}
+    ${
+      platformButtons
+        ? `
 
-    </div>
+          <h3>
+            Available Platforms
+          </h3>
+
+          <div class="gts-platform-buttons">
+
+            ${platformButtons}
+
+          </div>
+
+        `
+        : ""
+    }
+
+
+
+    ${
+      software.platforms?.web
+        ? `
+
+          <div class="hero-actions">
+
+            <a
+              href="${software.platforms.web}"
+              class="secondary-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Official Website →
+            </a>
+
+          </div>
+
+        `
+        : ""
+    }
+
 
   `;
 
@@ -291,6 +443,7 @@ if (!software) {
 
 </script>
 
+
 </body>
 
-  </html>
+</html>
