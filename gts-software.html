@@ -44,6 +44,7 @@ if (
 </script>
 
 
+
 <header class="site-header">
 
   <a
@@ -124,7 +125,7 @@ if (
 
 
 
-  <!-- BACK BUTTON -->
+  <!-- BACK -->
 
   <section class="content-section">
 
@@ -162,11 +163,6 @@ if (
 
 <script>
 
-
-/* =========================================
-   GET SOFTWARE FROM URL
-========================================= */
-
 const params =
   new URLSearchParams(
     window.location.search
@@ -177,20 +173,12 @@ const softwareId =
   params.get("id");
 
 
-/* =========================================
-   FIND SOFTWARE
-========================================= */
-
 const software =
   GTS_SOFTWARE.find(
     item =>
       item.id === softwareId
   );
 
-
-/* =========================================
-   PAGE ELEMENTS
-========================================= */
 
 const softwareName =
   document.getElementById(
@@ -211,9 +199,9 @@ const softwareDetails =
 
 
 
-/* =========================================
+/* ==========================================
    SOFTWARE NOT FOUND
-========================================= */
+========================================== */
 
 if (!software) {
 
@@ -235,7 +223,6 @@ if (!software) {
       Software unavailable
     </h3>
 
-
     <p>
       This software listing does not exist
       or may have been removed from GTS.
@@ -243,24 +230,20 @@ if (!software) {
 
   `;
 
-
 }
 
 
-/* =========================================
+
+/* ==========================================
    SOFTWARE FOUND
-========================================= */
+========================================== */
 
 else {
 
 
-  /* PAGE TITLE */
-
   document.title =
     `${software.name} | GTS`;
 
-
-  /* HERO */
 
   softwareName.textContent =
     software.name;
@@ -271,12 +254,11 @@ else {
 
 
 
-  /* =======================================
+  /* ========================================
      PLATFORM BUTTONS
-  ======================================= */
+  ======================================== */
 
   let platformButtons = "";
-
 
 
   if (software.platforms?.web) {
@@ -297,7 +279,6 @@ else {
   }
 
 
-
   if (software.platforms?.android) {
 
     platformButtons += `
@@ -316,7 +297,6 @@ else {
   }
 
 
-
   if (software.platforms?.ios) {
 
     platformButtons += `
@@ -333,7 +313,6 @@ else {
     `;
 
   }
-
 
 
   if (software.platforms?.windows) {
@@ -355,12 +334,72 @@ else {
 
 
 
-  /* =======================================
-     SOFTWARE DETAILS
-  ======================================= */
+  /* ========================================
+     ABOUT SECTION
+  ======================================== */
+
+  const aboutText =
+    software.about ||
+    software.description ||
+    "Information about this software is currently unavailable.";
+
+
+  const developer =
+    software.developer ||
+    "Not currently available";
+
+
+  const developerInfo =
+    software.developerInfo ||
+    "Developer information is currently unavailable.";
+
+
+
+  /* ========================================
+     PLATFORM REACH
+  ======================================== */
+
+  let platformReachHTML = "";
+
+
+  if (
+    software.platformReach &&
+    software.platformReachLabel
+  ) {
+
+    platformReachHTML = `
+
+      <div class="gts-info-block">
+
+        <h3>
+          Platform Reach
+        </h3>
+
+        <strong class="gts-stat">
+
+          ${software.platformReach}
+
+        </strong>
+
+        <p>
+
+          ${software.platformReachLabel}
+
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+
+
+  /* ========================================
+     DETAILS PAGE
+  ======================================== */
 
   softwareDetails.innerHTML = `
-
 
     <img
       src="${software.image}"
@@ -368,7 +407,6 @@ else {
       class="gts-software-image"
       loading="lazy"
     >
-
 
 
     <span class="platform-code">
@@ -379,19 +417,58 @@ else {
 
 
 
-    <h2>
+    <section class="gts-about">
 
-      About ${software.name}
+      <h2>
+        About ${software.name}
+      </h2>
 
-    </h2>
+
+      <div
+        class="gts-about-text"
+        id="aboutText"
+      >
+
+        <p>
+          ${aboutText}
+        </p>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="secondary-btn"
+        id="aboutToggle"
+      >
+        Read More →
+      </button>
+
+    </section>
 
 
 
-    <p>
+    <section class="gts-developer">
 
-      ${software.description}
+      <h2>
+        Developer / Company
+      </h2>
 
-    </p>
+
+      <h3>
+        ${developer}
+      </h3>
+
+
+      <p>
+        ${developerInfo}
+      </p>
+
+    </section>
+
+
+
+    ${platformReachHTML}
 
 
 
@@ -399,45 +476,69 @@ else {
       platformButtons
         ? `
 
-          <h3>
-            Available Platforms
-          </h3>
+          <section class="gts-platforms">
 
-          <div class="gts-platform-buttons">
-
-            ${platformButtons}
-
-          </div>
-
-        `
-        : ""
-    }
+            <h2>
+              Available Platforms
+            </h2>
 
 
+            <div class="gts-platform-buttons">
 
-    ${
-      software.platforms?.web
-        ? `
+              ${platformButtons}
 
-          <div class="hero-actions">
+            </div>
 
-            <a
-              href="${software.platforms.web}"
-              class="secondary-btn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Official Website →
-            </a>
-
-          </div>
+          </section>
 
         `
         : ""
     }
-
 
   `;
+
+
+
+  /* ========================================
+     READ MORE / SHOW LESS
+  ======================================== */
+
+  const aboutTextElement =
+    document.getElementById(
+      "aboutText"
+    );
+
+
+  const aboutToggle =
+    document.getElementById(
+      "aboutToggle"
+    );
+
+
+  if (
+    aboutTextElement &&
+    aboutToggle
+  ) {
+
+    aboutToggle.addEventListener(
+      "click",
+      () => {
+
+        const expanded =
+          aboutTextElement.classList.toggle(
+            "expanded"
+          );
+
+
+        aboutToggle.textContent =
+          expanded
+            ? "Show Less ↑"
+            : "Read More →";
+
+      }
+    );
+
+  }
 
 }
 
