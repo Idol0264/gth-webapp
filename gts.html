@@ -293,7 +293,7 @@ function createSoftwareCard(software) {
         </div>
 
         <a
-          href="${software.page}"
+          href="${software.page}?id=${encodeURIComponent(software.id)}"
           class="gts-open"
         >
           View Software Details →
