@@ -165,4 +165,26 @@ const GTS_SOFTWARE = [
     page: "gts-software.html"
   },
 
+
+    {
+    id: "trello",
+
+    name: "Trello",
+
+    category: "PRODUCTIVITY",
+
+    description:
+      "Organize projects, tasks and workflows with Trello boards, lists and cards.",
+
+    image: "images/trello.jpg",
+
+    type: "web",
+
+    platforms: {
+      web: "https://trello.com/"
+    },
+
+    page: "gts-software.html"
+  },
+
 ];
