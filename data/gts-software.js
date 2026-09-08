@@ -53,6 +53,28 @@ const GTS_SOFTWARE = [
     },
 
     page: "gts-software.html"
-  }
+  },
+
+
+    {
+    id: "wordpress-com",
+
+    name: "WordPress.com",
+
+    category: "WEB APP",
+
+    description:
+      "Create, build and manage websites with WordPress.com, a managed WordPress platform for websites, blogs, businesses and online stores.",
+
+    image: "images/wordpress.jpg",
+
+    type: "web",
+
+    platforms: {
+      web: "https://wordpress.com/"
+    },
+
+    page: "gts-software.html"
+  },
 
 ];
