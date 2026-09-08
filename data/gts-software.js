@@ -77,4 +77,26 @@ const GTS_SOFTWARE = [
     page: "gts-software.html"
   },
 
+
+    {
+    id: "canva",
+
+    name: "Canva",
+
+    category: "DESIGN",
+
+    description:
+      "Create designs, presentations, videos, documents, social media content and more with Canva.",
+
+    image: "images/canva.jpg",
+
+    type: "web",
+
+    platforms: {
+      web: "https://www.canva.com/"
+    },
+
+    page: "gts-software.html"
+  },
+
 ];
