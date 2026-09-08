@@ -1819,6 +1819,29 @@ const GTS_SOFTWARE_INFO = {
 
     platformReachLabel:
       "Businesses using Shopify"
-  }
+  },
 
+
+  "wix": {
+    about:
+      "Wix is a website-building and business platform that allows users to create websites, online stores and digital experiences. It provides design tools, hosting, business features and services for managing an online presence.",
+
+    developer:
+      "Wix",
+
+    developerInfo:
+      "Wix develops website-building, business and online commerce technology."
+  },
+
+
+  "squarespace": {
+    about:
+      "Squarespace is a website-building platform for creating and managing websites, online stores, portfolios and digital brands. It combines website design tools, hosting and commerce capabilities.",
+
+    developer:
+      "Squarespace",
+
+    developerInfo:
+      "Squarespace develops website and commerce tools for individuals, creators and businesses."
+  },
 };
