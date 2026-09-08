@@ -143,4 +143,26 @@ const GTS_SOFTWARE = [
     page: "gts-software.html"
   },
 
+
+    {
+    id: "notion",
+
+    name: "Notion",
+
+    category: "PRODUCTIVITY",
+
+    description:
+      "Organize notes, documents, wikis, projects and tasks in one flexible workspace with Notion.",
+
+    image: "images/notion.jpg",
+
+    type: "web",
+
+    platforms: {
+      web: "https://www.notion.com/"
+    },
+
+    page: "gts-software.html"
+  },
+
 ];
