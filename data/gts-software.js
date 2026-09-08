@@ -1916,4 +1916,29 @@ const GTS_SOFTWARE_INFO = {
     developerInfo:
       "Cloudflare develops internet infrastructure, security and performance technologies."
   },
+
+
+  "grammarly": {
+    about:
+      "Grammarly is a writing and communication assistant that provides suggestions related to grammar, spelling, clarity, tone and other aspects of written communication. Its AI-powered tools are designed to help people communicate more effectively.",
+
+    developer:
+      "Grammarly",
+
+    developerInfo:
+      "Grammarly develops AI-powered writing and communication software."
+  },
+
+
+  "7zip": {
+    about:
+      "7-Zip is a free and open-source file archiving utility used to compress and extract files. It supports a range of archive formats and is particularly known for its high-compression 7z format.",
+
+    developer:
+      "Igor Pavlov",
+
+    developerInfo:
+      "7-Zip was created and is maintained by developer Igor Pavlov."
+  }
+
 };
