@@ -1844,4 +1844,28 @@ const GTS_SOFTWARE_INFO = {
     developerInfo:
       "Squarespace develops website and commerce tools for individuals, creators and businesses."
   },
+
+
+  "woocommerce": {
+    about:
+      "WooCommerce is an open-source e-commerce platform built for WordPress. It provides tools for creating online stores, managing products and orders, accepting payments and extending store functionality.",
+
+    developer:
+      "Automattic",
+
+    developerInfo:
+      "WooCommerce is developed by Automattic and is part of the wider WordPress ecosystem."
+  },
+
+
+  "hubspot": {
+    about:
+      "HubSpot is a business platform combining customer relationship management with marketing, sales, customer service, content and operations tools. It is designed to help businesses manage customer relationships and growth activities.",
+
+    developer:
+      "HubSpot",
+
+    developerInfo:
+      "HubSpot develops customer relationship management and business growth software."
+  },
 };
