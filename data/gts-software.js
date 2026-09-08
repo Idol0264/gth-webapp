@@ -1244,3 +1244,572 @@ const GTS_SOFTWARE = [
   },
 
 ];
+
+/* =========================================================
+   GTS SOFTWARE INFORMATION
+   Additional information for individual software pages
+========================================================= */
+
+const GTS_SOFTWARE_INFO = {
+
+  "wordpress-com": {
+    about:
+      "WordPress.com is a managed website and publishing platform that lets people create blogs, business websites, portfolios, online stores and other types of websites. It combines website-building tools with hosting, security, domains and a wider ecosystem of WordPress services.",
+
+    developer:
+      "Automattic",
+
+    developerInfo:
+      "WordPress.com is operated by Automattic, the company behind WordPress.com and other web products including WooCommerce, Jetpack and WordPress VIP.",
+
+    platformReach:
+      "40.7% of the web",
+
+    platformReachLabel:
+      "Websites running on WordPress"
+  },
+
+
+  "canva": {
+    about:
+      "Canva is an online visual communication and design platform that helps individuals, creators, businesses, educators and teams create a wide range of visual content. Users can work on presentations, social media graphics, videos, documents, websites, marketing materials and many other designs using templates, editing tools, media assets and collaborative features.",
+
+    developer:
+      "Canva",
+
+    developerInfo:
+      "Canva was launched in 2013 by Melanie Perkins, Cliff Obrecht and Cameron Adams. The company develops Canva as a global visual communication and publishing platform.",
+
+    platformReach:
+      "220M+",
+
+    platformReachLabel:
+      "Monthly active users"
+  },
+
+
+  "google-drive": {
+    about:
+      "Google Drive is Google's cloud storage and file-management service. It allows users to store files online, access them across devices, share content with others and collaborate through Google's productivity ecosystem. Drive works closely with services such as Google Docs, Sheets and Slides.",
+
+    developer:
+      "Google",
+
+    developerInfo:
+      "Google Drive is developed and operated by Google as part of the Google Workspace and Google services ecosystem.",
+
+    platformReach:
+      "Google Workspace ecosystem",
+
+    platformReachLabel:
+      "Cloud productivity platform"
+  },
+
+
+  "zoom": {
+    about:
+      "Zoom is a communications platform built around online meetings, video conferencing, chat and other workplace communication tools. Its broader platform also includes products for phone, contact centers, events, webinars and collaboration, allowing organizations to communicate with customers, colleagues and communities.",
+
+    developer:
+      "Zoom Communications",
+
+    developerInfo:
+      "Zoom Communications develops the Zoom platform and its collection of communication and collaboration products.",
+
+    platformReach:
+      "4,468",
+
+    platformReachLabel:
+      "Customers generating $100K+ annual revenue"
+  },
+
+
+  "notion": {
+    about:
+      "Notion is an all-in-one workspace for organizing information, documents, projects, tasks and knowledge. Its flexible building-block system allows individuals and teams to create customized workspaces for planning, documentation, project management, knowledge bases and other workflows.",
+
+    developer:
+      "Notion Labs, Inc.",
+
+    developerInfo:
+      "Notion Labs develops Notion as a flexible workspace designed to bring documents, knowledge, projects and workflows together.",
+
+    platformReach:
+      "100M+",
+
+    platformReachLabel:
+      "Users"
+  },
+
+
+  "trello": {
+    about:
+      "Trello is a visual project and task management platform built around boards, lists and cards. It can be used to organize personal tasks, team projects, workflows, content calendars, software development activities and many other processes.",
+
+    developer:
+      "Atlassian",
+
+    developerInfo:
+      "Trello is part of Atlassian, a software company whose products include Jira, Confluence and other collaboration tools."
+  },
+
+
+  "figma": {
+    about:
+      "Figma is a collaborative design and product development platform used for interface design, prototyping, design systems and team collaboration. Its browser-based workflow allows designers, developers and other stakeholders to work together around shared design files and prototypes.",
+
+    developer:
+      "Figma",
+
+    developerInfo:
+      "Figma develops collaborative design and product development tools used by designers, developers and product teams.",
+
+    platformReach:
+      "13M+",
+
+    platformReachLabel:
+      "Monthly active users"
+  },
+
+
+  "dropbox": {
+    about:
+      "Dropbox is a cloud-based file storage and collaboration platform. It allows users and teams to store, synchronize, organize and share files while working across computers, mobile devices and the web.",
+
+    developer:
+      "Dropbox, Inc.",
+
+    developerInfo:
+      "Dropbox develops cloud storage, file sharing and collaboration products for individuals and organizations."
+  },
+
+
+  "microsoft-365": {
+    about:
+      "Microsoft 365 is Microsoft's productivity ecosystem combining applications and cloud services such as Word, Excel, PowerPoint, Outlook, OneDrive and collaboration tools. It is designed to support personal productivity, communication, document creation and teamwork.",
+
+    developer:
+      "Microsoft",
+
+    developerInfo:
+      "Microsoft develops Microsoft 365 as part of its broader productivity and cloud services ecosystem."
+  },
+
+
+  "slack": {
+    about:
+      "Slack is a workplace communication and collaboration platform organized around channels, direct messages and connected tools. Teams can use Slack to communicate, share files, coordinate projects and connect information from other services.",
+
+    developer:
+      "Salesforce",
+
+    developerInfo:
+      "Slack is developed as part of Salesforce and forms part of Salesforce's collaboration and workplace technology ecosystem."
+  },
+
+
+  "adobe-creative-cloud": {
+    about:
+      "Adobe Creative Cloud is a collection of creative applications and services covering photography, graphic design, illustration, video, publishing, motion graphics and other creative workflows. It brings together applications, cloud services, assets and collaboration capabilities for creative professionals and teams.",
+
+    developer:
+      "Adobe",
+
+    developerInfo:
+      "Adobe develops Creative Cloud and a broad range of creative, document and digital experience software."
+  },
+
+
+  "adobe-photoshop": {
+    about:
+      "Adobe Photoshop is a professional image-editing and digital-imaging application used for photo editing, compositing, retouching, graphic creation and digital artwork. It is widely used by photographers, designers, artists, marketers and other creative professionals.",
+
+    developer:
+      "Adobe",
+
+    developerInfo:
+      "Photoshop is developed by Adobe as part of its creative software portfolio."
+  },
+
+
+  "adobe-illustrator": {
+    about:
+      "Adobe Illustrator is a vector graphics application used to create logos, illustrations, icons, typography, diagrams and other artwork that can scale to different sizes without losing quality. It is commonly used for branding, illustration and graphic design.",
+
+    developer:
+      "Adobe",
+
+    developerInfo:
+      "Illustrator is developed by Adobe as one of its major creative design applications."
+  },
+
+
+  "adobe-acrobat": {
+    about:
+      "Adobe Acrobat is a document and PDF platform used to create, edit, convert, review, sign, share and manage PDF documents. It supports workflows for individuals, businesses and organizations working with digital documents.",
+
+    developer:
+      "Adobe",
+
+    developerInfo:
+      "Acrobat is developed by Adobe as part of its document and productivity software portfolio."
+  },
+
+
+  "adobe-premiere-pro": {
+    about:
+      "Adobe Premiere Pro is professional video-editing software used to edit footage, assemble sequences, work with audio, add effects and prepare video projects for different types of distribution. It is designed for filmmakers, editors, creators and production teams.",
+
+    developer:
+      "Adobe",
+
+    developerInfo:
+      "Premiere Pro is developed by Adobe as part of its professional video and creative software portfolio."
+  },
+
+
+  "adobe-express": {
+    about:
+      "Adobe Express is a simplified creative platform for producing graphics, social media content, videos, flyers, presentations and other visual materials. It is designed to make common creative tasks accessible without requiring the full complexity of professional creative applications.",
+
+    developer:
+      "Adobe",
+
+    developerInfo:
+      "Adobe develops Express as an accessible content creation and design product."
+  },
+
+
+  "capcut": {
+    about:
+      "CapCut is a video creation and editing platform offering editing tools, templates, effects, transitions, captions and other creative features. It is designed for creators producing short-form and other social video content across supported devices and the web.",
+
+    developer:
+      "ByteDance",
+
+    developerInfo:
+      "CapCut is developed by ByteDance, the technology company behind several global digital products."
+  },
+
+
+  "github": {
+    about:
+      "GitHub is a software development and collaboration platform built around Git repositories. Developers use it to store and review code, manage projects, collaborate through pull requests and issues, automate workflows and deploy software.",
+
+    developer:
+      "GitHub",
+
+    developerInfo:
+      "GitHub is developed and operated by GitHub and is part of Microsoft."
+  },
+
+
+  "gitlab": {
+    about:
+      "GitLab is a DevSecOps platform that brings together software planning, source code management, continuous integration, security, deployment and monitoring. It is designed to help development and operations teams manage software delivery within a unified environment.",
+
+    developer:
+      "GitLab Inc.",
+
+    developerInfo:
+      "GitLab develops an integrated platform for software development, security and operations."
+  },
+
+
+  "replit": {
+    about:
+      "Replit is a browser-based development platform that allows people to create, run and collaborate on software projects without requiring a traditional local development setup. It supports coding, application building, deployment and AI-assisted development workflows.",
+
+    developer:
+      "Replit",
+
+    developerInfo:
+      "Replit develops browser-based software development and application-building tools."
+  },
+
+
+  "codepen": {
+    about:
+      "CodePen is an online environment for experimenting with and sharing front-end web development. Developers can write HTML, CSS and JavaScript, preview the results and publish their work for others to explore.",
+
+    developer:
+      "CodePen",
+
+    developerInfo:
+      "CodePen is a developer-focused platform centered on front-end experimentation, learning and sharing."
+  },
+
+
+  "vercel": {
+    about:
+      "Vercel is a cloud platform for building and deploying modern websites and web applications. It provides hosting, deployment, infrastructure and developer tools designed to help teams publish applications and scale them on the web.",
+
+    developer:
+      "Vercel",
+
+    developerInfo:
+      "Vercel develops a cloud platform focused on frontend development, deployment and modern web applications."
+  },
+
+
+  "netlify": {
+    about:
+      "Netlify is a web development and deployment platform that helps developers build, deploy and manage modern websites and web applications. It combines hosting, deployment workflows, integrations and other infrastructure services.",
+
+    developer:
+      "Netlify",
+
+    developerInfo:
+      "Netlify develops cloud tools and infrastructure for modern web development and deployment."
+  },
+
+
+  "chatgpt": {
+    about:
+      "ChatGPT is an AI assistant designed to help with tasks such as writing, learning, brainstorming, coding, analysis, research and problem solving. Its capabilities can vary by plan, model and available features.",
+
+    developer:
+      "OpenAI",
+
+    developerInfo:
+      "OpenAI develops artificial intelligence systems and products, including ChatGPT."
+  },
+
+
+  "google-gemini": {
+    about:
+      "Google Gemini is Google's AI assistant and AI product family. It can help users with questions, writing, analysis, planning, learning and other tasks while integrating with Google's broader technology ecosystem where supported.",
+
+    developer:
+      "Google",
+
+    developerInfo:
+      "Gemini is developed by Google as part of its artificial intelligence products and services."
+  },
+
+
+  "claude": {
+    about:
+      "Claude is an AI assistant developed by Anthropic for tasks including writing, analysis, coding, research, summarization and problem solving. It is designed to assist users through natural-language interaction.",
+
+    developer:
+      "Anthropic",
+
+    developerInfo:
+      "Anthropic is an artificial intelligence company that develops Claude and related AI systems."
+  },
+
+
+  "microsoft-copilot": {
+    about:
+      "Microsoft Copilot is Microsoft's family of AI assistants and AI-powered experiences. Depending on the product and account, Copilot can help with questions, writing, research, productivity and work-related tasks across Microsoft's ecosystem.",
+
+    developer:
+      "Microsoft",
+
+    developerInfo:
+      "Microsoft develops Copilot as part of its broader artificial intelligence and productivity ecosystem."
+  },
+
+
+  "perplexity": {
+    about:
+      "Perplexity is an AI-powered answer and search platform designed to help users research questions through conversational responses and cited sources. It combines search and generative AI to provide information in an interactive format.",
+
+    developer:
+      "Perplexity AI",
+
+    developerInfo:
+      "Perplexity AI develops the Perplexity search and answer platform."
+  },
+
+
+  "deepl": {
+    about:
+      "DeepL provides AI-powered language tools focused on translation and writing assistance. Its services are designed to help individuals and organizations translate and improve text across supported languages.",
+
+    developer:
+      "DeepL SE",
+
+    developerInfo:
+      "DeepL develops artificial-intelligence language and translation technology."
+  },
+
+
+  "google-docs": {
+    about:
+      "Google Docs is an online document editor that lets users create, edit, share and collaborate on documents. Changes can be synchronized online, allowing multiple people to work on documents together.",
+
+    developer:
+      "Google",
+
+    developerInfo:
+      "Google Docs is part of Google's productivity and Google Workspace ecosystem."
+  },
+
+
+  "google-sheets": {
+    about:
+      "Google Sheets is an online spreadsheet application for organizing information, performing calculations, creating tables and analyzing data. It supports sharing and real-time collaboration.",
+
+    developer:
+      "Google",
+
+    developerInfo:
+      "Google Sheets is part of Google's productivity and Google Workspace ecosystem."
+  },
+
+
+  "google-slides": {
+    about:
+      "Google Slides is an online presentation application for creating, editing and presenting slide decks. It supports collaboration and sharing through Google's cloud-based productivity ecosystem.",
+
+    developer:
+      "Google",
+
+    developerInfo:
+      "Google Slides is part of Google's productivity and Google Workspace ecosystem."
+  },
+
+
+  "google-meet": {
+    about:
+      "Google Meet is Google's video communication service for online meetings and collaboration. It allows users to communicate through video and audio and integrates with other Google productivity services.",
+
+    developer:
+      "Google",
+
+    developerInfo:
+      "Google Meet is developed by Google as part of its communication and collaboration services."
+  },
+
+
+  "onedrive": {
+    about:
+      "OneDrive is Microsoft's cloud storage service for storing, synchronizing and sharing files across supported devices. It integrates closely with Microsoft 365 applications and services.",
+
+    developer:
+      "Microsoft",
+
+    developerInfo:
+      "OneDrive is developed by Microsoft as part of its cloud and Microsoft 365 ecosystem."
+  },
+
+
+  "evernote": {
+    about:
+      "Evernote is a note-taking and organization platform designed to help users capture, organize and retrieve information. It supports notes, documents, tasks and other information-management workflows.",
+
+    developer:
+      "Evernote Corporation",
+
+    developerInfo:
+      "Evernote develops software for digital note-taking and personal information management."
+  },
+
+
+  "asana": {
+    about:
+      "Asana is a work-management platform for organizing projects, tasks, goals and team workflows. Teams can use it to plan work, assign responsibilities, track progress and coordinate projects.",
+
+    developer:
+      "Asana, Inc.",
+
+    developerInfo:
+      "Asana develops work-management software for teams and organizations."
+  },
+
+
+  "monday": {
+    about:
+      "Monday.com is a work-management platform that provides customizable boards and workflows for projects, tasks, teams and business processes. Organizations can configure the platform for different operational needs.",
+
+    developer:
+      "monday.com",
+
+    developerInfo:
+      "monday.com develops a flexible work-management and business workflow platform."
+  },
+
+
+  "airtable": {
+    about:
+      "Airtable combines database-style organization with spreadsheet-like usability. It can be used to manage projects, content, customer information, inventories and other structured workflows while allowing teams to build customized applications.",
+
+    developer:
+      "Airtable",
+
+    developerInfo:
+      "Airtable develops a flexible database and application-building platform."
+  },
+
+
+  "youtube-studio": {
+    about:
+      "YouTube Studio is the creator management environment for YouTube channels. It provides tools for managing videos, comments, channel information, analytics and other creator activities.",
+
+    developer:
+      "YouTube / Google",
+
+    developerInfo:
+      "YouTube Studio is developed and operated by YouTube, which is part of Google."
+  },
+
+
+  "vimeo": {
+    about:
+      "Vimeo is a video platform focused on hosting, managing, sharing and creating professional video content. It provides tools for creators, businesses and organizations working with video.",
+
+    developer:
+      "Vimeo",
+
+    developerInfo:
+      "Vimeo develops video hosting, management and creation products."
+  },
+
+
+  "veed": {
+    about:
+      "VEED is a browser-based video creation and editing platform. It provides tools for editing video, adding captions, recording content and preparing media for online publishing.",
+
+    developer:
+      "VEED",
+
+    developerInfo:
+      "VEED develops online video creation and editing tools for creators and businesses."
+  },
+
+
+  "descript": {
+    about:
+      "Descript is a media-editing platform that uses text-based workflows for editing audio and video. It combines transcription, editing and AI-powered features to help creators produce and refine media.",
+
+    developer:
+      "Descript",
+
+    developerInfo:
+      "Descript develops software for text-based audio and video editing."
+  },
+
+
+  "streamyard": {
+    about:
+      "StreamYard is a live-streaming and video platform designed for broadcasts, interviews, webinars and recorded content. It provides browser-based tools for bringing together hosts, guests and audiences.",
+
+    developer:
+      "StreamYard",
+
+    developerInfo:
+      "StreamYard develops tools for live streaming, video recording and online broadcasting."
+  },
+
+
+  "shopify": {
+    about:
+      "Shopify is an e-commerce platform that enables businesses and individuals to create online stores, sell products and manage commerce operations. Its ecosystem includes storefront tools, payments, marketing, apps and other commerce services.",
+
+    developer:
+      "Shopify",
+
+    developerInfo:
+      "Shopify develops commerce technology for businesses of different sizes
