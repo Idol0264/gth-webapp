@@ -1868,4 +1868,28 @@ const GTS_SOFTWARE_INFO = {
     developerInfo:
       "HubSpot develops customer relationship management and business growth software."
   },
+
+
+  "mailchimp": {
+    about:
+      "Mailchimp is a marketing platform known for email marketing, automation and customer communication tools. It helps businesses create campaigns, manage audiences and coordinate marketing activities.",
+
+    developer:
+      "Intuit Mailchimp",
+
+    developerInfo:
+      "Mailchimp is part of Intuit and develops marketing and customer communication tools."
+  },
+
+
+  "1password": {
+    about:
+      "1Password is a password and digital-identity management platform designed to help individuals and organizations securely manage passwords, passkeys, credentials and other sensitive information.",
+
+    developer:
+      "1Password",
+
+    developerInfo:
+      "1Password develops password management and digital security software."
+  },
 };
