@@ -27,14 +27,14 @@ if (
 
 <header class="site-header">
 
-  <a href="gts.html" class="brand">
+  <div class="brand">
     <strong>GTS</strong>
     <span>GT Softwares</span>
-  </a>
+  </div>
 
   <nav class="top-nav">
 
-    <a href="index.html">Home</a>
+    <a href="index.html">GTH Home</a>
 
     <a href="gts.html">GTS</a>
 
@@ -45,57 +45,55 @@ if (
 
 <main>
 
+  <!-- SOFTWARE DETAILS -->
+
   <section class="hero">
 
-    <span class="platform-code">
-      GTS
-    </span>
+    <div class="hero-content">
 
-    <h1>
-      Software & Digital Applications
-    </h1>
+      <p class="eyebrow">
+        GTS SOFTWARE
+      </p>
 
-    <p>
-      Discover useful software, web applications
-      and digital services through GTS.
-    </p>
+      <h1 id="softwareName">
+        Loading...
+      </h1>
+
+      <p id="softwareDescription">
+        Loading software information...
+      </p>
+
+    </div>
 
   </section>
 
 
   <section class="content-section">
 
-    <div class="section-heading">
-
-      <p class="eyebrow">
-        GTS PLATFORM
-      </p>
-
-      <h2>
-        Software & Apps
-      </h2>
+    <div
+      id="softwareDetails"
+      class="platform-card"
+    >
 
       <p>
-        This section is being developed.
-        More software and applications will be added
-        as the GTS platform grows.
+        Loading software details...
       </p>
 
     </div>
 
+  </section>
 
-    <div class="platform-card">
 
-      <h3>
-        GTS is under development
-      </h3>
+  <section class="content-section">
 
-      <p>
-        GTS will contain both web applications and
-        downloadable software. Each listing will provide
-        the appropriate option to open, use or download
-        the software.
-      </p>
+    <div class="hero-actions">
+
+      <a
+        href="gts.html"
+        class="secondary-btn"
+      >
+        ← Back to GTS
+      </a>
 
     </div>
 
@@ -112,6 +110,187 @@ if (
 
 </footer>
 
+
+<script src="data/gts-software.js"></script>
+
+
+<script>
+
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+const softwareId =
+  params.get("id");
+
+
+const software =
+  GTS_SOFTWARE.find(
+    item => item.id === softwareId
+  );
+
+
+const softwareName =
+  document.getElementById(
+    "softwareName"
+  );
+
+const softwareDescription =
+  document.getElementById(
+    "softwareDescription"
+  );
+
+const softwareDetails =
+  document.getElementById(
+    "softwareDetails"
+  );
+
+
+if (!software) {
+
+  softwareName.textContent =
+    "Software Not Found";
+
+  softwareDescription.textContent =
+    "The requested software could not be found.";
+
+  softwareDetails.innerHTML = `
+
+    <h3>
+      Software unavailable
+    </h3>
+
+    <p>
+      This software listing does not exist
+      or may have been removed from GTS.
+    </p>
+
+  `;
+
+} else {
+
+  document.title =
+    `${software.name} | GTS`;
+
+  softwareName.textContent =
+    software.name;
+
+  softwareDescription.textContent =
+    software.description;
+
+
+  let platformButtons = "";
+
+
+  if (software.platforms?.web) {
+
+    platformButtons += `
+
+      <a
+        href="${software.platforms.web}"
+        class="gts-platform-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open Web App →
+      </a>
+
+    `;
+
+  }
+
+
+  if (software.platforms?.android) {
+
+    platformButtons += `
+
+      <a
+        href="${software.platforms.android}"
+        class="gts-platform-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get Android App →
+      </a>
+
+    `;
+
+  }
+
+
+  if (software.platforms?.ios) {
+
+    platformButtons += `
+
+      <a
+        href="${software.platforms.ios}"
+        class="gts-platform-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get iOS App →
+      </a>
+
+    `;
+
+  }
+
+
+  if (software.platforms?.windows) {
+
+    platformButtons += `
+
+      <a
+        href="${software.platforms.windows}"
+        class="gts-platform-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download for Windows →
+      </a>
+
+    `;
+
+  }
+
+
+  softwareDetails.innerHTML = `
+
+    <img
+      src="${software.image}"
+      alt="${software.name}"
+      class="gts-software-image"
+    >
+
+
+    <span class="platform-code">
+      ${software.category}
+    </span>
+
+
+    <h2>
+      ${software.name}
+    </h2>
+
+
+    <p>
+      ${software.description}
+    </p>
+
+
+    <div class="gts-platform-buttons">
+
+      ${platformButtons}
+
+    </div>
+
+  `;
+
+}
+
+</script>
+
 </body>
 
-</html>
+  </html>
