@@ -1892,4 +1892,28 @@ const GTS_SOFTWARE_INFO = {
     developerInfo:
       "1Password develops password management and digital security software."
   },
+
+
+  "bitwarden": {
+    about:
+      "Bitwarden is an open-source password management platform that helps users securely store and manage passwords, passkeys and other sensitive information across supported devices.",
+
+    developer:
+      "Bitwarden",
+
+    developerInfo:
+      "Bitwarden develops open-source password management and digital security products."
+  },
+
+
+  "cloudflare": {
+    about:
+      "Cloudflare provides internet infrastructure and security services that help protect, connect and accelerate websites, applications and networks. Its platform includes services for security, performance, networking, developers and edge computing.",
+
+    developer:
+      "Cloudflare",
+
+    developerInfo:
+      "Cloudflare develops internet infrastructure, security and performance technologies."
+  },
 };
