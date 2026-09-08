@@ -1038,3 +1038,44 @@ input[type="search"]::-webkit-search-cancel-button {
   color: #111;
   border-color: var(--accent);
    }
+/* =========================================
+   GTS SOFTWARE DETAILS
+========================================= */
+
+.gts-about-text {
+  max-height: 5.5em;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+
+.gts-about-text.expanded {
+  max-height: 1000px;
+}
+
+
+.gts-about,
+.gts-developer,
+.gts-platforms,
+.gts-info-block {
+  margin-top: 2rem;
+}
+
+
+.gts-stat {
+  display: block;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+
+
+.gts-info-block p {
+  margin-top: 0.25rem;
+}
+
+
+#aboutToggle {
+  margin-top: 1rem;
+  cursor: pointer;
+  border: 0;
+   }
