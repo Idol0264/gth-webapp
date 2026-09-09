@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>GT Connect Dashboard | GTH</title>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      background: #0b0b0b;
+
+      color: #ffffff;
+
+      min-height: 100vh;
+
+    }
+
+
+    header {
+
+      padding: 20px 7%;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      border-bottom:
+        1px solid rgba(255,255,255,0.08);
+
+    }
+
+
+    .brand {
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+    .brand strong {
+
+      font-size: 22px;
+
+      letter-spacing: 1px;
+
+    }
+
+
+    .brand span {
+
+      font-size: 12px;
+
+      color: #aaa;
+
+      margin-top: 3px;
+
+    }
+
+
+    .top-nav a {
+
+      color: #fff;
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+    }
+
+
+    .top-nav a:hover {
+
+      text-decoration: underline;
+
+    }
+
+
+    main {
+
+      max-width: 1100px;
+
+      margin: 0 auto;
+
+      padding: 55px 20px 80px;
+
+    }
+
+
+    .welcome {
+
+      margin-bottom: 35px;
+
+    }
+
+
+    .eyebrow {
+
+      color: #999;
+
+      font-size: 13px;
+
+      letter-spacing: 1.5px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    .welcome h1 {
+
+      font-size: 38px;
+
+      margin-bottom: 12px;
+
+    }
+
+
+    .welcome p {
+
+      color: #aaa;
+
+      line-height: 1.6;
+
+      max-width: 700px;
+
+    }
+
+
+    .dashboard-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 20px;
+
+    }
+
+
+    .dashboard-card {
+
+      background: #151515;
+
+      border:
+        1px solid rgba(255,255,255,0.08);
+
+      border-radius: 20px;
+
+      padding: 28px;
+
+    }
+
+
+    .dashboard-card h2 {
+
+      font-size: 21px;
+
+      margin-bottom: 12px;
+
+    }
+
+
+    .dashboard-card h3 {
+
+      font-size: 16px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    .dashboard-card p {
+
+      color: #aaa;
+
+      line-height: 1.6;
+
+      font-size: 14px;
+
+    }
+
+
+    .connection-badge {
+
+      display: inline-block;
+
+      margin-top: 15px;
+
+      padding: 8px 13px;
+
+      border-radius: 30px;
+
+      background: #252525;
+
+      border:
+        1px solid rgba(255,255,255,0.1);
+
+      font-size: 13px;
+
+    }
+
+
+    .connection-list {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 18px;
+
+    }
+
+
+    .connection-item {
+
+      padding: 10px 14px;
+
+      border-radius: 10px;
+
+      background: #202020;
+
+      border:
+        1px solid rgba(255,255,255,0.08);
+
+      font-size: 13px;
+
+    }
+
+
+    .current-connection {
+
+      border-color: rgba(255,255,255,0.25);
+
+    }
+
+
+    .dashboard-button {
+
+      display: inline-block;
+
+      margin-top: 20px;
+
+      padding: 12px 18px;
+
+      border-radius: 10px;
+
+      background: #ffffff;
+
+      color: #000000;
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+      font-weight: bold;
+
+    }
+
+
+    .dashboard-button:hover {
+
+      opacity: 0.9;
+
+    }
+
+
+    .secondary-button {
+
+      background: #222;
+
+      color: #fff;
+
+      border:
+        1px solid rgba(255,255,255,0.1);
+
+    }
+
+
+    .external-platform {
+
+      margin-top: 20px;
+
+      padding: 18px;
+
+      background: #101010;
+
+      border-radius: 14px;
+
+      border:
+        1px solid rgba(255,255,255,0.07);
+
+    }
+
+
+    .external-platform strong {
+
+      display: block;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .external-platform span {
+
+      color: #888;
+
+      font-size: 13px;
+
+    }
+
+
+    .dashboard-actions {
+
+      margin-top: 30px;
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+    }
+
+
+    .logout-button {
+
+      border: 1px solid #333;
+
+      background: transparent;
+
+      color: #aaa;
+
+      padding: 12px 18px;
+
+      border-radius: 10px;
+
+      cursor: pointer;
+
+      font-size: 14px;
+
+    }
+
+
+    .logout-button:hover {
+
+      color: #fff;
+
+      border-color: #555;
+
+    }
+
+
+    footer {
+
+      text-align: center;
+
+      padding: 25px 20px;
+
+      color: #666;
+
+      font-size: 12px;
+
+      border-top:
+        1px solid rgba(255,255,255,0.05);
+
+    }
+
+
+    @media (max-width: 750px) {
+
+      header {
+
+        padding: 18px 20px;
+
+      }
+
+
+      main {
+
+        padding:
+          40px 20px 60px;
+
+      }
+
+
+      .welcome h1 {
+
+        font-size: 30px;
+
+      }
+
+
+      .dashboard-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <header>
+
+    <div class="brand">
+
+      <strong>GTH</strong>
+
+      <span>GT Connect</span>
+
+    </div>
+
+
+    <nav class="top-nav">
+
+      <a href="gt-connect.html">
+        GT Connect
+      </a>
+
+    </nav>
+
+  </header>
+
+
+
+  <main>
+
+
+    <!-- WELCOME -->
+
+    <section class="welcome">
+
+      <p class="eyebrow">
+        GT CONNECT DASHBOARD
+      </p>
+
+
+      <h1 id="welcomeMessage">
+        Welcome
+      </h1>
+
+
+      <p>
+        Your approved GT Connect workspace.
+        From here you can view your connection,
+        responsibilities and available
+        collaboration resources.
+      </p>
+
+    </section>
+
+
+
+    <section class="dashboard-grid">
+
+
+      <!-- CURRENT CONNECTION -->
+
+      <article class="dashboard-card">
+
+        <h2>
+          Your Connection
+        </h2>
+
+
+        <p>
+          This is the GT Connect role currently
+          associated with your Personal Key.
+        </p>
+
+
+        <span
+          id="currentConnection"
+          class="connection-badge"
+        >
+          Loading...
+        </span>
+
+      </article>
+
+
+
+      <!-- ROLE -->
+
+      <article class="dashboard-card">
+
+        <h2>
+          Your Role
+        </h2>
+
+
+        <h3 id="roleTitle">
+          Loading...
+        </h3>
+
+
+        <p id="roleDescription">
+          Loading your role information...
+        </p>
+
+      </article>
+
+
+
+      <!-- DUTIES -->
+
+      <article class="dashboard-card">
+
+        <h2>
+          Responsibilities
+        </h2>
+
+
+        <p id="duties">
+          Your responsibilities will appear
+          here according to your GT Connect
+          connection.
+        </p>
+
+      </article>
+
+
+
+      <!-- COLLABORATION -->
+
+      <article class="dashboard-card">
+
+        <h2>
+          Work Together
+        </h2>
+
+
+        <p>
+          Your GT Connect dashboard can provide
+          access to the external platforms used
+          for communication, collaboration and
+          carrying out your approved activities.
+        </p>
+
+
+        <div class="external-platform">
+
+          <strong>
+            Collaboration Platform
+          </strong>
+
+          <span>
+            Platform connection will be added
+            here.
+          </span>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- APPROVED CONNECTIONS -->
+
+      <article
+        class="dashboard-card"
+        id="connectionsCard"
+      >
+
+        <h2>
+          Your Approved Connections
+        </h2>
+
+
+        <p>
+          These are the GT Connect connections
+          currently approved for you.
+        </p>
+
+
+        <div
+          id="connectionList"
+          class="connection-list"
+        ></div>
+
+
+        <a
+          href="gt-connect.html"
+          class="dashboard-button secondary-button"
+        >
+          Join Another Connection →
+        </a>
+
+      </article>
+
+
+
+      <!-- ACCOUNT -->
+
+      <article class="dashboard-card">
+
+        <h2>
+          Your GT Connect Access
+        </h2>
+
+
+        <p>
+          Your Personal Key is associated with
+          this browser so that you can return
+          to your dashboard without entering the
+          key every time.
+        </p>
+
+
+        <div class="dashboard-actions">
+
+          <button
+            type="button"
+            class="logout-button"
+            id="forgetDevice"
+          >
+            Forget This Device
+          </button>
+
+        </div>
+
+      </article>
+
+
+    </section>
+
+  </main>
+
+
+
+  <footer>
+
+    © 2026 God’stime Holdings.
+    All rights reserved.
+
+  </footer>
+
+
+
+  <script>
+
+
+    /*
+      =========================================================
+      GT CONNECT DASHBOARD
+      Front-end version
+      =========================================================
+    */
+
+
+    const savedPerson =
+      localStorage.getItem(
+        "gth_gtconnect_person_v1"
+      );
+
+
+    /*
+      If there is no recognized person,
+      return to the Personal Key page.
+    */
+
+    if (!savedPerson) {
+
+      window.location.href =
+        "gt-connect-key.html";
+
+    }
+
+
+    let person;
+
+
+    try {
+
+      person =
+        JSON.parse(savedPerson);
+
+    } catch (error) {
+
+      localStorage.removeItem(
+        "gth_gtconnect_person_v1"
+      );
+
+      window.location.href =
+        "gt-connect-key.html";
+
+    }
+
+
+
+    /*
+      =========================================================
+      PERSON
+      =========================================================
+    */
+
+
+    const welcomeMessage =
+      document.getElementById(
+        "welcomeMessage"
+      );
+
+
+    welcomeMessage.textContent =
+      "Welcome, " + person.name;
+
+
+
+    /*
+      =========================================================
+      CONNECTIONS
+      =========================================================
+    */
+
+
+    const connections =
+      Array.isArray(person.connections)
+        ? person.connections
+        : [];
+
+
+    const currentConnection =
+      document.getElementById(
+        "currentConnection"
+      );
+
+
+    const connectionList =
+      document.getElementById(
+        "connectionList"
+      );
+
+
+    /*
+      For now the first approved connection
+      is treated as the active connection.
+    */
+
+    const activeConnection =
+      connections[0] || "No connection";
+
+
+    currentConnection.textContent =
+      formatConnection(
+        activeConnection
+      );
+
+
+    connectionList.innerHTML = "";
+
+
+    connections.forEach(
+      function(connection, index) {
+
+        const item =
+          document.createElement("div");
+
+
+        item.className =
+          "connection-item";
+
+
+        if (index === 0) {
+
+          item.classList.add(
+            "current-connection"
+          );
+
+        }
+
+
+        item.textContent =
+          formatConnection(connection);
+
+
+        connectionList.appendChild(item);
+
+      }
+    );
+
+
+
+    /*
+      =========================================================
+      ROLE INFORMATION
+      =========================================================
+    */
+
+
+    const roleTitle =
+      document.getElementById(
+        "roleTitle"
+      );
+
+
+    const roleDescription =
+      document.getElementById(
+        "roleDescription"
+      );
+
+
+    const duties =
+      document.getElementById(
+        "duties"
+      );
+
+
+    const roleInformation = {
+
+      partner: {
+
+        title:
+          "GT Connect Partner",
+
+        description:
+          "A partner works with GTH through an approved external partnership or promotional connection.",
+
+        duties:
+          "Partner responsibilities and approved activities will be displayed here."
+
+      },
+
+
+      worker: {
+
+        title:
+          "GT Connect Worker",
+
+        description:
+          "A remote worker contributes to approved GTH activities and works through the designated collaboration environment.",
+
+        duties:
+          "Worker responsibilities and assigned duties will be displayed here."
+
+      },
+
+
+      "gtf-member": {
+
+        title:
+          "GTF Member",
+
+        description:
+          "A GTF Member participates in the GTF member community and may contribute ideas and discussions relating to mutual investment opportunities.",
+
+        duties:
+          "GTF Member responsibilities and participation guidelines will be displayed here."
+
+      }
+
+    };
+
+
+    const activeRole =
+      roleInformation[
+        activeConnection
+      ];
+
+
+    if (activeRole) {
+
+      roleTitle.textContent =
+        activeRole.title;
+
+
+      roleDescription.textContent =
+        activeRole.description;
+
+
+      duties.textContent =
+        activeRole.duties;
+
+    } else {
+
+      roleTitle.textContent =
+        formatConnection(
+          activeConnection
+        );
+
+
+      roleDescription.textContent =
+        "Your approved GT Connect connection.";
+
+
+      duties.textContent =
+        "Your responsibilities will be displayed here.";
+
+    }
+
+
+
+    /*
+      =========================================================
+      FORGET THIS DEVICE
+      =========================================================
+    */
+
+
+    const forgetDevice =
+      document.getElementById(
+        "forgetDevice"
+      );
+
+
+    forgetDevice.addEventListener(
+      "click",
+      function() {
+
+        localStorage.removeItem(
+          "gth_gtconnect_person_v1"
+        );
+
+
+        window.location.href =
+          "gt-connect-key.html";
+
+      }
+    );
+
+
+
+    /*
+      =========================================================
+      FORMAT CONNECTION NAME
+      =========================================================
+    */
+
+
+    function formatConnection(
+      connection
+    ) {
+
+      if (!connection) {
+
+        return "Unknown";
+
+      }
+
+
+      if (
+        connection === "gtf-member"
+      ) {
+
+        return "GTF Member";
+
+      }
+
+
+      return connection
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, function(letter) {
+
+          return letter.toUpperCase();
+
+        });
+
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>
