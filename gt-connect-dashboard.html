@@ -826,101 +826,117 @@ function updateActiveConnection() {
 
 
     /*
-      =========================================================
-      ROLE INFORMATION
-      =========================================================
-    */
+  =========================================================
+  ROLE INFORMATION
+  =========================================================
+*/
+
+const roleTitle =
+  document.getElementById(
+    "roleTitle"
+  );
 
 
-    const roleTitle =
-      document.getElementById(
-        "roleTitle"
-      );
+const roleDescription =
+  document.getElementById(
+    "roleDescription"
+  );
 
 
-    const roleDescription =
-      document.getElementById(
-        "roleDescription"
-      );
+const duties =
+  document.getElementById(
+    "duties"
+  );
 
 
-    const duties =
-      document.getElementById(
-        "duties"
-      );
+const roleInformation = {
+
+  partner: {
+
+    title:
+      "GT Connect Partner",
+
+    description:
+      "A partner works with GTH through an approved external partnership or promotional connection.",
+
+    duties:
+      "Partner responsibilities and approved activities will be displayed here."
+
+  },
 
 
-    const roleInformation = {
+  worker: {
 
-      partner: {
+    title:
+      "GT Connect Worker",
 
-        title:
-          "GT Connect Partner",
+    description:
+      "A remote worker contributes to approved GTH activities and works through the designated collaboration environment.",
 
-        description:
-          "A partner works with GTH through an approved external partnership or promotional connection.",
+    duties:
+      "Worker responsibilities and assigned duties will be displayed here."
 
-        duties:
-          "Partner responsibilities and approved activities will be displayed here."
-
-      },
+  },
 
 
-      worker: {
+  "gtf-member": {
 
-        title:
-          "GT Connect Worker",
+    title:
+      "GTF Member",
 
-        description:
-          "A remote worker contributes to approved GTH activities and works through the designated collaboration environment.",
+    description:
+      "A GTF Member participates in the GTF member community and may contribute ideas and discussions relating to mutual investment opportunities.",
 
-        duties:
-          "Worker responsibilities and assigned duties will be displayed here."
+    duties:
+      "GTF Member responsibilities and participation guidelines will be displayed here."
 
-      },
+  }
 
-
-      "gtf-member": {
-
-        title:
-          "GTF Member",
-
-        description:
-          "A GTF Member participates in the GTF member community and may contribute ideas and discussions relating to mutual investment opportunities.",
-
-        duties:
-          "GTF Member responsibilities and participation guidelines will be displayed here."
-
-      }
-
-    };
+};
 
 
-    const activeRole =
-      roleInformation[
+function updateRoleInformation() {
+
+  const activeRole =
+    roleInformation[
+      activeConnection
+    ];
+
+
+  if (activeRole) {
+
+    roleTitle.textContent =
+      activeRole.title;
+
+
+    roleDescription.textContent =
+      activeRole.description;
+
+
+    duties.textContent =
+      activeRole.duties;
+
+  } else {
+
+    roleTitle.textContent =
+      formatConnection(
         activeConnection
-      ];
+      );
 
 
-    if (activeRole) {
-
-      roleTitle.textContent =
-        activeRole.title;
+    roleDescription.textContent =
+      "Your approved GT Connect connection.";
 
 
-      roleDescription.textContent =
-        activeRole.description;
+    duties.textContent =
+      "Your responsibilities will be displayed here.";
+
+  }
+
+}
 
 
-      duties.textContent =
-        activeRole.duties;
 
-    } else {
-
-      roleTitle.textContent =
-        formatConnection(
-          activeConnection
-        );
 
 
       roleDescription.textContent =
