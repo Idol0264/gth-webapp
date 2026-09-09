@@ -765,51 +765,63 @@
 
 
     /*
-      For now the first approved connection
-      is treated as the active connection.
-    */
+  The first approved connection is the
+  default active connection.
 
-    const activeConnection =
-      connections[0] || "No connection";
+  Later, the user can select another
+  approved connection from the dashboard.
+*/
 
+let activeConnection =
+  connections[0] || "No connection";
 
-    currentConnection.textContent =
-      formatConnection(
-        activeConnection
+function updateActiveConnection() {
+
+  currentConnection.textContent =
+    formatConnection(
+      activeConnection
+    );
+
+  connectionList.innerHTML = "";
+
+  connections.forEach(
+    function(connection) {
+
+      const item =
+        document.createElement("button");
+
+      item.type = "button";
+
+      item.className =
+        "connection-item";
+
+      if (
+        connection === activeConnection
+      ) {
+        item.classList.add(
+          "current-connection"
+        );
+      }
+
+      item.textContent =
+        formatConnection(connection);
+
+      item.addEventListener(
+        "click",
+        function() {
+
+          activeConnection =
+            connection;
+
+          updateActiveConnection();
+          updateRoleInformation();
+        }
       );
 
-
-    connectionList.innerHTML = "";
-
-
-    connections.forEach(
-      function(connection, index) {
-
-        const item =
-          document.createElement("div");
-
-
-        item.className =
-          "connection-item";
-
-
-        if (index === 0) {
-
-          item.classList.add(
-            "current-connection"
-          );
-
-        }
-
-
-        item.textContent =
-          formatConnection(connection);
-
-
-        connectionList.appendChild(item);
-
-      }
-    );
+      connectionList.appendChild(item);
+    }
+  );
+}
 
 
 
