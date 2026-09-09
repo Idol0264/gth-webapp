@@ -274,10 +274,26 @@
       DO NOT add real users here yet.
     */
 
-
     const keyForm = document.getElementById("keyForm");
     const personalKeyInput = document.getElementById("personalKey");
     const message = document.getElementById("message");
+
+
+    /*
+      If this browser already knows the person,
+      go directly to the GT Connect dashboard.
+    */
+
+    const savedPerson =
+      localStorage.getItem("gth_gtconnect_person_v1");
+
+
+    if (savedPerson) {
+
+      window.location.href =
+        "gt-connect-dashboard.html";
+
+    }
 
 
     keyForm.addEventListener("submit", function(event) {
