@@ -1,81 +1,148 @@
-const GTS_SOFTWARE_INFO = {
+const GTS_SOFTWARE = [
 
-  "wordpress-com": {
-    about:
-      "WordPress.com is a managed website and publishing platform that lets people create blogs, business websites, portfolios, online stores and other types of websites. It combines website-building tools with hosting, security, domains and a wider ecosystem of WordPress services.",
+{
+id: "example-web-app",
 
-    developer:
-      "Automattic",
+name: "Example Web App",  
+category: "WEB APP",  
+description: "An example web application available through GTS.",  
+image: "images/software-placeholder.jpg",  
 
-    developerInfo:
-      "WordPress.com is operated by Automattic, the company behind WordPress.com and other web products including WooCommerce, Jetpack and WordPress VIP.",
+type: "web",  
 
-    platformReach:
-      "40.7% of the web",
+platforms: {  
+  web: "https://example.com"  
+},  
 
-    platformReachLabel:
-      "Websites running on WordPress"
-  },
+page: "gts-software.html"
 
+},
 
-  "canva": {
-    about:
-      "Canva is an online visual communication and design platform that lets people and organizations create presentations, social media graphics, videos, documents, websites, marketing materials and many other types of visual content. It combines templates, design tools, collaboration features and a large content library in one platform.",
+{
+id: "example-mobile-app",
 
-    developer:
-      "Canva",
+name: "Example Mobile App",  
+category: "MOBILE APP",  
+description: "An example application available for Android and iOS.",  
+image: "images/software-placeholder.jpg",  
 
-    developerInfo:
-      "Canva is the company behind the Canva design and visual communication platform. The company was launched in 2013 with the goal of making design accessible to everyone.",
+type: "mobile",  
 
-    platformReach:
-      "220M+ monthly active users",
+platforms: {  
+  android: "#",  
+  ios: "#"  
+},  
 
-    platformReachLabel:
-      "Monthly active Canva users",
+page: "gts-software.html"
 
-    globalReach:
-      "190 countries",
+},
 
-    globalReachLabel:
-      "Countries with Canva users",
+{
+id: "example-desktop-software",
 
-    platformScale:
-      "30B+ designs",
+name: "Example Desktop Software",  
+category: "DESKTOP SOFTWARE",  
+description: "An example desktop application available through GTS.",  
 
-    platformScaleLabel:
-      "Designs created on Canva"
-  },
+image: "images/software-placeholder.jpg",  
 
+type: "desktop",  
 
-  "google-drive": {
-    about:
-      "Google Drive is Google's cloud storage and file management service. It allows people and organizations to store files online, access them from different devices, share files with others and collaborate on documents, spreadsheets, presentations and other content.",
+platforms: {  
+  windows: "#"  
+},  
 
-    developer:
-      "Google",
+page: "gts-software.html"
 
-    developerInfo:
-      "Google develops Google Drive as part of its wider Google Workspace and Google services ecosystem. Drive works closely with services such as Google Docs, Google Sheets and Google Slides."
-  },
+},
 
+{  
+id: "wordpress-com",  
 
-  "zoom": {
-    about:
-      "Zoom is a communications and collaboration platform that provides online meetings, video conferencing, chat, webinars, phone services and other workplace communication tools. It has expanded from its original video-meeting focus into a broader AI-powered collaboration platform.",
+name: "WordPress.com",  
 
-    developer:
-      "Zoom Communications",
+category: "WEB APP",  
 
-    developerInfo:
-      "Zoom Communications develops the Zoom platform and its communication and collaboration products. The company was founded by Eric Yuan, who started Zoom with the goal of making video communication easier.",
+description:  
+  "Create, build and manage websites with WordPress.com, a managed WordPress platform for websites, blogs, businesses and online stores.",  
 
-    platformScale:
-      "10M+ Zoom Phone seats",
+image: "images/wordpress.jpg",  
 
-    platformScaleLabel:
-      "Zoom Phone seats globally"
-  },
+type: "web",  
+
+platforms: {  
+  web: "https://wordpress.com/"  
+},  
+
+page: "gts-software.html"
+
+},
+
+{  
+id: "canva",  
+
+name: "Canva",  
+
+category: "DESIGN",  
+
+description:  
+  "Create designs, presentations, videos, documents, social media content and more with Canva.",  
+
+image: "images/canva.jpg",  
+
+type: "web",  
+
+platforms: {  
+  web: "https://www.canva.com/"  
+},  
+
+page: "gts-software.html"
+
+},
+
+{  
+id: "google-drive",  
+
+name: "Google Drive",  
+
+category: "CLOUD STORAGE",  
+
+description:  
+  "Store, manage, share and collaborate on files securely with Google Drive across your devices.",  
+
+image: "images/google-drive.jpg",  
+
+type: "web",  
+
+platforms: {  
+  web: "https://drive.google.com/"  
+},  
+
+page: "gts-software.html"
+
+},
+
+{  
+id: "zoom",  
+
+name: "Zoom",  
+
+category: "COMMUNICATION",  
+
+description:  
+  "Meet, communicate and collaborate online with Zoom for video meetings, chat, webinars and more.",  
+
+image: "images/zoom.jpg",  
+
+type: "web",  
+
+platforms: {  
+  web: "https://zoom.us/"  
+},  
+
+page: "gts-software.html"
+
+},
     {
     id: "notion",
 
