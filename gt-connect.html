@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GT Connect | GTH</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f6f8;
+      color: #111;
+    }
+
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 7%;
+      background: #111;
+      color: white;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand strong {
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+
+    .brand span {
+      font-size: 13px;
+      opacity: 0.75;
+      margin-top: 3px;
+    }
+
+    .top-nav {
+      display: flex;
+      gap: 18px;
+    }
+
+    .top-nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .hero {
+      padding: 80px 7% 55px;
+      text-align: center;
+      background: white;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      opacity: 0.6;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(38px, 7vw, 68px);
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 20px auto 0;
+      line-height: 1.7;
+      color: #555;
+      font-size: 17px;
+    }
+
+    .connections {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 7%;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 10px;
+      font-size: 30px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: #666;
+    }
+
+    .connection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .connection-card {
+      background: white;
+      border: 1px solid #e1e1e1;
+      border-radius: 16px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      min-height: 290px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    }
+
+    .connection-card .number {
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      opacity: 0.5;
+      margin-bottom: 20px;
+    }
+
+    .connection-card h3 {
+      margin: 0 0 14px;
+      font-size: 22px;
+    }
+
+    .connection-card p {
+      margin: 0;
+      line-height: 1.6;
+      color: #666;
+      flex: 1;
+    }
+
+    .connect-btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 13px 18px;
+      border-radius: 9px;
+      background: #111;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .connect-btn:hover {
+      opacity: 0.85;
+    }
+
+    .existing-access {
+      max-width: 700px;
+      margin: 10px auto 70px;
+      padding: 35px;
+      background: #111;
+      color: white;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .existing-access h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+
+    .existing-access p {
+      margin: 0 0 22px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .key-btn {
+      display: inline-block;
+      padding: 14px 22px;
+      background: white;
+      color: #111;
+      text-decoration: none;
+      border-radius: 9px;
+      font-weight: bold;
+    }
+
+    .site-footer {
+      padding: 30px 7%;
+      text-align: center;
+      background: #111;
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+
+      .connection-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-header {
+        padding: 16px 5%;
+      }
+
+      .hero {
+        padding: 60px 6% 45px;
+      }
+
+      .connections {
+        padding: 45px 6%;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+  <div class="brand">
+
+    <strong>GTH</strong>
+
+    <span>GT Connect</span>
+
+  </div>
+
+
+  <nav class="top-nav">
+
+    <a href="index.html">
+      GTH Home
+    </a>
+
+    <a href="gts.html">
+      GTS
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<main>
+
+
+  <section class="hero">
+
+    <p class="eyebrow">
+      GTH NETWORK
+    </p>
+
+    <h1>
+      GT Connect
+    </h1>
+
+    <p>
+      Connect with opportunities to work with,
+      support and participate in the wider GTH
+      network through approved connections.
+    </p>
+
+  </section>
+
+
+
+  <section class="connections">
+
+
+    <div class="section-heading">
+
+      <h2>
+        Choose Your Connection
+      </h2>
+
+      <p>
+        Select the connection that best describes
+        how you want to participate with GTH.
+      </p>
+
+    </div>
+
+
+
+    <div class="connection-grid">
+
+
+      <!-- PARTNER -->
+
+      <article class="connection-card">
+
+        <div class="number">
+          CONNECTION 01
+        </div>
+
+        <h3>
+          Partner
+        </h3>
+
+        <p>
+          Connect with GTH as a partner and explore
+          opportunities to provide services, campaigns,
+          advertising or other forms of collaboration
+          with the GTH network.
+        </p>
+
+        <a
+          href="gt-connect.html?connection=partner"
+          class="connect-btn"
+        >
+          Connect as a Partner →
+        </a>
+
+      </article>
+
+
+
+      <!-- WORKER -->
+
+      <article class="connection-card">
+
+        <div class="number">
+          CONNECTION 02
+        </div>
+
+        <h3>
+          Remote Worker
+        </h3>
+
+        <p>
+          Apply to work remotely with GTH and
+          participate in assigned projects, duties
+          and activities through the GTH network.
+        </p>
+
+        <a
+          href="gt-connect.html?connection=worker"
+          class="connect-btn"
+        >
+          Connect as a Worker →
+        </a>
+
+      </article>
+
+
+
+      <!-- GTF MEMBER -->
+
+      <article class="connection-card">
+
+        <div class="number">
+          CONNECTION 03
+        </div>
+
+        <h3>
+          GTF Member
+        </h3>
+
+        <p>
+          Join the GTF member network and participate
+          in discussions, ideas and activities relating
+          to mutual investment opportunities presented
+          through GTF.
+        </p>
+
+        <a
+          href="gt-connect.html?connection=gtf-member"
+          class="connect-btn"
+        >
+          Connect as a GTF Member →
+        </a>
+
+      </article>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- EXISTING USER ACCESS -->
+
+  <section class="existing-access">
+
+    <h2>
+      Already have a Personal Key?
+    </h2>
+
+    <p>
+      If you have already been approved for a GTH
+      connection, use your Personal Key to access
+      your dashboard.
+    </p>
+
+    <a
+      href="gt-connect-key.html"
+      class="key-btn"
+    >
+      Access My Dashboard →
+    </a>
+
+  </section>
+
+
+</main>
+
+
+
+<footer class="site-footer">
+
+  <p>
+    © 2026 God’stime Holdings. All rights reserved.
+  </p>
+
+</footer>
+
+
+</body>
+
+</html>
