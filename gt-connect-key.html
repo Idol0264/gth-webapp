@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Personal Key | GT Connect</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b0b;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand strong {
+      font-size: 22px;
+      letter-spacing: 1px;
+    }
+
+    .brand span {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 3px;
+    }
+
+    .top-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .top-nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      min-height: calc(100vh - 140px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+    }
+
+    .key-card {
+      width: 100%;
+      max-width: 520px;
+      background: #151515;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 22px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .key-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #222;
+      font-size: 30px;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .intro {
+      color: #aaa;
+      line-height: 1.6;
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 12px;
+      border: 1px solid #333;
+      background: #0d0d0d;
+      color: #fff;
+      outline: none;
+      font-size: 16px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    input:focus {
+      border-color: #777;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 16px;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: #fff;
+      color: #000;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .message {
+      min-height: 22px;
+      margin-top: 18px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .error {
+      color: #ff7070;
+    }
+
+    .success {
+      color: #78e08f;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 24px;
+      color: #aaa;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back-link:hover {
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 20px;
+      color: #666;
+      font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 18px 20px;
+      }
+
+      .key-card {
+        padding: 32px 22px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <div class="brand">
+      <strong>GTH</strong>
+      <span>GT Connect</span>
+    </div>
+
+    <nav class="top-nav">
+      <a href="gt-connect.html">GT Connect</a>
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <section class="key-card">
+
+      <div class="key-icon">
+        🔑
+      </div>
+
+      <h1>Personal Key</h1>
+
+      <p class="intro">
+        Enter the Personal Key provided to you by
+        God’stime Holdings to access your approved
+        GT Connect connection.
+      </p>
+
+
+      <form id="keyForm">
+
+        <label for="personalKey">
+          Enter your Personal Key
+        </label>
+
+        <input
+          type="text"
+          id="personalKey"
+          name="personalKey"
+          placeholder="Enter your Personal Key"
+          autocomplete="off"
+          required
+        >
+
+        <button type="submit">
+          Continue
+        </button>
+
+      </form>
+
+
+      <div id="message" class="message"></div>
+
+      <a href="gt-connect.html" class="back-link">
+        ← Back to GT Connect
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    © 2026 God’stime Holdings. All rights reserved.
+  </footer>
+
+
+  <script>
+
+    /*
+      =========================================================
+      GT CONNECT PERSONAL KEY
+      Temporary front-end demonstration
+      =========================================================
+
+      We will connect this to the main GT Connect user data
+      in the next stage.
+
+      DO NOT add real users here yet.
+    */
+
+
+    const keyForm = document.getElementById("keyForm");
+    const personalKeyInput = document.getElementById("personalKey");
+    const message = document.getElementById("message");
+
+
+    keyForm.addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const enteredKey =
+        personalKeyInput.value.trim();
+
+
+      if (!enteredKey) {
+
+        message.textContent =
+          "Please enter your Personal Key.";
+
+        message.className =
+          "message error";
+
+        return;
+      }
+
+
+      /*
+        Temporary test key.
+
+        We will replace this with the real
+        GT_CONNECT_USERS data system.
+      */
+
+      if (enteredKey === "GTH-DEMO-001") {
+
+        const person = {
+          id: "person-demo-001",
+          name: "Godstime",
+          connections: ["partner"]
+        };
+
+
+        /*
+          Remember this person on this browser.
+        */
+
+        localStorage.setItem(
+          "gth_gtconnect_person_v1",
+          JSON.stringify(person)
+        );
+
+
+        message.textContent =
+          "Personal Key verified. Welcome, " +
+          person.name + "!";
+
+        message.className =
+          "message success";
+
+
+        /*
+          Dashboard will be connected here later.
+        */
+
+        setTimeout(function() {
+
+          window.location.href =
+            "gt-connect-dashboard.html";
+
+        }, 1200);
+
+
+      } else {
+
+        message.textContent =
+          "Invalid Personal Key. Please check the key you received and try again.";
+
+        message.className =
+          "message error";
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
