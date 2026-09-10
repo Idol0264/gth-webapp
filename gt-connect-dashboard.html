@@ -1290,4 +1290,296 @@
 
 
 
-    /* 
+    /* =====================================================
+       UPDATE CONNECTION SWITCHER
+       ===================================================== */
+
+    function updateActiveConnection() {
+
+
+      currentConnection.textContent =
+        formatConnection(
+          activeConnection
+        );
+
+
+      connectionList.innerHTML = "";
+
+
+      if (connections.length === 0) {
+
+        const emptyMessage =
+          document.createElement("span");
+
+        emptyMessage.className =
+          "connection-badge";
+
+        emptyMessage.textContent =
+          "No connection";
+
+        connectionList.appendChild(
+          emptyMessage
+        );
+
+        return;
+
+      }
+
+
+      connections.forEach(
+        function(connection) {
+
+
+          const item =
+            document.createElement("button");
+
+
+          item.type =
+            "button";
+
+
+          item.className =
+            "connection-item";
+
+
+          if (
+            connection === activeConnection
+          ) {
+
+            item.classList.add(
+              "current-connection"
+            );
+
+          }
+
+
+          item.textContent =
+            formatConnection(
+              connection
+            );
+
+
+          item.addEventListener(
+            "click",
+            function() {
+
+
+              activeConnection =
+                connection;
+
+
+              updateActiveConnection();
+
+              updateRoleInformation();
+
+
+            }
+          );
+
+
+          connectionList.appendChild(
+            item
+          );
+
+        }
+      );
+
+    }
+
+
+
+    /* =====================================================
+       FORMAT CONNECTION NAME
+       ===================================================== */
+
+    function formatConnection(
+      connection
+    ) {
+
+
+      if (!connection) {
+
+        return "Unknown";
+
+      }
+
+
+      if (
+        connection === "gtf-member"
+      ) {
+
+        return "GTF Member";
+
+      }
+
+
+      return connection
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, function(letter) {
+
+          return letter.toUpperCase();
+
+        });
+
+    }
+
+
+
+    /* =====================================================
+       THREE-DASH MENU
+       ===================================================== */
+
+    const menuButton =
+      document.getElementById(
+        "menuButton"
+      );
+
+
+    const menuPanel =
+      document.getElementById(
+        "menuPanel"
+      );
+
+
+    menuButton.addEventListener(
+      "click",
+      function(event) {
+
+
+        event.stopPropagation();
+
+
+        const isOpen =
+          menuPanel.classList.toggle(
+            "open"
+          );
+
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          isOpen
+        );
+
+      }
+    );
+
+
+
+    /* =====================================================
+       CLOSE MENU WHEN CLICKING OUTSIDE
+       ===================================================== */
+
+    document.addEventListener(
+      "click",
+      function(event) {
+
+
+        if (
+          !menuPanel.contains(event.target) &&
+          !menuButton.contains(event.target)
+        ) {
+
+          menuPanel.classList.remove(
+            "open"
+          );
+
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        }
+
+      }
+    );
+
+
+
+    /* =====================================================
+       CLOSE MENU AFTER MENU LINK
+       ===================================================== */
+
+    menuPanel.addEventListener(
+      "click",
+      function(event) {
+
+
+        if (
+          event.target.tagName === "A"
+        ) {
+
+          menuPanel.classList.remove(
+            "open"
+          );
+
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        }
+
+      }
+    );
+
+
+
+    /* =====================================================
+       FORGET THIS DEVICE
+       ===================================================== */
+
+    function forgetThisDevice() {
+
+
+      localStorage.removeItem(
+        "gth_gtconnect_person_v1"
+      );
+
+
+      window.location.href =
+        "gt-connect-key.html";
+
+    }
+
+
+    const forgetDevice =
+      document.getElementById(
+        "forgetDevice"
+      );
+
+
+    const menuForgetDevice =
+      document.getElementById(
+        "menuForgetDevice"
+      );
+
+
+    forgetDevice.addEventListener(
+      "click",
+      forgetThisDevice
+    );
+
+
+    menuForgetDevice.addEventListener(
+      "click",
+      forgetThisDevice
+    );
+
+
+
+    /* =====================================================
+       INITIALIZE DASHBOARD
+       ===================================================== */
+
+    updateActiveConnection();
+
+    updateRoleInformation();
+
+  </script>
+
+
+</body>
+
+</html>
