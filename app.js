@@ -5,15 +5,21 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+
   /* -------------------------------------------------------
      CONFIG
      ------------------------------------------------------- */
 
   const config = window.GTH_CONFIG || {
+
     newUserFormUrl: "#",
+
     existingUserFormUrl: "#",
+
     waitDays: 3
+
   };
+
 
   const WAIT_TIME =
     Number(config.waitDays || 3) *
@@ -23,45 +29,94 @@ document.addEventListener("DOMContentLoaded", () => {
     1000;
 
 
+
   /* -------------------------------------------------------
      STORAGE KEYS
      ------------------------------------------------------- */
 
   const STORAGE = {
-    human: "gth_human_v1",
-    policy: "gth_policy_v1",
-    verified: "gth_verified_v1",
-    existingStarted: "gth_existing_started_v1",
-    existingStartTime: "gth_existing_start_time_v1",
-    theme: "gth_theme_v1"
+
+    human:
+      "gth_human_v1",
+
+    policy:
+      "gth_policy_v1",
+
+    verified:
+      "gth_verified_v1",
+
+    existingStarted:
+      "gth_existing_started_v1",
+
+    existingStartTime:
+      "gth_existing_start_time_v1",
+
+    theme:
+      "gth_theme_v1"
+
   };
+
 
 
   /* -------------------------------------------------------
      ELEMENTS
      ------------------------------------------------------- */
 
-  const gateScreen = document.getElementById("gateScreen");
-  const holdingScreen = document.getElementById("holdingScreen");
-  const homeScreen = document.getElementById("homeScreen");
+  const gateScreen =
+    document.getElementById("gateScreen");
 
-  const humanStep = document.getElementById("humanStep");
-  const policyStep = document.getElementById("policyStep");
-  const choiceStep = document.getElementById("choiceStep");
-  const newUserStep = document.getElementById("newUserStep");
-  const existingUserStep = document.getElementById("existingUserStep");
+  const holdingScreen =
+    document.getElementById("holdingScreen");
 
-  const humanChallenge = document.getElementById("humanChallenge");
-  const humanInput = document.getElementById("humanInput");
-  const humanButton = document.getElementById("humanButton");
-  const humanError = document.getElementById("humanError");
+  const homeScreen =
+    document.getElementById("homeScreen");
 
-  const policyCheckbox = document.getElementById("policyCheckbox");
-  const policyButton = document.getElementById("policyButton");
-  const policyError = document.getElementById("policyError");
 
-  const newUserButton = document.getElementById("newUserButton");
-  const existingUserButton = document.getElementById("existingUserButton");
+  const humanStep =
+    document.getElementById("humanStep");
+
+  const policyStep =
+    document.getElementById("policyStep");
+
+  const choiceStep =
+    document.getElementById("choiceStep");
+
+  const newUserStep =
+    document.getElementById("newUserStep");
+
+  const existingUserStep =
+    document.getElementById("existingUserStep");
+
+
+  const humanChallenge =
+    document.getElementById("humanChallenge");
+
+  const humanInput =
+    document.getElementById("humanInput");
+
+  const humanButton =
+    document.getElementById("humanButton");
+
+  const humanError =
+    document.getElementById("humanError");
+
+
+  const policyCheckbox =
+    document.getElementById("policyCheckbox");
+
+  const policyButton =
+    document.getElementById("policyButton");
+
+  const policyError =
+    document.getElementById("policyError");
+
+
+  const newUserButton =
+    document.getElementById("newUserButton");
+
+  const existingUserButton =
+    document.getElementById("existingUserButton");
+
 
   const newUserFormLink =
     document.getElementById("newUserFormLink");
@@ -69,11 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const existingUserFormLink =
     document.getElementById("existingUserFormLink");
 
-  const newUserSubmittedButton =
-    document.getElementById("newUserSubmittedButton");
-
-  const existingUserSubmittedButton =
-    document.getElementById("existingUserSubmittedButton");
 
   const holdingTitle =
     document.getElementById("holdingTitle");
@@ -96,14 +146,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const statusIcon =
     document.getElementById("statusIcon");
 
+
   const themeButton =
     document.getElementById("themeButton");
 
   const themeMenu =
     document.getElementById("themeMenu");
 
+
   const currentYear =
     document.getElementById("currentYear");
+
 
 
   /* -------------------------------------------------------
@@ -111,16 +164,36 @@ document.addEventListener("DOMContentLoaded", () => {
      ------------------------------------------------------- */
 
   if (currentYear) {
-    currentYear.textContent = new Date().getFullYear();
+
+    currentYear.textContent =
+      new Date().getFullYear();
+
   }
+
+
+  /*
+    Tally registration form
+  */
 
   if (newUserFormLink) {
-    newUserFormLink.href = config.newUserFormUrl;
+
+    newUserFormLink.href =
+      config.newUserFormUrl;
+
   }
 
+
+  /*
+    Tally existing-account form
+  */
+
   if (existingUserFormLink) {
-    existingUserFormLink.href = config.existingUserFormUrl;
+
+    existingUserFormLink.href =
+      config.existingUserFormUrl;
+
   }
+
 
 
   /* -------------------------------------------------------
@@ -128,31 +201,52 @@ document.addEventListener("DOMContentLoaded", () => {
      ------------------------------------------------------- */
 
   function hideAllScreens() {
+
     gateScreen?.classList.add("hidden");
+
     holdingScreen?.classList.add("hidden");
+
     homeScreen?.classList.add("hidden");
+
   }
+
 
   function showGate() {
+
     hideAllScreens();
+
     gateScreen?.classList.remove("hidden");
+
   }
+
 
   function showHolding() {
+
     hideAllScreens();
+
     holdingScreen?.classList.remove("hidden");
+
     updateHoldingPage();
+
   }
 
+
   function showHome() {
+
     hideAllScreens();
+
     homeScreen?.classList.remove("hidden");
 
     window.scrollTo({
+
       top: 0,
+
       behavior: "smooth"
+
     });
+
   }
+
 
 
   /* -------------------------------------------------------
@@ -160,38 +254,66 @@ document.addEventListener("DOMContentLoaded", () => {
      ------------------------------------------------------- */
 
   function hideGateSteps() {
+
     humanStep?.classList.add("hidden");
+
     policyStep?.classList.add("hidden");
+
     choiceStep?.classList.add("hidden");
+
     newUserStep?.classList.add("hidden");
+
     existingUserStep?.classList.add("hidden");
+
   }
+
 
   function showHumanStep() {
+
     hideGateSteps();
+
     humanStep?.classList.remove("hidden");
+
     createHumanChallenge();
+
   }
+
 
   function showPolicyStep() {
+
     hideGateSteps();
+
     policyStep?.classList.remove("hidden");
+
   }
+
 
   function showChoiceStep() {
+
     hideGateSteps();
+
     choiceStep?.classList.remove("hidden");
+
   }
+
 
   function showNewUserStep() {
+
     hideGateSteps();
+
     newUserStep?.classList.remove("hidden");
+
   }
 
+
   function showExistingUserStep() {
+
     hideGateSteps();
+
     existingUserStep?.classList.remove("hidden");
+
   }
+
 
 
   /* -------------------------------------------------------
@@ -200,150 +322,309 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let humanAnswer = "";
 
+
   function createHumanChallenge() {
 
     const characters =
       "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
+
     let result = "";
 
+
     for (let i = 0; i < 5; i++) {
-      result += characters.charAt(
-        Math.floor(Math.random() * characters.length)
-      );
+
+      result +=
+        characters.charAt(
+          Math.floor(
+            Math.random() *
+            characters.length
+          )
+        );
+
     }
+
 
     humanAnswer = result;
 
+
     if (humanChallenge) {
-      humanChallenge.textContent = result;
+
+      humanChallenge.textContent =
+        result;
+
     }
 
+
     if (humanInput) {
+
       humanInput.value = "";
+
       humanInput.focus();
+
     }
+
   }
 
 
-  humanButton?.addEventListener("click", () => {
 
-    const answer =
-      humanInput?.value
-        .trim()
-        .toUpperCase();
+  humanButton?.addEventListener(
+    "click",
+    () => {
 
-    if (answer !== humanAnswer) {
+      const answer =
+        humanInput?.value
+          .trim()
+          .toUpperCase();
 
-      if (humanError) {
-        humanError.textContent =
-          "Incorrect characters. Please try again.";
+
+      if (answer !== humanAnswer) {
+
+        if (humanError) {
+
+          humanError.textContent =
+            "Incorrect characters. Please try again.";
+
+        }
+
+        createHumanChallenge();
+
+        return;
+
       }
 
-      createHumanChallenge();
-      return;
+
+      localStorage.setItem(
+        STORAGE.human,
+        "true"
+      );
+
+
+      if (humanError) {
+
+        humanError.textContent = "";
+
+      }
+
+
+      showPolicyStep();
+
     }
+  );
 
-    localStorage.setItem(STORAGE.human, "true");
 
-    if (humanError) {
-      humanError.textContent = "";
+
+  humanInput?.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (event.key === "Enter") {
+
+        humanButton?.click();
+
+      }
+
     }
+  );
 
-    showPolicyStep();
-  });
-
-
-  humanInput?.addEventListener("keydown", (event) => {
-
-    if (event.key === "Enter") {
-      humanButton?.click();
-    }
-
-  });
 
 
   /* -------------------------------------------------------
      POLICY
      ------------------------------------------------------- */
 
-  policyButton?.addEventListener("click", () => {
+  policyButton?.addEventListener(
+    "click",
+    () => {
 
-    if (!policyCheckbox?.checked) {
+      if (!policyCheckbox?.checked) {
 
-      if (policyError) {
-        policyError.textContent =
-          "You must agree to the GTH Policies to continue.";
+        if (policyError) {
+
+          policyError.textContent =
+            "You must agree to the GTH Policies to continue.";
+
+        }
+
+        return;
+
       }
 
-      return;
+
+      localStorage.setItem(
+        STORAGE.policy,
+        "true"
+      );
+
+
+      if (policyError) {
+
+        policyError.textContent = "";
+
+      }
+
+
+      showChoiceStep();
+
     }
+  );
 
-    localStorage.setItem(STORAGE.policy, "true");
-
-    if (policyError) {
-      policyError.textContent = "";
-    }
-
-    showChoiceStep();
-  });
 
 
   /* -------------------------------------------------------
      ACCOUNT CHOICE
      ------------------------------------------------------- */
 
-  newUserButton?.addEventListener("click", () => {
-    showNewUserStep();
-  });
 
-  existingUserButton?.addEventListener("click", () => {
-    showExistingUserStep();
-  });
+  /*
+    I’M NEW
+
+    Choice:
+    I’m New
+      ↓
+    Tally registration form
+      ↓
+    Tally redirects to GTH Home
+  */
+
+  newUserButton?.addEventListener(
+    "click",
+    () => {
+
+      showNewUserStep();
+
+    }
+  );
+
+
+  /*
+    I HAVE AN ACCOUNT
+
+    Choice:
+    I Have an Account
+      ↓
+    Tally verification form
+      ↓
+    Tally redirects to GTH holding page
+  */
+
+  existingUserButton?.addEventListener(
+    "click",
+    () => {
+
+      showExistingUserStep();
+
+    }
+  );
+
 
 
   /* -------------------------------------------------------
-     NEW USER
+     TALLY RETURN STATUS
+     -------------------------------------------------------
+
+     Tally will redirect back to this page after
+     submission.
+
+     New user:
+       index.html?gth_return=new
+
+     Existing user:
+       index.html?gth_return=existing
+
      ------------------------------------------------------- */
 
-  newUserSubmittedButton?.addEventListener("click", () => {
+  function processTallyReturn() {
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const returnType =
+      params.get("gth_return");
+
 
     /*
-      Tally handles the actual registration.
-
-      The browser only records that the user completed
-      this step. No password, secret or authentication
-      information is stored here.
+      NEW USER COMPLETED REGISTRATION
     */
 
-    localStorage.setItem(STORAGE.verified, "true");
+    if (returnType === "new") {
 
-    showHome();
-  });
+      localStorage.setItem(
+        STORAGE.verified,
+        "true"
+      );
 
 
-  /* -------------------------------------------------------
-     EXISTING USER
-     ------------------------------------------------------- */
+      /*
+        Remove the query from the address bar.
+      */
 
-  existingUserSubmittedButton?.addEventListener("click", () => {
+      window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname
+      );
 
-    const now = Date.now();
 
-    localStorage.setItem(
-      STORAGE.existingStarted,
-      "true"
-    );
+      showHome();
 
-    localStorage.setItem(
-      STORAGE.existingStartTime,
-      String(now)
-    );
+      return true;
 
-    localStorage.removeItem(STORAGE.verified);
+    }
 
-    showHolding();
-  });
+
+    /*
+      EXISTING USER COMPLETED FORM
+    */
+
+    if (returnType === "existing") {
+
+      const now =
+        Date.now();
+
+
+      localStorage.setItem(
+        STORAGE.existingStarted,
+        "true"
+      );
+
+
+      localStorage.setItem(
+        STORAGE.existingStartTime,
+        String(now)
+      );
+
+
+      localStorage.removeItem(
+        STORAGE.verified
+      );
+
+
+      /*
+        Remove query from address bar.
+      */
+
+      window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname
+      );
+
+
+      showHolding();
+
+      return true;
+
+    }
+
+
+    return false;
+
+  }
+
 
 
   /* -------------------------------------------------------
@@ -352,252 +633,408 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateHoldingPage() {
 
-    const startTime = Number(
-      localStorage.getItem(
-        STORAGE.existingStartTime
-      )
-    );
+    const startTime =
+      Number(
+        localStorage.getItem(
+          STORAGE.existingStartTime
+        )
+      );
+
 
     if (!startTime) {
+
       showGate();
+
       showHumanStep();
+
       return;
+
     }
+
 
     const finishTime =
       startTime + WAIT_TIME;
 
+
     const remaining =
       finishTime - Date.now();
+
+
+
+    /*
+      WAITING PERIOD COMPLETE
+    */
 
     if (remaining <= 0) {
 
       if (holdingTitle) {
+
         holdingTitle.textContent =
           "Verification Waiting Period Complete";
+
       }
+
 
       if (holdingMessage) {
+
         holdingMessage.textContent =
           "The 3-day waiting period is complete. You can now log in.";
+
       }
+
 
       if (statusIcon) {
-        statusIcon.textContent = "✓";
+
+        statusIcon.textContent =
+          "✓";
+
       }
+
 
       if (countdownBox) {
-        countdownBox.classList.add("hidden");
+
+        countdownBox.classList.add(
+          "hidden"
+        );
+
       }
 
-      loginButton?.classList.remove("hidden");
+
+      loginButton?.classList.remove(
+        "hidden"
+      );
+
 
       return;
+
     }
 
-    loginButton?.classList.add("hidden");
+
+
+    /*
+      STILL WAITING
+    */
+
+    loginButton?.classList.add(
+      "hidden"
+    );
+
 
     if (holdingTitle) {
+
       holdingTitle.textContent =
         "Verification Pending";
+
     }
+
 
     if (holdingMessage) {
+
       holdingMessage.textContent =
         "Your information has been submitted successfully. Please wait up to 3 days while your information is reviewed.";
+
     }
+
 
     if (statusIcon) {
-      statusIcon.textContent = "⌛";
+
+      statusIcon.textContent =
+        "⌛";
+
     }
+
 
     if (countdownBox) {
-      countdownBox.classList.remove("hidden");
+
+      countdownBox.classList.remove(
+        "hidden"
+      );
+
     }
 
+
     if (countdown) {
+
       countdown.textContent =
-        formatRemainingTime(remaining);
+        formatRemainingTime(
+          remaining
+        );
+
     }
+
   }
 
 
-  function formatRemainingTime(milliseconds) {
+
+  function formatRemainingTime(
+    milliseconds
+  ) {
 
     let seconds =
-      Math.max(0, Math.floor(milliseconds / 1000));
+      Math.max(
+        0,
+        Math.floor(
+          milliseconds / 1000
+        )
+      );
+
 
     const days =
-      Math.floor(seconds / 86400);
+      Math.floor(
+        seconds / 86400
+      );
+
 
     seconds %= 86400;
 
+
     const hours =
-      Math.floor(seconds / 3600);
+      Math.floor(
+        seconds / 3600
+      );
+
 
     seconds %= 3600;
 
+
     const minutes =
-      Math.floor(seconds / 60);
+      Math.floor(
+        seconds / 60
+      );
+
 
     seconds %= 60;
 
-    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+    return (
+      `${days}d ` +
+      `${hours}h ` +
+      `${minutes}m ` +
+      `${seconds}s`
+    );
+
   }
 
 
-  loginButton?.addEventListener("click", () => {
 
-    localStorage.setItem(
-      STORAGE.verified,
-      "true"
-    );
+  /* -------------------------------------------------------
+     LOGIN
+     ------------------------------------------------------- */
 
-    localStorage.removeItem(
-      STORAGE.existingStarted
-    );
+  loginButton?.addEventListener(
+    "click",
+    () => {
 
-    localStorage.removeItem(
-      STORAGE.existingStartTime
-    );
+      localStorage.setItem(
+        STORAGE.verified,
+        "true"
+      );
 
-    showHome();
-  });
+
+      localStorage.removeItem(
+        STORAGE.existingStarted
+      );
+
+
+      localStorage.removeItem(
+        STORAGE.existingStartTime
+      );
+
+
+      showHome();
+
+    }
+  );
+
 
 
   /* -------------------------------------------------------
      ABANDON EXISTING ACCOUNT PROCESS
      ------------------------------------------------------- */
 
-  abandonButton?.addEventListener("click", () => {
+  abandonButton?.addEventListener(
+    "click",
+    () => {
 
-    const confirmed =
-      window.confirm(
-        "This will cancel the current waiting process and allow you to start a new account process. Continue?"
+      const confirmed =
+        window.confirm(
+          "This will cancel the current waiting process and allow you to start a new account process. Continue?"
+        );
+
+
+      if (!confirmed) {
+
+        return;
+
+      }
+
+
+      localStorage.removeItem(
+        STORAGE.existingStarted
       );
 
-    if (!confirmed) {
-      return;
+
+      localStorage.removeItem(
+        STORAGE.existingStartTime
+      );
+
+
+      localStorage.removeItem(
+        STORAGE.verified
+      );
+
+
+      showGate();
+
+      showChoiceStep();
+
     }
+  );
 
-    localStorage.removeItem(
-      STORAGE.existingStarted
-    );
-
-    localStorage.removeItem(
-      STORAGE.existingStartTime
-    );
-
-    localStorage.removeItem(
-      STORAGE.verified
-    );
-
-    /*
-      Human verification and policy agreement remain valid
-      during the current browser session.
-    */
-
-    showGate();
-    showChoiceStep();
-  });
 
 
   /* -------------------------------------------------------
      THEME SYSTEM
-     -------------------------------------------------------
-
-     Available themes:
-
-     gold
-     blue
-     green
-     system
-
-     "system" follows the phone/browser light or dark mode.
-     The color theme remains GTH gold by default.
      ------------------------------------------------------- */
 
   function applyTheme(theme) {
 
-    if (theme === "system" || !theme) {
+    if (
+      theme === "system" ||
+      !theme
+    ) {
 
-      document.body.removeAttribute("data-theme");
+      document.body.removeAttribute(
+        "data-theme"
+      );
+
 
       localStorage.setItem(
         STORAGE.theme,
         "system"
       );
 
+
       return;
+
     }
+
 
     document.body.setAttribute(
       "data-theme",
       theme
     );
 
+
     localStorage.setItem(
       STORAGE.theme,
       theme
     );
+
   }
+
 
 
   function loadTheme() {
 
     const savedTheme =
-      localStorage.getItem(STORAGE.theme);
+      localStorage.getItem(
+        STORAGE.theme
+      );
+
 
     if (
       savedTheme === "gold" ||
       savedTheme === "blue" ||
       savedTheme === "green"
     ) {
-      applyTheme(savedTheme);
+
+      applyTheme(
+        savedTheme
+      );
+
       return;
+
     }
 
-    applyTheme("system");
+
+    applyTheme(
+      "system"
+    );
+
   }
 
 
-  themeButton?.addEventListener("click", () => {
 
-    themeMenu?.classList.toggle("hidden");
+  themeButton?.addEventListener(
+    "click",
+    () => {
 
-  });
+      themeMenu?.classList.toggle(
+        "hidden"
+      );
+
+    }
+  );
+
 
 
   document.querySelectorAll(
-    "[data-theme]"
-  ).forEach((button) => {
+    ".theme-menu [data-theme]"
+  ).forEach(
+    (button) => {
 
-    button.addEventListener("click", () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-      const selectedTheme =
-        button.getAttribute("data-theme");
-
-      applyTheme(selectedTheme);
-
-      themeMenu?.classList.add("hidden");
-
-    });
-
-  });
+          const selectedTheme =
+            button.getAttribute(
+              "data-theme"
+            );
 
 
-  document.addEventListener("click", (event) => {
+          applyTheme(
+            selectedTheme
+          );
 
-    if (
-      themeMenu &&
-      themeButton &&
-      !themeMenu.contains(event.target) &&
-      !themeButton.contains(event.target)
-    ) {
-      themeMenu.classList.add("hidden");
+
+          themeMenu?.classList.add(
+            "hidden"
+          );
+
+        }
+      );
+
     }
+  );
 
-  });
+
+
+  document.addEventListener(
+    "click",
+    (event) => {
+
+      if (
+        themeMenu &&
+        themeButton &&
+        !themeMenu.contains(
+          event.target
+        ) &&
+        !themeButton.contains(
+          event.target
+        )
+      ) {
+
+        themeMenu.classList.add(
+          "hidden"
+        );
+
+      }
+
+    }
+  );
+
 
 
   /* -------------------------------------------------------
@@ -606,54 +1043,88 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(
     "[data-page]"
-  ).forEach((link) => {
+  ).forEach(
+    (link) => {
 
-    link.addEventListener("click", (event) => {
+      link.addEventListener(
+        "click",
+        (event) => {
 
-      event.preventDefault();
+          event.preventDefault();
 
-      if (
-        localStorage.getItem(STORAGE.verified) !== "true"
-      ) {
-        return;
-      }
 
-      const target =
-        link.getAttribute("data-page");
+          if (
+            localStorage.getItem(
+              STORAGE.verified
+            ) !== "true"
+          ) {
 
-      showHome();
+            return;
 
-      setTimeout(() => {
+          }
 
-        const element =
-          document.getElementById(target);
 
-        if (element) {
-          element.scrollIntoView({
-            behavior: "smooth"
-          });
+          const target =
+            link.getAttribute(
+              "data-page"
+            );
+
+
+          showHome();
+
+
+          setTimeout(
+            () => {
+
+              const element =
+                document.getElementById(
+                  target
+                );
+
+
+              if (element) {
+
+                element.scrollIntoView({
+                  behavior:
+                    "smooth"
+                });
+
+              }
+
+            },
+            50
+          );
+
         }
+      );
 
-      }, 50);
+    }
+  );
 
-    });
-
-  });
 
 
   document.getElementById(
     "brandLink"
-  )?.addEventListener("click", (event) => {
+  )?.addEventListener(
+    "click",
+    (event) => {
 
-    event.preventDefault();
+      event.preventDefault();
 
-    if (
-      localStorage.getItem(STORAGE.verified) === "true"
-    ) {
-      showHome();
+
+      if (
+        localStorage.getItem(
+          STORAGE.verified
+        ) === "true"
+      ) {
+
+        showHome();
+
+      }
+
     }
+  );
 
-  });
 
 
   /* -------------------------------------------------------
@@ -664,20 +1135,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadTheme();
 
+
+    /*
+      First check whether we just returned
+      from a Tally form.
+    */
+
+    if (
+      processTallyReturn()
+    ) {
+
+      return;
+
+    }
+
+
     const verified =
       localStorage.getItem(
         STORAGE.verified
       ) === "true";
+
 
     const existingStarted =
       localStorage.getItem(
         STORAGE.existingStarted
       ) === "true";
 
+
     const humanVerified =
       localStorage.getItem(
         STORAGE.human
       ) === "true";
+
 
     const policyAccepted =
       localStorage.getItem(
@@ -685,15 +1174,24 @@ document.addEventListener("DOMContentLoaded", () => {
       ) === "true";
 
 
-    /* Already successfully verified */
+
+    /*
+      Already successfully verified.
+    */
 
     if (verified) {
+
       showHome();
+
       return;
+
     }
 
 
-    /* Existing account process already started */
+
+    /*
+      Existing account process already started.
+    */
 
     if (
       existingStarted &&
@@ -701,51 +1199,80 @@ document.addEventListener("DOMContentLoaded", () => {
         STORAGE.existingStartTime
       )
     ) {
+
       showHolding();
+
       return;
+
     }
 
 
-    /* Human verification completed */
+
+    /*
+      Human verification completed.
+    */
 
     showGate();
 
+
     if (!humanVerified) {
+
       showHumanStep();
+
       return;
+
     }
 
 
-    /* Human verification completed,
-       policy not completed */
+
+    /*
+      Human verification completed,
+      policy not completed.
+    */
 
     if (!policyAccepted) {
+
       showPolicyStep();
+
       return;
+
     }
 
 
-    /* Both completed */
+
+    /*
+      Both completed.
+    */
 
     showChoiceStep();
+
   }
 
 
+
   initializeApp();
+
 
 
   /* -------------------------------------------------------
      UPDATE HOLDING PAGE TIMER
      ------------------------------------------------------- */
 
-  setInterval(() => {
+  setInterval(
+    () => {
 
-    if (
-      !holdingScreen?.classList.contains("hidden")
-    ) {
-      updateHoldingPage();
-    }
+      if (
+        !holdingScreen?.classList.contains(
+          "hidden"
+        )
+      ) {
 
-  }, 1000);
+        updateHoldingPage();
+
+      }
+
+    },
+    1000
+  );
 
 });
