@@ -1,5 +1,5 @@
 window.GTH_CONFIG = {
-  newUserFormUrl: "https://tally.so/r/REPLACE_NEW_FORM",
-  existingUserFormUrl: "https://tally.so/r/REPLACE_EXISTING_FORM",
+  newUserFormUrl: "https://tally.so/r/81XNzo",
+  existingUserFormUrl: "https://tally.so/r/gDEbqM",
   waitDays: 3
 };
