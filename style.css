@@ -1079,3 +1079,63 @@ input[type="search"]::-webkit-search-cancel-button {
   cursor: pointer;
   border: 0;
    }
+
+/* =========================================
+   GTH CONTENT ACTION BUTTONS
+   ========================================= */
+
+/* Only buttons inside page content */
+main .secondary-btn,
+main .see-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 20px;
+
+  border-radius: 12px;
+
+  font-weight: 700;
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+main .secondary-btn:hover,
+main .see-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.14);
+  filter: brightness(0.92);
+}
+
+main .secondary-btn:active,
+main .see-more-btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   GTF EXPLORE BUTTON POSITION
+   ========================================= */
+
+.platform-card {
+  position: relative;
+}
+
+.platform-card .secondary-btn {
+  margin-top: 16px;
+}
+
+/* Move content-card buttons to the opposite side */
+.platform-grid .platform-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.platform-grid .platform-card .secondary-btn {
+  align-self: flex-end;
+}
