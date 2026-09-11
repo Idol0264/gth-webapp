@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NGX | God’stime Fund</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<script>
+const savedTheme = localStorage.getItem("gth_theme_v1");
+
+if (
+  savedTheme === "gold" ||
+  savedTheme === "blue" ||
+  savedTheme === "green"
+) {
+  document.body.setAttribute("data-theme", savedTheme);
+}
+</script>
+
+
+<header class="site-header">
+
+  <div class="brand">
+    <strong>GTF</strong>
+    <span>God’stime Fund</span>
+  </div>
+
+  <nav class="top-nav">
+    <a href="gtf.html">Back to GTF</a>
+    <a href="index.html">GTH Home</a>
+  </nav>
+
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <p class="eyebrow">GTF • MARKET INFORMATION</p>
+
+      <h1>NGX Investor Information</h1>
+
+      <p>
+        Explore selected public information about the Nigerian Exchange
+        (NGX), market structure, indices, trading information and
+        investor resources.
+      </p>
+
+      <div class="hero-actions">
+
+        <a class="secondary-btn" href="gtf.html">
+          Back to GTF
+        </a>
+
+        <a
+          class="secondary-btn"
+          href="https://ngxgroup.com/exchange/data/equities-price-list/"
+          target="_blank"
+          rel="noopener"
+        >
+          Official NGX Price List
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTICE -->
+
+  <section class="content-section">
+
+    <div class="info-box">
+
+      <h2>Market data notice</h2>
+
+      <p>
+        This GTF page presents selected NGX information for educational
+        and informational purposes. Market figures are only displayed
+        when they have been manually verified from an appropriate NGX
+        source.
+      </p>
+
+      <p>
+        NGX states that prices displayed on its website are delayed by
+        30 minutes. Real-time data is available through authorized
+        NGX data services.
+      </p>
+
+      <p id="ngxDataDate">
+        Market snapshot: Awaiting verified update.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- MARKET OVERVIEW -->
+
+  <section class="content-section">
+
+    <div class="section-heading">
+
+      <p class="eyebrow">NGX OVERVIEW</p>
+
+      <h2>Nigerian Exchange</h2>
+
+      <p>
+        NGX provides a marketplace for securities including equities,
+        exchange-traded products and bonds, together with market data
+        and related information services.
+      </p>
+
+    </div>
+
+
+    <div class="platform-grid">
+
+      <article class="platform-card">
+
+        <h3>NGX All-Share Index</h3>
+
+        <p>
+          The NGX All-Share Index tracks the general market movement
+          of listed equities on Nigerian Exchange, including Growth
+          Board companies regardless of capitalization.
+        </p>
+
+      </article>
+
+
+      <article class="platform-card">
+
+        <h3>Market Data</h3>
+
+        <p>
+          NGX provides real-time, end-of-day, reference and historical
+          market data products.
+        </p>
+
+      </article>
+
+
+      <article class="platform-card">
+
+        <h3>Historical Information</h3>
+
+        <p>
+          Historical market information can be accessed through NGX
+          data services and its available reports.
+        </p>
+
+      </article>
+
+
+      <article class="platform-card">
+
+        <h3>Investor Resources</h3>
+
+        <p>
+          NGX provides market information, trading resources,
+          disclosures and educational material for market participants.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- MARKET SNAPSHOT -->
+
+  <section class="content-section">
+
+    <div class="section-heading">
+
+      <p class="eyebrow">MARKET SNAPSHOT</p>
+
+      <h2>Latest Verified Data</h2>
+
+      <p>
+        This section will display manually verified market information
+        when an updated NGX data record is added.
+      </p>
+
+    </div>
+
+
+    <div id="marketSnapshot" class="platform-grid">
+
+      <!-- Filled by ngx-data.js -->
+
+    </div>
+
+  </section>
+
+
+  <!-- INDICES -->
+
+  <section class="content-section">
+
+    <div class="section-heading">
+
+      <p class="eyebrow">MARKET INDICES</p>
+
+      <h2>NGX Indices</h2>
+
+      <p>
+        Indices can be used to monitor different parts of the Nigerian
+        capital market.
+      </p>
+
+    </div>
+
+
+    <div id="ngxIndices" class="platform-grid">
+
+      <!-- Filled by ngx-data.js -->
+
+    </div>
+
+  </section>
+
+
+  <!-- INVESTOR INFORMATION -->
+
+  <section class="content-section">
+
+    <div class="section-heading">
+
+      <p class="eyebrow">INVESTOR INFORMATION</p>
+
+      <h2>Understanding the Market</h2>
+
+    </div>
+
+
+    <div class="platform-grid">
+
+      <article class="platform-card">
+
+        <h3>Equities</h3>
+
+        <p>
+          Equities represent ownership interests in companies listed
+          on the exchange.
+        </p>
+
+        <a
+          class="secondary-btn"
+          href="https://ngxgroup.com/exchange/trade/equities/"
+          target="_blank"
+          rel="noopener"
+        >
+          Learn on NGX
+        </a>
+
+      </article>
+
+
+      <article class="platform-card">
+
+        <h3>Trading Structure</h3>
+
+        <p>
+          Learn how trading sessions and market phases are structured
+          on NGX.
+        </p>
+
+        <a
+          class="secondary-btn"
+          href="https://ngxgroup.com/exchange/trade/equities/trading-market-structure/"
+          target="_blank"
+          rel="noopener"
+        >
+          View Structure
+        </a>
+
+      </article>
+
+
+      <article class="platform-card">
+
+        <h3>Historical Data</h3>
+
+        <p>
+          Explore information about historical NGX market data and
+          available data services.
+        </p>
+
+        <a
+          class="secondary-btn"
+          href="https://ngxgroup.com/exchange/data/historical-data/"
+          target="_blank"
+          rel="noopener"
+        >
+          View Data
+        </a>
+
+      </article>
+
+
+      <article class="platform-card">
+
+        <h3>Data Library</h3>
+
+        <p>
+          NGX provides reports including daily official lists,
+          indices reports and market summaries.
+        </p>
+
+        <a
+          class="secondary-btn"
+          href="https://ngxgroup.com/exchange/data/data-library/"
+          target="_blank"
+          rel="noopener"
+        >
+          Open Data Library
+        </a>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- OFFICIAL SOURCE -->
+
+  <section class="content-section">
+
+    <div class="info-box">
+
+      <h2>Official NGX Source</h2>
+
+      <p>
+        For the authoritative market information and current data,
+        users should refer directly to Nigerian Exchange.
+      </p>
+
+      <a
+        class="secondary-btn"
+        href="https://ngxgroup.com/"
+        target="_blank"
+        rel="noopener"
+      >
+        Visit Nigerian Exchange
+      </a>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<footer class="site-footer">
+
+  <p>
+    © 2026 God’stime Holdings. All rights reserved.
+  </p>
+
+</footer>
+
+
+<script src="data/ngx-data.js"></script>
+
+<script>
+
+function renderNGXData() {
+
+  const snapshot =
+    document.getElementById("marketSnapshot");
+
+  const indices =
+    document.getElementById("ngxIndices");
+
+  const date =
+    document.getElementById("ngxDataDate");
+
+
+  /* MARKET SNAPSHOT */
+
+  if (
+    window.NGX_DATA &&
+    Array.isArray(NGX_DATA.snapshot) &&
+    NGX_DATA.snapshot.length > 0
+  ) {
+
+    snapshot.innerHTML =
+      NGX_DATA.snapshot.map(item => `
+
+        <article class="platform-card">
+
+          <h3>${item.title}</h3>
+
+          <p class="ngx-value">
+            ${item.value}
+          </p>
+
+          <p>
+            ${item.description || ""}
+          </p>
+
+        </article>
+
+      `).join("");
+
+  } else {
+
+    snapshot.innerHTML = `
+
+      <article class="platform-card">
+
+        <h3>No market snapshot loaded</h3>
+
+        <p>
+          A verified NGX market update will appear here when
+          the GTF data file is updated.
+        </p>
+
+      </article>
+
+    `;
+
+  }
+
+
+  /* INDICES */
+
+  if (
+    window.NGX_DATA &&
+    Array.isArray(NGX_DATA.indices) &&
+    NGX_DATA.indices.length > 0
+  ) {
+
+    indices.innerHTML =
+      NGX_DATA.indices.map(item => `
+
+        <article class="platform-card">
+
+          <h3>${item.name}</h3>
+
+          <p>
+            ${item.description}
+          </p>
+
+          ${
+            item.value
+              ? `<strong class="ngx-value">${item.value}</strong>`
+              : ""
+          }
+
+        </article>
+
+      `).join("");
+
+  } else {
+
+    indices.innerHTML = `
+
+      <article class="platform-card">
+
+        <h3>NGX All-Share Index</h3>
+
+        <p>
+          The principal broad-market index for listed equities.
+          A verified value will be displayed when added to the
+          GTF data record.
+        </p>
+
+      </article>
+
+    `;
+
+  }
+
+
+  /* DATA DATE */
+
+  if (
+    window.NGX_DATA &&
+    NGX_DATA.lastVerified
+  ) {
+
+    date.textContent =
+      "Last verified: " + NGX_DATA.lastVerified;
+
+  }
+
+}
+
+
+renderNGXData();
+
+</script>
+
+</body>
+</html>
