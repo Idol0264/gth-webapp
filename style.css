@@ -1149,3 +1149,14 @@ main .see-more-btn:active {
   align-self: flex-end;
   margin-top: 16px;
 }
+
+/* =========================================
+   SMALL HERO ACTION BUTTONS
+   ========================================= */
+
+.hero-actions .secondary-btn {
+  width: auto;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+}
