@@ -1157,3 +1157,140 @@ main .see-more-btn:active {
   border-radius: 8px;
   font-size: 0.85rem;
 }
+
+/* =========================================
+   NGX MARKET DASHBOARD
+   ========================================= */
+
+.ngx-market-dashboard {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 16px;
+
+  margin-top: 30px;
+}
+
+
+.ngx-market-card {
+  padding: 22px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+.ngx-market-card:hover {
+  transform: translateY(-3px);
+
+  border-color: var(--accent);
+}
+
+
+.ngx-card-label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: var(--muted);
+
+  font-size: 0.78rem;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+
+.ngx-market-value {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: var(--accent);
+
+  font-size: clamp(1.4rem, 3vw, 2rem);
+
+  line-height: 1.2;
+}
+
+
+.ngx-market-card p {
+  color: var(--muted);
+
+  font-size: 0.88rem;
+}
+
+
+/* =========================================
+   NGX DATA NOTE
+   ========================================= */
+
+.ngx-data-note {
+  margin-top: 18px;
+
+  padding: 18px;
+
+  background: var(--accent-soft);
+
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+}
+
+
+.ngx-data-note strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: var(--accent);
+}
+
+
+.ngx-data-note span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-weight: 700;
+}
+
+
+.ngx-data-note p {
+  color: var(--muted);
+
+  font-size: 0.88rem;
+}
+
+
+/* =========================================
+   NGX DASHBOARD MOBILE
+   ========================================= */
+
+@media (max-width: 850px) {
+
+  .ngx-market-dashboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 550px) {
+
+  .ngx-market-dashboard {
+    grid-template-columns: 1fr;
+  }
+
+}
