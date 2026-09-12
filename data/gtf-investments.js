@@ -512,4 +512,4 @@ const GTF_INVESTMENTS = [
       "GTF research status: Under Review."
   }
 
-];
+];window.GTF_INVESTMENTS = GTF_INVESTMENTS;
