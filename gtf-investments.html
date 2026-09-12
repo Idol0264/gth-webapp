@@ -3,1107 +3,1060 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>GTF | Investment Opportunities</title>
-
+  <title>GTF — Investment Opportunities</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<script>
-const savedTheme = localStorage.getItem("gth_theme_v1");
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="gtf.html" class="brand">GTF</a>
 
-if (
-  savedTheme === "gold" ||
-  savedTheme === "blue" ||
-  savedTheme === "green"
-) {
-  document.body.setAttribute("data-theme", savedTheme);
-}
-</script>
-
-
-<header class="site-header">
-
-  <div class="brand">
-    <strong>GTF</strong>
-    <span>God’stime Fund</span>
-  </div>
-
-  <nav class="top-nav">
-    <a href="index.html">GTH Home</a>
-    <a href="gtf.html">GTF Home</a>
-  </nav>
-
-</header>
+      <nav class="main-nav">
+        <a href="index.html">GTH Home</a>
+        <a href="gtf.html">GTF Home</a>
+      </nav>
+    </div>
+  </header>
 
 
-<main>
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">GTF • INVESTMENT OPPORTUNITIES</span>
+
+        <h1>Investment Opportunities</h1>
+
+        <p>
+          Explore selected external investment platforms and opportunities
+          by category. Review each platform's information, risk considerations
+          and current GTF review status before making an investment decision.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- EVALUATION -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">GTF RESEARCH</span>
+          <h2>How GTF Evaluates Opportunities</h2>
+          <p>
+            GTF considers relevant information about an investment platform
+            before recording its review status.
+          </p>
+        </div>
+
+
+        <div class="card-grid">
+
+          <article class="card">
+            <h3>Company & Platform</h3>
+            <p>
+              Review of the provider, platform structure, services and
+              available information.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Investment Objective</h3>
+            <p>
+              Understanding what each investment product is designed to achieve.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Risk & Liquidity</h3>
+            <p>
+              Consideration of potential risk, volatility, accessibility
+              and withdrawal conditions.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Fees & Conditions</h3>
+            <p>
+              Review of applicable fees, charges, minimum investments and
+              other conditions.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Available Information</h3>
+            <p>
+              Consideration of available fund documents, disclosures and
+              other relevant information.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- PLATFORM CATEGORIES -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">EXPLORE</span>
+          <h2>Investment Platforms by Category</h2>
+          <p>
+            Select a category to explore available investment platforms.
+          </p>
+        </div>
+
+        <!-- Generated automatically from data -->
+        <div id="investmentCategories"></div>
+
+      </div>
+    </section>
+
+
+    <!-- NOTE -->
+    <section class="section">
+      <div class="container">
+
+        <div class="investment-note">
+          <strong>Research note:</strong>
+          GTF lists these as external investment platforms for research and
+          discovery. Availability, fees, fund terms, risk levels and
+          performance can change. Always review the provider's current
+          information and relevant regulatory documents before investing.
+        </div>
+
+      </div>
+    </section>
+
+  </main>
 
 
   <!-- =====================================================
-       HERO
+       PLATFORM DIRECTORY POPUP
        ===================================================== -->
 
-  <section class="hero">
+  <div
+    class="platform-directory-modal"
+    id="platformDirectoryModal"
+    aria-hidden="true"
+  >
 
-    <div class="hero-content">
+    <div
+      class="platform-directory-backdrop"
+      data-close-directory
+    ></div>
 
-      <p class="eyebrow">
-        GTF • INVESTMENT OPPORTUNITIES
-      </p>
+    <div class="platform-directory-panel">
 
-      <h1>
-        Investment Opportunities
-      </h1>
+      <div class="platform-directory-header">
 
-      <p>
-        Explore selected mutual fund and investment platforms
-        from other investment companies. Browse by category,
-        tap a platform logo to visit its official platform,
-        or use See details to preview information before
-        leaving GTF.
-      </p>
+        <div>
+          <span class="category-label" id="directoryCategoryLabel">
+            CATEGORY
+          </span>
 
-      <div class="hero-actions">
+          <h2 id="directoryCategoryTitle">
+            Investment Platforms
+          </h2>
 
-        <a
-          class="secondary-btn"
-          href="gtf.html"
+          <p id="directoryCategoryDescription">
+            Explore platforms in this category.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="platform-modal-close"
+          id="closeDirectoryButton"
+          aria-label="Close"
         >
-          Back to GTF
-        </a>
+          ×
+        </button>
 
+      </div>
+
+
+      <!-- SEARCH -->
+      <div class="platform-search-wrap">
+
+        <label for="platformSearch">
+          Search platforms
+        </label>
+
+        <input
+          type="search"
+          id="platformSearch"
+          placeholder="Search platform..."
+          autocomplete="off"
+        >
+
+      </div>
+
+
+      <!-- FULL PLATFORM LIST -->
+      <div
+        class="directory-platform-list"
+        id="directoryPlatformList"
+      ></div>
+
+
+      <div
+        class="directory-empty"
+        id="directoryEmpty"
+        hidden
+      >
+        No platforms found.
       </div>
 
     </div>
-
-  </section>
-
-
-
-  <!-- =====================================================
-       GTF REVIEW FRAMEWORK
-       ===================================================== -->
-
-  <section class="content-section">
-
-    <div class="section-heading">
-
-      <p class="eyebrow">
-        GTF REVIEW FRAMEWORK
-      </p>
-
-      <h2>
-        How GTF Evaluates Opportunities
-      </h2>
-
-      <p>
-        GTF evaluates investment opportunities and platforms
-        using a structured research process. The review considers
-        the investment company, investment objective, available
-        information, historical information where applicable,
-        fees, liquidity, risk and other important factors.
-      </p>
-
-    </div>
-
-
-    <div class="platform-grid">
-
-
-      <article class="platform-card">
-
-        <h3>
-          01. Company &amp; Platform
-        </h3>
-
-        <p>
-          We examine the investment company, its platform,
-          available services and information about its
-          investment products.
-        </p>
-
-      </article>
-
-
-      <article class="platform-card">
-
-        <h3>
-          02. Investment Objective
-        </h3>
-
-        <p>
-          We consider what the investment is designed to achieve,
-          the type of assets involved and the strategy used.
-        </p>
-
-      </article>
-
-
-      <article class="platform-card">
-
-        <h3>
-          03. Risk &amp; Liquidity
-        </h3>
-
-        <p>
-          We consider potential risks, volatility, liquidity
-          conditions and other factors that may affect an investor.
-        </p>
-
-      </article>
-
-
-      <article class="platform-card">
-
-        <h3>
-          04. Fees &amp; Conditions
-        </h3>
-
-        <p>
-          Relevant fees, charges, minimum investment requirements,
-          withdrawal conditions and other terms are considered.
-        </p>
-
-      </article>
-
-
-      <article class="platform-card">
-
-        <h3>
-          05. Available Information
-        </h3>
-
-        <p>
-          We review available documentation, disclosures,
-          regulatory information and other relevant material.
-        </p>
-
-      </article>
-
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =====================================================
-       INVESTMENT PLATFORMS
-       ===================================================== -->
-
-  <section
-    class="content-section"
-    id="investmentCategories"
-  >
-
-    <div class="section-heading">
-
-      <p class="eyebrow">
-        INVESTMENT PLATFORMS
-      </p>
-
-      <h2>
-        Explore Platforms by Category
-      </h2>
-
-      <p>
-        All platforms are organised inside their relevant
-        category. Tap a platform logo to visit the official
-        platform. Use See details to preview the platform
-        information.
-      </p>
-
-    </div>
-
-
-
-    <!-- ===================================================
-         CATEGORY 1 — MUTUAL FUNDS
-         =================================================== -->
-
-    <article
-      class="investment-category-card"
-      id="mutualFunds"
-    >
-
-      <div class="category-heading">
-
-        <div>
-
-          <span class="category-label">
-            Category 01
-          </span>
-
-          <h3>
-            Mutual Funds
-          </h3>
-
-          <p>
-            Platforms offering access to professionally managed
-            pooled investment funds.
-          </p>
-
-        </div>
-
-        <span class="category-count">
-          4 platforms
-        </span>
-
-      </div>
-
-
-      <div class="category-platform-grid">
-
-
-        <!-- ARM -->
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://www.arm.com.ng/arm-investment-managers/mutual-fund/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit ARM Investment Managers"
-          >
-
-            <span class="platform-logo">
-              ARM
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'ARM Investment Managers',
-              'Mutual Funds',
-              'ARM offers a range of professionally managed mutual funds and investment solutions. Visit the official ARM platform for current fund options, terms and documents.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-        <!-- STANBIC IBTC -->
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://www.stanbicibtcassetmanagement.com/nigeriaassetmanagement/individual-investor/products-and-services/mutual-funds/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Stanbic IBTC Asset Management"
-          >
-
-            <span class="platform-logo">
-              SI
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'Stanbic IBTC Asset Management',
-              'Mutual Funds',
-              'Stanbic IBTC Asset Management provides several mutual fund options across different investment objectives and risk profiles. Visit the official platform for current products and terms.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-        <!-- CORONATION -->
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://www.coronation.ng/institutional/products-solutions/asset-management/mutual-funds/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Coronation Asset Management"
-          >
-
-            <span class="platform-logo">
-              COR
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'Coronation Asset Management',
-              'Mutual Funds',
-              'Coronation provides mutual fund solutions including money market, fixed income, equity and other fund options. Visit the official platform for current information.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-        <!-- COWRYWISE -->
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://cowrywise.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Cowrywise"
-          >
-
-            <span class="platform-logo">
-              CW
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'Cowrywise',
-              'Mutual Funds',
-              'Cowrywise provides access to mutual funds managed by investment management partners through its digital platform. Visit Cowrywise for current fund availability and terms.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-      </div>
-
-    </article>
-
-
-
-    <!-- ===================================================
-         CATEGORY 2 — MONEY MARKET
-         =================================================== -->
-
-    <article
-      class="investment-category-card"
-      id="moneyMarket"
-    >
-
-      <div class="category-heading">
-
-        <div>
-
-          <span class="category-label">
-            Category 02
-          </span>
-
-          <h3>
-            Money Market
-          </h3>
-
-          <p>
-            Platforms and funds focused on short-term money
-            market instruments and related investments.
-          </p>
-
-        </div>
-
-        <span class="category-count">
-          4 platforms
-        </span>
-
-      </div>
-
-
-      <div class="category-platform-grid">
-
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://www.arm.com.ng/arm-investment-managers/mutual-fund/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit ARM Investment Managers"
-          >
-
-            <span class="platform-logo">
-              ARM
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'ARM Investment Managers',
-              'Money Market',
-              'ARM offers money market fund options. Open the official platform to review the current fund objective, fees, liquidity and other terms.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://www.stanbicibtcassetmanagement.com/nigeriaassetmanagement/individual-investor/products-and-services/mutual-funds/fixed-income-funds/Stanbic-IBTC-Money-Market-Fund"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Stanbic IBTC Money Market Fund"
-          >
-
-            <span class="platform-logo">
-              SI
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'Stanbic IBTC Money Market Fund',
-              'Money Market',
-              'Stanbic IBTC Asset Management offers a Money Market Fund. Visit the official product page for current information, fund terms and documents.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://www.coronation.ng/institutional/products-solutions/asset-management/mutual-funds/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Coronation Asset Management"
-          >
-
-            <span class="platform-logo">
-              COR
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'Coronation Asset Management',
-              'Money Market',
-              'Coronation offers a Money Market Fund. Open the official platform to review current fund information, terms and applicable fees.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://cowrywise.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Cowrywise"
-          >
-
-            <span class="platform-logo">
-              CW
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'Cowrywise',
-              'Money Market',
-              'Cowrywise can provide access to money market mutual funds through its investment management partners. Visit the platform for current availability and terms.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-      </div>
-
-    </article>
-
-
-
-    <!-- ===================================================
-         CATEGORY 3 — FIXED INCOME
-         =================================================== -->
-
-    <article
-      class="investment-category-card"
-      id="fixedIncome"
-    >
-
-      <div class="category-heading">
-
-        <div>
-
-          <span class="category-label">
-            Category 03
-          </span>
-
-          <h3>
-            Fixed Income
-          </h3>
-
-          <p>
-            Investment opportunities involving fixed-income
-            securities and professionally managed fixed-income funds.
-          </p>
-
-        </div>
-
-        <span class="category-count">
-          4 platforms
-        </span>
-
-      </div>
-
-
-      <div class="category-platform-grid">
-
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://www.arm.com.ng/arm-investment-managers/mutual-fund/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit ARM Investment Managers"
-          >
-
-            <span class="platform-logo">
-              ARM
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'ARM Investment Managers',
-              'Fixed Income',
-              'ARM offers fixed-income and related mutual fund options. Review the official platform for current fund objectives, risks, fees and terms.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://www.stanbicibtcassetmanagement.com/nigeriaassetmanagement/individual-investor/products-and-services/mutual-funds/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Stanbic IBTC Asset Management"
-          >
-
-            <span class="platform-logo">
-              SI
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'Stanbic IBTC Asset Management',
-              'Fixed Income',
-              'Stanbic IBTC Asset Management provides fixed-income fund options. Visit its official platform to compare current products and conditions.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://www.coronation.ng/institutional/products-solutions/asset-management/mutual-funds/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Coronation Asset Management"
-          >
-
-            <span class="platform-logo">
-              COR
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'Coronation Asset Management',
-              'Fixed Income',
-              'Coronation provides fixed-income fund solutions. Open the official platform to review current fund objectives, fees, risk information and terms.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://cowrywise.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Cowrywise"
-          >
-
-            <span class="platform-logo">
-              CW
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'Cowrywise',
-              'Fixed Income',
-              'Cowrywise provides access to mutual funds managed by investment partners, including funds with fixed-income strategies. Visit for current availability.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-      </div>
-
-    </article>
-
-
-
-    <!-- ===================================================
-         CATEGORY 4 — EQUITY & GROWTH
-         =================================================== -->
-
-    <article
-      class="investment-category-card"
-      id="equityGrowth"
-    >
-
-      <div class="category-heading">
-
-        <div>
-
-          <span class="category-label">
-            Category 04
-          </span>
-
-          <h3>
-            Equity &amp; Growth
-          </h3>
-
-          <p>
-            Platforms offering access to equity-oriented and
-            growth-focused investment funds and strategies.
-          </p>
-
-        </div>
-
-        <span class="category-count">
-          4 platforms
-        </span>
-
-      </div>
-
-
-      <div class="category-platform-grid">
-
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://www.arm.com.ng/arm-investment-managers/mutual-fund/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit ARM Investment Managers"
-          >
-
-            <span class="platform-logo">
-              ARM
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'ARM Investment Managers',
-              'Equity & Growth',
-              'ARM offers growth-oriented mutual fund options. Visit the official platform for current fund objectives, risk levels and terms.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://www.stanbicibtcassetmanagement.com/nigeriaassetmanagement/individual-investor/products-and-services/mutual-funds/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Stanbic IBTC Asset Management"
-          >
-
-            <span class="platform-logo">
-              SI
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'Stanbic IBTC Asset Management',
-              'Equity & Growth',
-              'Stanbic IBTC Asset Management offers equity-oriented fund options. Visit the official platform for current fund information and risk considerations.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://www.coronation.ng/institutional/products-solutions/asset-management/mutual-funds/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Coronation Asset Management"
-          >
-
-            <span class="platform-logo">
-              COR
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'Coronation Asset Management',
-              'Equity & Growth',
-              'Coronation provides equity and growth-oriented mutual fund options. Visit the official platform for current information and terms.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-        <div class="category-platform-item">
-
-          <a
-            class="platform-icon-link"
-            href="https://cowrywise.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Cowrywise"
-          >
-
-            <span class="platform-logo">
-              CW
-            </span>
-
-          </a>
-
-          <button
-            class="platform-info-button"
-            type="button"
-            onclick="showPlatformDetails(
-              'Cowrywise',
-              'Equity & Growth',
-              'Cowrywise provides access to different mutual funds through investment management partners, including funds with higher-growth objectives. Visit for current availability.'
-            )"
-          >
-            See details
-          </button>
-
-        </div>
-
-
-      </div>
-
-    </article>
-
-
-
-    <!-- ===================================================
-         RESEARCH NOTE
-         =================================================== -->
-
-    <div class="investment-note">
-
-      <strong>
-        Research note:
-      </strong>
-
-      GTF lists these as external investment platforms for
-      research and discovery. Availability, fees, fund terms,
-      risk levels and performance can change. Always review
-      the provider’s current information and relevant
-      regulatory documents before investing.
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =====================================================
-       GTF RESEARCH
-       ===================================================== -->
-
-  <section class="content-section">
-
-    <div class="info-box">
-
-      <h2>
-        GTF Investment Research
-      </h2>
-
-      <p>
-        This section can grow as GTF researches additional
-        investment companies, mutual funds and investment
-        platforms.
-      </p>
-
-      <p>
-        Future updates can add more categories, platforms,
-        provider information, fund-level research and current
-        review notes without creating a separate platform list
-        outside the category cards.
-      </p>
-
-    </div>
-
-  </section>
-
-
-</main>
-
-
-
-<footer class="site-footer">
-
-  <p>
-    © 2026 God’stime Holdings. All rights reserved.
-  </p>
-
-</footer>
-
-
-
-<!-- =====================================================
-     PLATFORM DETAILS MODAL
-     ===================================================== -->
-
-<div
-  class="platform-modal"
-  id="platformModal"
-  aria-hidden="true"
->
-
-  <div
-    class="platform-modal-backdrop"
-    onclick="closePlatformDetails()"
-  ></div>
-
-
-  <div
-    class="platform-modal-card"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="platformModalTitle"
-  >
-
-    <button
-      class="platform-modal-close"
-      type="button"
-      onclick="closePlatformDetails()"
-      aria-label="Close"
-    >
-      ×
-    </button>
-
-
-    <span
-      class="category-label"
-      id="platformModalCategory"
-    >
-      Platform information
-    </span>
-
-
-    <h2 id="platformModalTitle">
-      Platform
-    </h2>
-
-
-    <p id="platformModalText"></p>
 
   </div>
 
-</div>
+
+  <!-- =====================================================
+       PLATFORM DETAILS POPUP
+       ===================================================== -->
+
+  <div
+    class="platform-details-modal"
+    id="platformDetailsModal"
+    aria-hidden="true"
+  >
+
+    <div
+      class="platform-details-backdrop"
+      data-close-details
+    ></div>
+
+    <div class="platform-details-panel">
+
+      <button
+        type="button"
+        class="platform-modal-close"
+        id="closeDetailsButton"
+        aria-label="Close"
+      >
+        ×
+      </button>
 
 
+      <div class="platform-details-top">
 
-<!-- =====================================================
-     PAGE JAVASCRIPT
-     ===================================================== -->
+        <div
+          class="platform-details-logo"
+          id="detailsLogo"
+        >
+          --
+        </div>
 
-<script>
+        <div>
+          <span
+            class="category-label"
+            id="detailsCategory"
+          >
+            PLATFORM
+          </span>
 
-function showPlatformDetails(
-  name,
-  category,
-  description
-) {
+          <h2 id="detailsName">
+            Platform
+          </h2>
 
-  document.getElementById(
-    "platformModalTitle"
-  ).textContent = name;
+          <span
+            class="platform-status"
+            id="detailsStatus"
+          >
+            Under Review
+          </span>
+        </div>
 
-
-  document.getElementById(
-    "platformModalCategory"
-  ).textContent = category;
-
-
-  document.getElementById(
-    "platformModalText"
-  ).textContent = description;
-
-
-  document.getElementById(
-    "platformModal"
-  ).classList.add("open");
-
-
-  document.getElementById(
-    "platformModal"
-  ).setAttribute(
-    "aria-hidden",
-    "false"
-  );
+      </div>
 
 
-  document.body.classList.add(
-    "modal-open"
-  );
+      <div class="platform-details-content">
 
-}
-
-
-
-function closePlatformDetails() {
-
-  document.getElementById(
-    "platformModal"
-  ).classList.remove("open");
+        <section>
+          <h3>Description</h3>
+          <p id="detailsDescription"></p>
+        </section>
 
 
-  document.getElementById(
-    "platformModal"
-  ).setAttribute(
-    "aria-hidden",
-    "true"
-  );
+        <section>
+          <h3>Investment Objective</h3>
+          <p id="detailsObjective"></p>
+        </section>
 
 
-  document.body.classList.remove(
-    "modal-open"
-  );
+        <section>
+          <h3>Risk & Considerations</h3>
+          <p id="detailsRisk"></p>
 
-}
+          <ul id="detailsConsiderations"></ul>
+        </section>
 
 
+        <div class="details-facts">
 
-document.addEventListener(
-  "keydown",
-  function(event) {
+          <div>
+            <span>Risk Level</span>
+            <strong id="detailsRiskLevel"></strong>
+          </div>
 
-    if (event.key === "Escape") {
-      closePlatformDetails();
+          <div>
+            <span>Liquidity</span>
+            <strong id="detailsLiquidity"></strong>
+          </div>
+
+          <div>
+            <span>Fees</span>
+            <strong id="detailsFees"></strong>
+          </div>
+
+        </div>
+
+
+        <section>
+          <h3>GTF Review</h3>
+          <p id="detailsReview"></p>
+        </section>
+
+
+        <div class="platform-details-actions">
+
+          <a
+            href="#"
+            id="detailsOfficialLink"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit Official Website
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       DATA
+       Every platform has its own independent data record.
+       ===================================================== -->
+
+  <script src="gtf-investment-data.js"></script>
+
+
+  <!-- =====================================================
+       PAGE JAVASCRIPT
+       ===================================================== -->
+
+  <script>
+
+    const categories = [
+      {
+        id: "mutual-funds",
+        name: "Mutual Funds",
+        description:
+          "Platforms offering access to mutual fund and professionally managed investment products."
+      },
+
+      {
+        id: "money-market",
+        name: "Money Market",
+        description:
+          "Platforms offering money-market and short-term investment opportunities."
+      },
+
+      {
+        id: "fixed-income",
+        name: "Fixed Income",
+        description:
+          "Platforms offering fixed-income and income-oriented investment products."
+      },
+
+      {
+        id: "equity-growth",
+        name: "Equity & Growth",
+        description:
+          "Platforms offering equity-focused and growth-oriented investment opportunities."
+      }
+    ];
+
+
+    const categoryContainer =
+      document.getElementById("investmentCategories");
+
+
+    const directoryModal =
+      document.getElementById("platformDirectoryModal");
+
+    const directoryList =
+      document.getElementById("directoryPlatformList");
+
+    const directoryEmpty =
+      document.getElementById("directoryEmpty");
+
+    const platformSearch =
+      document.getElementById("platformSearch");
+
+
+    const detailsModal =
+      document.getElementById("platformDetailsModal");
+
+
+    let activeCategory = null;
+
+
+    /*
+     * -------------------------------------------------------
+     * GET PLATFORMS FOR CATEGORY
+     * -------------------------------------------------------
+     */
+
+    function getPlatformsForCategory(categoryId) {
+
+      return investmentPlatforms.filter(platform =>
+        platform.categories.includes(categoryId)
+      );
+
     }
 
-  }
-);
 
-</script>
+    /*
+     * -------------------------------------------------------
+     * GET CATEGORY
+     * -------------------------------------------------------
+     */
 
+    function getCategory(categoryId) {
+
+      return categories.find(category =>
+        category.id === categoryId
+      );
+
+    }
+
+
+    /*
+     * -------------------------------------------------------
+     * CREATE PLATFORM ITEM
+     * -------------------------------------------------------
+     */
+
+    function createPlatformItem(platform) {
+
+      const item = document.createElement("div");
+
+      item.className = "category-platform-item";
+
+      item.innerHTML = `
+
+        <a
+          class="platform-icon-link"
+          href="${platform.officialUrl}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit ${platform.name} official website"
+        >
+
+          <span class="platform-logo">
+            ${platform.shortName}
+          </span>
+
+        </a>
+
+
+        <button
+          type="button"
+          class="platform-info-button"
+          data-platform-id="${platform.id}"
+        >
+          See Details
+        </button>
+
+      `;
+
+
+      const detailsButton =
+        item.querySelector(".platform-info-button");
+
+
+      detailsButton.addEventListener("click", () => {
+
+        openPlatformDetails(platform.id);
+
+      });
+
+
+      return item;
+
+    }
+
+
+    /*
+     * -------------------------------------------------------
+     * RENDER CATEGORY CARDS
+     * -------------------------------------------------------
+     */
+
+    function renderCategories() {
+
+      categoryContainer.innerHTML = "";
+
+
+      categories.forEach(category => {
+
+        const platforms =
+          getPlatformsForCategory(category.id);
+
+
+        const card =
+          document.createElement("article");
+
+        card.className =
+          "investment-category-card";
+
+
+        const visiblePlatforms =
+          platforms.slice(0, 4);
+
+
+        card.innerHTML = `
+
+          <div class="category-heading">
+
+            <div>
+
+              <span class="category-label">
+                ${category.name}
+              </span>
+
+              <h3>
+                ${category.name}
+              </h3>
+
+              <p>
+                ${category.description}
+              </p>
+
+            </div>
+
+            <span class="category-count">
+              ${platforms.length} platform${platforms.length === 1 ? "" : "s"}
+            </span>
+
+          </div>
+
+
+          <div
+            class="category-platform-grid"
+            data-category-grid="${category.id}"
+          ></div>
+
+
+          <div class="category-see-more-wrap">
+
+            <button
+              type="button"
+              class="category-see-more"
+              data-category-id="${category.id}"
+            >
+              See More
+            </button>
+
+          </div>
+
+        `;
+
+
+        const grid =
+          card.querySelector(
+            `[data-category-grid="${category.id}"]`
+          );
+
+
+        visiblePlatforms.forEach(platform => {
+
+          grid.appendChild(
+            createPlatformItem(platform)
+          );
+
+        });
+
+
+        const seeMoreButton =
+          card.querySelector(".category-see-more");
+
+
+        seeMoreButton.addEventListener("click", () => {
+
+          openCategoryDirectory(category.id);
+
+        });
+
+
+        categoryContainer.appendChild(card);
+
+      });
+
+    }
+
+
+    /*
+     * -------------------------------------------------------
+     * OPEN DIRECTORY
+     * -------------------------------------------------------
+     */
+
+    function openCategoryDirectory(categoryId) {
+
+      activeCategory = categoryId;
+
+
+      const category =
+        getCategory(categoryId);
+
+
+      document.getElementById(
+        "directoryCategoryLabel"
+      ).textContent = category.name;
+
+
+      document.getElementById(
+        "directoryCategoryTitle"
+      ).textContent = category.name;
+
+
+      document.getElementById(
+        "directoryCategoryDescription"
+      ).textContent = category.description;
+
+
+      platformSearch.value = "";
+
+
+      renderDirectoryPlatforms("");
+
+
+      directoryModal.classList.add("open");
+
+      directoryModal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+
+      document.body.classList.add("modal-open");
+
+
+      setTimeout(() => {
+
+        platformSearch.focus();
+
+      }, 100);
+
+    }
+
+
+    /*
+     * -------------------------------------------------------
+     * CLOSE DIRECTORY
+     * -------------------------------------------------------
+     */
+
+    function closeDirectory() {
+
+      directoryModal.classList.remove("open");
+
+      directoryModal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      document.body.classList.remove("modal-open");
+
+    }
+
+
+    /*
+     * -------------------------------------------------------
+     * RENDER DIRECTORY SEARCH RESULTS
+     * -------------------------------------------------------
+     */
+
+    function renderDirectoryPlatforms(searchTerm) {
+
+      directoryList.innerHTML = "";
+
+
+      const platforms =
+        getPlatformsForCategory(activeCategory);
+
+
+      const term =
+        searchTerm.trim().toLowerCase();
+
+
+      const filtered =
+        platforms.filter(platform => {
+
+          return (
+
+            platform.name.toLowerCase().includes(term) ||
+
+            platform.shortName.toLowerCase().includes(term) ||
+
+            platform.description.toLowerCase().includes(term)
+
+          );
+
+        });
+
+
+      directoryEmpty.hidden =
+        filtered.length !== 0;
+
+
+      filtered.forEach(platform => {
+
+        const item =
+          document.createElement("article");
+
+
+        item.className =
+          "directory-platform-item";
+
+
+        item.innerHTML = `
+
+          <div class="directory-platform-logo">
+            ${platform.shortName}
+          </div>
+
+
+          <div class="directory-platform-info">
+
+            <h3>
+              ${platform.name}
+            </h3>
+
+            <span
+              class="platform-status ${platform.statusClass}"
+            >
+              ${platform.status}
+            </span>
+
+            <p>
+              ${platform.description}
+            </p>
+
+          </div>
+
+
+          <div class="directory-platform-actions">
+
+            <button
+              type="button"
+              class="platform-info-button"
+              data-platform-id="${platform.id}"
+            >
+              See Details
+            </button>
+
+
+            <a
+              href="${platform.officialUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="directory-visit-link"
+            >
+              Visit
+            </a>
+
+          </div>
+
+        `;
+
+
+        item
+          .querySelector("[data-platform-id]")
+          .addEventListener("click", () => {
+
+            openPlatformDetails(platform.id);
+
+          });
+
+
+        directoryList.appendChild(item);
+
+      });
+
+    }
+
+
+    /*
+     * -------------------------------------------------------
+     * SEARCH
+     * -------------------------------------------------------
+     */
+
+    platformSearch.addEventListener(
+      "input",
+      event => {
+
+        renderDirectoryPlatforms(
+          event.target.value
+        );
+
+      }
+    );
+
+
+    /*
+     * -------------------------------------------------------
+     * OPEN PLATFORM DETAILS
+     * -------------------------------------------------------
+     */
+
+    function openPlatformDetails(platformId) {
+
+      const platform =
+        investmentPlatforms.find(
+          item => item.id === platformId
+        );
+
+
+      if (!platform) return;
+
+
+      document.getElementById(
+        "detailsLogo"
+      ).textContent =
+        platform.shortName;
+
+
+      document.getElementById(
+        "detailsCategory"
+      ).textContent =
+        platform.categoryLabel;
+
+
+      document.getElementById(
+        "detailsName"
+      ).textContent =
+        platform.name;
+
+
+      const status =
+        document.getElementById(
+          "detailsStatus"
+        );
+
+
+      status.textContent =
+        platform.status;
+
+
+      status.className =
+        `platform-status ${platform.statusClass}`;
+
+
+      document.getElementById(
+        "detailsDescription"
+      ).textContent =
+        platform.description;
+
+
+      document.getElementById(
+        "detailsObjective"
+      ).textContent =
+        platform.objective;
+
+
+      document.getElementById(
+        "detailsRisk"
+      ).textContent =
+        platform.risk;
+
+
+      document.getElementById(
+        "detailsRiskLevel"
+      ).textContent =
+        platform.riskLevel;
+
+
+      document.getElementById(
+        "detailsLiquidity"
+      ).textContent =
+        platform.liquidity;
+
+
+      document.getElementById(
+        "detailsFees"
+      ).textContent =
+        platform.fees;
+
+
+      document.getElementById(
+        "detailsReview"
+      ).textContent =
+        platform.gtfReview;
+
+
+      const considerations =
+        document.getElementById(
+          "detailsConsiderations"
+        );
+
+
+      considerations.innerHTML = "";
+
+
+      platform.considerations.forEach(item => {
+
+        const li =
+          document.createElement("li");
+
+        li.textContent = item;
+
+        considerations.appendChild(li);
+
+      });
+
+
+      document.getElementById(
+        "detailsOfficialLink"
+      ).href =
+        platform.officialUrl;
+
+
+      detailsModal.classList.add("open");
+
+      detailsModal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+
+      document.body.classList.add(
+        "modal-open"
+      );
+
+    }
+
+
+    /*
+     * -------------------------------------------------------
+     * CLOSE DETAILS
+     * -------------------------------------------------------
+     */
+
+    function closePlatformDetails() {
+
+      detailsModal.classList.remove("open");
+
+      detailsModal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      document.body.classList.remove(
+        "modal-open"
+      );
+
+    }
+
+
+    /*
+     * -------------------------------------------------------
+     * CLOSE BUTTONS
+     * -------------------------------------------------------
+     */
+
+    document
+      .getElementById("closeDirectoryButton")
+      .addEventListener(
+        "click",
+        closeDirectory
+      );
+
+
+    document
+      .getElementById("closeDetailsButton")
+      .addEventListener(
+        "click",
+        closePlatformDetails
+      );
+
+
+    document
+      .querySelector("[data-close-directory]")
+      .addEventListener(
+        "click",
+        closeDirectory
+      );
+
+
+    document
+      .querySelector("[data-close-details]")
+      .addEventListener(
+        "click",
+        closePlatformDetails
+      );
+
+
+    /*
+     * -------------------------------------------------------
+     * ESCAPE KEY
+     * -------------------------------------------------------
+     */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (event.key !== "Escape") return;
+
+
+        if (
+          detailsModal.classList.contains("open")
+        ) {
+
+          closePlatformDetails();
+
+        } else if (
+          directoryModal.classList.contains("open")
+        ) {
+
+          closeDirectory();
+
+        }
+
+      }
+    );
+
+
+    /*
+     * -------------------------------------------------------
+     * INITIALIZE
+     * -------------------------------------------------------
+     */
+
+    renderCategories();
+
+  </script>
 
 </body>
 </html>
