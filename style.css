@@ -3342,3 +3342,559 @@ body.modal-open {
   }
 
 }
+
+/* =========================================================
+   GTF INVESTMENT OPPORTUNITIES — PAGE-ONLY UI OVERRIDES
+   Does not affect GTC, GTS, NGX, or other pages.
+   ========================================================= */
+
+/* ---------- GTF Category Cards ---------- */
+
+#investmentCategories {
+  display: grid;
+  gap: 24px;
+}
+
+#investmentCategories .investment-category-card {
+  position: relative;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+#investmentCategories .category-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+#investmentCategories .category-label {
+  margin: 0 0 5px;
+}
+
+#investmentCategories .category-heading h3 {
+  margin: 0;
+}
+
+#investmentCategories .category-count {
+  white-space: nowrap;
+}
+
+/* ---------- Four Preview Platforms ---------- */
+
+#investmentCategories .category-platform-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+#investmentCategories .platform-tile {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  gap: 10px;
+}
+
+/*
+   Hide the platform name ONLY in the four preview tiles.
+   Names will still appear inside the See More popup.
+*/
+#investmentCategories .platform-tile-name {
+  display: none !important;
+}
+
+/* Platform logo/icon button */
+#investmentCategories .platform-icon-button {
+  width: 68px;
+  height: 68px;
+  min-width: 68px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+#investmentCategories .platform-icon-button:hover,
+#investmentCategories .platform-icon-button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: var(--primary);
+  outline: none;
+}
+
+#investmentCategories .platform-icon {
+  width: 52px;
+  height: 52px;
+  display: block;
+  object-fit: contain;
+}
+
+/*
+   See Details button:
+   EXACTLY the same width as the platform icon/tile.
+*/
+#investmentCategories .platform-info-button {
+  width: 68px;
+  min-width: 68px;
+  max-width: 68px;
+  min-height: 34px;
+  padding: 7px 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 11px;
+  line-height: 1.15;
+  text-align: center;
+  white-space: normal;
+}
+
+/* ---------- See More ---------- */
+
+#investmentCategories .category-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+#investmentCategories .see-more-btn {
+  min-width: 120px;
+}
+
+/* =========================================================
+   SEE MORE PLATFORM DIRECTORY MODAL
+   ========================================================= */
+
+#platformModal.investment-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.68);
+}
+
+#platformModal.investment-modal.open {
+  display: flex;
+}
+
+#platformModal .investment-modal-panel {
+  width: min(900px, 100%);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Modal Header ---------- */
+
+#platformModal .investment-modal-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+#platformModal .investment-modal-header h2 {
+  margin: 4px 0 0;
+}
+
+#platformModal .modal-close {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+
+#platformModal .modal-close:hover,
+#platformModal .modal-close:focus-visible {
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* ---------- Search ---------- */
+
+#platformModal .platform-search {
+  flex: 0 0 auto;
+  width: calc(100% - 44px);
+  margin: 18px 22px 14px;
+  padding: 12px 14px;
+  box-sizing: border-box;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--background);
+  color: inherit;
+  font: inherit;
+}
+
+#platformModal .platform-search:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+/* ---------- Popup Platform Grid ---------- */
+
+#platformModal .modal-platform-grid {
+  flex: 1 1 auto;
+  min-height: 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+
+  padding: 8px 22px 22px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* ---------- Popup Platform Cards ---------- */
+
+#platformModal .modal-platform-card {
+  min-width: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--background);
+}
+
+#platformModal .modal-platform-icon {
+  width: 68px;
+  height: 68px;
+  margin-bottom: 12px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+#platformModal .modal-platform-icon:hover,
+#platformModal .modal-platform-icon:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow);
+  outline: none;
+}
+
+#platformModal .modal-platform-icon img,
+#platformModal .modal-platform-icon .platform-icon {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+#platformModal .modal-platform-card h3 {
+  width: 100%;
+  margin: 0 0 8px;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+/* ---------- Status ---------- */
+
+#platformModal .opportunity-status {
+  margin-bottom: 12px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+/* Popup See Details button */
+#platformModal .modal-info-button {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Empty search state */
+#platformModal .modal-empty {
+  padding: 30px 22px;
+  text-align: center;
+}
+
+/* =========================================================
+   DETAILS MODAL
+   ========================================================= */
+
+#detailsModal.investment-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1010;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.68);
+}
+
+#detailsModal.investment-modal.open {
+  display: flex;
+}
+
+#detailsModal .investment-modal-panel {
+  width: min(760px, 100%);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+#detailsModal .investment-modal-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+#detailsModal .investment-modal-header h2 {
+  margin: 0;
+}
+
+#detailsModal .platform-details {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 22px;
+}
+
+#detailsModal .platform-details h3 {
+  margin-top: 0;
+}
+
+#detailsModal .platform-details section {
+  margin-bottom: 22px;
+}
+
+#detailsModal .modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  /* Four platform icons remain in ONE ROW */
+  #investmentCategories .category-platform-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  #investmentCategories .investment-category-card {
+    padding: 18px 14px;
+  }
+
+  #investmentCategories .category-heading {
+    align-items: flex-start;
+  }
+
+  #investmentCategories .platform-icon-button {
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    border-radius: 13px;
+  }
+
+  #investmentCategories .platform-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  /*
+     See Details is exactly the same width as
+     the 58px platform icon/tile.
+  */
+  #investmentCategories .platform-info-button {
+    width: 58px;
+    min-width: 58px;
+    max-width: 58px;
+    min-height: 32px;
+    padding: 6px 3px;
+    font-size: 10px;
+  }
+
+  /* ---------- FULL HEIGHT SEE MORE POPUP ---------- */
+
+  #platformModal.investment-modal,
+  #detailsModal.investment-modal {
+    inset: 0;
+    padding: 0;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+
+  #platformModal .investment-modal-panel,
+  #detailsModal .investment-modal-panel {
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    max-height: 100dvh;
+    min-height: 100dvh;
+
+    border: 0;
+    border-radius: 0;
+
+    box-shadow: none;
+  }
+
+  #platformModal .investment-modal-header,
+  #detailsModal .investment-modal-header {
+    padding: 16px;
+  }
+
+  #platformModal .platform-search {
+    width: calc(100% - 32px);
+    margin: 14px 16px 12px;
+  }
+
+  /*
+     Popup is scrollable.
+     Two cards per row on mobile.
+  */
+  #platformModal .modal-platform-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+
+    padding: 8px 16px 20px;
+
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #platformModal .modal-platform-card {
+    padding: 13px 10px;
+  }
+
+  #platformModal .modal-platform-icon {
+    width: 62px;
+    height: 62px;
+  }
+
+  #platformModal .modal-platform-icon img,
+  #platformModal .modal-platform-icon .platform-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  #platformModal .modal-platform-card h3 {
+    font-size: 13px;
+  }
+
+  #detailsModal .platform-details {
+    padding: 18px 16px 28px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #detailsModal .modal-actions {
+    flex-direction: column;
+  }
+
+  #detailsModal .modal-actions > * {
+    width: 100%;
+  }
+}
+
+/* ---------- Very Small Phones ---------- */
+
+@media (max-width: 380px) {
+
+  #investmentCategories .category-platform-grid {
+    gap: 5px;
+  }
+
+  #investmentCategories .platform-icon-button {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+  }
+
+  #investmentCategories .platform-icon {
+    width: 39px;
+    height: 39px;
+  }
+
+  #investmentCategories .platform-info-button {
+    width: 52px;
+    min-width: 52px;
+    max-width: 52px;
+    font-size: 9px;
+  }
+
+  #platformModal .modal-platform-grid {
+    gap: 9px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* Prevent the page behind the popup from scrolling */
+body.modal-open {
+  overflow: hidden;
+}
