@@ -185,20 +185,46 @@ if (
 
   <!-- MARKET SNAPSHOT -->
 
-  <section class="content-section">
+<section class="content-section">
 
-    <div class="section-heading">
+  <div class="section-heading">
 
-      <p class="eyebrow">MARKET SNAPSHOT</p>
+    <p class="eyebrow">MARKET SNAPSHOT</p>
 
-      <h2>Latest Verified Data</h2>
+    <h2>Latest Verified Data</h2>
 
-      <p>
-        This section will display manually verified market information
-        when an updated NGX data record is added.
-      </p>
+    <p>
+      A selected snapshot of the Nigerian Exchange market based on
+      the latest verified GTF data record.
+    </p>
 
-    </div>
+  </div>
+
+
+  <div id="marketSnapshot" class="ngx-market-dashboard">
+
+    <!-- Filled by ngx-data.js -->
+
+  </div>
+
+
+  <div class="ngx-data-note">
+
+    <strong>Data status</strong>
+
+    <span id="ngxDataDate">
+      Awaiting verified update.
+    </span>
+
+    <p>
+      Market information shown here is provided for educational
+      and informational purposes. For current authoritative
+      information, refer to Nigerian Exchange.
+    </p>
+
+  </div>
+
+</section>
 
 
     <div id="marketSnapshot" class="platform-grid">
@@ -210,22 +236,31 @@ if (
   </section>
 
 
-  <!-- INDICES -->
+  <!-- NGX INDICES -->
 
-  <section class="content-section">
+<section class="content-section">
 
-    <div class="section-heading">
+  <div class="section-heading">
 
-      <p class="eyebrow">MARKET INDICES</p>
+    <p class="eyebrow">MARKET INDICES</p>
 
-      <h2>NGX Indices</h2>
+    <h2>NGX Indices</h2>
 
-      <p>
-        Indices can be used to monitor different parts of the Nigerian
-        capital market.
-      </p>
+    <p>
+      Selected indices used to monitor different segments of
+      the Nigerian capital market.
+    </p>
 
-    </div>
+  </div>
+
+
+  <div id="ngxIndices" class="platform-grid">
+
+    <!-- Filled by ngx-data.js -->
+
+  </div>
+
+</section>
 
 
     <div id="ngxIndices" class="platform-grid">
@@ -397,49 +432,57 @@ function renderNGXData() {
 
   /* MARKET SNAPSHOT */
 
-  if (
-    window.NGX_DATA &&
-    Array.isArray(NGX_DATA.snapshot) &&
-    NGX_DATA.snapshot.length > 0
-  ) {
+if (
+  window.NGX_DATA &&
+  Array.isArray(NGX_DATA.snapshot) &&
+  NGX_DATA.snapshot.length > 0
+) {
 
-    snapshot.innerHTML =
-      NGX_DATA.snapshot.map(item => `
+  snapshot.innerHTML =
+    NGX_DATA.snapshot.map(item => `
 
-        <article class="platform-card">
+      <article class="ngx-market-card">
 
-          <h3>${item.title}</h3>
+        <span class="ngx-card-label">
+          ${item.title}
+        </span>
 
-          <p class="ngx-value">
-            ${item.value}
-          </p>
-
-          <p>
-            ${item.description || ""}
-          </p>
-
-        </article>
-
-      `).join("");
-
-  } else {
-
-    snapshot.innerHTML = `
-
-      <article class="platform-card">
-
-        <h3>No market snapshot loaded</h3>
+        <strong class="ngx-market-value">
+          ${item.value}
+        </strong>
 
         <p>
-          A verified NGX market update will appear here when
-          the GTF data file is updated.
+          ${item.description || ""}
         </p>
 
       </article>
 
-    `;
+    `).join("");
 
-  }
+} else {
+
+  snapshot.innerHTML = `
+
+    <article class="ngx-market-card">
+
+      <span class="ngx-card-label">
+        DATA STATUS
+      </span>
+
+      <strong class="ngx-market-value">
+        Awaiting update
+      </strong>
+
+      <p>
+        A verified NGX market record will appear here
+        when the GTF data file is updated.
+      </p>
+
+    </article>
+
+  `;
+
+            }
 
 
   /* INDICES */
