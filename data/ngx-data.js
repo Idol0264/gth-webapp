@@ -12,11 +12,11 @@
    for 11 June 2026.
    ========================================================= */
 
-const NGX_DATA = {
+window.NGX_DATA = {
 
   /* -------------------------------------------------------
      VERIFICATION
-     ------------------------------------------------------- */
+  ------------------------------------------------------- */
 
   lastVerified: "11 June 2026",
 
@@ -32,33 +32,33 @@ const NGX_DATA = {
 
   /* -------------------------------------------------------
      MARKET SNAPSHOT
-     ------------------------------------------------------- */
+  ------------------------------------------------------- */
 
   snapshot: [
 
     {
-      label: "NGX All-Share Index",
+      title: "NGX All-Share Index",
       value: "244,738.74",
       description:
         "Official NGX All-Share Index value recorded on 11 June 2026."
     },
 
     {
-      label: "Equity Market Capitalisation",
+      title: "Equity Market Capitalisation",
       value: "₦156.97T",
       description:
         "Equities-only market capitalisation recorded on 11 June 2026."
     },
 
     {
-      label: "CBN Monetary Policy Rate",
+      title: "CBN Monetary Policy Rate",
       value: "26.50%",
       description:
         "Central Bank of Nigeria Monetary Policy Rate shown in the NGX Daily Official List."
     },
 
     {
-      label: "Data Status",
+      title: "Data Status",
       value: "Verified",
       description:
         "Data verified against the official NGX Daily Official List for 11 June 2026."
@@ -69,10 +69,7 @@ const NGX_DATA = {
 
   /* -------------------------------------------------------
      NGX INDICES
-     -------------------------------------------------------
-     Values are the official closing/index values recorded
-     for Thursday, 11 June 2026.
-     ------------------------------------------------------- */
+  ------------------------------------------------------- */
 
   indices: [
 
@@ -177,11 +174,12 @@ const NGX_DATA = {
 
   /* -------------------------------------------------------
      OFFICIAL NGX INFORMATION
-     ------------------------------------------------------- */
+  ------------------------------------------------------- */
 
   marketInfo: {
 
-    officialWebsite: "https://ngxgroup.com/",
+    officialWebsite:
+      "https://ngxgroup.com/",
 
     equitiesPriceList:
       "https://ngxgroup.com/exchange/data/equities-price-list/",
