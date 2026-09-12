@@ -60,9 +60,10 @@ if (
 
       <p>
         Explore selected mutual fund and investment platforms
-        from other investment companies. Discover different
-        platforms, compare their offerings and visit their
-        official platforms to learn more about their services.
+        from other investment companies. Browse by category,
+        tap a platform logo to visit its official platform,
+        or use See details to preview information before
+        leaving GTF.
       </p>
 
       <div class="hero-actions">
@@ -83,7 +84,7 @@ if (
 
 
   <!-- =====================================================
-       GTF EVALUATION
+       GTF REVIEW FRAMEWORK
        ===================================================== -->
 
   <section class="content-section">
@@ -101,10 +102,9 @@ if (
       <p>
         GTF evaluates investment opportunities and platforms
         using a structured research process. The review considers
-        the investment company, the nature of the investment,
-        available information, historical performance where
-        applicable, fees, liquidity, risk and other important
-        factors.
+        the investment company, investment objective, available
+        information, historical information where applicable,
+        fees, liquidity, risk and other important factors.
       </p>
 
     </div>
@@ -121,8 +121,8 @@ if (
 
         <p>
           We examine the investment company, its platform,
-          available services and the information provided
-          about its investment products.
+          available services and information about its
+          investment products.
         </p>
 
       </article>
@@ -149,7 +149,7 @@ if (
         </h3>
 
         <p>
-          We consider the potential risks, volatility, liquidity
+          We consider potential risks, volatility, liquidity
           conditions and other factors that may affect an investor.
         </p>
 
@@ -194,7 +194,10 @@ if (
        INVESTMENT PLATFORMS
        ===================================================== -->
 
-  <section class="content-section">
+  <section
+    class="content-section"
+    id="investmentCategories"
+  >
 
     <div class="section-heading">
 
@@ -203,13 +206,14 @@ if (
       </p>
 
       <h2>
-        Platforms
+        Explore Platforms by Category
       </h2>
 
       <p>
-        Explore investment and mutual fund platforms from
-        different companies. Scroll through the platform
-        collection to discover available opportunities.
+        All platforms are organised inside their relevant
+        category. Tap a platform logo to visit the official
+        platform. Use See details to preview the platform
+        information.
       </p>
 
     </div>
@@ -217,482 +221,700 @@ if (
 
 
     <!-- ===================================================
-         PLATFORM SCROLL AREA
+         CATEGORY 1 — MUTUAL FUNDS
          =================================================== -->
 
-    <div class="investment-platform-scroll">
+    <article
+      class="investment-category-card"
+      id="mutualFunds"
+    >
 
+      <div class="category-heading">
 
-      <!-- PLATFORM 1 -->
+        <div>
 
-      <article class="investment-opportunity-card">
-
-        <div class="opportunity-header">
-
-          <span class="opportunity-status under-review">
-            Under Review
+          <span class="category-label">
+            Category 01
           </span>
 
-          <span class="opportunity-category">
+          <h3>
             Mutual Funds
+          </h3>
+
+          <p>
+            Platforms offering access to professionally managed
+            pooled investment funds.
+          </p>
+
+        </div>
+
+        <span class="category-count">
+          4 platforms
+        </span>
+
+      </div>
+
+
+      <div class="category-platform-grid">
+
+
+        <!-- ARM -->
+
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://www.arm.com.ng/arm-investment-managers/mutual-fund/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit ARM Investment Managers"
+          >
+
+            <span class="platform-logo">
+              ARM
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'ARM Investment Managers',
+              'Mutual Funds',
+              'ARM offers a range of professionally managed mutual funds and investment solutions. Visit the official ARM platform for current fund options, terms and documents.'
+            )"
+          >
+            See details
+          </button>
+
+        </div>
+
+
+        <!-- STANBIC IBTC -->
+
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://www.stanbicibtcassetmanagement.com/nigeriaassetmanagement/individual-investor/products-and-services/mutual-funds/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Stanbic IBTC Asset Management"
+          >
+
+            <span class="platform-logo">
+              SI
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'Stanbic IBTC Asset Management',
+              'Mutual Funds',
+              'Stanbic IBTC Asset Management provides several mutual fund options across different investment objectives and risk profiles. Visit the official platform for current products and terms.'
+            )"
+          >
+            See details
+          </button>
+
+        </div>
+
+
+        <!-- CORONATION -->
+
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://www.coronation.ng/institutional/products-solutions/asset-management/mutual-funds/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Coronation Asset Management"
+          >
+
+            <span class="platform-logo">
+              COR
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'Coronation Asset Management',
+              'Mutual Funds',
+              'Coronation provides mutual fund solutions including money market, fixed income, equity and other fund options. Visit the official platform for current information.'
+            )"
+          >
+            See details
+          </button>
+
+        </div>
+
+
+        <!-- COWRYWISE -->
+
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://cowrywise.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Cowrywise"
+          >
+
+            <span class="platform-logo">
+              CW
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'Cowrywise',
+              'Mutual Funds',
+              'Cowrywise provides access to mutual funds managed by investment management partners through its digital platform. Visit Cowrywise for current fund availability and terms.'
+            )"
+          >
+            See details
+          </button>
+
+        </div>
+
+
+      </div>
+
+    </article>
+
+
+
+    <!-- ===================================================
+         CATEGORY 2 — MONEY MARKET
+         =================================================== -->
+
+    <article
+      class="investment-category-card"
+      id="moneyMarket"
+    >
+
+      <div class="category-heading">
+
+        <div>
+
+          <span class="category-label">
+            Category 02
           </span>
 
-        </div>
-
-
-        <h3>
-          Mutual Fund Platform
-        </h3>
-
-
-        <p>
-          A mutual fund investment platform offering access
-          to professionally managed investment funds.
-        </p>
-
-
-        <div class="opportunity-details">
-
-          <p>
-            <strong>Category:</strong>
-            Mutual Funds
-          </p>
-
-          <p>
-            <strong>Status:</strong>
-            Under Review
-          </p>
-
-        </div>
-
-
-        <div class="risk-information">
-
-          <strong>
-            Risk / Consideration
-          </strong>
-
-          <p>
-            Investors should review the fund objective,
-            fees, liquidity, historical information and
-            level of investment risk before investing.
-          </p>
-
-        </div>
-
-
-        <a
-          href="#"
-          class="secondary-btn"
-          onclick="exploreOpportunity(event, 'This investment platform is currently being reviewed by GTF.')"
-        >
-          Explore
-        </a>
-
-      </article>
-
-
-
-      <!-- PLATFORM 2 -->
-
-      <article class="investment-opportunity-card">
-
-        <div class="opportunity-header">
-
-          <span class="opportunity-status approved">
-            Approved
-          </span>
-
-          <span class="opportunity-category">
-            Investment Platform
-          </span>
-
-        </div>
-
-
-        <h3>
-          Investment Platform
-        </h3>
-
-
-        <p>
-          An investment platform selected for inclusion after
-          completing the relevant GTF review process.
-        </p>
-
-
-        <div class="opportunity-details">
-
-          <p>
-            <strong>Category:</strong>
-            Investment Platform
-          </p>
-
-          <p>
-            <strong>Status:</strong>
-            Approved
-          </p>
-
-        </div>
-
-
-        <div class="risk-information">
-
-          <strong>
-            Risk / Consideration
-          </strong>
-
-          <p>
-            Approval indicates that the platform has passed
-            the applicable GTF review stage. Investment risk
-            still remains with the investor.
-          </p>
-
-        </div>
-
-
-        <a
-          href="#"
-          class="secondary-btn"
-          onclick="exploreOpportunity(event, 'The official platform link will be added here.')"
-        >
-          Explore
-        </a>
-
-      </article>
-
-
-
-      <!-- PLATFORM 3 -->
-
-      <article class="investment-opportunity-card">
-
-        <div class="opportunity-header">
-
-          <span class="opportunity-status completed">
-            Completed
-          </span>
-
-          <span class="opportunity-category">
-            Fund Research
-          </span>
-
-        </div>
-
-
-        <h3>
-          Completed Fund Review
-        </h3>
-
-
-        <p>
-          A completed investment opportunity review retained
-          as part of the GTF research and information collection.
-        </p>
-
-
-        <div class="opportunity-details">
-
-          <p>
-            <strong>Category:</strong>
-            Fund Research
-          </p>
-
-          <p>
-            <strong>Status:</strong>
-            Completed
-          </p>
-
-        </div>
-
-
-        <div class="risk-information">
-
-          <strong>
-            Risk / Consideration
-          </strong>
-
-          <p>
-            Investment products and their conditions can change.
-            Always review current information directly from the
-            investment company.
-          </p>
-
-        </div>
-
-
-        <a
-          href="#"
-          class="secondary-btn"
-          onclick="exploreOpportunity(event, 'Detailed information for this completed review will be added here.')"
-        >
-          Explore
-        </a>
-
-      </article>
-
-
-
-      <!-- PLATFORM 4 -->
-
-      <article class="investment-opportunity-card">
-
-        <div class="opportunity-header">
-
-          <span class="opportunity-status under-review">
-            Under Review
-          </span>
-
-          <span class="opportunity-category">
+          <h3>
             Money Market
+          </h3>
+
+          <p>
+            Platforms and funds focused on short-term money
+            market instruments and related investments.
+          </p>
+
+        </div>
+
+        <span class="category-count">
+          4 platforms
+        </span>
+
+      </div>
+
+
+      <div class="category-platform-grid">
+
+
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://www.arm.com.ng/arm-investment-managers/mutual-fund/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit ARM Investment Managers"
+          >
+
+            <span class="platform-logo">
+              ARM
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'ARM Investment Managers',
+              'Money Market',
+              'ARM offers money market fund options. Open the official platform to review the current fund objective, fees, liquidity and other terms.'
+            )"
+          >
+            See details
+          </button>
+
+        </div>
+
+
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://www.stanbicibtcassetmanagement.com/nigeriaassetmanagement/individual-investor/products-and-services/mutual-funds/fixed-income-funds/Stanbic-IBTC-Money-Market-Fund"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Stanbic IBTC Money Market Fund"
+          >
+
+            <span class="platform-logo">
+              SI
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'Stanbic IBTC Money Market Fund',
+              'Money Market',
+              'Stanbic IBTC Asset Management offers a Money Market Fund. Visit the official product page for current information, fund terms and documents.'
+            )"
+          >
+            See details
+          </button>
+
+        </div>
+
+
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://www.coronation.ng/institutional/products-solutions/asset-management/mutual-funds/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Coronation Asset Management"
+          >
+
+            <span class="platform-logo">
+              COR
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'Coronation Asset Management',
+              'Money Market',
+              'Coronation offers a Money Market Fund. Open the official platform to review current fund information, terms and applicable fees.'
+            )"
+          >
+            See details
+          </button>
+
+        </div>
+
+
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://cowrywise.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Cowrywise"
+          >
+
+            <span class="platform-logo">
+              CW
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'Cowrywise',
+              'Money Market',
+              'Cowrywise can provide access to money market mutual funds through its investment management partners. Visit the platform for current availability and terms.'
+            )"
+          >
+            See details
+          </button>
+
+        </div>
+
+
+      </div>
+
+    </article>
+
+
+
+    <!-- ===================================================
+         CATEGORY 3 — FIXED INCOME
+         =================================================== -->
+
+    <article
+      class="investment-category-card"
+      id="fixedIncome"
+    >
+
+      <div class="category-heading">
+
+        <div>
+
+          <span class="category-label">
+            Category 03
           </span>
 
-        </div>
-
-
-        <h3>
-          Money Market Fund Platform
-        </h3>
-
-
-        <p>
-          A platform for accessing money market investment
-          products and related professionally managed funds.
-        </p>
-
-
-        <div class="opportunity-details">
-
-          <p>
-            <strong>Category:</strong>
-            Money Market
-          </p>
-
-          <p>
-            <strong>Status:</strong>
-            Under Review
-          </p>
-
-        </div>
-
-
-        <div class="risk-information">
-
-          <strong>
-            Risk / Consideration
-          </strong>
-
-          <p>
-            Review applicable fees, expected returns, liquidity,
-            fund structure and associated investment risks.
-          </p>
-
-        </div>
-
-
-        <a
-          href="#"
-          class="secondary-btn"
-          onclick="exploreOpportunity(event, 'This platform is currently under review.')"
-        >
-          Explore
-        </a>
-
-      </article>
-
-
-
-      <!-- PLATFORM 5 -->
-
-      <article class="investment-opportunity-card">
-
-        <div class="opportunity-header">
-
-          <span class="opportunity-status under-review">
-            Under Review
-          </span>
-
-          <span class="opportunity-category">
+          <h3>
             Fixed Income
+          </h3>
+
+          <p>
+            Investment opportunities involving fixed-income
+            securities and professionally managed fixed-income funds.
+          </p>
+
+        </div>
+
+        <span class="category-count">
+          4 platforms
+        </span>
+
+      </div>
+
+
+      <div class="category-platform-grid">
+
+
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://www.arm.com.ng/arm-investment-managers/mutual-fund/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit ARM Investment Managers"
+          >
+
+            <span class="platform-logo">
+              ARM
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'ARM Investment Managers',
+              'Fixed Income',
+              'ARM offers fixed-income and related mutual fund options. Review the official platform for current fund objectives, risks, fees and terms.'
+            )"
+          >
+            See details
+          </button>
+
+        </div>
+
+
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://www.stanbicibtcassetmanagement.com/nigeriaassetmanagement/individual-investor/products-and-services/mutual-funds/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Stanbic IBTC Asset Management"
+          >
+
+            <span class="platform-logo">
+              SI
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'Stanbic IBTC Asset Management',
+              'Fixed Income',
+              'Stanbic IBTC Asset Management provides fixed-income fund options. Visit its official platform to compare current products and conditions.'
+            )"
+          >
+            See details
+          </button>
+
+        </div>
+
+
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://www.coronation.ng/institutional/products-solutions/asset-management/mutual-funds/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Coronation Asset Management"
+          >
+
+            <span class="platform-logo">
+              COR
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'Coronation Asset Management',
+              'Fixed Income',
+              'Coronation provides fixed-income fund solutions. Open the official platform to review current fund objectives, fees, risk information and terms.'
+            )"
+          >
+            See details
+          </button>
+
+        </div>
+
+
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://cowrywise.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Cowrywise"
+          >
+
+            <span class="platform-logo">
+              CW
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'Cowrywise',
+              'Fixed Income',
+              'Cowrywise provides access to mutual funds managed by investment partners, including funds with fixed-income strategies. Visit for current availability.'
+            )"
+          >
+            See details
+          </button>
+
+        </div>
+
+
+      </div>
+
+    </article>
+
+
+
+    <!-- ===================================================
+         CATEGORY 4 — EQUITY & GROWTH
+         =================================================== -->
+
+    <article
+      class="investment-category-card"
+      id="equityGrowth"
+    >
+
+      <div class="category-heading">
+
+        <div>
+
+          <span class="category-label">
+            Category 04
           </span>
 
-        </div>
-
-
-        <h3>
-          Fixed Income Platform
-        </h3>
-
-
-        <p>
-          An investment platform featuring fixed-income
-          opportunities and professionally managed products.
-        </p>
-
-
-        <div class="opportunity-details">
+          <h3>
+            Equity &amp; Growth
+          </h3>
 
           <p>
-            <strong>Category:</strong>
-            Fixed Income
-          </p>
-
-          <p>
-            <strong>Status:</strong>
-            Under Review
+            Platforms offering access to equity-oriented and
+            growth-focused investment funds and strategies.
           </p>
 
         </div>
 
+        <span class="category-count">
+          4 platforms
+        </span>
 
-        <div class="risk-information">
+      </div>
 
-          <strong>
-            Risk / Consideration
-          </strong>
 
-          <p>
-            Investors should consider interest-rate risk,
-            credit risk, liquidity and the terms of each
-            investment product.
-          </p>
+      <div class="category-platform-grid">
+
+
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://www.arm.com.ng/arm-investment-managers/mutual-fund/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit ARM Investment Managers"
+          >
+
+            <span class="platform-logo">
+              ARM
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'ARM Investment Managers',
+              'Equity & Growth',
+              'ARM offers growth-oriented mutual fund options. Visit the official platform for current fund objectives, risk levels and terms.'
+            )"
+          >
+            See details
+          </button>
 
         </div>
 
 
-        <a
-          href="#"
-          class="secondary-btn"
-          onclick="exploreOpportunity(event, 'This platform is currently under review.')"
-        >
-          Explore
-        </a>
+        <div class="category-platform-item">
 
-      </article>
+          <a
+            class="platform-icon-link"
+            href="https://www.stanbicibtcassetmanagement.com/nigeriaassetmanagement/individual-investor/products-and-services/mutual-funds/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Stanbic IBTC Asset Management"
+          >
 
+            <span class="platform-logo">
+              SI
+            </span>
 
+          </a>
 
-    </div>
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'Stanbic IBTC Asset Management',
+              'Equity & Growth',
+              'Stanbic IBTC Asset Management offers equity-oriented fund options. Visit the official platform for current fund information and risk considerations.'
+            )"
+          >
+            See details
+          </button>
 
-  </section>
-
-
-
-  <!-- =====================================================
-       CATEGORIES
-       ===================================================== -->
-
-  <section class="content-section">
-
-    <div class="section-heading">
-
-      <p class="eyebrow">
-        PLATFORM CATEGORIES
-      </p>
-
-      <h2>
-        Explore by Category
-      </h2>
-
-      <p>
-        Investment opportunities can be organised into
-        different categories to make it easier to discover
-        platforms that match a particular investment area.
-      </p>
-
-    </div>
+        </div>
 
 
-    <div class="platform-grid">
+        <div class="category-platform-item">
+
+          <a
+            class="platform-icon-link"
+            href="https://www.coronation.ng/institutional/products-solutions/asset-management/mutual-funds/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Coronation Asset Management"
+          >
+
+            <span class="platform-logo">
+              COR
+            </span>
+
+          </a>
+
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'Coronation Asset Management',
+              'Equity & Growth',
+              'Coronation provides equity and growth-oriented mutual fund options. Visit the official platform for current information and terms.'
+            )"
+          >
+            See details
+          </button>
+
+        </div>
 
 
-      <article class="platform-card">
+        <div class="category-platform-item">
 
-        <h3>
-          Mutual Funds
-        </h3>
+          <a
+            class="platform-icon-link"
+            href="https://cowrywise.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Cowrywise"
+          >
 
-        <p>
-          Professionally managed pooled investment funds
-          with different objectives and strategies.
-        </p>
+            <span class="platform-logo">
+              CW
+            </span>
 
-        <a
-          href="#"
-          class="secondary-btn"
-          onclick="filterCategory(event, 'Mutual Funds')"
-        >
-          Explore
-        </a>
+          </a>
 
-      </article>
+          <button
+            class="platform-info-button"
+            type="button"
+            onclick="showPlatformDetails(
+              'Cowrywise',
+              'Equity & Growth',
+              'Cowrywise provides access to different mutual funds through investment management partners, including funds with higher-growth objectives. Visit for current availability.'
+            )"
+          >
+            See details
+          </button>
 
-
-      <article class="platform-card">
-
-        <h3>
-          Money Market
-        </h3>
-
-        <p>
-          Investment products generally focused on
-          short-term money market instruments.
-        </p>
-
-        <a
-          href="#"
-          class="secondary-btn"
-          onclick="filterCategory(event, 'Money Market')"
-        >
-          Explore
-        </a>
-
-      </article>
+        </div>
 
 
-      <article class="platform-card">
+      </div>
 
-        <h3>
-          Fixed Income
-        </h3>
-
-        <p>
-          Investment opportunities involving fixed-income
-          securities and related products.
-        </p>
-
-        <a
-          href="#"
-          class="secondary-btn"
-          onclick="filterCategory(event, 'Fixed Income')"
-        >
-          Explore
-        </a>
-
-      </article>
+    </article>
 
 
-      <article class="platform-card">
 
-        <h3>
-          Investment Platforms
-        </h3>
+    <!-- ===================================================
+         RESEARCH NOTE
+         =================================================== -->
 
-        <p>
-          Platforms that provide access to different
-          investment products and financial services.
-        </p>
+    <div class="investment-note">
 
-        <a
-          href="#"
-          class="secondary-btn"
-          onclick="filterCategory(event, 'Investment Platform')"
-        >
-          Explore
-        </a>
+      <strong>
+        Research note:
+      </strong>
 
-      </article>
-
+      GTF lists these as external investment platforms for
+      research and discovery. Availability, fees, fund terms,
+      risk levels and performance can change. Always review
+      the provider’s current information and relevant
+      regulatory documents before investing.
 
     </div>
 
@@ -713,17 +935,16 @@ if (
       </h2>
 
       <p>
-        This section is designed to grow as GTF researches
-        additional investment companies, mutual funds and
-        investment platforms.
+        This section can grow as GTF researches additional
+        investment companies, mutual funds and investment
+        platforms.
       </p>
 
       <p>
-        Each opportunity can later contain more detailed
-        information, including the investment company,
-        official platform, fund type, objectives, fees,
-        risk considerations, review status and other
-        relevant information.
+        Future updates can add more categories, platforms,
+        provider information, fund-level research and current
+        review notes without creating a separate platform list
+        outside the category cards.
       </p>
 
     </div>
@@ -746,33 +967,143 @@ if (
 
 
 <!-- =====================================================
+     PLATFORM DETAILS MODAL
+     ===================================================== -->
+
+<div
+  class="platform-modal"
+  id="platformModal"
+  aria-hidden="true"
+>
+
+  <div
+    class="platform-modal-backdrop"
+    onclick="closePlatformDetails()"
+  ></div>
+
+
+  <div
+    class="platform-modal-card"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="platformModalTitle"
+  >
+
+    <button
+      class="platform-modal-close"
+      type="button"
+      onclick="closePlatformDetails()"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+
+    <span
+      class="category-label"
+      id="platformModalCategory"
+    >
+      Platform information
+    </span>
+
+
+    <h2 id="platformModalTitle">
+      Platform
+    </h2>
+
+
+    <p id="platformModalText"></p>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
      PAGE JAVASCRIPT
      ===================================================== -->
 
 <script>
 
-function exploreOpportunity(event, message) {
+function showPlatformDetails(
+  name,
+  category,
+  description
+) {
 
-  event.preventDefault();
-
-  alert(message);
-
-}
+  document.getElementById(
+    "platformModalTitle"
+  ).textContent = name;
 
 
+  document.getElementById(
+    "platformModalCategory"
+  ).textContent = category;
 
-function filterCategory(event, category) {
 
-  event.preventDefault();
+  document.getElementById(
+    "platformModalText"
+  ).textContent = description;
 
-  alert(
-    "Showing " + category + " opportunities."
+
+  document.getElementById(
+    "platformModal"
+  ).classList.add("open");
+
+
+  document.getElementById(
+    "platformModal"
+  ).setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+
+  document.body.classList.add(
+    "modal-open"
   );
 
 }
+
+
+
+function closePlatformDetails() {
+
+  document.getElementById(
+    "platformModal"
+  ).classList.remove("open");
+
+
+  document.getElementById(
+    "platformModal"
+  ).setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+
+  document.body.classList.remove(
+    "modal-open"
+  );
+
+}
+
+
+
+document.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (event.key === "Escape") {
+      closePlatformDetails();
+    }
+
+  }
+);
 
 </script>
 
 
 </body>
-        </html>
+</html>
