@@ -1,21 +1,25 @@
 const GTS_SOFTWARE = [
 
 {
-id: "example-web-app",
+  id: "example-web-app",
 
-name: "Example Web App",  
-category: "WEB APP",  
-description: "An example web application available through GTS.",  
-image: "images/software-placeholder.jpg",  
+  name: "Example Web App",
 
-type: "web",  
+  category: "WEB APP",
 
-platforms: {  
-  web: "https://example.com"  
-},  
+  description: "An example web application available through GTS.",
 
-page: "gts-software.html"
+  image: "images/software-placeholder.jpg",
 
+  type: "web",
+
+  isExample: true,
+
+  platforms: {
+    web: "https://example.com"
+  },
+
+  page: "gts-software.html"
 },
 
 {
