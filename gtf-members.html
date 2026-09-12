@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>GTF Members | God’stime Fund</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+
+<body>
+
+
+<script>
+
+const savedTheme =
+  localStorage.getItem("gth_theme_v1");
+
+if (
+  savedTheme === "gold" ||
+  savedTheme === "blue" ||
+  savedTheme === "green"
+) {
+  document.body.setAttribute(
+    "data-theme",
+    savedTheme
+  );
+}
+
+</script>
+
+
+
+<header class="site-header">
+
+  <div class="brand">
+
+    <strong>GTF</strong>
+
+    <span>God’stime Fund</span>
+
+  </div>
+
+
+  <nav class="top-nav">
+
+    <a href="gtf.html">
+      GTF Home
+    </a>
+
+  </nav>
+
+</header>
+
+
+
+<main>
+
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <p class="eyebrow">
+      GTF MEMBERS
+    </p>
+
+    <h1>
+      GTF Members
+    </h1>
+
+    <p>
+      Explore the developing membership and
+      leadership community of God’stime Fund.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<section class="content-section">
+
+
+  <div class="section-heading">
+
+    <p class="eyebrow">
+      OUR PEOPLE
+    </p>
+
+    <h2>
+      Members & Contributors
+    </h2>
+
+    <p>
+      Selected member profiles can be presented
+      here as the GTF community develops.
+    </p>
+
+  </div>
+
+
+
+  <div
+    id="gtfMembers"
+    class="gtf-people-list"
+  ></div>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer class="site-footer">
+
+  <p>
+    © 2026 God’stime Holdings. All rights reserved.
+  </p>
+
+</footer>
+
+
+
+<script src="data/gtf-people.js"></script>
+
+
+<script>
+
+const memberContainer =
+  document.getElementById("gtfMembers");
+
+
+const members =
+  GTF_PEOPLE.filter(
+    person => person.type === "member"
+  );
+
+
+members.forEach(
+  (person, index) => {
+
+    const article =
+      document.createElement("article");
+
+    article.className =
+      "gtf-person-card " +
+      (index % 2 === 1
+        ? "reverse"
+        : ""
+      );
+
+
+    article.innerHTML = `
+
+      <div class="gtf-person-image-wrap">
+
+        <img
+          class="gtf-person-image"
+          src="${person.image}"
+          alt="${person.name}"
+          loading="lazy"
+        >
+
+        <span class="gtf-profile-label">
+          ${person.label || ""}
+        </span>
+
+      </div>
+
+
+      <div class="gtf-person-content">
+
+        <span class="gtf-person-type">
+          GTF MEMBER
+        </span>
+
+        <h2>
+          ${person.name}
+        </h2>
+
+
+        <div class="gtf-person-meta">
+
+          <div>
+            <strong>Role</strong>
+            <span>${person.role || "GTF Member"}</span>
+          </div>
+
+          <div>
+            <strong>Qualifications</strong>
+            <span>${person.qualifications || "—"}</span>
+          </div>
+
+        </div>
+
+
+        <div class="gtf-person-text">
+
+          <h3>
+            Philosophy
+          </h3>
+
+          <p>
+            ${person.philosophy || ""}
+          </p>
+
+
+          <h3>
+            Encouragement
+          </h3>
+
+          <p>
+            ${person.encouragement || ""}
+          </p>
+
+
+          <h3>
+            Advice
+          </h3>
+
+          <p>
+            ${person.advice || ""}
+          </p>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    memberContainer.appendChild(article);
+
+  }
+
+);
+
+</script>
+
+
+</body>
+
+</html>
