@@ -21,41 +21,44 @@ const GTS_SOFTWARE = [
 },
 
 {
-id: "example-mobile-app",
+  id: "example-mobile-app",
 
-name: "Example Mobile App",  
-category: "MOBILE APP",  
-description: "An example application available for Android and iOS.",  
-image: "images/software-placeholder.jpg",  
+  name: "Example Mobile App",
 
-type: "mobile",  
+  category: "MOBILE APP",
 
-platforms: {  
-  android: "#",  
-  ios: "#"  
-},  
+  description: "An example application available for Android and iOS.",
 
-page: "gts-software.html"
+  image: "images/software-placeholder.jpg",
 
+  type: "mobile",
+
+  platforms: {
+    android: "#",
+    ios: "#"
+  },
+
+  page: "gts-software.html"
 },
 
 {
-id: "example-desktop-software",
+  id: "example-desktop-software",
 
-name: "Example Desktop Software",  
-category: "DESKTOP SOFTWARE",  
-description: "An example desktop application available through GTS.",  
+  name: "Example Desktop Software",
 
-image: "images/software-placeholder.jpg",  
+  category: "DESKTOP SOFTWARE",
 
-type: "desktop",  
+  description: "An example desktop application available through GTS.",
 
-platforms: {  
-  windows: "#"  
-},  
+  image: "images/software-placeholder.jpg",
 
-page: "gts-software.html"
+  type: "desktop",
 
+  platforms: {
+    windows: "#"
+  },
+
+  page: "gts-software.html"
 },
 
 {  
