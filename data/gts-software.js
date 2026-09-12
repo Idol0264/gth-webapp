@@ -13,8 +13,6 @@ const GTS_SOFTWARE = [
 
   type: "web",
 
-  isExample: true,
-
   platforms: {
     web: "https://example.com"
   },
