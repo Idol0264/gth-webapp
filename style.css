@@ -3072,3 +3072,1349 @@ tr:last-child td {
     width: 52px;
   }
 }
+
+/* =========================================================
+   GTS — PREMIUM SOFTWARE DIRECTORY
+========================================================= */
+
+.gts-page {
+  --gts-card-radius: 22px;
+}
+
+
+/* =========================================================
+   TOP ADVERTISEMENT
+========================================================= */
+
+.gts-top-ad {
+  width: min(
+    var(--content),
+    calc(100% - (var(--page-pad) * 2))
+  );
+
+  margin: 24px auto 0;
+}
+
+
+.gts-ad-slider {
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow);
+
+  isolation: isolate;
+}
+
+
+.gts-ad-slider::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 0%,
+      var(--accent-faint) 45%,
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+
+.gts-ad-slide {
+  display: block;
+  overflow: hidden;
+}
+
+
+.gts-ad-slide img {
+  width: 100%;
+  min-height: 150px;
+  max-height: 330px;
+
+  object-fit: cover;
+
+  transition:
+    transform .6s var(--ease),
+    filter .4s ease;
+}
+
+
+.gts-ad-slide:hover img {
+  transform: scale(1.025);
+}
+
+
+/* =========================================================
+   GTS HERO
+========================================================= */
+
+.gts-hero {
+  min-height: 430px;
+}
+
+
+.gts-hero h1 {
+  background:
+    linear-gradient(
+      135deg,
+      var(--text),
+      var(--accent)
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+
+/* =========================================================
+   DIRECTORY INTRO
+========================================================= */
+
+.gts-section-description {
+  max-width: 720px;
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.gts-toolbar {
+  display: grid;
+  gap: 16px;
+
+  margin-top: 30px;
+}
+
+
+.gts-search {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 58px;
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+
+.gts-search:focus-within {
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 0 4px var(--accent-faint),
+    var(--shadow-sm);
+}
+
+
+.gts-search-icon {
+  width: 52px;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--accent);
+
+  font-size: 1.5rem;
+  font-weight: 900;
+
+  pointer-events: none;
+}
+
+
+.gts-search input {
+  width: 100%;
+  min-width: 0;
+
+  padding: 16px 18px 16px 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: var(--text);
+
+  font-size: 1rem;
+}
+
+
+.gts-search input::placeholder {
+  color: var(--muted-2);
+}
+
+
+/* =========================================================
+   CATEGORY FILTER
+========================================================= */
+
+.gts-category-filter {
+  display: flex;
+  gap: 8px;
+
+  padding-bottom: 4px;
+
+  overflow-x: auto;
+
+  scrollbar-width: thin;
+}
+
+
+.gts-category-button {
+  flex: 0 0 auto;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  min-height: 42px;
+
+  padding: 8px 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  background: var(--surface);
+
+  color: var(--muted);
+
+  font-size: .82rem;
+  font-weight: 800;
+
+  white-space: nowrap;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    color .2s ease,
+    transform .2s ease;
+}
+
+
+.gts-category-button small {
+  min-width: 20px;
+  height: 20px;
+
+  display: inline-grid;
+  place-items: center;
+
+  padding: 0 5px;
+
+  border-radius: 999px;
+
+  background: var(--surface-2);
+
+  color: var(--muted-2);
+
+  font-size: .68rem;
+  font-weight: 900;
+}
+
+
+.gts-category-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+
+  transform: translateY(-1px);
+}
+
+
+.gts-category-button.active {
+  border-color: var(--accent);
+
+  background: var(--accent);
+
+  color: #111;
+
+  box-shadow:
+    0 8px 22px var(--accent-soft);
+}
+
+
+.gts-category-button.active small {
+  background: rgba(0, 0, 0, .16);
+  color: inherit;
+}
+
+
+/* =========================================================
+   CATALOG META
+========================================================= */
+
+.gts-catalog-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  margin: 22px 0 18px;
+
+  color: var(--muted);
+
+  font-size: .84rem;
+}
+
+
+.gts-catalog-note {
+  color: var(--muted-2);
+}
+
+
+/* =========================================================
+   SOFTWARE GRID
+========================================================= */
+
+.gts-software-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        min(100%, 280px),
+        1fr
+      )
+    );
+
+  gap: 20px;
+}
+
+
+/* =========================================================
+   SOFTWARE CARD
+========================================================= */
+
+.gts-software-card {
+  position: relative;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--surface),
+      color-mix(
+        in srgb,
+        var(--surface) 92%,
+        var(--accent) 8%
+      )
+    );
+
+  border: 1px solid var(--border);
+  border-radius: var(--gts-card-radius);
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform .28s var(--ease),
+    border-color .28s ease,
+    box-shadow .28s ease;
+}
+
+
+.gts-software-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 18%;
+  right: 18%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--accent),
+      transparent
+    );
+
+  opacity: .6;
+}
+
+
+.gts-software-card:hover {
+  transform: translateY(-7px);
+
+  border-color: var(--accent);
+
+  box-shadow: var(--shadow-lg);
+}
+
+
+/* =========================================================
+   SOFTWARE IMAGE
+========================================================= */
+
+.gts-software-image-wrap {
+  position: relative;
+
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  background: var(--surface-2);
+}
+
+
+.gts-software-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform .55s var(--ease),
+    filter .3s ease;
+}
+
+
+.gts-software-card:hover
+.gts-software-image {
+  transform: scale(1.045);
+}
+
+
+.gts-card-top {
+  position: absolute;
+
+  top: 13px;
+  left: 13px;
+  right: 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+
+/* =========================================================
+   EXAMPLE BADGE
+========================================================= */
+
+.gts-example-badge {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 27px;
+
+  padding: 5px 9px;
+
+  border: 1px solid rgba(255, 193, 7, .55);
+  border-radius: 999px;
+
+  background: rgba(255, 193, 7, .15);
+
+  color: #ffc107;
+
+  font-size: .67rem;
+  font-weight: 950;
+  letter-spacing: .1em;
+}
+
+
+/* =========================================================
+   SOFTWARE INFORMATION
+========================================================= */
+
+.gts-software-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  padding: 21px;
+}
+
+
+.gts-software-info h3 {
+  margin-bottom: 9px;
+
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+
+.gts-software-info > p {
+  margin-bottom: 17px;
+
+  color: var(--muted);
+
+  font-size: .9rem;
+}
+
+
+/* =========================================================
+   EXAMPLE NOTE
+========================================================= */
+
+.gts-example-note {
+  margin-bottom: 15px;
+  padding: 11px 12px;
+
+  border: 1px solid rgba(255, 193, 7, .28);
+  border-radius: 12px;
+
+  background: rgba(255, 193, 7, .07);
+
+  color: var(--muted);
+
+  font-size: .76rem;
+  line-height: 1.5;
+}
+
+
+.gts-example-note::before {
+  content: "EXAMPLE • ";
+
+  color: #ffc107;
+
+  font-weight: 950;
+}
+
+
+/* =========================================================
+   PLATFORM BUTTONS
+========================================================= */
+
+.gts-platform-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-top: auto;
+  margin-bottom: 14px;
+}
+
+
+.gts-platform-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 38px;
+
+  padding: 8px 12px;
+
+  border: 1px solid var(--accent-soft);
+  border-radius: 10px;
+
+  background: var(--accent-faint);
+
+  color: var(--accent);
+
+  font-size: .76rem;
+  font-weight: 850;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    color .2s ease,
+    transform .2s ease;
+}
+
+
+.gts-platform-button:hover,
+.gts-platform-button:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+
+  color: #111;
+
+  transform: translateY(-1px);
+}
+
+
+.gts-platform-disabled {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 38px;
+
+  padding: 8px 11px;
+
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+
+  color: var(--muted-2);
+
+  font-size: .75rem;
+}
+
+
+.gts-open {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  width: 100%;
+
+  padding-top: 14px;
+
+  border-top: 1px solid var(--border);
+
+  color: var(--text);
+
+  font-size: .82rem;
+  font-weight: 850;
+
+  transition:
+    color .2s ease,
+    gap .2s ease;
+}
+
+
+.gts-open span {
+  color: var(--accent);
+
+  font-size: 1.1rem;
+}
+
+
+.gts-open:hover {
+  color: var(--accent);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.gts-empty-state {
+  margin-top: 20px;
+  padding: 55px 20px;
+
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+
+  background: var(--surface);
+
+  text-align: center;
+}
+
+
+.gts-empty-icon {
+  width: 52px;
+  height: 52px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0 auto 14px;
+
+  border-radius: 50%;
+
+  background: var(--accent-soft);
+
+  color: var(--accent);
+
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+
+.gts-empty-state h3 {
+  margin-bottom: 7px;
+}
+
+
+.gts-empty-state p {
+  margin-bottom: 0;
+
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   GTS INFORMATION PANEL
+========================================================= */
+
+.gts-info-panel {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 30px;
+
+  padding: clamp(24px, 4vw, 40px);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      var(--accent-soft),
+      transparent 45%
+    ),
+    var(--surface);
+
+  box-shadow: var(--shadow);
+}
+
+
+.gts-info-panel h2 {
+  margin-bottom: 10px;
+}
+
+
+.gts-info-panel p:last-child {
+  max-width: 700px;
+  margin-bottom: 0;
+
+  color: var(--muted);
+}
+
+
+.gts-info-badge {
+  min-width: 135px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 22px;
+
+  border: 1px solid var(--accent-soft);
+  border-radius: 18px;
+
+  background: var(--accent-faint);
+
+  text-align: center;
+}
+
+
+.gts-info-badge strong {
+  color: var(--accent);
+
+  font-size: 2rem;
+  line-height: 1;
+}
+
+
+.gts-info-badge span {
+  margin-top: 7px;
+
+  color: var(--muted);
+
+  font-size: .72rem;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   DETAIL PAGE
+========================================================= */
+
+.gts-detail-hero {
+  position: relative;
+
+  padding:
+    clamp(45px, 8vw, 80px)
+    var(--page-pad)
+    clamp(40px, 7vw, 70px);
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      var(--accent-soft),
+      transparent 48%
+    );
+}
+
+
+.gts-detail-hero-inner {
+  width: min(900px, 100%);
+  margin-inline: auto;
+}
+
+
+.gts-back-link {
+  display: inline-flex;
+
+  margin-bottom: 25px;
+
+  color: var(--muted);
+
+  font-size: .82rem;
+  font-weight: 800;
+}
+
+
+.gts-back-link:hover {
+  color: var(--accent);
+}
+
+
+.gts-detail-badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-bottom: 15px;
+}
+
+
+.gts-detail-hero h1 {
+  margin-bottom: 15px;
+
+  font-size: clamp(
+    2.2rem,
+    7vw,
+    4.5rem
+  );
+
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+
+
+.gts-detail-hero > div > p {
+  max-width: 720px;
+
+  margin-inline: auto;
+
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   DETAIL LAYOUT
+========================================================= */
+
+.gts-detail-layout {
+  width: 100%;
+}
+
+
+.gts-detail-main {
+  display: grid;
+
+  grid-template-columns:
+    minmax(260px, .72fr)
+    minmax(0, 1.28fr);
+
+  gap: clamp(25px, 5vw, 55px);
+
+  padding:
+    clamp(22px, 4vw, 40px);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow);
+}
+
+
+.gts-detail-image-card {
+  position: sticky;
+  top: 100px;
+
+  align-self: start;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  background: var(--surface-2);
+
+  box-shadow: var(--shadow-sm);
+}
+
+
+.gts-detail-image {
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+}
+
+
+.gts-detail-content {
+  min-width: 0;
+}
+
+
+.gts-detail-section {
+  padding: 4px 0 28px;
+  margin-bottom: 28px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+
+.gts-detail-section:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+
+.gts-detail-section h2 {
+  margin-bottom: 11px;
+}
+
+
+.gts-detail-section p {
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   DETAIL EXAMPLE NOTICE
+========================================================= */
+
+.gts-detail-example {
+  margin-bottom: 28px;
+  padding: 18px;
+
+  border: 1px solid rgba(255, 193, 7, .32);
+  border-radius: 16px;
+
+  background: rgba(255, 193, 7, .07);
+}
+
+
+.gts-detail-example strong {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #ffc107;
+
+  font-size: .78rem;
+  letter-spacing: .12em;
+}
+
+
+.gts-detail-example p {
+  margin-bottom: 5px;
+}
+
+
+.gts-detail-example p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   READ MORE
+========================================================= */
+
+.gts-about-text {
+  position: relative;
+
+  max-height: 150px;
+
+  overflow: hidden;
+
+  transition:
+    max-height .4s ease;
+}
+
+
+.gts-about-text::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  height: 55px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      var(--surface)
+    );
+
+  pointer-events: none;
+}
+
+
+.gts-about-text.expanded {
+  max-height: 2000px;
+}
+
+
+.gts-about-text.expanded::after {
+  display: none;
+}
+
+
+.gts-read-more {
+  margin-top: 12px;
+
+  padding: 8px 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: var(--accent);
+
+  font-weight: 850;
+}
+
+
+/* =========================================================
+   DETAIL STATS
+========================================================= */
+
+.gts-stat-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(180px, 1fr)
+    );
+
+  gap: 12px;
+}
+
+
+.gts-stat-card {
+  padding: 18px;
+
+  border: 1px solid var(--border);
+  border-radius: 15px;
+
+  background: var(--surface-2);
+}
+
+
+.gts-stat-card strong {
+  display: block;
+
+  margin-top: 6px;
+
+  color: var(--accent);
+
+  font-size: clamp(
+    1.3rem,
+    4vw,
+    2rem
+  );
+
+  line-height: 1.1;
+}
+
+
+.gts-stat-label {
+  color: var(--muted);
+
+  font-size: .78rem;
+}
+
+
+/* =========================================================
+   DETAIL BUTTONS
+========================================================= */
+
+.gts-detail-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+.gts-detail-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+
+  padding: 10px 16px;
+
+  border: 1px solid var(--accent);
+
+  border-radius: 11px;
+
+  background: var(--accent);
+
+  color: #111;
+
+  font-weight: 850;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    opacity .2s ease;
+}
+
+
+.gts-detail-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px var(--accent-soft);
+}
+
+
+.gts-back-button {
+  display: inline-flex;
+
+  margin-top: 22px;
+
+  padding: 10px 15px;
+
+  border: 1px solid var(--border);
+  border-radius: 11px;
+
+  background: var(--surface);
+
+  color: var(--text);
+
+  font-weight: 800;
+}
+
+
+.gts-back-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+
+.detail-disabled {
+  margin-top: 10px;
+}
+
+
+/* =========================================================
+   LOADING / NOT FOUND
+========================================================= */
+
+.gts-loading-card,
+.gts-not-found-card {
+  padding: 50px 25px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  background: var(--surface);
+
+  text-align: center;
+
+  color: var(--muted);
+}
+
+
+.gts-loading-dot {
+  display: inline-block;
+
+  width: 10px;
+  height: 10px;
+
+  margin-right: 8px;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+
+  animation:
+    gtsPulse 1.2s infinite ease-in-out;
+}
+
+
+.gts-not-found-icon {
+  width: 55px;
+  height: 55px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0 auto 15px;
+
+  border-radius: 50%;
+
+  background: var(--accent-soft);
+
+  color: var(--accent);
+
+  font-size: 1.5rem;
+  font-weight: 950;
+}
+
+
+.gts-not-found-card h2 {
+  color: var(--text);
+}
+
+
+.gts-not-found-card p {
+  margin-bottom: 20px;
+}
+
+
+@keyframes gtsPulse {
+
+  0%,
+  100% {
+    transform: scale(.75);
+    opacity: .45;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .gts-top-ad {
+    margin-top: 14px;
+  }
+
+
+  .gts-ad-slide img {
+    min-height: 125px;
+  }
+
+
+  .gts-hero {
+    min-height: 360px;
+  }
+
+
+  .gts-catalog-meta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+
+  .gts-info-panel {
+    grid-template-columns: 1fr;
+  }
+
+
+  .gts-info-badge {
+    width: 100%;
+  }
+
+
+  .gts-detail-main {
+    grid-template-columns: 1fr;
+
+    padding: 18px;
+  }
+
+
+  .gts-detail-image-card {
+    position: relative;
+    top: auto;
+  }
+
+
+  .gts-detail-image {
+    aspect-ratio: 16 / 10;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .gts-software-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .gts-category-filter {
+    margin-right: calc(
+      var(--page-pad) * -1
+    );
+
+    padding-right: var(--page-pad);
+  }
+
+
+  .gts-software-info {
+    padding: 18px;
+  }
+
+
+  .gts-detail-buttons {
+    flex-direction: column;
+  }
+
+
+  .gts-detail-button {
+    width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .gts-software-card,
+  .gts-software-image,
+  .gts-platform-button,
+  .gts-category-button,
+  .gts-detail-button {
+    transition: none;
+  }
+
+  .gts-loading-dot {
+    animation: none;
+  }
+
+}
