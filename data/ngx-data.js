@@ -1,211 +1,189 @@
 /* =========================================================
-   GTF — NGX MARKET DATA
-   God’stime Fund
+   GTH — NGX MARKET DATA
+   God’stime Fund (GTF)
+   =========================================================
+   Data date: 11 June 2026
+   Source: Nigerian Exchange (NGX) Daily Official List
+   Source type: Official NGX market publication
 
    IMPORTANT:
-   This file contains manually verified NGX information.
-   It is NOT a live market feed.
-
-   Update this file whenever a new verified NGX record
-   has been reviewed and added.
+   This is NOT a live market feed.
+   The figures below are a verified historical market snapshot
+   for 11 June 2026.
    ========================================================= */
 
 const NGX_DATA = {
 
   /* -------------------------------------------------------
-     DATA STATUS
-  ------------------------------------------------------- */
+     VERIFICATION
+     ------------------------------------------------------- */
 
   lastVerified: "11 June 2026",
 
-  source:
-    "Nigerian Exchange (NGX) Daily Official List",
+  source: "Nigerian Exchange (NGX) Daily Official List",
 
-  sourceType:
-    "Official NGX market publication",
+  sourceType: "Official NGX market publication",
+
+  dataStatus: "Verified",
 
   delayedDataNotice:
-    "NGX website prices may be delayed. Real-time market data is available through authorised NGX data services.",
+    "This page displays verified historical NGX market information from 11 June 2026. It is not a live market feed. NGX website market information may be delayed, while real-time data is available through authorized NGX data services.",
 
 
   /* -------------------------------------------------------
      MARKET SNAPSHOT
-  ------------------------------------------------------- */
+     ------------------------------------------------------- */
 
   snapshot: [
 
     {
-      title: "NGX All-Share Index",
-
+      label: "NGX All-Share Index",
       value: "244,738.74",
-
       description:
-        "The broad market index tracking the general movement of listed equities on Nigerian Exchange."
+        "Official NGX All-Share Index value recorded on 11 June 2026."
     },
 
-
     {
-      title: "Equity Market Capitalisation",
-
+      label: "Equity Market Capitalisation",
       value: "₦156.97T",
-
       description:
-        "Total market value of listed equities represented in the verified market record."
+        "Equities-only market capitalisation recorded on 11 June 2026."
     },
 
-
     {
-      title: "CBN Monetary Policy Rate",
-
+      label: "CBN Monetary Policy Rate",
       value: "26.50%",
-
       description:
-        "Monetary Policy Rate reported in the selected market record."
+        "Central Bank of Nigeria Monetary Policy Rate shown in the NGX Daily Official List."
     },
 
-
     {
-      title: "Data Status",
-
+      label: "Data Status",
       value: "Verified",
-
       description:
-        "This snapshot has been manually checked against an official NGX market publication."
+        "Data verified against the official NGX Daily Official List for 11 June 2026."
     }
 
   ],
 
 
   /* -------------------------------------------------------
-     INDICES
-  ------------------------------------------------------- */
+     NGX INDICES
+     -------------------------------------------------------
+     Values are the official closing/index values recorded
+     for Thursday, 11 June 2026.
+     ------------------------------------------------------- */
 
   indices: [
 
     {
+      symbol: "NGXASI",
       name: "NGX All-Share Index",
-
+      value: "244,738.74",
       description:
-        "Tracks the general market movement of listed equities on Nigerian Exchange, including Growth Board companies regardless of capitalization.",
-
-      value: "244,738.74"
+        "Broad benchmark index representing the Nigerian equity market."
     },
 
-
     {
-      name: "NGX 30",
-
+      symbol: "NGXMAINBOARD",
+      name: "NGX Main-Board Index",
+      value: "11,149.76",
       description:
-        "An NGX index representing a selected group of major listed companies.",
-
-      value: ""
+        "Index tracking securities listed on the NGX Main Board."
     },
 
-
     {
-      name: "NGX Main Board",
-
+      symbol: "NGX30",
+      name: "NGX 30 Index",
+      value: "8,877.76",
       description:
-        "Tracks companies listed on the Main Board segment of Nigerian Exchange.",
-
-      value: ""
+        "Index tracking selected large and liquid companies on NGX."
     },
 
-
     {
-      name: "NGX Premium",
-
+      symbol: "NGXCG",
+      name: "NGX CG Index",
+      value: "6,407.23",
       description:
-        "Tracks securities listed on the Premium Board segment of Nigerian Exchange.",
-
-      value: ""
+        "NGX Corporate Governance Index."
     },
 
-
     {
-      name: "NGX Banking",
-
+      symbol: "NGXPREMIUM",
+      name: "NGX Premium Index",
+      value: "27,495.70",
       description:
-        "Tracks selected banking-sector companies listed on Nigerian Exchange.",
-
-      value: ""
+        "Index associated with securities listed on the NGX Premium Board."
     },
 
-
     {
-      name: "NGX Insurance",
-
+      symbol: "NGXBNK",
+      name: "NGX Banking Index",
+      value: "2,299.26",
       description:
-        "Tracks selected insurance-sector companies listed on Nigerian Exchange.",
-
-      value: ""
+        "Sector index tracking banking-sector equities."
     },
 
-
     {
-      name: "NGX Consumer Goods",
-
+      symbol: "NGXPENSION",
+      name: "NGX Pension Index",
+      value: "11,937.96",
       description:
-        "Tracks selected companies within the consumer goods sector.",
-
-      value: ""
+        "Index associated with the NGX pension-sector market segment."
     },
 
-
     {
-      name: "NGX Oil & Gas",
-
+      symbol: "NGXINS",
+      name: "NGX Insurance Index",
+      value: "1,259.41",
       description:
-        "Tracks selected companies within the oil and gas sector.",
-
-      value: ""
+        "Sector index tracking insurance-sector equities."
     },
 
-
     {
-      name: "NGX Industrial Goods",
-
+      symbol: "NGXAFRBVI",
+      name: "NGX-AFR Bank Value Index",
+      value: "5,145.40",
       description:
-        "Tracks selected companies within the industrial goods sector.",
-
-      value: ""
+        "Afrinvest Bank Value Index tracking selected banking-sector value stocks."
     },
 
+    {
+      symbol: "NGXAFRHDYI",
+      name: "NGX AFR Dividend Yield Index",
+      value: "36,106.33",
+      description:
+        "Index tracking selected dividend-yielding equities."
+    },
 
     {
-      name: "NGX Pension",
-
+      symbol: "NGXMERIGRW",
+      name: "NGX MERI Growth Index",
+      value: "16,900.62",
       description:
-        "An NGX index designed for the pension investment segment.",
+        "Meristem Growth Index tracking selected growth-oriented equities."
+    },
 
-      value: ""
+    {
+      symbol: "NGXMERIVAL",
+      name: "NGX MERI Value Index",
+      value: "20,834.54",
+      description:
+        "Meristem Value Index tracking selected value-oriented equities."
     }
 
   ],
 
 
   /* -------------------------------------------------------
-     MARKET INFORMATION
-  ------------------------------------------------------- */
+     OFFICIAL NGX INFORMATION
+     ------------------------------------------------------- */
 
   marketInfo: {
 
-    exchange:
-      "Nigerian Exchange Limited (NGX)",
+    officialWebsite: "https://ngxgroup.com/",
 
-    country:
-      "Nigeria",
-
-    assetTypes: [
-      "Equities",
-      "Bonds",
-      "Exchange-Traded Products"
-    ],
-
-    officialWebsite:
-      "https://ngxgroup.com/",
-
-    priceList:
+    equitiesPriceList:
       "https://ngxgroup.com/exchange/data/equities-price-list/",
 
     dataLibrary:
@@ -214,7 +192,7 @@ const NGX_DATA = {
     indices:
       "https://ngxgroup.com/exchange/data/indices/",
 
-    findBroker:
+    findABroker:
       "https://ngxgroup.com/exchange/trade/becoming-an-investor/find-a-broker/"
 
   }
