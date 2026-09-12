@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="GT Softwares — Discover useful software and digital applications from the GTH software platform."
+  >
 
   <title>GTS | GT Softwares</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="gts-page">
 
 <script>
 const savedTheme = localStorage.getItem("gth_theme_v1");
@@ -27,10 +32,10 @@ if (
 
 <header class="site-header">
 
-  <div class="brand">
+  <a href="gts.html" class="brand">
     <strong>GTS</strong>
     <span>GT Softwares</span>
-  </div>
+  </a>
 
   <nav class="top-nav">
     <a href="index.html">GTH Home</a>
@@ -41,12 +46,20 @@ if (
 
 <main>
 
-  <!-- GTS TOP ADVERTISEMENT -->
+  <!-- =====================================================
+       TOP AD
+  ====================================================== -->
+
   <section class="gts-top-ad">
 
-    <div id="gtsAdSlider" class="gts-ad-slider">
+    <div class="gts-ad-slider">
 
-      <a href="#" class="gts-ad-slide">
+      <a
+        href="#"
+        class="gts-ad-slide"
+        onclick="return false;"
+        aria-label="GTS advertisement"
+      >
 
         <img
           src="images/gts-ad-1.jpg"
@@ -60,14 +73,21 @@ if (
   </section>
 
 
-  <!-- GTS INTRO -->
-  <section class="hero">
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
+  <section class="hero gts-hero">
 
     <div class="hero-content">
 
-      <p class="eyebrow">GTH SOFTWARE PLATFORM</p>
+      <p class="eyebrow">
+        GTH SOFTWARE PLATFORM
+      </p>
 
-      <h1>GT Softwares</h1>
+      <h1>
+        GT Softwares
+      </h1>
 
       <p>
         Discover useful software and digital applications
@@ -79,88 +99,152 @@ if (
   </section>
 
 
-  <!-- SEARCH -->
+  <!-- =====================================================
+       SOFTWARE DIRECTORY
+  ====================================================== -->
 
-  <section class="content-section">
+  <section class="content-section gts-directory">
 
     <div class="section-heading">
 
       <p class="eyebrow">
-        SOFTWARE
+        SOFTWARE DIRECTORY
       </p>
 
       <h2>
         Find Software
       </h2>
 
+      <p class="gts-section-description">
+        Search and explore software by name, category or purpose.
+      </p>
+
     </div>
 
 
-    <div class="gts-search">
+    <!-- SEARCH -->
 
-  <input
-    type="search"
-    id="softwareSearch"
-    placeholder="Search software..."
-    autocomplete="off"
-  >
+    <div class="gts-toolbar">
 
-</div>
+      <label
+        class="gts-search"
+        for="softwareSearch"
+      >
+
+        <span class="gts-search-icon">
+          ⌕
+        </span>
+
+        <input
+          type="search"
+          id="softwareSearch"
+          placeholder="Search software, category or description..."
+          autocomplete="off"
+          aria-label="Search software"
+        >
+
+      </label>
 
 
-<div class="gts-category-filter">
+      <!-- DYNAMIC CATEGORY FILTER -->
 
-  <button
-    type="button"
-    class="gts-category-button active"
-    data-category="all"
-  >
-    All
-  </button>
+      <div
+        id="gtsCategoryFilter"
+        class="gts-category-filter"
+        role="group"
+        aria-label="Software categories"
+      ></div>
 
-  <button
-    type="button"
-    class="gts-category-button"
-    data-category="WEB APP"
-  >
-    Web Apps
-  </button>
+    </div>
 
-  <button
-    type="button"
-    class="gts-category-button"
-    data-category="MOBILE APP"
-  >
-    Mobile Apps
-  </button>
 
-  <button
-    type="button"
-    class="gts-category-button"
-    data-category="DESKTOP SOFTWARE"
-  >
-    Desktop
-  </button>
+    <!-- RESULT INFORMATION -->
 
-</div>
+    <div class="gts-catalog-meta">
+
+      <span id="gtsResultCount">
+        Loading software...
+      </span>
+
+      <span class="gts-catalog-note">
+        GTS software directory
+      </span>
+
+    </div>
 
 
     <!-- SOFTWARE GRID -->
 
     <div
       id="softwareGrid"
-      class="gts-software-grid">
-    </div>
+      class="gts-software-grid"
+    ></div>
 
 
-    <p
+    <!-- EMPTY STATE -->
+
+    <div
       id="noSoftware"
-      style="display:none; text-align:center; opacity:.7;">
-      No software found.
-    </p>
+      class="gts-empty-state"
+      hidden
+    >
+
+      <div class="gts-empty-icon">
+        ⌕
+      </div>
+
+      <h3>
+        No software found
+      </h3>
+
+      <p>
+        Try another search term or choose a different category.
+      </p>
+
+    </div>
 
   </section>
 
+
+  <!-- =====================================================
+       GTS INFORMATION
+  ====================================================== -->
+
+  <section class="content-section">
+
+    <div class="gts-info-panel">
+
+      <div>
+
+        <p class="eyebrow">
+          ABOUT GTS
+        </p>
+
+        <h2>
+          A growing software directory
+        </h2>
+
+        <p>
+          GTS brings software and digital applications
+          together in one place so users can discover,
+          explore and access useful tools.
+        </p>
+
+      </div>
+
+      <div class="gts-info-badge">
+        <strong>
+          GTS
+        </strong>
+
+        <span>
+          GT Softwares
+        </span>
+      </div>
+
+    </div>
+
+  </section>
 
 </main>
 
@@ -179,9 +263,9 @@ if (
 
 <script>
 
-/* =========================
-   SOFTWARE
-========================= */
+/* =========================================================
+   GTS SOFTWARE DIRECTORY
+========================================================= */
 
 const softwareGrid =
   document.getElementById("softwareGrid");
@@ -192,26 +276,294 @@ const softwareSearch =
 const noSoftware =
   document.getElementById("noSoftware");
 
+const categoryFilter =
+  document.getElementById("gtsCategoryFilter");
 
-function createSoftwareCard(software) {
+const resultCount =
+  document.getElementById("gtsResultCount");
 
-  const card = document.createElement("article");
 
-  card.className = "gts-software-card";
+let selectedCategory = "all";
 
-  card.dataset.name =
-    software.name.toLowerCase();
 
-  card.dataset.category =
-  software.category;
+/* =========================================================
+   HELPERS
+========================================================= */
 
-  let platformButtons = "";
+function escapeHtml(value) {
 
-  if (software.platforms?.web) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 
-    platformButtons += `
+}
+
+
+function validExternalUrl(url) {
+
+  if (
+    typeof url !== "string" ||
+    !url.trim() ||
+    url.trim() === "#"
+  ) {
+    return "";
+  }
+
+  try {
+
+    const parsed = new URL(url);
+
+    if (
+      parsed.protocol !== "http:" &&
+      parsed.protocol !== "https:"
+    ) {
+      return "";
+    }
+
+    return parsed.href;
+
+  } catch {
+
+    return "";
+
+  }
+
+}
+
+
+/* =========================================================
+   CATEGORY LABELS
+========================================================= */
+
+const categoryLabels = {
+
+  "WEB APP": "Web Apps",
+
+  "MOBILE APP": "Mobile Apps",
+
+  "DESKTOP SOFTWARE": "Desktop Software",
+
+  "DESIGN": "Design",
+
+  "CLOUD STORAGE": "Cloud Storage",
+
+  "COMMUNICATION": "Communication",
+
+  "PRODUCTIVITY": "Productivity",
+
+  "VIDEO": "Video",
+
+  "DEVELOPER": "Developer",
+
+  "AI": "AI",
+
+  "E-COMMERCE": "E-Commerce",
+
+  "WEBSITE BUILDER": "Website Builder",
+
+  "BUSINESS": "Business",
+
+  "MARKETING": "Marketing",
+
+  "SECURITY": "Security",
+
+  "UTILITY": "Utility"
+
+};
+
+
+function getCategoryLabel(category) {
+
+  return (
+    categoryLabels[category] ||
+    category
+      .toLowerCase()
+      .replace(/\b\w/g, letter => letter.toUpperCase())
+  );
+
+}
+
+
+/* =========================================================
+   BUILD CATEGORY BUTTONS AUTOMATICALLY
+========================================================= */
+
+function buildCategoryFilters() {
+
+  const categories = [
+    ...new Set(
+      GTS_SOFTWARE
+        .map(software => software.category)
+        .filter(Boolean)
+    )
+  ];
+
+  const preferredOrder = [
+    "WEB APP",
+    "MOBILE APP",
+    "DESKTOP SOFTWARE"
+  ];
+
+  const orderedCategories = [
+
+    ...preferredOrder.filter(
+      category => categories.includes(category)
+    ),
+
+    ...categories
+      .filter(
+        category =>
+          !preferredOrder.includes(category)
+      )
+      .sort()
+
+  ];
+
+
+  categoryFilter.innerHTML = "";
+
+
+  const allButton =
+    document.createElement("button");
+
+  allButton.type = "button";
+  allButton.className =
+    "gts-category-button active";
+
+  allButton.dataset.category = "all";
+  allButton.setAttribute("aria-pressed", "true");
+
+  allButton.innerHTML = `
+    <span>All</span>
+    <small>${GTS_SOFTWARE.length}</small>
+  `;
+
+  categoryFilter.appendChild(allButton);
+
+
+  orderedCategories.forEach(category => {
+
+    const count =
+      GTS_SOFTWARE.filter(
+        software =>
+          software.category === category
+      ).length;
+
+
+    const button =
+      document.createElement("button");
+
+    button.type = "button";
+
+    button.className =
+      "gts-category-button";
+
+    button.dataset.category =
+      category;
+
+    button.setAttribute(
+      "aria-pressed",
+      "false"
+    );
+
+
+    button.innerHTML = `
+      <span>
+        ${escapeHtml(
+          getCategoryLabel(category)
+        )}
+      </span>
+
+      <small>
+        ${count}
+      </small>
+    `;
+
+
+    categoryFilter.appendChild(button);
+
+  });
+
+
+  categoryFilter
+    .querySelectorAll(".gts-category-button")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          selectedCategory =
+            button.dataset.category;
+
+
+          categoryFilter
+            .querySelectorAll(
+              ".gts-category-button"
+            )
+            .forEach(item => {
+
+              item.classList.remove("active");
+
+              item.setAttribute(
+                "aria-pressed",
+                "false"
+              );
+
+            });
+
+
+          button.classList.add("active");
+
+          button.setAttribute(
+            "aria-pressed",
+            "true"
+          );
+
+
+          filterSoftware();
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   PLATFORM BUTTONS
+========================================================= */
+
+function createPlatformButtons(software) {
+
+  const platforms =
+    software.platforms || {};
+
+  let html = "";
+
+
+  const web =
+    validExternalUrl(platforms.web);
+
+  const android =
+    validExternalUrl(platforms.android);
+
+  const ios =
+    validExternalUrl(platforms.ios);
+
+  const windows =
+    validExternalUrl(platforms.windows);
+
+
+  if (web) {
+
+    html += `
       <a
-        href="${software.platforms.web}"
+        href="${escapeHtml(web)}"
         class="gts-platform-button"
         target="_blank"
         rel="noopener noreferrer"
@@ -219,13 +571,15 @@ function createSoftwareCard(software) {
         Open Web App →
       </a>
     `;
+
   }
 
-  if (software.platforms?.android) {
 
-    platformButtons += `
+  if (android) {
+
+    html += `
       <a
-        href="${software.platforms.android}"
+        href="${escapeHtml(android)}"
         class="gts-platform-button"
         target="_blank"
         rel="noopener noreferrer"
@@ -233,13 +587,15 @@ function createSoftwareCard(software) {
         Get Android App →
       </a>
     `;
+
   }
 
-  if (software.platforms?.ios) {
 
-    platformButtons += `
+  if (ios) {
+
+    html += `
       <a
-        href="${software.platforms.ios}"
+        href="${escapeHtml(ios)}"
         class="gts-platform-button"
         target="_blank"
         rel="noopener noreferrer"
@@ -247,13 +603,15 @@ function createSoftwareCard(software) {
         Get iOS App →
       </a>
     `;
+
   }
 
-  if (software.platforms?.windows) {
 
-    platformButtons += `
+  if (windows) {
+
+    html += `
       <a
-        href="${software.platforms.windows}"
+        href="${escapeHtml(windows)}"
         class="gts-platform-button"
         target="_blank"
         rel="noopener noreferrer"
@@ -261,57 +619,161 @@ function createSoftwareCard(software) {
         Download for Windows →
       </a>
     `;
+
   }
+
+
+  if (!html) {
+
+    html = `
+      <span class="gts-platform-disabled">
+        Platform link not connected
+      </span>
+    `;
+
+  }
+
+
+  return html;
+
+}
+
+
+/* =========================================================
+   SOFTWARE CARD
+========================================================= */
+
+function createSoftwareCard(software) {
+
+  const card =
+    document.createElement("article");
+
+  card.className =
+    "gts-software-card";
+
+
+  card.dataset.category =
+    software.category || "";
+
+
+  const name =
+    escapeHtml(software.name);
+
+
+  const description =
+    escapeHtml(software.description);
+
+
+  const category =
+    escapeHtml(software.category);
+
+
+  const image =
+    escapeHtml(software.image);
+
+
+  const isExample =
+    software.isExample === true;
+
+
+  const exampleBadge =
+    isExample
+      ? `
+        <span class="gts-example-badge">
+          EXAMPLE
+        </span>
+      `
+      : "";
+
+
+  const detailUrl =
+    `gts-software.html?id=${encodeURIComponent(
+      software.id
+    )}`;
+
 
   card.innerHTML = `
 
-    <div class="gts-software-link">
+    <div class="gts-software-image-wrap">
 
       <img
-        src="${software.image}"
-        alt="${software.name}"
+        src="${image}"
+        alt="${name}"
         class="gts-software-image"
         loading="lazy"
       >
 
-      <div class="gts-software-info">
+      <div class="gts-card-top">
 
         <span class="platform-code">
-          ${software.category}
+          ${category}
         </span>
 
-        <h3>
-          ${software.name}
-        </h3>
-
-        <p>
-          ${software.description}
-        </p>
-
-        <div class="gts-platform-buttons">
-          ${platformButtons}
-        </div>
-
-        <a
-          href="${software.page}?id=${encodeURIComponent(software.id)}"
-          class="gts-open"
-        >
-          View Software Details →
-        </a>
+        ${exampleBadge}
 
       </div>
 
     </div>
 
-  `;
 
-  return card;
+    <div class="gts-software-info">
+
+      <h3>
+        ${name}
+      </h3>
+
+
+      <p>
+        ${description}
+      </p>
+
+
+      ${
+        isExample
+          ? `
+            <div class="gts-example-note">
+              Example software entry — replace
+              the placeholder platform link when
+              a real GTS software listing is ready.
+            </div>
+          `
+          : ""
       }
 
+
+      <div class="gts-platform-buttons">
+
+        ${createPlatformButtons(software)}
+
+      </div>
+
+
+      <a
+        href="${detailUrl}"
+        class="gts-open"
+      >
+        View Software Details
+        <span>→</span>
+      </a>
+
+    </div>
+
+  `;
+
+
+  return card;
+
+}
+
+
+/* =========================================================
+   DISPLAY SOFTWARE
+========================================================= */
 
 function displaySoftware() {
 
   softwareGrid.innerHTML = "";
+
 
   GTS_SOFTWARE.forEach(software => {
 
@@ -321,11 +783,15 @@ function displaySoftware() {
 
   });
 
+
+  filterSoftware();
+
 }
 
 
-let selectedCategory = "all";
-
+/* =========================================================
+   FILTER SOFTWARE
+========================================================= */
 
 function filterSoftware() {
 
@@ -334,52 +800,85 @@ function filterSoftware() {
       .trim()
       .toLowerCase();
 
+
   const cards =
     softwareGrid.querySelectorAll(
       ".gts-software-card"
     );
 
+
   let visible = 0;
 
-  cards.forEach(card => {
 
-    const name =
-      card.dataset.name || "";
+  cards.forEach((card, index) => {
 
-    const category =
-      card.dataset.category || "";
+    const software =
+      GTS_SOFTWARE[index];
+
+
+    if (!software) return;
+
+
+    const searchableText = [
+
+      software.name,
+
+      software.description,
+
+      software.category,
+
+      software.developer,
+
+      software.about
+
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+
 
     const matchesSearch =
       !query ||
-      name.includes(query);
+      searchableText.includes(query);
+
 
     const matchesCategory =
       selectedCategory === "all" ||
-      category === selectedCategory;
+      software.category === selectedCategory;
 
-    if (
+
+    const show =
       matchesSearch &&
-      matchesCategory
-    ) {
+      matchesCategory;
 
-      card.style.display = "";
 
+    card.hidden = !show;
+
+
+    if (show) {
       visible++;
-
-    } else {
-
-      card.style.display = "none";
-
     }
 
   });
 
-  noSoftware.style.display =
-    visible === 0
-      ? "block"
-      : "none";
+
+  noSoftware.hidden =
+    visible !== 0;
+
+
+  resultCount.textContent =
+    `${visible} software ${
+      visible === 1
+        ? "listing"
+        : "listings"
+    }`;
+
 }
 
+
+/* =========================================================
+   SEARCH
+========================================================= */
 
 softwareSearch.addEventListener(
   "input",
@@ -387,36 +886,11 @@ softwareSearch.addEventListener(
 );
 
 
-document
-  .querySelectorAll(".gts-category-button")
-  .forEach(button => {
+/* =========================================================
+   START
+========================================================= */
 
-    button.addEventListener(
-      "click",
-      () => {
-
-        selectedCategory =
-          button.dataset.category;
-
-        document
-          .querySelectorAll(
-            ".gts-category-button"
-          )
-          .forEach(item => {
-            item.classList.remove("active");
-          });
-
-        button.classList.add("active");
-
-        filterSoftware();
-
-      }
-    );
-
-  });
-
-
-/* Start */
+buildCategoryFilters();
 
 displaySoftware();
 
@@ -424,5 +898,4 @@ displaySoftware();
 
 
 </body>
-
 </html>
