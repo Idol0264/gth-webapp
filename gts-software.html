@@ -10,6 +10,11 @@
     content="width=device-width, initial-scale=1.0"
   >
 
+  <meta
+    name="description"
+    content="Software details from GT Softwares."
+  >
+
   <title>Software | GTS</title>
 
   <link
@@ -20,13 +25,14 @@
 </head>
 
 
-<body>
+<body class="gts-page">
 
 
 <script>
 
 const savedTheme =
   localStorage.getItem("gth_theme_v1");
+
 
 if (
   savedTheme === "gold" ||
@@ -44,7 +50,6 @@ if (
 </script>
 
 
-
 <header class="site-header">
 
   <a
@@ -52,7 +57,9 @@ if (
     class="brand"
   >
 
-    <strong>GTS</strong>
+    <strong>
+      GTS
+    </strong>
 
     <span>
       GT Softwares
@@ -76,19 +83,28 @@ if (
 </header>
 
 
-
 <main>
 
+  <!-- =====================================================
+       DETAIL HERO
+  ====================================================== -->
 
-  <!-- SOFTWARE HERO -->
+  <section class="gts-detail-hero">
 
-  <section class="hero">
+    <div class="gts-detail-hero-inner">
 
-    <div class="hero-content">
+      <a
+        href="gts.html"
+        class="gts-back-link"
+      >
+        ← Back to GT Softwares
+      </a>
 
-      <p class="eyebrow">
-        GTS SOFTWARE
-      </p>
+
+      <div
+        id="detailHeroBadge"
+        class="gts-detail-badges"
+      ></div>
 
 
       <h1 id="softwareName">
@@ -105,46 +121,30 @@ if (
   </section>
 
 
-
-  <!-- SOFTWARE DETAILS -->
+  <!-- =====================================================
+       DETAILS
+  ====================================================== -->
 
   <section class="content-section">
 
     <div
       id="softwareDetails"
-      class="platform-card"
+      class="gts-detail-layout"
     >
 
-      <p>
+      <div class="gts-loading-card">
+
+        <span class="gts-loading-dot"></span>
+
         Loading software details...
-      </p>
+
+      </div>
 
     </div>
 
   </section>
-
-
-
-  <!-- BACK -->
-
-  <section class="content-section">
-
-    <div class="hero-actions">
-
-      <a
-        href="gts.html"
-        class="secondary-btn"
-      >
-        ← Back to GTS
-      </a>
-
-    </div>
-
-  </section>
-
 
 </main>
-
 
 
 <footer class="site-footer">
@@ -156,12 +156,66 @@ if (
 </footer>
 
 
-
 <script src="data/gts-software.js"></script>
 
 
-
 <script>
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function escapeHtml(value) {
+
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+function validExternalUrl(url) {
+
+  if (
+    typeof url !== "string" ||
+    !url.trim() ||
+    url.trim() === "#"
+  ) {
+    return "";
+  }
+
+
+  try {
+
+    const parsed =
+      new URL(url);
+
+
+    if (
+      parsed.protocol !== "http:" &&
+      parsed.protocol !== "https:"
+    ) {
+      return "";
+    }
+
+
+    return parsed.href;
+
+  } catch {
+
+    return "";
+
+  }
+
+}
+
+
+/* =========================================================
+   GET SOFTWARE
+========================================================= */
 
 const params =
   new URLSearchParams(
@@ -198,10 +252,15 @@ const softwareDetails =
   );
 
 
+const detailHeroBadge =
+  document.getElementById(
+    "detailHeroBadge"
+  );
 
-/* ==========================================
-   SOFTWARE NOT FOUND
-========================================== */
+
+/* =========================================================
+   NOT FOUND
+========================================================= */
 
 if (!software) {
 
@@ -219,27 +278,40 @@ if (!software) {
 
   softwareDetails.innerHTML = `
 
-    <h3>
-      Software unavailable
-    </h3>
+    <div class="gts-not-found-card">
 
-    <p>
-      This software listing does not exist
-      or may have been removed from GTS.
-    </p>
+      <div class="gts-not-found-icon">
+        !
+      </div>
+
+      <h2>
+        Software unavailable
+      </h2>
+
+      <p>
+        This software listing does not exist
+        or may have been removed from GTS.
+      </p>
+
+      <a
+        href="gts.html"
+        class="gts-detail-button"
+      >
+        Return to GTS →
+      </a>
+
+    </div>
 
   `;
 
 }
 
 
-
-/* ==========================================
+/* =========================================================
    SOFTWARE FOUND
-========================================== */
+========================================================= */
 
 else {
-
 
   document.title =
     `${software.name} | GTS`;
@@ -253,21 +325,69 @@ else {
     software.description;
 
 
+  const category =
+    escapeHtml(
+      software.category || "SOFTWARE"
+    );
 
-  /* ========================================
+
+  const isExample =
+    software.isExample === true;
+
+
+  detailHeroBadge.innerHTML = `
+
+    <span class="platform-code">
+      ${category}
+    </span>
+
+    ${
+      isExample
+        ? `
+          <span class="gts-example-badge">
+            EXAMPLE
+          </span>
+        `
+        : ""
+    }
+
+  `;
+
+
+  /* =======================================================
      PLATFORM BUTTONS
-  ======================================== */
+  ====================================================== */
+
+  const platforms =
+    software.platforms || {};
+
 
   let platformButtons = "";
 
 
-  if (software.platforms?.web) {
+  const web =
+    validExternalUrl(platforms.web);
+
+
+  const android =
+    validExternalUrl(platforms.android);
+
+
+  const ios =
+    validExternalUrl(platforms.ios);
+
+
+  const windows =
+    validExternalUrl(platforms.windows);
+
+
+  if (web) {
 
     platformButtons += `
 
       <a
-        href="${software.platforms.web}"
-        class="gts-platform-button"
+        href="${escapeHtml(web)}"
+        class="gts-detail-button"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -279,13 +399,13 @@ else {
   }
 
 
-  if (software.platforms?.android) {
+  if (android) {
 
     platformButtons += `
 
       <a
-        href="${software.platforms.android}"
-        class="gts-platform-button"
+        href="${escapeHtml(android)}"
+        class="gts-detail-button"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -297,13 +417,13 @@ else {
   }
 
 
-  if (software.platforms?.ios) {
+  if (ios) {
 
     platformButtons += `
 
       <a
-        href="${software.platforms.ios}"
-        class="gts-platform-button"
+        href="${escapeHtml(ios)}"
+        class="gts-detail-button"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -315,13 +435,13 @@ else {
   }
 
 
-  if (software.platforms?.windows) {
+  if (windows) {
 
     platformButtons += `
 
       <a
-        href="${software.platforms.windows}"
-        class="gts-platform-button"
+        href="${escapeHtml(windows)}"
+        class="gts-detail-button"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -333,10 +453,9 @@ else {
   }
 
 
-
-  /* ========================================
-     ABOUT SECTION
-  ======================================== */
+  /* =======================================================
+     ABOUT
+  ====================================================== */
 
   const aboutText =
     software.about ||
@@ -354,10 +473,9 @@ else {
     "Developer information is currently unavailable.";
 
 
-
-  /* ========================================
+  /* =======================================================
      PLATFORM REACH
-  ======================================== */
+  ====================================================== */
 
   let platformReachHTML = "";
 
@@ -369,23 +487,19 @@ else {
 
     platformReachHTML = `
 
-      <div class="gts-info-block">
+      <div class="gts-stat-card">
 
-        <h3>
-          Platform Reach
-        </h3>
+        <span class="gts-stat-label">
+          ${escapeHtml(
+            software.platformReachLabel
+          )}
+        </span>
 
-        <strong class="gts-stat">
-
-          ${software.platformReach}
-
+        <strong>
+          ${escapeHtml(
+            software.platformReach
+          )}
         </strong>
-
-        <p>
-
-          ${software.platformReachLabel}
-
-        </p>
 
       </div>
 
@@ -394,114 +508,188 @@ else {
   }
 
 
+  /* =======================================================
+     EXAMPLE NOTICE
+  ====================================================== */
 
-  /* ========================================
-     DETAILS PAGE
-  ======================================== */
+  const exampleNotice =
+    isExample
+      ? `
+
+        <div class="gts-detail-example">
+
+          <strong>
+            EXAMPLE SOFTWARE
+          </strong>
+
+          <p>
+            This is a demonstration listing
+            used as an example of how software
+            can appear inside GTS.
+          </p>
+
+          <p>
+            Replace its placeholder platform
+            information when a real software
+            listing is ready.
+          </p>
+
+        </div>
+
+      `
+      : "";
+
+
+  /* =======================================================
+     MAIN DETAIL HTML
+  ====================================================== */
 
   softwareDetails.innerHTML = `
 
-    <img
-      src="${software.image}"
-      alt="${software.name}"
-      class="gts-software-image"
-      loading="lazy"
-    >
+    <div class="gts-detail-main">
 
 
-    <span class="platform-code">
+      <div class="gts-detail-image-card">
 
-      ${software.category}
-
-    </span>
-
-
-
-    <section class="gts-about">
-
-      <h2>
-        About ${software.name}
-      </h2>
-
-
-      <div
-        class="gts-about-text"
-        id="aboutText"
-      >
-
-        <p>
-          ${aboutText}
-        </p>
+        <img
+          src="${escapeHtml(software.image)}"
+          alt="${escapeHtml(software.name)}"
+          class="gts-detail-image"
+        >
 
       </div>
 
 
-      <button
-        type="button"
-        class="secondary-btn"
-        id="aboutToggle"
+      <div class="gts-detail-content">
+
+        ${exampleNotice}
+
+
+        <div class="gts-detail-section">
+
+          <span class="platform-code">
+            ${category}
+          </span>
+
+          <h2>
+            About ${escapeHtml(software.name)}
+          </h2>
+
+          <div
+            class="gts-about-text"
+            id="aboutText"
+          >
+
+            <p>
+              ${escapeHtml(aboutText)}
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="gts-read-more"
+            id="aboutToggle"
+          >
+            Read More →
+          </button>
+
+        </div>
+
+
+        <div class="gts-detail-section">
+
+          <p class="eyebrow">
+            DEVELOPER
+          </p>
+
+          <h2>
+            ${escapeHtml(developer)}
+          </h2>
+
+          <p>
+            ${escapeHtml(developerInfo)}
+          </p>
+
+        </div>
+
+
+        ${
+          platformReachHTML
+            ? `
+
+              <div class="gts-detail-section">
+
+                <p class="eyebrow">
+                  PLATFORM REACH
+                </p>
+
+                <div class="gts-stat-grid">
+
+                  ${platformReachHTML}
+
+                </div>
+
+              </div>
+
+            `
+            : ""
+        }
+
+
+        ${
+          platformButtons
+            ? `
+
+              <div class="gts-detail-section">
+
+                <p class="eyebrow">
+                  ACCESS
+                </p>
+
+                <h2>
+                  Available Platforms
+                </h2>
+
+                <div class="gts-detail-buttons">
+
+                  ${platformButtons}
+
+                </div>
+
+              </div>
+
+            `
+            : `
+              <div class="gts-platform-disabled detail-disabled">
+                No active platform link is currently connected.
+              </div>
+            `
+        }
+
+      </div>
+
+    </div>
+
+
+    <div class="gts-detail-bottom">
+
+      <a
+        href="gts.html"
+        class="gts-back-button"
       >
-        Read More →
-      </button>
+        ← Back to GT Softwares
+      </a>
 
-    </section>
-
-
-
-    <section class="gts-developer">
-
-      <h2>
-        Developer / Company
-      </h2>
-
-
-      <h3>
-        ${developer}
-      </h3>
-
-
-      <p>
-        ${developerInfo}
-      </p>
-
-    </section>
-
-
-
-    ${platformReachHTML}
-
-
-
-    ${
-      platformButtons
-        ? `
-
-          <section class="gts-platforms">
-
-            <h2>
-              Available Platforms
-            </h2>
-
-
-            <div class="gts-platform-buttons">
-
-              ${platformButtons}
-
-            </div>
-
-          </section>
-
-        `
-        : ""
-    }
+    </div>
 
   `;
 
 
-
-  /* ========================================
-     READ MORE / SHOW LESS
-  ======================================== */
+  /* =======================================================
+     READ MORE
+  ====================================================== */
 
   const aboutTextElement =
     document.getElementById(
@@ -546,5 +734,4 @@ else {
 
 
 </body>
-
 </html>
