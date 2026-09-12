@@ -1,1062 +1,1283 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTF — Investment Opportunities</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >  <title>GTF | Investment Opportunities</title>  <link rel="stylesheet" href="style.css">
+</head><body><script>
+const savedTheme = localStorage.getItem("gth_theme_v1");
 
-<body>
+if (
+  savedTheme === "gold" ||
+  savedTheme === "blue" ||
+  savedTheme === "green"
+) {
+  document.body.setAttribute("data-theme", savedTheme);
+}
+</script><!-- =====================================================
+     HEADER
+===================================================== --><header class="site-header">  <div class="brand">
+    <strong>GTF</strong>
+    <span>God’stime Fund</span>
+  </div>  <nav class="top-nav"><a href="index.html">
+  GTH Home
+</a>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="gtf.html" class="brand">GTF</a>
+<a href="gtf.html">
+  GTF Home
+</a>
 
-      <nav class="main-nav">
-        <a href="index.html">GTH Home</a>
-        <a href="gtf.html">GTF Home</a>
-      </nav>
-    </div>
-  </header>
+  </nav></header><main><!-- =====================================================
+     HERO
+===================================================== --><section class="hero">  <div class="hero-content"><p class="eyebrow">
+  GTF • INVESTMENT OPPORTUNITIES
+</p>
 
+<h1>
+  Investment Opportunities
+</h1>
 
-  <main>
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <span class="eyebrow">GTF • INVESTMENT OPPORTUNITIES</span>
-
-        <h1>Investment Opportunities</h1>
-
-        <p>
-          Explore selected external investment platforms and opportunities
-          by category. Review each platform's information, risk considerations
-          and current GTF review status before making an investment decision.
-        </p>
-      </div>
-    </section>
-
-
-    <!-- EVALUATION -->
-    <section class="section">
-      <div class="container">
-
-        <div class="section-heading">
-          <span class="eyebrow">GTF RESEARCH</span>
-          <h2>How GTF Evaluates Opportunities</h2>
-          <p>
-            GTF considers relevant information about an investment platform
-            before recording its review status.
-          </p>
-        </div>
+<p>
+  Explore selected investment and mutual fund platforms
+  from different investment companies. Discover available
+  platforms, review their information and visit their
+  official websites to learn more.
+</p>
 
 
-        <div class="card-grid">
+<div class="hero-actions">
 
-          <article class="card">
-            <h3>Company & Platform</h3>
-            <p>
-              Review of the provider, platform structure, services and
-              available information.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Investment Objective</h3>
-            <p>
-              Understanding what each investment product is designed to achieve.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Risk & Liquidity</h3>
-            <p>
-              Consideration of potential risk, volatility, accessibility
-              and withdrawal conditions.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Fees & Conditions</h3>
-            <p>
-              Review of applicable fees, charges, minimum investments and
-              other conditions.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Available Information</h3>
-            <p>
-              Consideration of available fund documents, disclosures and
-              other relevant information.
-            </p>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- PLATFORM CATEGORIES -->
-    <section class="section">
-      <div class="container">
-
-        <div class="section-heading">
-          <span class="eyebrow">EXPLORE</span>
-          <h2>Investment Platforms by Category</h2>
-          <p>
-            Select a category to explore available investment platforms.
-          </p>
-        </div>
-
-        <!-- Generated automatically from data -->
-        <div id="investmentCategories"></div>
-
-      </div>
-    </section>
-
-
-    <!-- NOTE -->
-    <section class="section">
-      <div class="container">
-
-        <div class="investment-note">
-          <strong>Research note:</strong>
-          GTF lists these as external investment platforms for research and
-          discovery. Availability, fees, fund terms, risk levels and
-          performance can change. Always review the provider's current
-          information and relevant regulatory documents before investing.
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-
-  <!-- =====================================================
-       PLATFORM DIRECTORY POPUP
-       ===================================================== -->
-
-  <div
-    class="platform-directory-modal"
-    id="platformDirectoryModal"
-    aria-hidden="true"
+  <a
+    class="secondary-btn"
+    href="gtf.html"
   >
+    Back to GTF
+  </a>
 
-    <div
-      class="platform-directory-backdrop"
-      data-close-directory
-    ></div>
+</div>
 
-    <div class="platform-directory-panel">
+  </div></section><!-- =====================================================
+     GTF REVIEW FRAMEWORK
+===================================================== --><section class="content-section">  <div class="section-heading"><p class="eyebrow">
+  GTF REVIEW FRAMEWORK
+</p>
 
-      <div class="platform-directory-header">
+<h2>
+  How GTF Evaluates Opportunities
+</h2>
 
-        <div>
-          <span class="category-label" id="directoryCategoryLabel">
-            CATEGORY
-          </span>
+<p>
+  GTF evaluates investment platforms using a structured
+  research process. The review considers the investment
+  company, investment objective, available information,
+  risk, liquidity, fees, conditions and other relevant
+  factors.
+</p>
 
-          <h2 id="directoryCategoryTitle">
-            Investment Platforms
-          </h2>
+  </div>  <div class="platform-grid"><article class="platform-card">
 
-          <p id="directoryCategoryDescription">
-            Explore platforms in this category.
-          </p>
-        </div>
+  <span class="platform-code">
+    01
+  </span>
 
-        <button
-          type="button"
-          class="platform-modal-close"
-          id="closeDirectoryButton"
-          aria-label="Close"
-        >
-          ×
-        </button>
+  <h3>
+    Company &amp; Platform
+  </h3>
 
-      </div>
+  <p>
+    We examine the investment company, its platform,
+    available services and the information provided
+    about its investment products.
+  </p>
 
-
-      <!-- SEARCH -->
-      <div class="platform-search-wrap">
-
-        <label for="platformSearch">
-          Search platforms
-        </label>
-
-        <input
-          type="search"
-          id="platformSearch"
-          placeholder="Search platform..."
-          autocomplete="off"
-        >
-
-      </div>
+</article>
 
 
-      <!-- FULL PLATFORM LIST -->
-      <div
-        class="directory-platform-list"
-        id="directoryPlatformList"
-      ></div>
+
+<article class="platform-card">
+
+  <span class="platform-code">
+    02
+  </span>
+
+  <h3>
+    Investment Objective
+  </h3>
+
+  <p>
+    We consider what the investment is designed to
+    achieve, the type of assets involved and the
+    strategy used.
+  </p>
+
+</article>
 
 
-      <div
-        class="directory-empty"
-        id="directoryEmpty"
-        hidden
-      >
-        No platforms found.
-      </div>
 
-    </div>
+<article class="platform-card">
+
+  <span class="platform-code">
+    03
+  </span>
+
+  <h3>
+    Risk &amp; Liquidity
+  </h3>
+
+  <p>
+    We consider potential risks, volatility, liquidity
+    conditions and other factors that may affect an
+    investor.
+  </p>
+
+</article>
+
+
+
+<article class="platform-card">
+
+  <span class="platform-code">
+    04
+  </span>
+
+  <h3>
+    Fees &amp; Conditions
+  </h3>
+
+  <p>
+    Relevant fees, charges, minimum investment
+    requirements, withdrawal conditions and other
+    terms are considered.
+  </p>
+
+</article>
+
+
+
+<article class="platform-card">
+
+  <span class="platform-code">
+    05
+  </span>
+
+  <h3>
+    Available Information
+  </h3>
+
+  <p>
+    We review available documentation, disclosures,
+    regulatory information and other relevant material.
+  </p>
+
+</article>
+
+  </div></section><!-- =====================================================
+     INVESTMENT PLATFORM CATEGORIES
+===================================================== --><section class="content-section">  <div class="section-heading"><p class="eyebrow">
+  INVESTMENT PLATFORMS
+</p>
+
+<h2>
+  Explore Platforms by Category
+</h2>
+
+<p>
+  Platforms are organised into investment categories.
+  Select a platform to view its information or use
+  See More to explore the complete category.
+</p>
+
+  </div>  <div id="investmentCategories">
+  </div></section><!-- =====================================================
+     GTF RESEARCH
+===================================================== --><section class="content-section">  <div class="info-box"><h2>
+  GTF Investment Research
+</h2>
+
+<p>
+  This section is designed to grow as GTF researches
+  additional investment companies, mutual funds and
+  investment platforms.
+</p>
+
+<p>
+  Each platform has its own data record so that its
+  company information, status, investment objective,
+  risk considerations, liquidity, fees and other
+  information can be updated independently.
+</p>
+
+  </div></section></main><!-- =====================================================
+     PLATFORM DIRECTORY MODAL
+===================================================== --><div
+  id="platformModal"
+  class="investment-modal"
+  aria-hidden="true"
+>  <div class="investment-modal-panel"><div class="investment-modal-header">
+
+  <div>
+
+    <p
+      id="modalCategoryLabel"
+      class="eyebrow"
+    >
+      PLATFORM CATEGORY
+    </p>
+
+    <h2 id="modalCategoryTitle">
+      Platforms
+    </h2>
 
   </div>
 
 
-  <!-- =====================================================
-       PLATFORM DETAILS POPUP
-       ===================================================== -->
+  <button
+    type="button"
+    class="modal-close"
+    onclick="closePlatformModal()"
+    aria-label="Close"
+  >
+    ×
+  </button>
 
-  <div
-    class="platform-details-modal"
-    id="platformDetailsModal"
-    aria-hidden="true"
+</div>
+
+
+
+<div class="platform-search">
+
+  <input
+    type="search"
+    id="platformSearch"
+    placeholder="Search platforms..."
+    autocomplete="off"
   >
 
-    <div
-      class="platform-details-backdrop"
-      data-close-details
-    ></div>
-
-    <div class="platform-details-panel">
-
-      <button
-        type="button"
-        class="platform-modal-close"
-        id="closeDetailsButton"
-        aria-label="Close"
-      >
-        ×
-      </button>
+</div>
 
 
-      <div class="platform-details-top">
 
-        <div
-          class="platform-details-logo"
-          id="detailsLogo"
-        >
-          --
-        </div>
-
-        <div>
-          <span
-            class="category-label"
-            id="detailsCategory"
-          >
-            PLATFORM
-          </span>
-
-          <h2 id="detailsName">
-            Platform
-          </h2>
-
-          <span
-            class="platform-status"
-            id="detailsStatus"
-          >
-            Under Review
-          </span>
-        </div>
-
-      </div>
+<div
+  id="modalPlatformGrid"
+  class="modal-platform-grid"
+>
+</div>
 
 
-      <div class="platform-details-content">
 
-        <section>
-          <h3>Description</h3>
-          <p id="detailsDescription"></p>
-        </section>
+<p
+  id="platformSearchEmpty"
+  class="modal-empty"
+  hidden
+>
+  No platform matches your search.
+</p>
 
+  </div></div><!-- =====================================================
+     PLATFORM DETAILS MODAL
+===================================================== --><div
+  id="detailsModal"
+  class="investment-modal"
+  aria-hidden="true"
+>  <div class="investment-modal-panel details-panel"><div class="investment-modal-header">
 
-        <section>
-          <h3>Investment Objective</h3>
-          <p id="detailsObjective"></p>
-        </section>
+  <div>
 
+    <p class="eyebrow">
+      PLATFORM DETAILS
+    </p>
 
-        <section>
-          <h3>Risk & Considerations</h3>
-          <p id="detailsRisk"></p>
-
-          <ul id="detailsConsiderations"></ul>
-        </section>
-
-
-        <div class="details-facts">
-
-          <div>
-            <span>Risk Level</span>
-            <strong id="detailsRiskLevel"></strong>
-          </div>
-
-          <div>
-            <span>Liquidity</span>
-            <strong id="detailsLiquidity"></strong>
-          </div>
-
-          <div>
-            <span>Fees</span>
-            <strong id="detailsFees"></strong>
-          </div>
-
-        </div>
-
-
-        <section>
-          <h3>GTF Review</h3>
-          <p id="detailsReview"></p>
-        </section>
-
-
-        <div class="platform-details-actions">
-
-          <a
-            href="#"
-            id="detailsOfficialLink"
-            class="btn btn-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Visit Official Website
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
+    <h2 id="detailsName">
+      Platform
+    </h2>
 
   </div>
 
 
-  <!-- =====================================================
-       DATA
-       Every platform has its own independent data record.
-       ===================================================== -->
+  <button
+    type="button"
+    class="modal-close"
+    onclick="closeDetailsModal()"
+    aria-label="Close"
+  >
+    ×
+  </button>
 
-  <script src="gtf-investment-data.js"></script>
+</div>
 
 
-  <!-- =====================================================
-       PAGE JAVASCRIPT
-       ===================================================== -->
 
-  <script>
+<div
+  id="detailsContent"
+  class="platform-details"
+>
+</div>
 
-    const categories = [
-      {
-        id: "mutual-funds",
-        name: "Mutual Funds",
-        description:
-          "Platforms offering access to mutual fund and professionally managed investment products."
-      },
+  </div></div><!-- =====================================================
+     GTF INVESTMENT DATA
+===================================================== --><script src="data/gtf-investments.js"></script><!-- =====================================================
+     PAGE JAVASCRIPT
+===================================================== --><script>
 
-      {
-        id: "money-market",
-        name: "Money Market",
-        description:
-          "Platforms offering money-market and short-term investment opportunities."
-      },
 
-      {
-        id: "fixed-income",
-        name: "Fixed Income",
-        description:
-          "Platforms offering fixed-income and income-oriented investment products."
-      },
+/* =====================================================
+   CATEGORY CONFIGURATION
+===================================================== */
 
-      {
-        id: "equity-growth",
-        name: "Equity & Growth",
-        description:
-          "Platforms offering equity-focused and growth-oriented investment opportunities."
+const INVESTMENT_CATEGORIES = [
+
+  {
+    id: "mutual-funds",
+    name: "Mutual Funds",
+    description:
+      "Professionally managed pooled investment funds with different objectives, strategies and risk levels."
+  },
+
+  {
+    id: "money-market",
+    name: "Money Market",
+    description:
+      "Investment products generally focused on short-term money market instruments and income-oriented strategies."
+  },
+
+  {
+    id: "fixed-income",
+    name: "Fixed Income",
+    description:
+      "Investment opportunities involving fixed-income securities and related professionally managed products."
+  },
+
+  {
+    id: "equity-growth",
+    name: "Equity & Growth",
+    description:
+      "Growth-oriented investment opportunities involving equity exposure and longer-term investment strategies."
+  }
+
+];
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const categoriesContainer =
+  document.getElementById(
+    "investmentCategories"
+  );
+
+
+const platformModal =
+  document.getElementById(
+    "platformModal"
+  );
+
+
+const detailsModal =
+  document.getElementById(
+    "detailsModal"
+  );
+
+
+const modalCategoryTitle =
+  document.getElementById(
+    "modalCategoryTitle"
+  );
+
+
+const modalCategoryLabel =
+  document.getElementById(
+    "modalCategoryLabel"
+  );
+
+
+const modalPlatformGrid =
+  document.getElementById(
+    "modalPlatformGrid"
+  );
+
+
+const platformSearch =
+  document.getElementById(
+    "platformSearch"
+  );
+
+
+const platformSearchEmpty =
+  document.getElementById(
+    "platformSearchEmpty"
+  );
+
+
+const detailsName =
+  document.getElementById(
+    "detailsName"
+  );
+
+
+const detailsContent =
+  document.getElementById(
+    "detailsContent"
+  );
+
+
+
+let activeCategory = null;
+
+
+
+/* =====================================================
+   SAFE TEXT
+===================================================== */
+
+function escapeHTML(value) {
+
+  if (value === null || value === undefined) {
+    return "";
+  }
+
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+
+
+/* =====================================================
+   STATUS CLASS
+===================================================== */
+
+function getStatusClass(status) {
+
+  const value =
+    String(status || "")
+      .toLowerCase()
+      .replace(/\s+/g, "-");
+
+  if (value === "approved") {
+    return "approved";
+  }
+
+  if (value === "completed") {
+    return "completed";
+  }
+
+  return "under-review";
+}
+
+
+
+/* =====================================================
+   PLATFORM ICON
+===================================================== */
+
+function getPlatformIcon(platform) {
+
+  const initials =
+    platform.shortName ||
+    platform.name
+      .split(" ")
+      .map(word => word.charAt(0))
+      .join("")
+      .substring(0, 3);
+
+  return escapeHTML(
+    initials.toUpperCase()
+  );
+
+}
+
+
+
+/* =====================================================
+   GET CATEGORY PLATFORMS
+===================================================== */
+
+function getCategoryPlatforms(categoryId) {
+
+  if (
+    !Array.isArray(window.GTF_INVESTMENTS)
+  ) {
+    return [];
+  }
+
+  return window.GTF_INVESTMENTS.filter(
+    platform =>
+      platform.category === categoryId
+  );
+
+}
+
+
+
+/* =====================================================
+   RENDER CATEGORY SECTIONS
+===================================================== */
+
+function renderCategories() {
+
+  categoriesContainer.innerHTML = "";
+
+
+  INVESTMENT_CATEGORIES.forEach(
+    category => {
+
+      const platforms =
+        getCategoryPlatforms(
+          category.id
+        );
+
+
+      if (platforms.length === 0) {
+        return;
       }
-    ];
 
 
-    const categoryContainer =
-      document.getElementById("investmentCategories");
+      const visiblePlatforms =
+        platforms.slice(0, 4);
 
 
-    const directoryModal =
-      document.getElementById("platformDirectoryModal");
-
-    const directoryList =
-      document.getElementById("directoryPlatformList");
-
-    const directoryEmpty =
-      document.getElementById("directoryEmpty");
-
-    const platformSearch =
-      document.getElementById("platformSearch");
+      const card =
+        document.createElement("article");
 
 
-    const detailsModal =
-      document.getElementById("platformDetailsModal");
+      card.className =
+        "investment-category-card";
 
 
-    let activeCategory = null;
+      card.innerHTML = `
+
+        <div class="category-heading">
+
+          <div>
+
+            <span class="category-label">
+              PLATFORM CATEGORY
+            </span>
+
+            <h3>
+              ${escapeHTML(category.name)}
+            </h3>
+
+            <p>
+              ${escapeHTML(category.description)}
+            </p>
+
+          </div>
 
 
-    /*
-     * -------------------------------------------------------
-     * GET PLATFORMS FOR CATEGORY
-     * -------------------------------------------------------
-     */
-
-    function getPlatformsForCategory(categoryId) {
-
-      return investmentPlatforms.filter(platform =>
-        platform.categories.includes(categoryId)
-      );
-
-    }
-
-
-    /*
-     * -------------------------------------------------------
-     * GET CATEGORY
-     * -------------------------------------------------------
-     */
-
-    function getCategory(categoryId) {
-
-      return categories.find(category =>
-        category.id === categoryId
-      );
-
-    }
-
-
-    /*
-     * -------------------------------------------------------
-     * CREATE PLATFORM ITEM
-     * -------------------------------------------------------
-     */
-
-    function createPlatformItem(platform) {
-
-      const item = document.createElement("div");
-
-      item.className = "category-platform-item";
-
-      item.innerHTML = `
-
-        <a
-          class="platform-icon-link"
-          href="${platform.officialUrl}"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visit ${platform.name} official website"
-        >
-
-          <span class="platform-logo">
-            ${platform.shortName}
+          <span class="category-count">
+            ${platforms.length} platforms
           </span>
 
-        </a>
+        </div>
 
 
-        <button
-          type="button"
-          class="platform-info-button"
-          data-platform-id="${platform.id}"
-        >
-          See Details
-        </button>
+        <div class="category-platform-grid">
+
+          ${visiblePlatforms
+            .map(
+              platform =>
+                createPlatformTile(
+                  platform
+                )
+            )
+            .join("")}
+
+        </div>
+
+
+        <div class="category-actions">
+
+          <button
+            type="button"
+            class="see-more-btn"
+            onclick="openPlatformModal('${category.id}')"
+          >
+            See More
+          </button>
+
+        </div>
 
       `;
 
 
-      const detailsButton =
-        item.querySelector(".platform-info-button");
-
-
-      detailsButton.addEventListener("click", () => {
-
-        openPlatformDetails(platform.id);
-
-      });
-
-
-      return item;
+      categoriesContainer.appendChild(card);
 
     }
+  );
 
+}
 
-    /*
-     * -------------------------------------------------------
-     * RENDER CATEGORY CARDS
-     * -------------------------------------------------------
-     */
 
-    function renderCategories() {
 
-      categoryContainer.innerHTML = "";
+/* =====================================================
+   CREATE PLATFORM TILE
+===================================================== */
 
+function createPlatformTile(
+  platform
+) {
 
-      categories.forEach(category => {
+  return `
 
-        const platforms =
-          getPlatformsForCategory(category.id);
+    <div
+      class="platform-tile"
+      data-platform-id="${escapeHTML(platform.id)}"
+    >
 
+      <button
+        type="button"
+        class="platform-icon-button"
+        onclick="openPlatform('${escapeHTML(platform.id)}')"
+        title="Open ${escapeHTML(platform.name)}"
+        aria-label="Open ${escapeHTML(platform.name)}"
+      >
 
-        const card =
-          document.createElement("article");
+        <span class="platform-icon">
+          ${getPlatformIcon(platform)}
+        </span>
 
-        card.className =
-          "investment-category-card";
+      </button>
 
 
-        const visiblePlatforms =
-          platforms.slice(0, 4);
+      <div class="platform-tile-name">
+        ${escapeHTML(platform.shortName || platform.name)}
+      </div>
 
 
-        card.innerHTML = `
+      <button
+        type="button"
+        class="platform-info-button"
+        onclick="openDetails('${escapeHTML(platform.id)}')"
+      >
+        See Details
+      </button>
 
-          <div class="category-heading">
+    </div>
 
-            <div>
+  `;
 
-              <span class="category-label">
-                ${category.name}
-              </span>
+}
 
-              <h3>
-                ${category.name}
-              </h3>
 
-              <p>
-                ${category.description}
-              </p>
 
-            </div>
+/* =====================================================
+   OPEN PLATFORM DIRECTLY
+===================================================== */
 
-            <span class="category-count">
-              ${platforms.length} platform${platforms.length === 1 ? "" : "s"}
-            </span>
+function openPlatform(
+  platformId
+) {
 
-          </div>
+  const platform =
+    findPlatform(platformId);
 
 
-          <div
-            class="category-platform-grid"
-            data-category-grid="${category.id}"
-          ></div>
+  if (!platform) {
+    return;
+  }
 
 
-          <div class="category-see-more-wrap">
+  if (
+    platform.website &&
+    platform.website !== "#"
+  ) {
 
-            <button
-              type="button"
-              class="category-see-more"
-              data-category-id="${category.id}"
-            >
-              See More
-            </button>
+    window.open(
+      platform.website,
+      "_blank",
+      "noopener,noreferrer"
+    );
 
-          </div>
+  } else {
 
-        `;
+    openDetails(platformId);
 
+  }
 
-        const grid =
-          card.querySelector(
-            `[data-category-grid="${category.id}"]`
-          );
+}
 
 
-        visiblePlatforms.forEach(platform => {
 
-          grid.appendChild(
-            createPlatformItem(platform)
-          );
+/* =====================================================
+   FIND PLATFORM
+===================================================== */
 
-        });
+function findPlatform(
+  platformId
+) {
 
+  if (
+    !Array.isArray(window.GTF_INVESTMENTS)
+  ) {
+    return null;
+  }
 
-        const seeMoreButton =
-          card.querySelector(".category-see-more");
 
+  return (
+    window.GTF_INVESTMENTS.find(
+      platform =>
+        platform.id === platformId
+    ) || null
+  );
 
-        seeMoreButton.addEventListener("click", () => {
+}
 
-          openCategoryDirectory(category.id);
 
-        });
 
+/* =====================================================
+   OPEN CATEGORY MODAL
+===================================================== */
 
-        categoryContainer.appendChild(card);
+function openPlatformModal(
+  categoryId
+) {
 
-      });
+  const category =
+    INVESTMENT_CATEGORIES.find(
+      item =>
+        item.id === categoryId
+    );
 
-    }
 
+  if (!category) {
+    return;
+  }
 
-    /*
-     * -------------------------------------------------------
-     * OPEN DIRECTORY
-     * -------------------------------------------------------
-     */
 
-    function openCategoryDirectory(categoryId) {
+  activeCategory =
+    categoryId;
 
-      activeCategory = categoryId;
 
+  modalCategoryTitle.textContent =
+    category.name;
 
-      const category =
-        getCategory(categoryId);
 
+  modalCategoryLabel.textContent =
+    "PLATFORM CATEGORY";
 
-      document.getElementById(
-        "directoryCategoryLabel"
-      ).textContent = category.name;
 
+  platformSearch.value = "";
 
-      document.getElementById(
-        "directoryCategoryTitle"
-      ).textContent = category.name;
 
+  renderModalPlatforms();
 
-      document.getElementById(
-        "directoryCategoryDescription"
-      ).textContent = category.description;
 
+  platformModal.classList.add(
+    "open"
+  );
 
-      platformSearch.value = "";
 
+  platformModal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
 
-      renderDirectoryPlatforms("");
 
+  document.body.classList.add(
+    "modal-open"
+  );
 
-      directoryModal.classList.add("open");
 
-      directoryModal.setAttribute(
-        "aria-hidden",
-        "false"
-      );
+  setTimeout(
+    () => platformSearch.focus(),
+    100
+  );
 
+}
 
-      document.body.classList.add("modal-open");
 
 
-      setTimeout(() => {
+/* =====================================================
+   RENDER MODAL PLATFORMS
+===================================================== */
 
-        platformSearch.focus();
+function renderModalPlatforms() {
 
-      }, 100);
+  if (!activeCategory) {
+    return;
+  }
 
-    }
 
+  const query =
+    platformSearch.value
+      .trim()
+      .toLowerCase();
 
-    /*
-     * -------------------------------------------------------
-     * CLOSE DIRECTORY
-     * -------------------------------------------------------
-     */
 
-    function closeDirectory() {
+  const platforms =
+    getCategoryPlatforms(
+      activeCategory
+    );
 
-      directoryModal.classList.remove("open");
 
-      directoryModal.setAttribute(
-        "aria-hidden",
-        "true"
-      );
+  const filtered =
+    platforms.filter(
+      platform => {
 
+        const text = (
 
-      document.body.classList.remove("modal-open");
+          platform.name +
+          " " +
+          (platform.shortName || "") +
+          " " +
+          (platform.categoryName || "") +
+          " " +
+          (platform.description || "")
 
-    }
+        ).toLowerCase();
 
 
-    /*
-     * -------------------------------------------------------
-     * RENDER DIRECTORY SEARCH RESULTS
-     * -------------------------------------------------------
-     */
-
-    function renderDirectoryPlatforms(searchTerm) {
-
-      directoryList.innerHTML = "";
-
-
-      const platforms =
-        getPlatformsForCategory(activeCategory);
-
-
-      const term =
-        searchTerm.trim().toLowerCase();
-
-
-      const filtered =
-        platforms.filter(platform => {
-
-          return (
-
-            platform.name.toLowerCase().includes(term) ||
-
-            platform.shortName.toLowerCase().includes(term) ||
-
-            platform.description.toLowerCase().includes(term)
-
-          );
-
-        });
-
-
-      directoryEmpty.hidden =
-        filtered.length !== 0;
-
-
-      filtered.forEach(platform => {
-
-        const item =
-          document.createElement("article");
-
-
-        item.className =
-          "directory-platform-item";
-
-
-        item.innerHTML = `
-
-          <div class="directory-platform-logo">
-            ${platform.shortName}
-          </div>
-
-
-          <div class="directory-platform-info">
-
-            <h3>
-              ${platform.name}
-            </h3>
-
-            <span
-              class="platform-status ${platform.statusClass}"
-            >
-              ${platform.status}
-            </span>
-
-            <p>
-              ${platform.description}
-            </p>
-
-          </div>
-
-
-          <div class="directory-platform-actions">
-
-            <button
-              type="button"
-              class="platform-info-button"
-              data-platform-id="${platform.id}"
-            >
-              See Details
-            </button>
-
-
-            <a
-              href="${platform.officialUrl}"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="directory-visit-link"
-            >
-              Visit
-            </a>
-
-          </div>
-
-        `;
-
-
-        item
-          .querySelector("[data-platform-id]")
-          .addEventListener("click", () => {
-
-            openPlatformDetails(platform.id);
-
-          });
-
-
-        directoryList.appendChild(item);
-
-      });
-
-    }
-
-
-    /*
-     * -------------------------------------------------------
-     * SEARCH
-     * -------------------------------------------------------
-     */
-
-    platformSearch.addEventListener(
-      "input",
-      event => {
-
-        renderDirectoryPlatforms(
-          event.target.value
-        );
+        return text.includes(query);
 
       }
     );
 
 
-    /*
-     * -------------------------------------------------------
-     * OPEN PLATFORM DETAILS
-     * -------------------------------------------------------
-     */
+  modalPlatformGrid.innerHTML =
+    filtered
+      .map(
+        platform =>
+          createModalPlatform(
+            platform
+          )
+      )
+      .join("");
 
-    function openPlatformDetails(platformId) {
 
-      const platform =
-        investmentPlatforms.find(
-          item => item.id === platformId
-        );
+  platformSearchEmpty.hidden =
+    filtered.length !== 0;
 
+}
 
-      if (!platform) return;
 
 
-      document.getElementById(
-        "detailsLogo"
-      ).textContent =
-        platform.shortName;
+/* =====================================================
+   CREATE MODAL PLATFORM
+===================================================== */
 
+function createModalPlatform(
+  platform
+) {
 
-      document.getElementById(
-        "detailsCategory"
-      ).textContent =
-        platform.categoryLabel;
+  return `
 
+    <article class="modal-platform-card">
 
-      document.getElementById(
-        "detailsName"
-      ).textContent =
-        platform.name;
+      <button
+        type="button"
+        class="modal-platform-icon"
+        onclick="openPlatform('${escapeHTML(platform.id)}')"
+        aria-label="Open ${escapeHTML(platform.name)}"
+      >
 
+        ${getPlatformIcon(platform)}
 
-      const status =
-        document.getElementById(
-          "detailsStatus"
-        );
+      </button>
 
 
-      status.textContent =
-        platform.status;
+      <h3>
+        ${escapeHTML(platform.name)}
+      </h3>
 
 
-      status.className =
-        `platform-status ${platform.statusClass}`;
+      <span
+        class="opportunity-status ${getStatusClass(platform.status)}"
+      >
+        ${escapeHTML(platform.status)}
+      </span>
 
 
-      document.getElementById(
-        "detailsDescription"
-      ).textContent =
-        platform.description;
+      <button
+        type="button"
+        class="platform-info-button modal-info-button"
+        onclick="openDetails('${escapeHTML(platform.id)}')"
+      >
+        See Details
+      </button>
 
+    </article>
 
-      document.getElementById(
-        "detailsObjective"
-      ).textContent =
-        platform.objective;
+  `;
 
+}
 
-      document.getElementById(
-        "detailsRisk"
-      ).textContent =
-        platform.risk;
 
 
-      document.getElementById(
-        "detailsRiskLevel"
-      ).textContent =
-        platform.riskLevel;
+/* =====================================================
+   CLOSE CATEGORY MODAL
+===================================================== */
 
+function closePlatformModal() {
 
-      document.getElementById(
-        "detailsLiquidity"
-      ).textContent =
-        platform.liquidity;
+  platformModal.classList.remove(
+    "open"
+  );
 
 
-      document.getElementById(
-        "detailsFees"
-      ).textContent =
-        platform.fees;
+  platformModal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
 
 
-      document.getElementById(
-        "detailsReview"
-      ).textContent =
-        platform.gtfReview;
+  if (
+    !detailsModal.classList.contains(
+      "open"
+    )
+  ) {
 
-
-      const considerations =
-        document.getElementById(
-          "detailsConsiderations"
-        );
-
-
-      considerations.innerHTML = "";
-
-
-      platform.considerations.forEach(item => {
-
-        const li =
-          document.createElement("li");
-
-        li.textContent = item;
-
-        considerations.appendChild(li);
-
-      });
-
-
-      document.getElementById(
-        "detailsOfficialLink"
-      ).href =
-        platform.officialUrl;
-
-
-      detailsModal.classList.add("open");
-
-      detailsModal.setAttribute(
-        "aria-hidden",
-        "false"
-      );
-
-
-      document.body.classList.add(
-        "modal-open"
-      );
-
-    }
-
-
-    /*
-     * -------------------------------------------------------
-     * CLOSE DETAILS
-     * -------------------------------------------------------
-     */
-
-    function closePlatformDetails() {
-
-      detailsModal.classList.remove("open");
-
-      detailsModal.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-
-
-      document.body.classList.remove(
-        "modal-open"
-      );
-
-    }
-
-
-    /*
-     * -------------------------------------------------------
-     * CLOSE BUTTONS
-     * -------------------------------------------------------
-     */
-
-    document
-      .getElementById("closeDirectoryButton")
-      .addEventListener(
-        "click",
-        closeDirectory
-      );
-
-
-    document
-      .getElementById("closeDetailsButton")
-      .addEventListener(
-        "click",
-        closePlatformDetails
-      );
-
-
-    document
-      .querySelector("[data-close-directory]")
-      .addEventListener(
-        "click",
-        closeDirectory
-      );
-
-
-    document
-      .querySelector("[data-close-details]")
-      .addEventListener(
-        "click",
-        closePlatformDetails
-      );
-
-
-    /*
-     * -------------------------------------------------------
-     * ESCAPE KEY
-     * -------------------------------------------------------
-     */
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (event.key !== "Escape") return;
-
-
-        if (
-          detailsModal.classList.contains("open")
-        ) {
-
-          closePlatformDetails();
-
-        } else if (
-          directoryModal.classList.contains("open")
-        ) {
-
-          closeDirectory();
-
-        }
-
-      }
+    document.body.classList.remove(
+      "modal-open"
     );
 
+  }
 
-    /*
-     * -------------------------------------------------------
-     * INITIALIZE
-     * -------------------------------------------------------
-     */
+}
 
-    renderCategories();
 
-  </script>
 
-</body>
+/* =====================================================
+   OPEN DETAILS
+===================================================== */
+
+function openDetails(
+  platformId
+) {
+
+  const platform =
+    findPlatform(platformId);
+
+
+  if (!platform) {
+    return;
+  }
+
+
+  detailsName.textContent =
+    platform.name;
+
+
+  detailsContent.innerHTML = `
+
+    <div class="details-status-row">
+
+      <span class="details-label">
+        STATUS
+      </span>
+
+      <span
+        class="opportunity-status ${getStatusClass(platform.status)}"
+      >
+        ${escapeHTML(platform.status)}
+      </span>
+
+    </div>
+
+
+    <div class="details-section">
+
+      <h3>
+        Description
+      </h3>
+
+      <p>
+        ${escapeHTML(platform.description)}
+      </p>
+
+    </div>
+
+
+    <div class="details-section">
+
+      <h3>
+        Investment Objective
+      </h3>
+
+      <p>
+        ${escapeHTML(platform.objective)}
+      </p>
+
+    </div>
+
+
+    <div class="details-information-grid">
+
+
+      <div class="detail-information-card">
+
+        <span>
+          Risk
+        </span>
+
+        <strong>
+          ${escapeHTML(platform.risk)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail-information-card">
+
+        <span>
+          Liquidity
+        </span>
+
+        <strong>
+          ${escapeHTML(platform.liquidity)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail-information-card">
+
+        <span>
+          Fees
+        </span>
+
+        <strong>
+          ${escapeHTML(platform.fees)}
+        </strong>
+
+      </div>
+
+
+      <div class="detail-information-card">
+
+        <span>
+          Category
+        </span>
+
+        <strong>
+          ${escapeHTML(platform.categoryName)}
+        </strong>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="details-section risk-section">
+
+      <h3>
+        Risk / Considerations
+      </h3>
+
+      <p>
+        ${escapeHTML(platform.considerations)}
+      </p>
+
+    </div>
+
+
+    <div class="details-section review-note">
+
+      <strong>
+        GTF Review Status
+      </strong>
+
+      <p>
+        ${escapeHTML(platform.reviewNote)}
+      </p>
+
+    </div>
+
+
+    <div class="details-actions">
+
+      <button
+        type="button"
+        class="secondary-btn"
+        onclick="openPlatform('${escapeHTML(platform.id)}')"
+      >
+        Visit Official Platform
+      </button>
+
+    </div>
+
+  `;
+
+
+  detailsModal.classList.add(
+    "open"
+  );
+
+
+  detailsModal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+
+  document.body.classList.add(
+    "modal-open"
+  );
+
+}
+
+
+
+/* =====================================================
+   CLOSE DETAILS MODAL
+===================================================== */
+
+function closeDetailsModal() {
+
+  detailsModal.classList.remove(
+    "open"
+  );
+
+
+  detailsModal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+
+  if (
+    !platformModal.classList.contains(
+      "open"
+    )
+  ) {
+
+    document.body.classList.remove(
+      "modal-open"
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+platformSearch.addEventListener(
+  "input",
+  renderModalPlatforms
+);
+
+
+
+/* =====================================================
+   CLICK OUTSIDE MODAL
+===================================================== */
+
+platformModal.addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target === platformModal
+    ) {
+
+      closePlatformModal();
+
+    }
+
+  }
+);
+
+
+detailsModal.addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target === detailsModal
+    ) {
+
+      closeDetailsModal();
+
+    }
+
+  }
+);
+
+
+
+/* =====================================================
+   ESCAPE KEY
+===================================================== */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key === "Escape"
+    ) {
+
+      if (
+        detailsModal.classList.contains(
+          "open"
+        )
+      ) {
+
+        closeDetailsModal();
+
+      } else if (
+        platformModal.classList.contains(
+          "open"
+        )
+      ) {
+
+        closePlatformModal();
+
+      }
+
+    }
+
+  }
+);
+
+
+
+/* =====================================================
+   INITIALISE
+===================================================== */
+
+if (
+  Array.isArray(
+    window.GTF_INVESTMENTS
+  )
+) {
+
+  renderCategories();
+
+} else {
+
+  categoriesContainer.innerHTML = `
+
+    <div class="info-box">
+
+      <h3>
+        Investment data unavailable
+      </h3>
+
+      <p>
+        The GTF investment data file could not be loaded.
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+</script><!-- =====================================================
+     FOOTER
+===================================================== --><footer class="site-footer">  <p>
+    © 2026 God’stime Holdings. All rights reserved.
+  </p></footer></body>
 </html>
