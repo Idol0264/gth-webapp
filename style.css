@@ -2446,3 +2446,16 @@ tr:last-child td {
     width: 72px;
   }
 }
+
+/* =========================================================
+   INVESTMENT MODAL VISIBILITY FIX
+   Hidden until JavaScript opens it
+========================================================= */
+
+.investment-modal {
+  display: none;
+}
+
+.investment-modal.open {
+  display: flex;
+}
