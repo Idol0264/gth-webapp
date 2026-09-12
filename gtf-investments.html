@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GTF | Investment Opportunities</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<script>
+const savedTheme = localStorage.getItem("gth_theme_v1");
+
+if (
+  savedTheme === "gold" ||
+  savedTheme === "blue" ||
+  savedTheme === "green"
+) {
+  document.body.setAttribute("data-theme", savedTheme);
+}
+</script>
+
+
+<header class="site-header">
+
+  <div class="brand">
+    <strong>GTF</strong>
+    <span>God’stime Fund</span>
+  </div>
+
+  <nav class="top-nav">
+    <a href="index.html">GTH Home</a>
+    <a href="gtf.html">GTF Home</a>
+  </nav>
+
+</header>
+
+
+<main>
+
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <p class="eyebrow">
+        GTF • INVESTMENT OPPORTUNITIES
+      </p>
+
+      <h1>
+        Investment Opportunities
+      </h1>
+
+      <p>
+        Explore selected mutual fund and investment platforms
+        from other investment companies. Discover different
+        platforms, compare their offerings and visit their
+        official platforms to learn more about their services.
+      </p>
+
+      <div class="hero-actions">
+
+        <a
+          class="secondary-btn"
+          href="gtf.html"
+        >
+          Back to GTF
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       GTF EVALUATION
+       ===================================================== -->
+
+  <section class="content-section">
+
+    <div class="section-heading">
+
+      <p class="eyebrow">
+        GTF REVIEW FRAMEWORK
+      </p>
+
+      <h2>
+        How GTF Evaluates Opportunities
+      </h2>
+
+      <p>
+        GTF evaluates investment opportunities and platforms
+        using a structured research process. The review considers
+        the investment company, the nature of the investment,
+        available information, historical performance where
+        applicable, fees, liquidity, risk and other important
+        factors.
+      </p>
+
+    </div>
+
+
+    <div class="platform-grid">
+
+
+      <article class="platform-card">
+
+        <h3>
+          01. Company &amp; Platform
+        </h3>
+
+        <p>
+          We examine the investment company, its platform,
+          available services and the information provided
+          about its investment products.
+        </p>
+
+      </article>
+
+
+      <article class="platform-card">
+
+        <h3>
+          02. Investment Objective
+        </h3>
+
+        <p>
+          We consider what the investment is designed to achieve,
+          the type of assets involved and the strategy used.
+        </p>
+
+      </article>
+
+
+      <article class="platform-card">
+
+        <h3>
+          03. Risk &amp; Liquidity
+        </h3>
+
+        <p>
+          We consider the potential risks, volatility, liquidity
+          conditions and other factors that may affect an investor.
+        </p>
+
+      </article>
+
+
+      <article class="platform-card">
+
+        <h3>
+          04. Fees &amp; Conditions
+        </h3>
+
+        <p>
+          Relevant fees, charges, minimum investment requirements,
+          withdrawal conditions and other terms are considered.
+        </p>
+
+      </article>
+
+
+      <article class="platform-card">
+
+        <h3>
+          05. Available Information
+        </h3>
+
+        <p>
+          We review available documentation, disclosures,
+          regulatory information and other relevant material.
+        </p>
+
+      </article>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       INVESTMENT PLATFORMS
+       ===================================================== -->
+
+  <section class="content-section">
+
+    <div class="section-heading">
+
+      <p class="eyebrow">
+        INVESTMENT PLATFORMS
+      </p>
+
+      <h2>
+        Platforms
+      </h2>
+
+      <p>
+        Explore investment and mutual fund platforms from
+        different companies. Scroll through the platform
+        collection to discover available opportunities.
+      </p>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         PLATFORM SCROLL AREA
+         =================================================== -->
+
+    <div class="investment-platform-scroll">
+
+
+      <!-- PLATFORM 1 -->
+
+      <article class="investment-opportunity-card">
+
+        <div class="opportunity-header">
+
+          <span class="opportunity-status under-review">
+            Under Review
+          </span>
+
+          <span class="opportunity-category">
+            Mutual Funds
+          </span>
+
+        </div>
+
+
+        <h3>
+          Mutual Fund Platform
+        </h3>
+
+
+        <p>
+          A mutual fund investment platform offering access
+          to professionally managed investment funds.
+        </p>
+
+
+        <div class="opportunity-details">
+
+          <p>
+            <strong>Category:</strong>
+            Mutual Funds
+          </p>
+
+          <p>
+            <strong>Status:</strong>
+            Under Review
+          </p>
+
+        </div>
+
+
+        <div class="risk-information">
+
+          <strong>
+            Risk / Consideration
+          </strong>
+
+          <p>
+            Investors should review the fund objective,
+            fees, liquidity, historical information and
+            level of investment risk before investing.
+          </p>
+
+        </div>
+
+
+        <a
+          href="#"
+          class="secondary-btn"
+          onclick="exploreOpportunity(event, 'This investment platform is currently being reviewed by GTF.')"
+        >
+          Explore
+        </a>
+
+      </article>
+
+
+
+      <!-- PLATFORM 2 -->
+
+      <article class="investment-opportunity-card">
+
+        <div class="opportunity-header">
+
+          <span class="opportunity-status approved">
+            Approved
+          </span>
+
+          <span class="opportunity-category">
+            Investment Platform
+          </span>
+
+        </div>
+
+
+        <h3>
+          Investment Platform
+        </h3>
+
+
+        <p>
+          An investment platform selected for inclusion after
+          completing the relevant GTF review process.
+        </p>
+
+
+        <div class="opportunity-details">
+
+          <p>
+            <strong>Category:</strong>
+            Investment Platform
+          </p>
+
+          <p>
+            <strong>Status:</strong>
+            Approved
+          </p>
+
+        </div>
+
+
+        <div class="risk-information">
+
+          <strong>
+            Risk / Consideration
+          </strong>
+
+          <p>
+            Approval indicates that the platform has passed
+            the applicable GTF review stage. Investment risk
+            still remains with the investor.
+          </p>
+
+        </div>
+
+
+        <a
+          href="#"
+          class="secondary-btn"
+          onclick="exploreOpportunity(event, 'The official platform link will be added here.')"
+        >
+          Explore
+        </a>
+
+      </article>
+
+
+
+      <!-- PLATFORM 3 -->
+
+      <article class="investment-opportunity-card">
+
+        <div class="opportunity-header">
+
+          <span class="opportunity-status completed">
+            Completed
+          </span>
+
+          <span class="opportunity-category">
+            Fund Research
+          </span>
+
+        </div>
+
+
+        <h3>
+          Completed Fund Review
+        </h3>
+
+
+        <p>
+          A completed investment opportunity review retained
+          as part of the GTF research and information collection.
+        </p>
+
+
+        <div class="opportunity-details">
+
+          <p>
+            <strong>Category:</strong>
+            Fund Research
+          </p>
+
+          <p>
+            <strong>Status:</strong>
+            Completed
+          </p>
+
+        </div>
+
+
+        <div class="risk-information">
+
+          <strong>
+            Risk / Consideration
+          </strong>
+
+          <p>
+            Investment products and their conditions can change.
+            Always review current information directly from the
+            investment company.
+          </p>
+
+        </div>
+
+
+        <a
+          href="#"
+          class="secondary-btn"
+          onclick="exploreOpportunity(event, 'Detailed information for this completed review will be added here.')"
+        >
+          Explore
+        </a>
+
+      </article>
+
+
+
+      <!-- PLATFORM 4 -->
+
+      <article class="investment-opportunity-card">
+
+        <div class="opportunity-header">
+
+          <span class="opportunity-status under-review">
+            Under Review
+          </span>
+
+          <span class="opportunity-category">
+            Money Market
+          </span>
+
+        </div>
+
+
+        <h3>
+          Money Market Fund Platform
+        </h3>
+
+
+        <p>
+          A platform for accessing money market investment
+          products and related professionally managed funds.
+        </p>
+
+
+        <div class="opportunity-details">
+
+          <p>
+            <strong>Category:</strong>
+            Money Market
+          </p>
+
+          <p>
+            <strong>Status:</strong>
+            Under Review
+          </p>
+
+        </div>
+
+
+        <div class="risk-information">
+
+          <strong>
+            Risk / Consideration
+          </strong>
+
+          <p>
+            Review applicable fees, expected returns, liquidity,
+            fund structure and associated investment risks.
+          </p>
+
+        </div>
+
+
+        <a
+          href="#"
+          class="secondary-btn"
+          onclick="exploreOpportunity(event, 'This platform is currently under review.')"
+        >
+          Explore
+        </a>
+
+      </article>
+
+
+
+      <!-- PLATFORM 5 -->
+
+      <article class="investment-opportunity-card">
+
+        <div class="opportunity-header">
+
+          <span class="opportunity-status under-review">
+            Under Review
+          </span>
+
+          <span class="opportunity-category">
+            Fixed Income
+          </span>
+
+        </div>
+
+
+        <h3>
+          Fixed Income Platform
+        </h3>
+
+
+        <p>
+          An investment platform featuring fixed-income
+          opportunities and professionally managed products.
+        </p>
+
+
+        <div class="opportunity-details">
+
+          <p>
+            <strong>Category:</strong>
+            Fixed Income
+          </p>
+
+          <p>
+            <strong>Status:</strong>
+            Under Review
+          </p>
+
+        </div>
+
+
+        <div class="risk-information">
+
+          <strong>
+            Risk / Consideration
+          </strong>
+
+          <p>
+            Investors should consider interest-rate risk,
+            credit risk, liquidity and the terms of each
+            investment product.
+          </p>
+
+        </div>
+
+
+        <a
+          href="#"
+          class="secondary-btn"
+          onclick="exploreOpportunity(event, 'This platform is currently under review.')"
+        >
+          Explore
+        </a>
+
+      </article>
+
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       CATEGORIES
+       ===================================================== -->
+
+  <section class="content-section">
+
+    <div class="section-heading">
+
+      <p class="eyebrow">
+        PLATFORM CATEGORIES
+      </p>
+
+      <h2>
+        Explore by Category
+      </h2>
+
+      <p>
+        Investment opportunities can be organised into
+        different categories to make it easier to discover
+        platforms that match a particular investment area.
+      </p>
+
+    </div>
+
+
+    <div class="platform-grid">
+
+
+      <article class="platform-card">
+
+        <h3>
+          Mutual Funds
+        </h3>
+
+        <p>
+          Professionally managed pooled investment funds
+          with different objectives and strategies.
+        </p>
+
+        <a
+          href="#"
+          class="secondary-btn"
+          onclick="filterCategory(event, 'Mutual Funds')"
+        >
+          Explore
+        </a>
+
+      </article>
+
+
+      <article class="platform-card">
+
+        <h3>
+          Money Market
+        </h3>
+
+        <p>
+          Investment products generally focused on
+          short-term money market instruments.
+        </p>
+
+        <a
+          href="#"
+          class="secondary-btn"
+          onclick="filterCategory(event, 'Money Market')"
+        >
+          Explore
+        </a>
+
+      </article>
+
+
+      <article class="platform-card">
+
+        <h3>
+          Fixed Income
+        </h3>
+
+        <p>
+          Investment opportunities involving fixed-income
+          securities and related products.
+        </p>
+
+        <a
+          href="#"
+          class="secondary-btn"
+          onclick="filterCategory(event, 'Fixed Income')"
+        >
+          Explore
+        </a>
+
+      </article>
+
+
+      <article class="platform-card">
+
+        <h3>
+          Investment Platforms
+        </h3>
+
+        <p>
+          Platforms that provide access to different
+          investment products and financial services.
+        </p>
+
+        <a
+          href="#"
+          class="secondary-btn"
+          onclick="filterCategory(event, 'Investment Platform')"
+        >
+          Explore
+        </a>
+
+      </article>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       GTF RESEARCH
+       ===================================================== -->
+
+  <section class="content-section">
+
+    <div class="info-box">
+
+      <h2>
+        GTF Investment Research
+      </h2>
+
+      <p>
+        This section is designed to grow as GTF researches
+        additional investment companies, mutual funds and
+        investment platforms.
+      </p>
+
+      <p>
+        Each opportunity can later contain more detailed
+        information, including the investment company,
+        official platform, fund type, objectives, fees,
+        risk considerations, review status and other
+        relevant information.
+      </p>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+
+<footer class="site-footer">
+
+  <p>
+    © 2026 God’stime Holdings. All rights reserved.
+  </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     PAGE JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+function exploreOpportunity(event, message) {
+
+  event.preventDefault();
+
+  alert(message);
+
+}
+
+
+
+function filterCategory(event, category) {
+
+  event.preventDefault();
+
+  alert(
+    "Showing " + category + " opportunities."
+  );
+
+}
+
+</script>
+
+
+</body>
+        </html>
