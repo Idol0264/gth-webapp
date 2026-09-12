@@ -4979,3 +4979,282 @@ tr:last-child td {
   }
 
 }
+
+/* =========================================================
+   GTC PREMIUM ADVERTISEMENT SYSTEM
+   ========================================================= */
+
+.gtc-ad {
+  position: relative;
+  width: 100%;
+  margin: 28px 0;
+  overflow: hidden;
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.035),
+      rgba(255,255,255,.015)
+    );
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.04);
+
+  isolation: isolate;
+}
+
+
+/* Shared ad inner space */
+
+.gtc-google-ad,
+.gtc-jpg-ad {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+}
+
+
+/* Google Ads */
+
+.gtc-google-ad {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+}
+
+.gtc-ad.google-ad-active .gtc-google-ad {
+  display: flex;
+}
+
+.gtc-ad.google-ad-active .gtc-jpg-ad {
+  display: none;
+}
+
+
+/* JPG fallback advertisement */
+
+.gtc-jpg-ad {
+  display: block;
+}
+
+.gtc-ad-link {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  outline: none;
+  border-radius: inherit;
+
+  transform: translateZ(0);
+
+  transition:
+    transform .35s ease,
+    filter .35s ease,
+    box-shadow .35s ease;
+}
+
+.gtc-ad-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 150px;
+
+  object-fit: cover;
+
+  border-radius: inherit;
+
+  transition:
+    transform .55s cubic-bezier(.2,.8,.2,1),
+    filter .4s ease;
+}
+
+
+/* Premium hover/touch feeling */
+
+.gtc-ad-link:hover img {
+  transform: scale(1.025);
+  filter: brightness(1.04);
+}
+
+.gtc-ad-link:hover {
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.25);
+}
+
+
+/* Small advertisement label */
+
+.gtc-ad-overlay {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 7px 11px;
+
+  border-radius: 999px;
+
+  background: rgba(0,0,0,.62);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  color: #fff;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+
+  pointer-events: none;
+}
+
+.gtc-ad-overlay span:first-child {
+  opacity: .75;
+}
+
+
+/* Tap animation */
+
+.gtc-ad-link.is-tapped {
+  animation: gtcAdTap .45s ease;
+}
+
+.gtc-ad-link.is-tapped img {
+  animation: gtcAdImageTap .45s ease;
+}
+
+@keyframes gtcAdTap {
+  0% {
+    transform: scale(1);
+  }
+
+  35% {
+    transform: scale(.975);
+  }
+
+  65% {
+    transform: scale(1.012);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes gtcAdImageTap {
+  0% {
+    filter: brightness(1);
+  }
+
+  40% {
+    filter: brightness(1.18);
+  }
+
+  100% {
+    filter: brightness(1);
+  }
+}
+
+
+/* Fallback when there is no JPG advertisement */
+
+.ad-placeholder {
+  min-height: 150px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 30px;
+
+  text-align: center;
+
+  border-radius: inherit;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255,255,255,.08),
+      transparent 60%
+    ),
+    rgba(0,0,0,.08);
+}
+
+.ad-placeholder-label {
+  font-size: 9px;
+  letter-spacing: .16em;
+  opacity: .55;
+}
+
+.ad-placeholder strong {
+  font-size: 15px;
+}
+
+.ad-placeholder small {
+  opacity: .55;
+}
+
+
+/* =========================================================
+   GTC RESPONSIVE ADVERTISEMENT
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .gtc-ad {
+    margin: 22px 0;
+    border-radius: 15px;
+  }
+
+  .gtc-google-ad,
+  .gtc-jpg-ad {
+    min-height: 120px;
+  }
+
+  .gtc-ad-link img {
+    min-height: 120px;
+  }
+
+  .gtc-ad-overlay {
+    left: 9px;
+    bottom: 9px;
+
+    padding: 6px 9px;
+
+    font-size: 8px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.gtc-ad-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .gtc-ad-link,
+  .gtc-ad-link img {
+    transition: none;
+  }
+
+  .gtc-ad-link.is-tapped,
+  .gtc-ad-link.is-tapped img {
+    animation: none;
+  }
+}
