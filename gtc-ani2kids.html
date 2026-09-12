@@ -124,8 +124,10 @@ function createAdvertisement() {
 
   /*
    * GOOGLE ADS AREA
-   * Keep this area available for your Google Ads integration.
-   * If Google serves an ad here, the fallback JPG area can be hidden.
+   *
+   * This space remains available for Google Ads.
+   * If Google successfully displays an ad here,
+   * gtcGoogleAdDisplayed(ad) can be called.
    */
   const googleAd = document.createElement("div");
   googleAd.className = "gtc-google-ad";
@@ -138,14 +140,27 @@ function createAdvertisement() {
   fallback.className = "gtc-jpg-ad";
 
   if (!randomAd) {
+
     fallback.innerHTML = `
       <div class="ad-placeholder">
-        <span class="ad-placeholder-label">ADVERTISEMENT</span>
-        <strong>GTH promotional space</strong>
-        <small>More promotions coming soon</small>
+
+        <span class="ad-placeholder-label">
+          ADVERTISEMENT
+        </span>
+
+        <strong>
+          GTH promotional space
+        </strong>
+
+        <small>
+          More promotions coming soon
+        </small>
+
       </div>
     `;
+
   } else {
+
     fallback.innerHTML = `
       <div
         class="gtc-ad-link"
@@ -153,6 +168,7 @@ function createAdvertisement() {
         tabindex="0"
         aria-label="${randomAd.title || "GTH advertisement"}"
       >
+
         <img
           src="${randomAd.image}"
           alt="${randomAd.title || "GTH advertisement"}"
@@ -163,12 +179,15 @@ function createAdvertisement() {
           <span>GTH</span>
           <span>ADVERTISEMENT</span>
         </div>
+
       </div>
     `;
 
-    const adLink = fallback.querySelector(".gtc-ad-link");
+    const adLink =
+      fallback.querySelector(".gtc-ad-link");
 
     function animateAd(event) {
+
       if (event) {
         event.preventDefault();
         event.stopPropagation();
@@ -177,38 +196,59 @@ function createAdvertisement() {
       adLink.classList.remove("is-tapped");
 
       /*
-       * Force browser to restart animation.
+       * Force the browser to restart
+       * the tap animation.
        */
       void adLink.offsetWidth;
 
       adLink.classList.add("is-tapped");
     }
 
-    adLink.addEventListener("click", animateAd);
+    adLink.addEventListener(
+      "click",
+      animateAd
+    );
 
-    adLink.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        animateAd(event);
+    adLink.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (
+          event.key === "Enter" ||
+          event.key === " "
+        ) {
+          animateAd(event);
+        }
+
       }
-    });
+    );
   }
 
+  /*
+   * Google advertisement space
+   */
   ad.appendChild(googleAd);
+
+  /*
+   * JPG fallback advertisement
+   */
   ad.appendChild(fallback);
 
   /*
-   * Google Ads can call this function when an actual ad
-   * has successfully rendered:
-   *
-   * window.gtcGoogleAdDisplayed(ad);
-   *
-   * Until that happens, the JPG advertisement remains visible.
+   * Called when Google has actually
+   * rendered an advertisement.
    */
-  window.gtcGoogleAdDisplayed = function(targetAd) {
-    if (!targetAd || targetAd !== ad) return;
+  window.gtcGoogleAdDisplayed =
+    function(targetAd) {
 
-    ad.classList.add("google-ad-active");
-  };
+      if (!targetAd || targetAd !== ad) {
+        return;
+      }
+
+      ad.classList.add(
+        "google-ad-active"
+      );
+    };
 
   return ad;
 }
