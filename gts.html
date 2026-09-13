@@ -887,6 +887,28 @@ softwareSearch.addEventListener(
 
 
 /* =========================================================
+   DISMISS MOBILE KEYBOARD AFTER SEARCH
+========================================================= */
+
+softwareSearch.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (event.key === "Enter") {
+
+      event.preventDefault();
+
+      filterSoftware();
+
+      softwareSearch.blur();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
    START
 ========================================================= */
 
