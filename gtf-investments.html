@@ -1392,85 +1392,88 @@
        RENDER DIRECTORY
        ===================================================== */
 
-    function renderDirectory(searchTerm = "") {
+    function renderDirectory(
+  searchTerm = "",
+  categoryName = ""
+) {
 
-      if (!modalPlatformGrid) {
-        return;
-      }
+  if (!modalPlatformGrid) {
+    return;
+  }
 
+  modalPlatformGrid.innerHTML = "";
 
-      modalPlatformGrid.innerHTML =
-        "";
+  const query =
+    searchTerm
+      .trim()
+      .toLowerCase();
 
+  const category =
+    categoryName
+      .trim()
+      .toLowerCase();
 
-      const query =
-        searchTerm
-          .trim()
-          .toLowerCase();
+  const filtered =
+    normalizedInvestments.filter(
+      function (item) {
 
+        const matchesCategory =
+          !category ||
+          item.categoryName
+            .toLowerCase() === category;
 
-      const filtered =
-        normalizedInvestments.filter(
-          function (item) {
+        const matchesSearch =
+          !query ||
+          item.name
+            .toLowerCase()
+            .includes(query) ||
+          item.categoryName
+            .toLowerCase()
+            .includes(query);
 
-            if (!query) {
-              return true;
-            }
-
-
-            return (
-
-              item.name
-                .toLowerCase()
-                .includes(query)
-
-              ||
-
-              item.categoryName
-                .toLowerCase()
-                .includes(query)
-
-            );
-
-          }
+        return (
+          matchesCategory &&
+          matchesSearch
         );
 
+      }
+    );
 
-      filtered.forEach(
-        function (item) {
 
-          modalPlatformGrid.appendChild(
-            createDirectoryTile(item)
-          );
+  filtered.forEach(
+    function (item) {
 
-        }
+      modalPlatformGrid.appendChild(
+        createDirectoryTile(item)
       );
 
-
-      if (
-        !modalPlatformGrid.children.length
-      ) {
-
-        modalPlatformGrid.innerHTML = `
-
-          <div class="status-notice">
-
-            <strong>
-              No platform found.
-            </strong>
-
-
-            <p>
-              Try another search.
-            </p>
-
-          </div>
-
-        `;
-
-      }
-
     }
+  );
+
+
+  if (
+    !modalPlatformGrid.children.length
+  ) {
+
+    modalPlatformGrid.innerHTML = `
+
+      <div class="status-notice">
+
+        <strong>
+          No platform found.
+        </strong>
+
+        <p>
+          Try another search.
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
 
 
 
