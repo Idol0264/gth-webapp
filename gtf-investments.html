@@ -1459,55 +1459,10 @@
        MORE TILE
        ===================================================== */
 
-    function createMoreTile(categoryKey, categoryName) {
-
-      const tile =
-        document.createElement("article");
 
 
-      tile.className =
-        "platform-tile";
 
-
-      tile.innerHTML = `
-
-        <div class="platform-logo-wrap">
-
-          <button
-            type="button"
-            class="platform-icon-button platform-more-button"
-            data-action="see-more"
-            data-category-key="${escapeHTML(categoryKey)}"
-            aria-label="See more ${escapeHTML(categoryName)} investment platforms"
-          >
-
-            <span class="platform-icon">
-              +
-            </span>
-
-          </button>
-
-        </div>
-
-
-        <button
-          type="button"
-          class="platform-info-button"
-          data-action="see-more"
-          data-category-key="${escapeHTML(categoryKey)}"
-          aria-label="See more ${escapeHTML(categoryName)} investment platforms"
-        >
-
-          SEE MORE
-
-        </button>
-
-      `;
-
-
-      return tile;
-
-    }
+    
 
 
 
