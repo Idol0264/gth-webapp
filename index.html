@@ -855,27 +855,107 @@
 
 
 <script>
+<script>
 /* =========================================================
    GTH PREMIUM ABOUT PANELS
+   - Five ordered About items
+   - Panel opens directly below selected item
+   - Premium floating / waving animation
+   - Edge-light effect
+   - Mobile friendly
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  const aboutSection =
+    document.getElementById("about");
 
   const layer =
     document.getElementById("gthInfoLayer");
 
   const triggers =
-    document.querySelectorAll(
-      ".gth-about-trigger"
-    );
+    document.querySelectorAll(".gth-about-trigger");
 
   const panels =
-    document.querySelectorAll(
-      ".gth-info-panel"
-    );
+    document.querySelectorAll(".gth-info-panel");
 
   let activePanel = null;
+  let activeTrigger = null;
 
+
+  /* ---------------------------------------------------------
+     MOVE THE PANEL LAYER INTO THE ABOUT SECTION
+  --------------------------------------------------------- */
+
+  if (aboutSection && layer) {
+    aboutSection.appendChild(layer);
+  }
+
+
+  /* ---------------------------------------------------------
+     POSITION PANEL DIRECTLY UNDER SELECTED ITEM
+  --------------------------------------------------------- */
+
+  function positionPanel(trigger, panel) {
+
+    if (!aboutSection || !panel || !trigger) {
+      return;
+    }
+
+    const aboutRect =
+      aboutSection.getBoundingClientRect();
+
+    const triggerRect =
+      trigger.getBoundingClientRect();
+
+    const aboutWidth =
+      aboutSection.clientWidth;
+
+    const gap = 14;
+    const sidePadding = 14;
+
+    const panelWidth =
+      Math.min(
+        680,
+        aboutWidth - (sidePadding * 2)
+      );
+
+    let left =
+      (triggerRect.left - aboutRect.left) +
+      (triggerRect.width / 2) -
+      (panelWidth / 2);
+
+    const maxLeft =
+      aboutWidth -
+      panelWidth -
+      sidePadding;
+
+    left =
+      Math.max(
+        sidePadding,
+        Math.min(left, maxLeft)
+      );
+
+    const top =
+      triggerRect.bottom -
+      aboutRect.top +
+      gap;
+
+
+    panel.style.width =
+      panelWidth + "px";
+
+    panel.style.left =
+      left + "px";
+
+    panel.style.top =
+      top + "px";
+  }
+
+
+  /* ---------------------------------------------------------
+     CLOSE PANEL
+  --------------------------------------------------------- */
 
   function closePanel() {
 
@@ -883,72 +963,122 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    const panel =
+      activePanel;
+
     const trigger =
-      document.querySelector(
-        '[data-gth-panel="' +
-        activePanel.id +
-        '"]'
-      );
+      activeTrigger;
+
 
     if (trigger) {
-
       trigger.setAttribute(
         "aria-expanded",
         "false"
       );
-
     }
 
 
-    activePanel.classList.remove(
+    panel.classList.remove(
       "is-visible"
     );
 
-    activePanel.classList.remove(
+    panel.classList.remove(
       "is-waving"
+    );
+
+    panel.classList.add(
+      "is-closing"
     );
 
 
     setTimeout(function () {
 
-      activePanel.hidden = true;
+      panel.hidden = true;
 
-    }, 280);
-
-
-    if (
-      !document.querySelector(
-        ".gth-info-panel.is-visible"
-      )
-    ) {
-
-      layer.classList.remove(
-        "is-open"
+      panel.classList.remove(
+        "is-closing"
       );
 
-      layer.setAttribute(
-        "aria-hidden",
-        "true"
-      );
+    }, 300);
 
-      document.body.style.overflow = "";
 
-    }
+    layer.classList.remove(
+      "is-open"
+    );
+
+    layer.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+    document.body.style.overflow = "";
 
 
     activePanel = null;
-
+    activeTrigger = null;
   }
 
 
-  function openPanel(panel) {
+  /* ---------------------------------------------------------
+     OPEN PANEL
+  --------------------------------------------------------- */
+
+  function openPanel(panel, trigger) {
 
     if (activePanel) {
       closePanel();
     }
 
 
+    /* Close every other trigger */
+    triggers.forEach(function (item) {
+
+      item.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+    });
+
+
+    /* Open selected trigger */
+    trigger.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+
+    activeTrigger =
+      trigger;
+
+    activePanel =
+      panel;
+
+
+    /* Hide all panels */
+    panels.forEach(function (item) {
+
+      item.hidden = true;
+
+      item.classList.remove(
+        "is-visible",
+        "is-waving",
+        "is-closing"
+      );
+
+    });
+
+
     panel.hidden = false;
+
+
+    /* Position BEFORE animation */
+    positionPanel(
+      trigger,
+      panel
+    );
+
 
     layer.classList.add(
       "is-open"
@@ -959,11 +1089,20 @@ document.addEventListener("DOMContentLoaded", function () {
       "false"
     );
 
-    document.body.style.overflow =
-      "hidden";
+
+    /*
+      We intentionally do not lock the entire page.
+      This allows the user to continue scrolling naturally.
+    */
 
 
     requestAnimationFrame(function () {
+
+      positionPanel(
+        trigger,
+        panel
+      );
+
 
       requestAnimationFrame(function () {
 
@@ -979,11 +1118,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-
-    activePanel = panel;
-
   }
 
+
+  /* ---------------------------------------------------------
+     TRIGGER EVENTS
+  --------------------------------------------------------- */
 
   triggers.forEach(function (trigger) {
 
@@ -1000,6 +1140,7 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById(
             panelId
           );
+
 
         if (!panel) {
           return;
@@ -1018,25 +1159,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         } else {
 
-          triggers.forEach(
-            function (item) {
-
-              item.setAttribute(
-                "aria-expanded",
-                "false"
-              );
-
-            }
+          openPanel(
+            panel,
+            trigger
           );
-
-
-          trigger.setAttribute(
-            "aria-expanded",
-            "true"
-          );
-
-
-          openPanel(panel);
 
         }
 
@@ -1046,6 +1172,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
+  /* ---------------------------------------------------------
+     CLOSE BUTTONS
+  --------------------------------------------------------- */
+
   panels.forEach(function (panel) {
 
     const closeButton =
@@ -1054,17 +1184,25 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
 
-    closeButton?.addEventListener(
-      "click",
-      function () {
+    if (closeButton) {
 
-        closePanel();
+      closeButton.addEventListener(
+        "click",
+        function () {
 
-      }
-    );
+          closePanel();
+
+        }
+      );
+
+    }
 
   });
 
+
+  /* ---------------------------------------------------------
+     CLICK OUTSIDE PANEL
+  --------------------------------------------------------- */
 
   layer.addEventListener(
     "click",
@@ -1081,6 +1219,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   );
 
+
+  /* ---------------------------------------------------------
+     ESCAPE KEY
+  --------------------------------------------------------- */
 
   document.addEventListener(
     "keydown",
@@ -1099,8 +1241,55 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
 
+  /* ---------------------------------------------------------
+     KEEP PANEL UNDER ITS TRIGGER
+     WHEN SCREEN CHANGES SIZE / SCROLLS
+  --------------------------------------------------------- */
+
+  window.addEventListener(
+    "resize",
+    function () {
+
+      if (
+        activePanel &&
+        activeTrigger
+      ) {
+
+        positionPanel(
+          activeTrigger,
+          activePanel
+        );
+
+      }
+
+    }
+  );
+
+
+  window.addEventListener(
+    "scroll",
+    function () {
+
+      if (
+        activePanel &&
+        activeTrigger
+      ) {
+
+        positionPanel(
+          activeTrigger,
+          activePanel
+        );
+
+      }
+
+    },
+    {
+      passive: true
+    }
+  );
+
 });
 </script>
-
+  
 </body>
 </html>
