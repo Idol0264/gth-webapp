@@ -626,54 +626,69 @@
 
     function createFeaturedTile(item) {
 
-      const tile =
-        document.createElement("article");
+  const tile =
+    document.createElement("article");
+
+  tile.className =
+    "platform-tile";
+
+  tile.innerHTML = `
+
+    <div class="platform-logo-wrap">
+
+      ${
+        item.website
+          ? `
+            <a
+              class="platform-icon-button platform-official-link"
+              href="${escapeHTML(item.website)}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit ${escapeHTML(item.name)} official website"
+            >
+
+              <span class="platform-icon">
+                ${createPlatformInitials(item)}
+              </span>
+
+            </a>
+          `
+          : `
+            <button
+              type="button"
+              class="platform-icon-button"
+              data-action="details"
+              data-platform-id="${escapeHTML(item.id)}"
+              aria-label="View details for ${escapeHTML(item.name)}"
+            >
+
+              <span class="platform-icon">
+                ${createPlatformInitials(item)}
+              </span>
+
+            </button>
+          `
+      }
+
+    </div>
 
 
-      tile.className =
-        "platform-tile";
+    <button
+      type="button"
+      class="platform-info-button"
+      data-action="details"
+      data-platform-id="${escapeHTML(item.id)}"
+    >
 
+      SEE DETAILS
 
-      tile.innerHTML = `
+    </button>
 
-        <div class="platform-logo-wrap">
+  `;
 
-          <button
-            type="button"
-            class="platform-icon-button"
-            data-action="details"
-            data-platform-id="${escapeHTML(item.id)}"
-            aria-label="View details for ${escapeHTML(item.name)}"
-          >
+  return tile;
 
-            <span class="platform-icon">
-
-              ${createPlatformInitials(item)}
-
-            </span>
-
-          </button>
-
-        </div>
-
-
-        <button
-          type="button"
-          class="platform-info-button"
-          data-action="details"
-          data-platform-id="${escapeHTML(item.id)}"
-        >
-
-          SEE DETAILS
-
-        </button>
-
-      `;
-
-
-      return tile;
-
-    }
+}
 
 
 
