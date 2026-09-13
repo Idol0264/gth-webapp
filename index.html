@@ -810,6 +810,256 @@
 
 
   <script src="data/gth-config.js"></script>
-  <script src="app.js"></script>
+<script src="app.js"></script>
+
+
+<script>
+/* =========================================================
+   GTH PREMIUM ABOUT PANELS
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const layer =
+    document.getElementById("gthInfoLayer");
+
+  const triggers =
+    document.querySelectorAll(
+      ".gth-about-trigger"
+    );
+
+  const panels =
+    document.querySelectorAll(
+      ".gth-info-panel"
+    );
+
+  let activePanel = null;
+
+
+  function closePanel() {
+
+    if (!activePanel) {
+      return;
+    }
+
+    const trigger =
+      document.querySelector(
+        '[data-gth-panel="' +
+        activePanel.id +
+        '"]'
+      );
+
+    if (trigger) {
+
+      trigger.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+    }
+
+
+    activePanel.classList.remove(
+      "is-visible"
+    );
+
+    activePanel.classList.remove(
+      "is-waving"
+    );
+
+
+    setTimeout(function () {
+
+      activePanel.hidden = true;
+
+    }, 280);
+
+
+    if (
+      !document.querySelector(
+        ".gth-info-panel.is-visible"
+      )
+    ) {
+
+      layer.classList.remove(
+        "is-open"
+      );
+
+      layer.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.style.overflow = "";
+
+    }
+
+
+    activePanel = null;
+
+  }
+
+
+  function openPanel(panel) {
+
+    if (activePanel) {
+      closePanel();
+    }
+
+
+    panel.hidden = false;
+
+    layer.classList.add(
+      "is-open"
+    );
+
+    layer.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    document.body.style.overflow =
+      "hidden";
+
+
+    requestAnimationFrame(function () {
+
+      requestAnimationFrame(function () {
+
+        panel.classList.add(
+          "is-visible"
+        );
+
+        panel.classList.add(
+          "is-waving"
+        );
+
+      });
+
+    });
+
+
+    activePanel = panel;
+
+  }
+
+
+  triggers.forEach(function (trigger) {
+
+    trigger.addEventListener(
+      "click",
+      function () {
+
+        const panelId =
+          trigger.getAttribute(
+            "data-gth-panel"
+          );
+
+        const panel =
+          document.getElementById(
+            panelId
+          );
+
+        if (!panel) {
+          return;
+        }
+
+
+        const isOpen =
+          trigger.getAttribute(
+            "aria-expanded"
+          ) === "true";
+
+
+        if (isOpen) {
+
+          closePanel();
+
+        } else {
+
+          triggers.forEach(
+            function (item) {
+
+              item.setAttribute(
+                "aria-expanded",
+                "false"
+              );
+
+            }
+          );
+
+
+          trigger.setAttribute(
+            "aria-expanded",
+            "true"
+          );
+
+
+          openPanel(panel);
+
+        }
+
+      }
+    );
+
+  });
+
+
+  panels.forEach(function (panel) {
+
+    const closeButton =
+      panel.querySelector(
+        ".gth-panel-close"
+      );
+
+
+    closeButton?.addEventListener(
+      "click",
+      function () {
+
+        closePanel();
+
+      }
+    );
+
+  });
+
+
+  layer.addEventListener(
+    "click",
+    function (event) {
+
+      if (
+        event.target === layer
+      ) {
+
+        closePanel();
+
+      }
+
+    }
+  );
+
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (
+        event.key === "Escape" &&
+        activePanel
+      ) {
+
+        closePanel();
+
+      }
+
+    }
+  );
+
+
+});
+</script>
+
 </body>
 </html>
