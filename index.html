@@ -1044,9 +1044,14 @@ function showPlatforms() {
 
   function openPanel(panel, trigger) {
 
-    if (activePanel) {
-      closePanel();
-    }
+  if (activePanel) {
+    closePanel();
+  }
+
+  hidePlatforms();
+
+
+  /* Close every other trigger */
 
 
     /* Close every other trigger */
