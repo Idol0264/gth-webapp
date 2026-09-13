@@ -1,0 +1,3337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Explore investment opportunities available through God’stime Fund (GTF)."
+  >
+
+  <title>
+    Investment Opportunities | God’stime Fund
+  </title>
+
+  <!-- GTH MAIN STYLESHEET -->
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       THEME
+       ===================================================== -->
+
+  <script>
+
+    (function () {
+
+      let savedTheme = null;
+
+      try {
+
+        savedTheme =
+          localStorage.getItem("gth_theme_v1") ||
+          localStorage.getItem("gth-theme");
+
+      } catch (error) {
+
+        savedTheme = null;
+
+      }
+
+
+      if (
+        savedTheme === "gold" ||
+        savedTheme === "blue" ||
+        savedTheme === "green"
+      ) {
+
+        document.body.setAttribute(
+          "data-theme",
+          savedTheme
+        );
+
+      }
+
+    })();
+
+  </script>
+
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <header class="site-header">
+
+    <div class="brand">
+
+      <strong>
+        GTF
+      </strong>
+
+      <span>
+        God’stime Fund
+      </span>
+
+    </div>
+
+
+    <nav
+      class="top-nav"
+      aria-label="GTF navigation"
+    >
+
+      <a href="index.html">
+        GTH Home
+      </a>
+
+    </nav>
+
+  </header>
+
+
+
+  <!-- =====================================================
+       MAIN
+       ===================================================== -->
+
+  <main>
+
+
+    <!-- ===================================================
+         HERO
+         =================================================== -->
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <p class="eyebrow">
+          GTH INVESTMENT PLATFORM
+        </p>
+
+
+        <h1>
+          Investment Opportunities
+        </h1>
+
+
+        <p>
+          Explore investment platforms and opportunities
+          researched, reviewed or developed through
+          God’stime Fund.
+        </p>
+
+
+        <div class="hero-actions">
+
+          <a
+            class="secondary-btn"
+            href="gtf.html"
+          >
+            Back to GTF
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         DIRECTORY
+         =================================================== -->
+
+    <section class="content-section">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          GTF DIRECTORY
+        </p>
+
+
+        <h2>
+          Explore Investment Platforms
+        </h2>
+
+
+        <p>
+          Browse investment opportunities across different
+          investment categories. Select a platform to view
+          more information, risk considerations and available
+          provider information.
+        </p>
+
+      </div>
+
+
+      <!-- JavaScript inserts categories here -->
+
+      <div
+        id="investmentCategories"
+        class="investment-categories"
+      ></div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         GTF INFORMATION NOTICE
+         =================================================== -->
+
+    <section class="content-section">
+
+      <div class="info-box">
+
+        <h2>
+          Investment Information
+        </h2>
+
+        <p>
+          Investment information displayed through GTF is
+          provided for educational and informational purposes.
+          Investment products may involve risk, fees, liquidity
+          restrictions and other conditions.
+        </p>
+
+        <p>
+          Always review the current information and official
+          documentation provided by the relevant investment
+          provider before making an investment decision.
+        </p>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =====================================================
+       INVESTMENT DETAILS MODAL
+       ===================================================== -->
+
+  <div
+    id="investmentModal"
+    class="investment-modal hidden"
+    aria-hidden="true"
+  >
+
+    <div
+      class="investment-modal-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="investmentModalTitle"
+    >
+
+      <div class="investment-modal-header">
+
+        <div>
+
+          <div
+            id="investmentModalCategory"
+            class="category-label"
+          >
+            INVESTMENT PLATFORM
+          </div>
+
+
+          <h2 id="investmentModalTitle">
+            Investment Platform
+          </h2>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="modal-close"
+          id="investmentModalClose"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div id="investmentModalBody"></div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       SEE MORE DIRECTORY MODAL
+       ===================================================== -->
+
+  <div
+    id="directoryModal"
+    class="investment-modal hidden"
+    aria-hidden="true"
+  >
+
+    <div
+      class="investment-modal-panel directory-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="directoryModalTitle"
+    >
+
+      <div class="investment-modal-header">
+
+        <div>
+
+          <div class="category-label">
+            GTF DIRECTORY
+          </div>
+
+
+          <h2 id="directoryModalTitle">
+            Investment Platforms
+          </h2>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="modal-close"
+          id="directoryModalClose"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+
+      <!-- SEARCH -->
+
+      <div class="platform-search">
+
+        <input
+          type="search"
+          id="platformSearch"
+          placeholder="Search investment platforms..."
+          autocomplete="off"
+          aria-label="Search investment platforms"
+        >
+
+      </div>
+
+
+
+      <!-- DIRECTORY -->
+
+      <div
+        id="modalPlatformGrid"
+        class="modal-platform-grid"
+      ></div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer class="site-footer">
+
+    <p>
+      © 2026 God’stime Holdings. All rights reserved.
+    </p>
+
+  </footer>
+
+
+
+  <!-- =====================================================
+       INVESTMENT DATA
+       ===================================================== -->
+
+  <script src="data/gtf-investments.js"></script>
+
+
+
+  <!-- =====================================================
+       PAGE JAVASCRIPT
+       ===================================================== -->
+
+  <script>
+
+    /* =====================================================
+       DATA
+       ===================================================== */
+
+    function getInvestmentData() {
+
+      if (
+        typeof GTF_INVESTMENTS !== "undefined" &&
+        Array.isArray(GTF_INVESTMENTS)
+      ) {
+
+        return GTF_INVESTMENTS;
+
+      }
+
+
+      if (
+        window.GTF_INVESTMENTS &&
+        Array.isArray(window.GTF_INVESTMENTS)
+      ) {
+
+        return window.GTF_INVESTMENTS;
+
+      }
+
+
+      return [];
+
+    }
+
+
+    const investments =
+      getInvestmentData();
+
+
+
+    /* =====================================================
+       NORMALIZE
+       ===================================================== */
+
+    function normalizeInvestment(item) {
+
+      return {
+
+        id:
+          item.id ||
+          item.name
+            ?.toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-") ||
+          "investment",
+
+
+        name:
+          item.name ||
+          "Investment Platform",
+
+
+        shortName:
+          item.shortName ||
+          item.name
+            ?.split(" ")
+            .map(word => word.charAt(0))
+            .join("")
+            .slice(0, 3)
+            .toUpperCase() ||
+          "GTF",
+
+
+        category:
+          item.category ||
+          "other",
+
+
+        categoryName:
+          item.categoryName ||
+          item.category ||
+          "Other Opportunities",
+
+
+        status:
+          item.status ||
+          "Information Available",
+
+
+        description:
+          item.description ||
+          "Investment information is available through GTF.",
+
+
+        objective:
+          item.objective ||
+          "",
+
+
+        risk:
+          item.risk ||
+          "Varies by underlying product",
+
+
+        liquidity:
+          item.liquidity ||
+          "Depends on the selected investment",
+
+
+        fees:
+          item.fees ||
+          "Varies by product",
+
+
+        considerations:
+          item.considerations ||
+          "",
+
+
+        reviewNote:
+          item.reviewNote ||
+          "",
+
+
+        website:
+          item.website ||
+          ""
+
+      };
+
+    }
+
+
+    const normalizedInvestments =
+      investments.map(normalizeInvestment);
+
+
+
+    /* =====================================================
+       ESCAPE HTML
+       ===================================================== */
+
+    function escapeHTML(value) {
+
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+
+    /* =====================================================
+       GROUP CATEGORIES
+       ===================================================== */
+
+    function groupByCategory(items) {
+
+      const groups = {};
+
+
+      items.forEach(function (item) {
+
+        const key =
+          item.category || "other";
+
+
+        if (!groups[key]) {
+
+          groups[key] = {
+
+            name:
+              item.categoryName ||
+              item.category ||
+              "Other Opportunities",
+
+            items: []
+
+          };
+
+        }
+
+
+        groups[key].items.push(item);
+
+      });
+
+
+      return groups;
+
+    }
+
+
+    const investmentGroups =
+      groupByCategory(
+        normalizedInvestments
+      );
+
+
+
+    /* =====================================================
+       CATEGORY CONTAINER
+       ===================================================== */
+
+    const categoriesContainer =
+      document.getElementById(
+        "investmentCategories"
+      );
+
+
+
+    /* =====================================================
+       PLATFORM ICON
+       ===================================================== */
+
+    function createPlatformInitials(item) {
+
+      return escapeHTML(
+        item.shortName ||
+        item.name
+          .split(" ")
+          .map(word => word.charAt(0))
+          .join("")
+          .slice(0, 3)
+          .toUpperCase()
+      );
+
+    }
+
+
+
+    /* =====================================================
+       FIRST VIEW PLATFORM TILE
+
+       Names are intentionally hidden here.
+
+       The icon itself links to the provider's
+       official website when one is available.
+       ===================================================== */
+
+    function createFeaturedTile(item) {
+
+      const tile =
+        document.createElement("article");
+
+
+      tile.className =
+        "platform-tile";
+
+
+      const iconMarkup = item.website
+
+        ? `
+          <a
+            class="platform-icon-button platform-official-link"
+            href="${escapeHTML(item.website)}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit ${escapeHTML(item.name)} official website"
+          >
+
+            <span class="platform-icon">
+
+              ${createPlatformInitials(item)}
+
+            </span>
+
+          </a>
+        `
+
+        : `
+          <button
+            type="button"
+            class="platform-icon-button"
+            data-action="details"
+            data-platform-id="${escapeHTML(item.id)}"
+            aria-label="View details for ${escapeHTML(item.name)}"
+          >
+
+            <span class="platform-icon">
+
+              ${createPlatformInitials(item)}
+
+            </span>
+
+          </button>
+        `;
+
+
+      tile.innerHTML = `
+
+        <div class="platform-logo-wrap">
+
+          ${iconMarkup}
+
+        </div>
+
+
+        <button
+          type="button"
+          class="platform-info-button"
+          data-action="details"
+          data-platform-id="${escapeHTML(item.id)}"
+        >
+
+          SEE DETAILS
+
+        </button>
+
+      `;
+
+
+      return tile;
+
+    }
+
+
+
+    /* =====================================================
+       CATEGORY CARD
+       ===================================================== */
+
+    function createCategory(categoryData) {
+
+      const section =
+        document.createElement("section");
+
+
+      section.className =
+        "investment-category-card";
+
+
+      const items =
+        categoryData.items;
+
+
+      const visibleItems =
+        items.slice(0, 4);
+
+
+      section.innerHTML = `
+
+        <div class="category-heading">
+
+          <div>
+
+            <div class="category-label">
+              GTF CATEGORY
+            </div>
+
+
+            <h3>
+              ${escapeHTML(
+                categoryData.name
+              )}
+            </h3>
+
+
+            <p>
+              Explore investment platforms within
+              this category.
+            </p>
+
+          </div>
+
+
+          <div class="category-count">
+
+            ${items.length}
+
+            ${
+              items.length === 1
+                ? "platform"
+                : "platforms"
+            }
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="category-platform-grid"
+        ></div>
+
+
+        ${
+          items.length > 4
+            ? `
+
+              <div class="category-actions">
+
+                <button
+                  type="button"
+                  class="see-more-btn"
+                  data-action="see-more"
+                  data-category="${escapeHTML(categoryData.name)}"
+                >
+
+                  SEE MORE
+
+                </button>
+
+              </div>
+
+            `
+            : ""
+        }
+
+      `;
+
+
+      const grid =
+        section.querySelector(
+          ".category-platform-grid"
+        );
+
+
+      visibleItems.forEach(
+        function (item) {
+
+          grid.appendChild(
+            createFeaturedTile(item)
+          );
+
+        }
+      );
+
+
+      return section;
+
+    }
+
+
+
+    /* =====================================================
+       RENDER CATEGORIES
+       ===================================================== */
+
+    function renderCategories() {
+
+      if (!categoriesContainer) {
+        return;
+      }
+
+
+      categoriesContainer.innerHTML = "";
+
+
+      const categoryKeys =
+        Object.keys(
+          investmentGroups
+        );
+
+
+      if (!categoryKeys.length) {
+
+        categoriesContainer.innerHTML = `
+
+          <div class="status-notice">
+
+            <strong>
+              Investment opportunities are being prepared.
+            </strong>
+
+
+            <p>
+              GTF investment information will appear here
+              as the directory develops.
+            </p>
+
+          </div>
+
+        `;
+
+
+        return;
+
+      }
+
+
+      categoryKeys.forEach(
+        function (key) {
+
+          categoriesContainer.appendChild(
+            createCategory(
+              investmentGroups[key]
+            )
+          );
+
+        }
+      );
+
+    }
+
+
+    renderCategories();
+
+
+
+    /* =====================================================
+       FIND PLATFORM
+       ===================================================== */
+
+    function findPlatform(id) {
+
+      return normalizedInvestments.find(
+        function (item) {
+
+          return String(item.id) ===
+            String(id);
+
+        }
+      );
+
+    }
+
+
+
+    /* =====================================================
+       RISK CLASS
+       ===================================================== */
+
+    function riskClass(value) {
+
+      const text =
+        String(value || "")
+          .toLowerCase();
+
+
+      if (
+        text.includes("high") ||
+        text.includes("significant")
+      ) {
+
+        return "risk-high";
+
+      }
+
+
+      if (
+        text.includes("low") ||
+        text.includes("limited")
+      ) {
+
+        return "risk-low";
+
+      }
+
+
+      return "risk-variable";
+
+    }
+
+
+
+    /* =====================================================
+       DETAILS MODAL
+       ===================================================== */
+
+    const investmentModal =
+      document.getElementById(
+        "investmentModal"
+      );
+
+
+    const investmentModalBody =
+      document.getElementById(
+        "investmentModalBody"
+      );
+
+
+    const investmentModalTitle =
+      document.getElementById(
+        "investmentModalTitle"
+      );
+
+
+    const investmentModalCategory =
+      document.getElementById(
+        "investmentModalCategory"
+      );
+
+
+
+    function openInvestmentDetails(id) {
+
+      const item =
+        findPlatform(id);
+
+
+      if (
+        !item ||
+        !investmentModal
+      ) {
+
+        return;
+
+      }
+
+
+      investmentModalTitle.textContent =
+        item.name;
+
+
+      investmentModalCategory.textContent =
+        item.categoryName;
+
+
+
+      investmentModalBody.innerHTML = `
+
+        <div class="investment-detail-content">
+
+
+          <div class="status-badge">
+            ${escapeHTML(item.status)}
+          </div>
+
+
+
+          <!-- ABOUT -->
+
+          <div class="about-box">
+
+            <h2>
+              About
+            </h2>
+
+            <p>
+              ${escapeHTML(item.description)}
+            </p>
+
+          </div>
+
+
+
+          <!-- OBJECTIVE -->
+
+          ${
+            item.objective
+              ? `
+
+                <div class="about-box">
+
+                  <h2>
+                    Objective
+                  </h2>
+
+                  <p>
+                    ${escapeHTML(item.objective)}
+                  </p>
+
+                </div>
+
+              `
+              : ""
+          }
+
+
+
+          <!-- FACTS -->
+
+          <div class="investment-detail-facts">
+
+
+            <div class="investment-fact risk-fact">
+
+              <span>
+                Risk
+              </span>
+
+
+              <strong
+                class="${riskClass(item.risk)}"
+              >
+
+                ${escapeHTML(item.risk)}
+
+              </strong>
+
+            </div>
+
+
+
+            <div class="investment-fact liquidity-fact">
+
+              <span>
+                Liquidity
+              </span>
+
+
+              <strong>
+
+                ${escapeHTML(item.liquidity)}
+
+              </strong>
+
+            </div>
+
+
+
+            <div class="investment-fact fees-fact">
+
+              <span>
+                Fees
+              </span>
+
+
+              <strong>
+
+                ${escapeHTML(item.fees)}
+
+              </strong>
+
+            </div>
+
+
+
+            <div class="investment-fact category-fact">
+
+              <span>
+                Category
+              </span>
+
+
+              <strong>
+
+                ${escapeHTML(
+                  item.categoryName
+                )}
+
+              </strong>
+
+            </div>
+
+
+          </div>
+
+
+
+          <!-- CONSIDERATIONS -->
+
+          ${
+            item.considerations
+              ? `
+
+                <div class="investment-considerations">
+
+                  <h2>
+                    Risk / Considerations
+                  </h2>
+
+
+                  <p>
+                    ${escapeHTML(
+                      item.considerations
+                    )}
+                  </p>
+
+                </div>
+
+              `
+              : ""
+          }
+
+
+
+          <!-- REVIEW -->
+
+          ${
+            item.reviewNote
+              ? `
+
+                <div class="about-box">
+
+                  <h2>
+                    GTF Review Note
+                  </h2>
+
+
+                  <p>
+                    ${escapeHTML(
+                      item.reviewNote
+                    )}
+                  </p>
+
+                </div>
+
+              `
+              : ""
+          }
+
+
+
+          <!-- PROVIDER -->
+
+          <div class="provider-information">
+
+            <div>
+
+              <span>
+                Listed through
+              </span>
+
+
+              <strong>
+                GTF Investment Directory
+              </strong>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- WEBSITE -->
+
+          ${
+            item.website
+              ? `
+
+                <div class="card-actions">
+
+                  <a
+                    class="primary-button"
+                    href="${escapeHTML(item.website)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+
+                    Visit Provider
+
+                  </a>
+
+                </div>
+
+              `
+              : ""
+          }
+
+
+        </div>
+
+      `;
+
+
+      investmentModal.classList.remove(
+        "hidden"
+      );
+
+
+      investmentModal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+
+    /* =====================================================
+       CLOSE DETAILS
+       ===================================================== */
+
+    function closeInvestmentDetails() {
+
+      if (!investmentModal) {
+        return;
+      }
+
+
+      investmentModal.classList.add(
+        "hidden"
+      );
+
+
+      investmentModal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+
+    /* =====================================================
+       DIRECTORY MODAL
+       ===================================================== */
+
+    const directoryModal =
+      document.getElementById(
+        "directoryModal"
+      );
+
+
+    const directoryModalTitle =
+      document.getElementById(
+        "directoryModalTitle"
+      );
+
+
+    const modalPlatformGrid =
+      document.getElementById(
+        "modalPlatformGrid"
+      );
+
+
+    const platformSearch =
+      document.getElementById(
+        "platformSearch"
+      );
+
+
+    /* Active category used by SEE MORE and search. */
+    let activeDirectoryCategory = "";
+
+
+
+    /* =====================================================
+       DIRECTORY TILE
+
+       Names ARE visible here.
+
+       The icon links to the provider's official
+       website when one is available.
+
+       Two-column arrangement is handled by CSS.
+       ===================================================== */
+
+    function createDirectoryTile(item) {
+
+      const tile =
+        document.createElement("article");
+
+
+      tile.className =
+        "directory-platform-tile";
+
+
+      tile.dataset.platformName =
+        item.name.toLowerCase();
+
+
+      tile.dataset.platformCategory =
+        item.categoryName.toLowerCase();
+
+
+      const iconMarkup = item.website
+
+        ? `
+          <a
+            class="platform-icon-button platform-official-link"
+            href="${escapeHTML(item.website)}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit ${escapeHTML(item.name)} official website"
+          >
+
+            <span class="platform-icon">
+
+              ${createPlatformInitials(item)}
+
+            </span>
+
+          </a>
+        `
+
+        : `
+          <button
+            type="button"
+            class="platform-icon-button"
+            data-action="details"
+            data-platform-id="${escapeHTML(item.id)}"
+            aria-label="View details for ${escapeHTML(item.name)}"
+          >
+
+            <span class="platform-icon">
+
+              ${createPlatformInitials(item)}
+
+            </span>
+
+          </button>
+        `;
+
+
+      tile.innerHTML = `
+
+        ${iconMarkup}
+
+
+        <div class="platform-tile-name">
+
+          ${escapeHTML(item.name)}
+
+        </div>
+
+
+        <div class="directory-platform-category">
+
+          ${escapeHTML(item.categoryName)}
+
+        </div>
+
+
+        <button
+          type="button"
+          class="platform-info-button"
+          data-action="details"
+          data-platform-id="${escapeHTML(item.id)}"
+        >
+
+          SEE DETAILS
+
+        </button>
+
+      `;
+
+
+      return tile;
+
+    }
+
+
+
+    /* =====================================================
+       RENDER DIRECTORY
+
+       Search remains inside the active category.
+       ===================================================== */
+
+    function renderDirectory(
+      searchTerm = "",
+      categoryName = ""
+    ) {
+
+      if (!modalPlatformGrid) {
+        return;
+      }
+
+
+      modalPlatformGrid.innerHTML =
+        "";
+
+
+      const query =
+        searchTerm
+          .trim()
+          .toLowerCase();
+
+
+      const category =
+        categoryName
+          .trim()
+          .toLowerCase();
+
+
+      const filtered =
+        normalizedInvestments.filter(
+          function (item) {
+
+            const matchesCategory =
+              !category ||
+              item.categoryName
+                .toLowerCase() === category;
+
+
+            const matchesSearch =
+              !query ||
+              item.name
+                .toLowerCase()
+                .includes(query)
+              ||
+              item.categoryName
+                .toLowerCase()
+                .includes(query);
+
+
+            return (
+              matchesCategory &&
+              matchesSearch
+            );
+
+          }
+        );
+
+
+      filtered.forEach(
+        function (item) {
+
+          modalPlatformGrid.appendChild(
+            createDirectoryTile(item)
+          );
+
+        }
+      );
+
+
+      if (
+        !modalPlatformGrid.children.length
+      ) {
+
+        modalPlatformGrid.innerHTML = `
+
+          <div class="status-notice">
+
+            <strong>
+              No platform found.
+            </strong>
+
+
+            <p>
+              Try another search.
+            </p>
+
+          </div>
+
+        `;
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       OPEN DIRECTORY
+
+       SEE MORE opens only the selected category.
+       ===================================================== */
+
+    function openDirectory(categoryName) {
+
+      if (!directoryModal) {
+        return;
+      }
+
+
+      activeDirectoryCategory =
+        categoryName || "";
+
+
+      directoryModalTitle.textContent =
+        activeDirectoryCategory
+          ? activeDirectoryCategory
+          : "Investment Platforms";
+
+
+      if (platformSearch) {
+
+        platformSearch.value = "";
+
+      }
+
+
+      renderDirectory(
+        "",
+        activeDirectoryCategory
+      );
+
+
+      if (platformSearch) {
+
+        setTimeout(
+          function () {
+
+            platformSearch.focus();
+
+          },
+          120
+        );
+
+      }
+
+
+      directoryModal.classList.remove(
+        "hidden"
+      );
+
+
+      directoryModal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+
+    /* =====================================================
+       CLOSE DIRECTORY
+       ===================================================== */
+
+    function closeDirectory() {
+
+      if (!directoryModal) {
+        return;
+      }
+
+
+      directoryModal.classList.add(
+        "hidden"
+      );
+
+
+      directoryModal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      activeDirectoryCategory = "";
+
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+
+    /* =====================================================
+       CLICK HANDLING
+       ===================================================== */
+
+    document.addEventListener(
+      "click",
+      function (event) {
+
+        const target =
+          event.target.closest(
+            "[data-action]"
+          );
+
+
+        if (!target) {
+          return;
+        }
+
+
+        const action =
+          target.dataset.action;
+
+
+
+        if (action === "details") {
+
+          openInvestmentDetails(
+            target.dataset.platformId
+          );
+
+        }
+
+
+
+        if (action === "see-more") {
+
+          openDirectory(
+            target.dataset.category
+          );
+
+        }
+
+      }
+    );
+
+
+
+    /* =====================================================
+       CLOSE BUTTONS
+       ===================================================== */
+
+    const investmentModalClose =
+      document.getElementById(
+        "investmentModalClose"
+      );
+
+
+    const directoryModalClose =
+      document.getElementById(
+        "directoryModalClose"
+      );
+
+
+    if (investmentModalClose) {
+
+      investmentModalClose.addEventListener(
+        "click",
+        closeInvestmentDetails
+      );
+
+    }
+
+
+    if (directoryModalClose) {
+
+      directoryModalClose.addEventListener(
+        "click",
+        closeDirectory
+      );
+
+    }
+
+
+
+    /* =====================================================
+       BACKDROP CLOSE
+       ===================================================== */
+
+    if (investmentModal) {
+
+      investmentModal.addEventListener(
+        "click",
+        function (event) {
+
+          if (
+            event.target ===
+            investmentModal
+          ) {
+
+            closeInvestmentDetails();
+
+          }
+
+        }
+      );
+
+    }
+
+
+    if (directoryModal) {
+
+      directoryModal.addEventListener(
+        "click",
+        function (event) {
+
+          if (
+            event.target ===
+            directoryModal
+          ) {
+
+            closeDirectory();
+
+          }
+
+        }
+      );
+
+    }
+
+
+
+    /* =====================================================
+       SEARCH
+
+       Search stays scoped to the currently opened
+       category.
+       ===================================================== */
+
+    if (platformSearch) {
+
+      platformSearch.addEventListener(
+        "input",
+        function () {
+
+          renderDirectory(
+            platformSearch.value,
+            activeDirectoryCategory
+          );
+
+        }
+      );
+
+    }
+
+
+
+    /* =====================================================
+       ESCAPE
+       ===================================================== */
+
+    document.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (
+          event.key !== "Escape"
+        ) {
+
+          return;
+
+        }
+
+
+        if (
+          investmentModal &&
+          !investmentModal.classList.contains(
+            "hidden"
+          )
+        ) {
+
+          closeInvestmentDetails();
+
+          return;
+
+        }
+
+
+        if (
+          directoryModal &&
+          !directoryModal.classList.contains(
+            "hidden"
+          )
+        ) {
+
+          closeDirectory();
+
+        }
+
+      }
+    );
+
+  </script>
+
+
+
+  <!-- =====================================================
+       PAGE-SPECIFIC PREMIUM VISUAL LAYER
+
+       This does NOT replace style.css.
+       It only controls the investment-directory
+       components created by this page.
+       ===================================================== -->
+
+  <style>
+
+
+    /* =====================================================
+       INVESTMENT DIRECTORY
+       ===================================================== */
+
+    .investment-categories {
+
+      display: grid;
+
+      gap: 28px;
+
+      margin-top: 34px;
+
+    }
+
+
+
+    /* =====================================================
+       CATEGORY CARD
+       ===================================================== */
+
+    .investment-category-card {
+
+      position: relative;
+
+      padding: 26px;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          var(--surface-2),
+          var(--surface)
+        );
+
+      border: 1px solid var(--border);
+
+      box-shadow:
+        0 18px 45px
+        rgba(0, 0, 0, .14);
+
+      overflow: hidden;
+
+    }
+
+
+    .investment-category-card::before {
+
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 2px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          var(--accent),
+          transparent
+        );
+
+      opacity: .7;
+
+    }
+
+
+
+    /* =====================================================
+       CATEGORY HEADING
+       ===================================================== */
+
+    .category-heading {
+
+      display: flex;
+
+      align-items: flex-start;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin-bottom: 24px;
+
+    }
+
+
+    .category-heading h3 {
+
+      margin:
+        5px
+        0
+        7px;
+
+      font-size:
+        clamp(
+          1.25rem,
+          2vw,
+          1.55rem
+        );
+
+      line-height: 1.2;
+
+    }
+
+
+    .category-heading p {
+
+      margin: 0;
+
+      max-width: 560px;
+
+      color: var(--muted);
+
+      font-size: .9rem;
+
+      line-height: 1.6;
+
+    }
+
+
+    .category-count {
+
+      flex:
+        0 0 auto;
+
+      padding:
+        8px
+        12px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 999px;
+
+      color: var(--muted);
+
+      font-size: .72rem;
+
+      font-weight: 800;
+
+      letter-spacing: .04em;
+
+      white-space: nowrap;
+
+    }
+
+
+
+    /* =====================================================
+       FIRST FOUR PLATFORMS
+       FOUR IN ONE ROW ON ALL SCREEN SIZES
+       ===================================================== */
+
+    .category-platform-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 14px;
+
+      align-items: start;
+
+    }
+
+
+    .platform-tile {
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: flex-start;
+
+      min-width: 0;
+
+      padding:
+        15px
+        9px
+        12px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 17px;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .025
+        );
+
+      transition:
+        transform .22s ease,
+        border-color .22s ease,
+        background .22s ease;
+
+    }
+
+
+    .platform-tile:hover {
+
+      transform:
+        translateY(-3px);
+
+      border-color:
+        var(--accent);
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .045
+        );
+
+    }
+
+
+
+    /* =====================================================
+       LOGO / ICON
+       ===================================================== */
+
+    .platform-logo-wrap {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      margin-bottom: 3px;
+
+    }
+
+
+    .platform-icon-button {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 62px;
+
+      height: 62px;
+
+      padding: 0;
+
+      border: 0;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          145deg,
+          var(--surface-2),
+          var(--surface)
+        );
+
+      color: var(--accent);
+
+      box-shadow:
+        inset 0 0 0 1px var(--border),
+        0 8px 20px
+        rgba(0, 0, 0, .14);
+
+      cursor: pointer;
+
+      text-decoration: none;
+
+      transition:
+        transform .22s ease,
+        box-shadow .22s ease,
+        border-radius .22s ease;
+
+    }
+
+
+    .platform-icon-button:hover {
+
+      transform:
+        translateY(-3px)
+        scale(1.035);
+
+      box-shadow:
+        inset 0 0 0 1px var(--accent),
+        0 12px 28px
+        rgba(0, 0, 0, .22);
+
+    }
+
+
+    .platform-icon-button:active {
+
+      transform:
+        translateY(0)
+        scale(.98);
+
+    }
+
+
+    .platform-official-link {
+
+      text-decoration: none;
+
+    }
+
+
+    .platform-icon {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+
+      font-size: .9rem;
+
+      font-weight: 950;
+
+      letter-spacing: -.02em;
+
+    }
+
+
+
+    /* =====================================================
+       SEE DETAILS
+
+       SAME WIDTH AS ICON
+       APPROXIMATELY ONE-THIRD OF ICON HEIGHT
+       ===================================================== */
+
+    .platform-info-button {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 62px;
+
+      height: 21px;
+
+      min-height: 21px;
+
+      margin: 3px 0 0;
+
+      padding: 0;
+
+      border: 0;
+
+      border-radius: 999px;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .035
+        );
+
+      color: var(--accent);
+
+      font-size: .55rem;
+
+      font-weight: 900;
+
+      letter-spacing: .07em;
+
+      line-height: 1;
+
+      cursor: pointer;
+
+      transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+
+    }
+
+
+    .platform-info-button:hover {
+
+      background:
+        var(--accent);
+
+      color:
+        var(--surface);
+
+      transform:
+        translateY(-1px);
+
+      box-shadow:
+        0 5px 14px
+        rgba(0, 0, 0, .16);
+
+    }
+
+
+
+    /* =====================================================
+       SEE MORE
+       ===================================================== */
+
+    .category-actions {
+
+      display: flex;
+
+      justify-content: center;
+
+      margin-top: 22px;
+
+    }
+
+
+    .see-more-btn {
+
+      min-width: 150px;
+
+      padding:
+        11px
+        22px;
+
+      border:
+        1px solid var(--accent);
+
+      border-radius: 999px;
+
+      background:
+        transparent;
+
+      color: var(--accent);
+
+      font-size: .72rem;
+
+      font-weight: 900;
+
+      letter-spacing: .1em;
+
+      cursor: pointer;
+
+      transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+
+    }
+
+
+    .see-more-btn:hover {
+
+      background:
+        var(--accent);
+
+      color:
+        var(--surface);
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+
+    /* =====================================================
+       MODAL
+       ===================================================== */
+
+    .investment-modal {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 9999;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+
+      background:
+        rgba(
+          0,
+          0,
+          0,
+          .72
+        );
+
+      backdrop-filter:
+        blur(12px);
+
+      -webkit-backdrop-filter:
+        blur(12px);
+
+    }
+
+
+    .investment-modal.hidden {
+
+      display: none;
+
+    }
+
+
+    .investment-modal-panel {
+
+      width: min(
+        760px,
+        100%
+      );
+
+      max-height:
+        min(
+          88vh,
+          900px
+        );
+
+      overflow-y: auto;
+
+      padding: 26px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 24px;
+
+      background:
+        linear-gradient(
+          145deg,
+          var(--surface-2),
+          var(--surface)
+        );
+
+      box-shadow:
+        0 30px 90px
+        rgba(0, 0, 0, .4);
+
+    }
+
+
+    /* =====================================================
+       PREMIUM SCROLLABLE DIRECTORY
+       ===================================================== */
+
+    .directory-panel {
+
+      width: min(
+        850px,
+        100%
+      );
+
+      max-height: 88vh;
+
+      overflow: hidden;
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+    .directory-panel
+    .investment-modal-header {
+
+      flex:
+        0 0 auto;
+
+    }
+
+
+    .directory-panel
+    .platform-search {
+
+      flex:
+        0 0 auto;
+
+    }
+
+
+
+    /* =====================================================
+       MODAL HEADER
+       ===================================================== */
+
+    .investment-modal-header {
+
+      display: flex;
+
+      align-items: flex-start;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin-bottom: 22px;
+
+    }
+
+
+    .investment-modal-header h2 {
+
+      margin:
+        6px
+        0
+        0;
+
+      font-size:
+        clamp(
+          1.35rem,
+          4vw,
+          1.85rem
+        );
+
+      line-height: 1.15;
+
+    }
+
+
+    .modal-close {
+
+      flex:
+        0 0 auto;
+
+      width: 40px;
+
+      height: 40px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 50%;
+
+      background:
+        var(--surface-2);
+
+      color:
+        var(--text);
+
+      font-size: 1.5rem;
+
+      line-height: 1;
+
+      cursor: pointer;
+
+    }
+
+
+    .modal-close:hover {
+
+      color:
+        var(--accent);
+
+      border-color:
+        var(--accent);
+
+    }
+
+
+
+    /* =====================================================
+       DETAILS CONTENT
+       ===================================================== */
+
+    .investment-detail-content {
+
+      display: grid;
+
+      gap: 16px;
+
+    }
+
+
+    .investment-detail-content
+    .about-box h2 {
+
+      margin-bottom: 8px;
+
+    }
+
+
+    .investment-detail-content
+    .about-box p {
+
+      line-height: 1.7;
+
+    }
+
+
+
+    /* =====================================================
+       FACTS
+       ===================================================== */
+
+    .investment-detail-facts {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 12px;
+
+    }
+
+
+    .investment-fact {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 7px;
+
+      padding: 16px;
+
+      background:
+        var(--surface-2);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 15px;
+
+    }
+
+
+    .investment-fact span {
+
+      color:
+        var(--muted-2);
+
+      font-size: .68rem;
+
+      font-weight: 900;
+
+      letter-spacing: .1em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .investment-fact strong {
+
+      color:
+        var(--text);
+
+      font-size: .92rem;
+
+      line-height: 1.45;
+
+    }
+
+
+
+    /* =====================================================
+       FAST-VISUAL INFORMATION COLOURS
+       ===================================================== */
+
+    .investment-fact .risk-high {
+
+      color:
+        #ef5350;
+
+    }
+
+
+    .investment-fact .risk-variable {
+
+      color:
+        #f0b429;
+
+    }
+
+
+    .investment-fact .risk-low {
+
+      color:
+        #35c76f;
+
+    }
+
+
+    .liquidity-fact strong {
+
+      color:
+        #35c76f;
+
+    }
+
+
+    .fees-fact strong {
+
+      color:
+        var(--accent);
+
+    }
+
+
+    .category-fact strong {
+
+      color:
+        var(--info);
+
+    }
+
+
+
+    /* =====================================================
+       RISK / CONSIDERATIONS
+       ===================================================== */
+
+    .investment-considerations {
+
+      padding: 18px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(
+            217,
+            83,
+            79,
+            .10
+          ),
+          var(--surface)
+        );
+
+      border:
+        1px solid
+        rgba(
+          217,
+          83,
+          79,
+          .35
+        );
+
+      border-radius: 16px;
+
+    }
+
+
+    .investment-considerations h2 {
+
+      margin:
+        0
+        0
+        8px;
+
+      color:
+        #ef5350;
+
+      font-size:
+        1.03rem;
+
+    }
+
+
+    .investment-considerations p {
+
+      margin: 0;
+
+      color:
+        var(--muted);
+
+      line-height: 1.7;
+
+    }
+
+
+
+    /* =====================================================
+       PROVIDER INFORMATION
+       ===================================================== */
+
+    .provider-information {
+
+      padding:
+        14px
+        16px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 14px;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .02
+        );
+
+    }
+
+
+    .provider-information div {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 5px;
+
+    }
+
+
+    .provider-information span {
+
+      color:
+        var(--muted-2);
+
+      font-size: .68rem;
+
+      font-weight: 800;
+
+      letter-spacing: .08em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .provider-information strong {
+
+      color:
+        var(--text);
+
+      font-size: .86rem;
+
+    }
+
+
+
+    /* =====================================================
+       DIRECTORY SEARCH
+       ===================================================== */
+
+    .platform-search {
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .platform-search input {
+
+      width: 100%;
+
+      box-sizing: border-box;
+
+      padding:
+        13px
+        15px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 13px;
+
+      outline: none;
+
+      background:
+        var(--surface);
+
+      color:
+        var(--text);
+
+      font:
+        inherit;
+
+    }
+
+
+    .platform-search input:focus {
+
+      border-color:
+        var(--accent);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(
+          255,
+          255,
+          255,
+          .04
+        );
+
+    }
+
+
+
+    /* =====================================================
+       SEE MORE DIRECTORY
+
+       TWO COLUMNS
+       SCROLLABLE CONTENT
+       ===================================================== */
+
+    .modal-platform-grid {
+
+      flex:
+        1 1 auto;
+
+      min-height: 0;
+
+      overflow-y: auto;
+
+      padding:
+        4px
+        4px
+        18px;
+
+      scrollbar-width: thin;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 14px;
+
+    }
+
+
+    .directory-platform-tile {
+
+      min-height: 185px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: flex-start;
+
+      text-align: center;
+
+      padding:
+        20px
+        12px
+        16px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          145deg,
+          var(--surface-2),
+          var(--surface)
+        );
+
+      box-shadow:
+        0 10px 28px
+        rgba(
+          0,
+          0,
+          0,
+          .10
+        );
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
+
+    }
+
+
+    .directory-platform-tile:hover {
+
+      transform:
+        translateY(-3px);
+
+      border-color:
+        var(--accent);
+
+    }
+
+
+    .directory-platform-tile
+    .platform-icon-button {
+
+      width: 72px;
+
+      height: 72px;
+
+      margin-bottom: 10px;
+
+      border-radius: 19px;
+
+    }
+
+
+    .platform-tile-name {
+
+      width: 100%;
+
+      margin:
+        2px
+        0
+        5px;
+
+      color:
+        var(--text);
+
+      font-size: .88rem;
+
+      font-weight: 850;
+
+      line-height: 1.35;
+
+    }
+
+
+    .directory-platform-category {
+
+      margin-bottom: 7px;
+
+      color:
+        var(--info);
+
+      font-size: .63rem;
+
+      font-weight: 800;
+
+      letter-spacing: .07em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .directory-platform-tile
+    .platform-info-button {
+
+      width: 72px;
+
+      height: 24px;
+
+      min-height: 24px;
+
+    }
+
+
+
+    /* =====================================================
+       STATUS
+       ===================================================== */
+
+    .status-badge {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      width: fit-content;
+
+      padding:
+        6px
+        10px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 999px;
+
+      color:
+        var(--accent);
+
+      font-size: .67rem;
+
+      font-weight: 900;
+
+      letter-spacing: .07em;
+
+      text-transform: uppercase;
+
+    }
+
+
+
+    /* =====================================================
+       MOBILE
+       FOUR PLATFORMS REMAIN IN ONE ROW
+       ===================================================== */
+
+    @media (max-width: 720px) {
+
+      .category-platform-grid {
+
+        grid-template-columns:
+          repeat(4, minmax(0, 1fr));
+
+        gap: 8px;
+
+      }
+
+
+      .category-heading {
+
+        align-items:
+          flex-start;
+
+      }
+
+
+      .category-count {
+
+        font-size:
+          .64rem;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 520px) {
+
+      .investment-category-card {
+
+        padding:
+          18px;
+
+        border-radius:
+          19px;
+
+      }
+
+
+      .category-heading {
+
+        flex-direction:
+          column;
+
+        gap: 10px;
+
+      }
+
+
+      .category-platform-grid {
+
+        grid-template-columns:
+          repeat(4, minmax(0, 1fr));
+
+        gap: 6px;
+
+      }
+
+
+      .platform-tile {
+
+        padding:
+          13px
+          4px
+          10px;
+
+      }
+
+
+      .platform-icon-button {
+
+        width: 54px;
+
+        height: 54px;
+
+        border-radius:
+          15px;
+
+      }
+
+
+      .platform-info-button {
+
+        width: 54px;
+
+        height: 18px;
+
+        min-height: 18px;
+
+      }
+
+
+      .investment-detail-facts {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .modal-platform-grid {
+
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+
+      }
+
+
+      .directory-platform-tile {
+
+        min-height: 165px;
+
+        padding:
+          15px
+          8px
+          13px;
+
+      }
+
+
+      .directory-platform-tile
+      .platform-icon-button {
+
+        width: 58px;
+
+        height: 58px;
+
+        border-radius:
+          16px;
+
+      }
+
+
+      .directory-platform-tile
+      .platform-info-button {
+
+        width: 58px;
+
+        height: 19px;
+
+        min-height: 19px;
+
+      }
+
+
+      .platform-tile-name {
+
+        font-size:
+          .78rem;
+
+      }
+
+
+      .directory-platform-category {
+
+        font-size:
+          .6rem;
+
+      }
+
+
+      .investment-modal {
+
+        padding:
+          10px;
+
+      }
+
+
+      .investment-modal-panel {
+
+        padding:
+          20px;
+
+        border-radius:
+          20px;
+
+        max-height:
+          92vh;
+
+      }
+
+
+      .directory-panel {
+
+        max-height:
+          92vh;
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       VERY SMALL PHONES
+       FOUR PLATFORMS REMAIN IN ONE ROW
+       ===================================================== */
+
+    @media (max-width: 360px) {
+
+      .category-platform-grid {
+
+        grid-template-columns:
+          repeat(4, minmax(0, 1fr));
+
+        gap:
+          4px;
+
+      }
+
+
+      .platform-icon-button {
+
+        width:
+          48px;
+
+        height:
+          48px;
+
+      }
+
+
+      .platform-info-button {
+
+        width:
+          48px;
+
+        height:
+          16px;
+
+        min-height:
+          16px;
+
+        font-size:
+          .43rem;
+
+      }
+
+
+      .directory-platform-tile
+      .platform-icon-button {
+
+        width:
+          48px;
+
+        height:
+          48px;
+
+        border-radius:
+          15px;
+
+      }
+
+
+      .directory-platform-tile
+      .platform-info-button {
+
+        width:
+          48px;
+
+        height:
+          16px;
+
+        min-height:
+          16px;
+
+      }
+
+    }
+
+  </style>
+
+
+</body>
+
+</html>
