@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -13,135 +15,785 @@
     content="Explore investment opportunities available through God’stime Fund (GTF)."
   >
 
-  <title>Investment Opportunities | God’stime Fund</title>
+  <title>
+    Investment Opportunities | God’stime Fund
+  </title>
 
-  <!-- GTH MAIN STYLESHEET -->
-  <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+  <style>
+
+    /* =====================================================
+       PAGE-SPECIFIC GTF INVESTMENTS STYLES
+       ===================================================== */
+
+    .category-platform-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      align-items: start;
+      justify-items: center;
+    }
+
+
+    .platform-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      width: 100%;
+    }
+
+
+    .platform-logo-wrap {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+
+    .platform-icon-button {
+      width: 62px;
+      height: 62px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0;
+
+      border: 1px solid var(--accent-soft);
+      border-radius: 14px;
+
+      background: var(--accent-faint);
+      color: var(--accent);
+
+      text-decoration: none;
+      font-weight: 900;
+
+      transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+    }
+
+
+    .platform-icon-button:hover,
+    .platform-icon-button:focus-visible {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+
+    .platform-icon-button:active {
+      transform: scale(.96);
+    }
+
+
+    .platform-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+
+      font-size: .85rem;
+      font-weight: 900;
+      letter-spacing: .04em;
+    }
+
+
+    .platform-info-button {
+      width: 62px;
+      height: 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0;
+      margin: 0;
+
+      border: 1px solid var(--accent-soft);
+      border-radius: 5px;
+
+      background: var(--accent-faint);
+      color: var(--accent);
+
+      font-size: .48rem;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: .02em;
+
+      white-space: nowrap;
+
+      cursor: pointer;
+
+      transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+    }
+
+
+    .platform-info-button:hover,
+    .platform-info-button:focus-visible {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+
+    .platform-info-button:active {
+      transform: translateY(1px);
+    }
+
+
+    /* =====================================================
+       SEE MORE
+       ===================================================== */
+
+    .category-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 14px;
+    }
+
+
+    .see-more-btn {
+      min-width: 130px;
+
+      padding: 8px 18px;
+
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+
+      /*
+       * Transparent/translucent theme-aware fill.
+       * Automatically changes with Gold / Blue / Green.
+       */
+      background: var(--accent-soft);
+
+      color: var(--accent);
+
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+
+      cursor: pointer;
+
+      transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+    }
+
+
+    .see-more-btn:hover,
+    .see-more-btn:focus-visible {
+      background: var(--accent-faint);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+
+    .see-more-btn:active {
+      transform: translateY(1px);
+    }
+
+
+    /* =====================================================
+       DIRECTORY MODAL
+       ===================================================== */
+
+    .directory-panel {
+      max-height: 88vh;
+      overflow: hidden;
+    }
+
+
+    .platform-search {
+      margin-bottom: 16px;
+    }
+
+
+    .platform-search input {
+      width: 100%;
+      box-sizing: border-box;
+
+      padding: 11px 13px;
+
+      border: 1px solid var(--border);
+      border-radius: 9px;
+
+      background: var(--surface);
+      color: var(--text);
+
+      outline: none;
+    }
+
+
+    .platform-search input:focus {
+      border-color: var(--accent);
+    }
+
+
+    .modal-platform-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 12px;
+
+      max-height: 58vh;
+      overflow-y: auto;
+
+      padding-right: 3px;
+    }
+
+
+    .modal-platform-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      min-width: 0;
+
+      padding: 10px;
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      background: var(--surface);
+    }
+
+
+    .modal-platform-icon {
+      flex: 0 0 auto;
+
+      width: 48px;
+      height: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--accent-soft);
+      border-radius: 10px;
+
+      background: var(--accent-faint);
+      color: var(--accent);
+
+      text-decoration: none;
+
+      font-size: .7rem;
+      font-weight: 900;
+    }
+
+
+    .modal-platform-content {
+      min-width: 0;
+      flex: 1;
+    }
+
+
+    .modal-platform-name {
+      margin: 0 0 3px;
+
+      color: var(--text);
+
+      font-size: .82rem;
+      font-weight: 800;
+
+      line-height: 1.2;
+    }
+
+
+    .modal-platform-category {
+      margin: 0;
+
+      color: var(--muted-2);
+
+      font-size: .65rem;
+      line-height: 1.2;
+    }
+
+
+    .modal-platform-details {
+      flex: 0 0 auto;
+
+      padding: 5px 7px;
+
+      border: 1px solid var(--accent-soft);
+      border-radius: 6px;
+
+      background: var(--accent-faint);
+      color: var(--accent);
+
+      font-size: .52rem;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+
+    .modal-platform-details:hover,
+    .modal-platform-details:focus-visible {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+
+    .directory-empty {
+      grid-column: 1 / -1;
+
+      padding: 24px 12px;
+
+      text-align: center;
+
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+
+    /* =====================================================
+       DETAILS MODAL CONTENT
+       ===================================================== */
+
+    .investment-detail-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 10px;
+
+      margin-top: 16px;
+    }
+
+
+    .investment-detail-item {
+      padding: 11px;
+
+      border: 1px solid var(--border);
+      border-radius: 9px;
+
+      background: var(--surface);
+    }
+
+
+    .investment-detail-label {
+      margin-bottom: 4px;
+
+      color: var(--muted-2);
+
+      font-size: .62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+
+    .investment-detail-value {
+      color: var(--text);
+
+      font-size: .78rem;
+      line-height: 1.4;
+    }
+
+
+    .investment-description {
+      margin-top: 14px;
+
+      color: var(--muted);
+
+      font-size: .84rem;
+      line-height: 1.55;
+    }
+
+
+    .investment-review-note {
+      margin-top: 14px;
+
+      padding: 11px;
+
+      border-left: 3px solid var(--accent);
+
+      background: var(--accent-faint);
+      color: var(--muted);
+
+      font-size: .78rem;
+      line-height: 1.45;
+    }
+
+
+    .investment-official-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-top: 16px;
+
+      padding: 9px 14px;
+
+      border: 1px solid var(--accent);
+      border-radius: 9px;
+
+      background: var(--accent-faint);
+      color: var(--accent);
+
+      text-decoration: none;
+
+      font-size: .72rem;
+      font-weight: 900;
+    }
+
+
+    .investment-official-link:hover {
+      background: var(--accent-soft);
+    }
+
+
+    .risk-high {
+      color: #d9534f;
+      font-weight: 800;
+    }
+
+
+    .risk-low {
+      color: var(--success);
+      font-weight: 800;
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 720px) {
+
+      .category-platform-grid {
+        grid-template-columns:
+          repeat(4, minmax(0, 1fr));
+
+        gap: 8px;
+      }
+
+    }
+
+
+    @media (max-width: 520px) {
+
+      .category-platform-grid {
+        grid-template-columns:
+          repeat(4, minmax(0, 1fr));
+
+        gap: 6px;
+      }
+
+
+      .platform-icon-button {
+        width: 54px;
+        height: 54px;
+      }
+
+
+      .platform-info-button {
+        width: 54px;
+        height: 16px;
+
+        font-size: .42rem;
+      }
+
+
+      .modal-platform-grid {
+        gap: 8px;
+      }
+
+
+      .modal-platform-card {
+        padding: 8px;
+        gap: 7px;
+      }
+
+
+      .modal-platform-icon {
+        width: 40px;
+        height: 40px;
+
+        font-size: .6rem;
+      }
+
+
+      .modal-platform-name {
+        font-size: .72rem;
+      }
+
+
+      .modal-platform-category {
+        font-size: .57rem;
+      }
+
+
+      .modal-platform-details {
+        padding: 4px 5px;
+        font-size: .45rem;
+      }
+
+
+      .investment-detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 360px) {
+
+      .category-platform-grid {
+        grid-template-columns:
+          repeat(4, minmax(0, 1fr));
+
+        gap: 4px;
+      }
+
+
+      .platform-icon-button {
+        width: 48px;
+        height: 48px;
+      }
+
+
+      .platform-info-button {
+        width: 48px;
+        height: 15px;
+
+        font-size: .38rem;
+      }
+
+
+      .see-more-btn {
+        min-width: 115px;
+        padding: 7px 14px;
+        font-size: .7rem;
+      }
+
+    }
+
+  </style>
+
 </head>
+
 
 <body>
 
+
+  <!-- =====================================================
+       THEME
+       ===================================================== -->
+
+  <script>
+
+    (function () {
+
+      let savedTheme = null;
+
+      try {
+
+        savedTheme =
+          localStorage.getItem("gth_theme_v1") ||
+          localStorage.getItem("gth-theme");
+
+      } catch (error) {
+
+        savedTheme = null;
+
+      }
+
+
+      if (
+        savedTheme === "gold" ||
+        savedTheme === "blue" ||
+        savedTheme === "green"
+      ) {
+
+        document.body.setAttribute(
+          "data-theme",
+          savedTheme
+        );
+
+      }
+
+    })();
+
+  </script>
+
+
+
   <!-- =====================================================
        HEADER
-  ====================================================== -->
+       ===================================================== -->
 
   <header class="site-header">
 
-    <a href="index.html" class="brand">
-      GTH
-    </a>
+    <div class="brand">
 
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="gtf.html">GTF</a>
-      <a href="gtc.html">GTC</a>
-      <a href="gts.html">GTS</a>
-      <a href="gt-connect.html">GT Connect</a>
-    </nav>
+      <strong>
+        GTF
+      </strong>
 
-    <div class="theme-controls">
-      <button
-        type="button"
-        id="themeButton"
-        aria-label="Change theme"
-      >
-        Theme
-      </button>
+      <span>
+        God’stime Fund
+      </span>
 
-      <div
-        id="themeMenu"
-        class="theme-menu hidden"
-        aria-hidden="true"
-      >
-        <button type="button" data-theme-choice="gold">
-          Gold
-        </button>
-
-        <button type="button" data-theme-choice="blue">
-          Blue
-        </button>
-
-        <button type="button" data-theme-choice="green">
-          Green
-        </button>
-
-        <button type="button" data-theme-choice="system">
-          System
-        </button>
-      </div>
     </div>
+
+
+    <nav
+      class="top-nav"
+      aria-label="GTF navigation"
+    >
+
+      <a href="index.html">
+        GTH Home
+      </a>
+
+    </nav>
 
   </header>
 
 
+
   <!-- =====================================================
-       PAGE HERO
-  ====================================================== -->
+       MAIN
+       ===================================================== -->
 
   <main>
 
-    <section class="platform-hero">
 
-      <div class="content-section">
+    <!-- ===================================================
+         HERO
+         =================================================== -->
 
-        <div class="eyebrow">
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <p class="eyebrow">
           GTH INVESTMENT PLATFORM
-        </div>
+        </p>
+
 
         <h1>
           Investment Opportunities
         </h1>
 
+
         <p>
           Explore investment platforms and opportunities
-          available through God’stime Fund.
+          researched, reviewed or developed through
+          God’stime Fund.
         </p>
+
+
+        <div class="hero-actions">
+
+          <a
+            class="secondary-btn"
+            href="gtf.html"
+          >
+            Back to GTF
+          </a>
+
+        </div>
 
       </div>
 
     </section>
+
 
 
     <!-- ===================================================
-         INVESTMENT DIRECTORY
-    ==================================================== -->
+         DIRECTORY
+         =================================================== -->
 
     <section class="content-section">
 
-      <div class="section-heading-wrap">
+      <div class="section-heading">
 
-        <div class="section-label">
+        <p class="eyebrow">
           GTF DIRECTORY
-        </div>
+        </p>
 
-        <h2 class="section-heading">
+
+        <h2>
           Explore Investment Platforms
         </h2>
 
-        <p class="section-intro">
-          Browse the different categories and explore the
-          platforms available within each investment area.
-          Information is provided for educational and
-          informational purposes.
+
+        <p>
+          Browse investment opportunities across different
+          investment categories. Select a platform to view
+          more information, risk considerations and available
+          provider information.
         </p>
 
       </div>
 
 
-      <!--
-        JavaScript will populate this container from
-        data/gtf-investments.js
-      -->
-      <div id="investmentCategories"></div>
+      <div
+        id="investmentCategories"
+        class="investment-categories"
+      ></div>
 
     </section>
+
+
+
+    <!-- ===================================================
+         GTF INFORMATION NOTICE
+         =================================================== -->
+
+    <section class="content-section">
+
+      <div class="info-box">
+
+        <h2>
+          Investment Information
+        </h2>
+
+        <p>
+          Investment information displayed through GTF is
+          provided for educational and informational purposes.
+          Investment products may involve risk, fees, liquidity
+          restrictions and other conditions.
+        </p>
+
+        <p>
+          Always review the current information and official
+          documentation provided by the relevant investment
+          provider before making an investment decision.
+        </p>
+
+      </div>
+
+    </section>
+
 
   </main>
 
 
+
   <!-- =====================================================
-       PLATFORM DETAILS MODAL
-  ====================================================== -->
+       INVESTMENT DETAILS MODAL
+       ===================================================== -->
 
   <div
     id="investmentModal"
@@ -167,11 +819,13 @@
             INVESTMENT PLATFORM
           </div>
 
+
           <h2 id="investmentModalTitle">
-            Platform
+            Investment Platform
           </h2>
 
         </div>
+
 
         <button
           type="button"
@@ -192,9 +846,10 @@
   </div>
 
 
+
   <!-- =====================================================
        SEE MORE DIRECTORY MODAL
-  ====================================================== -->
+       ===================================================== -->
 
   <div
     id="directoryModal"
@@ -203,7 +858,7 @@
   >
 
     <div
-      class="investment-modal-panel"
+      class="investment-modal-panel directory-panel"
       role="dialog"
       aria-modal="true"
       aria-labelledby="directoryModalTitle"
@@ -217,11 +872,13 @@
             GTF DIRECTORY
           </div>
 
+
           <h2 id="directoryModalTitle">
             Investment Platforms
           </h2>
 
         </div>
+
 
         <button
           type="button"
@@ -235,7 +892,6 @@
       </div>
 
 
-      <!-- SEARCH -->
 
       <div class="platform-search">
 
@@ -244,12 +900,12 @@
           id="platformSearch"
           placeholder="Search investment platforms..."
           autocomplete="off"
+          aria-label="Search investment platforms"
         >
 
       </div>
 
 
-      <!-- FULL PLATFORM DIRECTORY -->
 
       <div
         id="modalPlatformGrid"
@@ -261,212 +917,74 @@
   </div>
 
 
+
   <!-- =====================================================
        FOOTER
-  ====================================================== -->
+       ===================================================== -->
 
   <footer class="site-footer">
 
     <p>
-      God’stime Holdings (GTH)
-    </p>
-
-    <p>
-      God’stime Fund (GTF) — Investment Platform
+      © 2026 God’stime Holdings. All rights reserved.
     </p>
 
   </footer>
 
 
+
   <!-- =====================================================
-       DATA
-  ====================================================== -->
+       INVESTMENT DATA
+       ===================================================== -->
 
   <script src="data/gtf-investments.js"></script>
 
 
+
   <!-- =====================================================
-       PAGE SCRIPT
-  ====================================================== -->
+       PAGE JAVASCRIPT
+       ===================================================== -->
 
   <script>
 
     /* =====================================================
-       THEME SYSTEM
-    ====================================================== */
-
-    const STORAGE = {
-      theme: "gth-theme"
-    };
-
-
-    function applyTheme(theme) {
-
-      if (theme === "system") {
-        document.body.removeAttribute("data-theme");
-      } else {
-        document.body.dataset.theme = theme;
-      }
-
-      try {
-        localStorage.setItem(STORAGE.theme, theme);
-      } catch (error) {
-        /* Local storage may be unavailable. */
-      }
-    }
-
-
-    function loadTheme() {
-
-      let theme = "system";
-
-      try {
-        theme =
-          localStorage.getItem(STORAGE.theme) || "system";
-      } catch (error) {
-        theme = "system";
-      }
-
-      if (
-        theme !== "gold" &&
-        theme !== "blue" &&
-        theme !== "green" &&
-        theme !== "system"
-      ) {
-        theme = "system";
-      }
-
-      applyTheme(theme);
-    }
-
-
-    loadTheme();
-
-
-    /* =====================================================
-       THEME MENU
-    ====================================================== */
-
-    const themeButton =
-      document.getElementById("themeButton");
-
-    const themeMenu =
-      document.getElementById("themeMenu");
-
-
-    if (themeButton && themeMenu) {
-
-      themeButton.addEventListener("click", function () {
-
-        const isHidden =
-          themeMenu.classList.contains("hidden");
-
-        themeMenu.classList.toggle("hidden", !isHidden);
-
-        themeMenu.setAttribute(
-          "aria-hidden",
-          String(!isHidden)
-        );
-
-      });
-
-
-      themeMenu
-        .querySelectorAll("[data-theme-choice]")
-        .forEach(function (button) {
-
-          button.addEventListener("click", function () {
-
-            const theme =
-              button.dataset.themeChoice;
-
-            applyTheme(theme);
-
-            themeMenu.classList.add("hidden");
-
-            themeMenu.setAttribute(
-              "aria-hidden",
-              "true"
-            );
-
-          });
-
-        });
-
-
-      document.addEventListener("click", function (event) {
-
-        if (
-          !themeMenu.contains(event.target) &&
-          !themeButton.contains(event.target)
-        ) {
-
-          themeMenu.classList.add("hidden");
-
-          themeMenu.setAttribute(
-            "aria-hidden",
-            "true"
-          );
-
-        }
-
-      });
-
-    }
-
-
-    /* =====================================================
-       FIND INVESTMENT DATA
-    ====================================================== */
+       DATA
+       ===================================================== */
 
     function getInvestmentData() {
-
-      /*
-        The page accepts the common names used by the
-        GTF data file.
-
-        This makes the page more tolerant if the data
-        file exposes the array under one of these names.
-      */
 
       if (
         typeof GTF_INVESTMENTS !== "undefined" &&
         Array.isArray(GTF_INVESTMENTS)
       ) {
+
         return GTF_INVESTMENTS;
+
       }
 
-      if (
-        typeof GTF_INVESTMENT_OPPORTUNITIES !== "undefined" &&
-        Array.isArray(GTF_INVESTMENT_OPPORTUNITIES)
-      ) {
-        return GTF_INVESTMENT_OPPORTUNITIES;
-      }
 
       if (
-        typeof INVESTMENT_OPPORTUNITIES !== "undefined" &&
-        Array.isArray(INVESTMENT_OPPORTUNITIES)
+        window.GTF_INVESTMENTS &&
+        Array.isArray(window.GTF_INVESTMENTS)
       ) {
-        return INVESTMENT_OPPORTUNITIES;
+
+        return window.GTF_INVESTMENTS;
+
       }
 
-      if (
-        typeof investmentOpportunities !== "undefined" &&
-        Array.isArray(investmentOpportunities)
-      ) {
-        return investmentOpportunities;
-      }
 
       return [];
+
     }
 
 
-    const investments = getInvestmentData();
+    const investments =
+      getInvestmentData();
+
 
 
     /* =====================================================
-       NORMALIZE DATA
-    ====================================================== */
+       NORMALIZE
+       ===================================================== */
 
     function normalizeInvestment(item) {
 
@@ -474,21 +992,33 @@
 
         id:
           item.id ||
-          item.slug ||
           item.name
             ?.toLowerCase()
             .replace(/[^a-z0-9]+/g, "-") ||
-          String(Math.random()),
+          "investment",
 
         name:
           item.name ||
-          item.title ||
           "Investment Platform",
+
+        shortName:
+          item.shortName ||
+          item.name
+            ?.split(" ")
+            .map(word => word.charAt(0))
+            .join("")
+            .slice(0, 3)
+            .toUpperCase() ||
+          "GTF",
 
         category:
           item.category ||
-          item.type ||
-          "Investment Opportunity",
+          "other",
+
+        categoryName:
+          item.categoryName ||
+          item.category ||
+          "Other Opportunities",
 
         status:
           item.status ||
@@ -500,12 +1030,10 @@
 
         objective:
           item.objective ||
-          item.purpose ||
           "",
 
         risk:
           item.risk ||
-          item.riskLevel ||
           "Varies by underlying product",
 
         liquidity:
@@ -514,27 +1042,18 @@
 
         fees:
           item.fees ||
-          item.fee ||
           "Varies by product",
 
         considerations:
           item.considerations ||
-          item.riskConsiderations ||
           "",
 
         reviewNote:
           item.reviewNote ||
-          item.review ||
-          "",
-
-        provider:
-          item.provider ||
-          item.providerName ||
           "",
 
         website:
           item.website ||
-          item.url ||
           ""
 
       };
@@ -546,39 +1065,10 @@
       investments.map(normalizeInvestment);
 
 
-    /* =====================================================
-       GROUP BY CATEGORY
-    ====================================================== */
-
-    function groupByCategory(items) {
-
-      const groups = {};
-
-      items.forEach(function (item) {
-
-        const category =
-          item.category || "Other Opportunities";
-
-        if (!groups[category]) {
-          groups[category] = [];
-        }
-
-        groups[category].push(item);
-
-      });
-
-      return groups;
-
-    }
-
-
-    const investmentGroups =
-      groupByCategory(normalizedInvestments);
-
 
     /* =====================================================
-       HTML ESCAPING
-    ====================================================== */
+       ESCAPE HTML
+       ===================================================== */
 
     function escapeHTML(value) {
 
@@ -592,11 +1082,58 @@
     }
 
 
+
     /* =====================================================
-       CATEGORY VIEW
-       Four platforms first.
-       Names hidden.
-    ====================================================== */
+       GROUP CATEGORIES
+       ===================================================== */
+
+    function groupByCategory(items) {
+
+      const groups = {};
+
+
+      items.forEach(function (item) {
+
+        const key =
+          item.category || "other";
+
+
+        if (!groups[key]) {
+
+          groups[key] = {
+
+            name:
+              item.categoryName ||
+              item.category ||
+              "Other Opportunities",
+
+            items: []
+
+          };
+
+        }
+
+
+        groups[key].items.push(item);
+
+      });
+
+
+      return groups;
+
+    }
+
+
+    const investmentGroups =
+      groupByCategory(
+        normalizedInvestments
+      );
+
+
+
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
 
     const categoriesContainer =
       document.getElementById(
@@ -604,38 +1141,157 @@
       );
 
 
-    function createPlatformTile(item) {
+    const investmentModal =
+      document.getElementById(
+        "investmentModal"
+      );
+
+
+    const investmentModalTitle =
+      document.getElementById(
+        "investmentModalTitle"
+      );
+
+
+    const investmentModalCategory =
+      document.getElementById(
+        "investmentModalCategory"
+      );
+
+
+    const investmentModalBody =
+      document.getElementById(
+        "investmentModalBody"
+      );
+
+
+    const investmentModalClose =
+      document.getElementById(
+        "investmentModalClose"
+      );
+
+
+    const directoryModal =
+      document.getElementById(
+        "directoryModal"
+      );
+
+
+    const directoryModalTitle =
+      document.getElementById(
+        "directoryModalTitle"
+      );
+
+
+    const directoryModalClose =
+      document.getElementById(
+        "directoryModalClose"
+      );
+
+
+    const platformSearch =
+      document.getElementById(
+        "platformSearch"
+      );
+
+
+    const modalPlatformGrid =
+      document.getElementById(
+        "modalPlatformGrid"
+      );
+
+
+    let activeDirectoryCategory = null;
+
+
+
+    /* =====================================================
+       PLATFORM ICON
+       ===================================================== */
+
+    function createPlatformInitials(item) {
+
+      return escapeHTML(
+
+        item.shortName ||
+
+        item.name
+          .split(" ")
+          .map(word => word.charAt(0))
+          .join("")
+          .slice(0, 3)
+          .toUpperCase()
+
+      );
+
+    }
+
+
+
+    /* =====================================================
+       FIRST VIEW PLATFORM TILE
+       ===================================================== */
+
+    function createFeaturedTile(item) {
 
       const tile =
         document.createElement("article");
 
-      tile.className = "platform-tile";
 
-      tile.dataset.platformId = item.id;
+      tile.className =
+        "platform-tile";
+
+
+      const iconMarkup = item.website
+
+        ? `
+
+          <a
+            class="platform-icon-button platform-official-link"
+            href="${escapeHTML(item.website)}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit ${escapeHTML(item.name)} official website"
+          >
+
+            <span class="platform-icon">
+
+              ${createPlatformInitials(item)}
+
+            </span>
+
+          </a>
+
+        `
+
+        : `
+
+          <button
+            type="button"
+            class="platform-icon-button"
+            data-action="details"
+            data-platform-id="${escapeHTML(item.id)}"
+            aria-label="View details for ${escapeHTML(item.name)}"
+          >
+
+            <span class="platform-icon">
+
+              ${createPlatformInitials(item)}
+
+            </span>
+
+          </button>
+
+        `;
 
 
       tile.innerHTML = `
 
-        <button
-          type="button"
-          class="platform-icon-button"
-          data-action="details"
-          data-platform-id="${escapeHTML(item.id)}"
-          aria-label="View details for ${escapeHTML(item.name)}"
-        >
+        <div class="platform-logo-wrap">
 
-          <span class="platform-icon">
-            ${escapeHTML(
-              item.name
-                .split(" ")
-                .map(word => word.charAt(0))
-                .join("")
-                .slice(0, 3)
-                .toUpperCase()
-            )}
-          </span>
+          ${iconMarkup}
 
-        </button>
+        </div>
 
 
         <button
@@ -644,23 +1300,36 @@
           data-action="details"
           data-platform-id="${escapeHTML(item.id)}"
         >
+
           SEE DETAILS
+
         </button>
 
       `;
+
 
       return tile;
 
     }
 
 
-    function createCategory(category, items) {
+
+    /* =====================================================
+       CATEGORY CARD
+       ===================================================== */
+
+    function createCategory(categoryData) {
 
       const section =
         document.createElement("section");
 
+
       section.className =
         "investment-category-card";
+
+
+      const items =
+        categoryData.items;
 
 
       const visibleItems =
@@ -677,9 +1346,13 @@
               GTF CATEGORY
             </div>
 
+
             <h3>
-              ${escapeHTML(category)}
+              ${escapeHTML(
+                categoryData.name
+              )}
             </h3>
+
 
             <p>
               Explore investment platforms within
@@ -688,35 +1361,54 @@
 
           </div>
 
+
           <div class="category-count">
+
             ${items.length}
-            ${items.length === 1 ? "platform" : "platforms"}
+
+            ${
+              items.length === 1
+                ? "platform"
+                : "platforms"
+            }
+
           </div>
 
         </div>
 
 
-        <div class="category-platform-grid"></div>
+        <div
+          class="category-platform-grid"
+        ></div>
 
 
-        <div class="category-actions">
+        ${
+          items.length > 4
+            ? `
 
-          ${
-            items.length > 4
-              ? `
+              <div class="category-actions">
+
                 <button
                   type="button"
                   class="see-more-btn"
                   data-action="see-more"
-                  data-category="${escapeHTML(category)}"
+                  data-category-key="${escapeHTML(
+                    categoryData.key || ""
+                  )}"
+                  data-category="${escapeHTML(
+                    categoryData.name
+                  )}"
                 >
-                  SEE MORE
-                </button>
-              `
-              : ""
-          }
 
-        </div>
+                  SEE MORE
+
+                </button>
+
+              </div>
+
+            `
+            : ""
+        }
 
       `;
 
@@ -727,19 +1419,26 @@
         );
 
 
-      visibleItems.forEach(function (item) {
+      visibleItems.forEach(
+        function (item) {
 
-        grid.appendChild(
-          createPlatformTile(item)
-        );
+          grid.appendChild(
+            createFeaturedTile(item)
+          );
 
-      });
+        }
+      );
 
 
       return section;
 
     }
 
+
+
+    /* =====================================================
+       RENDER CATEGORIES
+       ===================================================== */
 
     function renderCategories() {
 
@@ -751,11 +1450,13 @@
       categoriesContainer.innerHTML = "";
 
 
-      const categories =
-        Object.keys(investmentGroups);
+      const categoryKeys =
+        Object.keys(
+          investmentGroups
+        );
 
 
-      if (!categories.length) {
+      if (!categoryKeys.length) {
 
         categoriesContainer.innerHTML = `
 
@@ -765,30 +1466,38 @@
               Investment opportunities are being prepared.
             </strong>
 
+
             <p>
-              GTF investment platform information will
-              appear here as the directory develops.
+              GTF investment information will appear here
+              as the directory develops.
             </p>
 
           </div>
 
         `;
 
+
         return;
 
       }
 
 
-      categories.forEach(function (category) {
+      categoryKeys.forEach(
+        function (key) {
 
-        categoriesContainer.appendChild(
-          createCategory(
-            category,
-            investmentGroups[category]
-          )
-        );
+          const category =
+            investmentGroups[key];
 
-      });
+
+          category.key = key;
+
+
+          categoriesContainer.appendChild(
+            createCategory(category)
+          );
+
+        }
+      );
 
     }
 
@@ -796,53 +1505,44 @@
     renderCategories();
 
 
+
     /* =====================================================
-       PLATFORM DETAILS
-    ====================================================== */
-
-    const investmentModal =
-      document.getElementById(
-        "investmentModal"
-      );
-
-    const investmentModalBody =
-      document.getElementById(
-        "investmentModalBody"
-      );
-
-    const investmentModalTitle =
-      document.getElementById(
-        "investmentModalTitle"
-      );
-
-    const investmentModalCategory =
-      document.getElementById(
-        "investmentModalCategory"
-      );
-
+       FIND PLATFORM
+       ===================================================== */
 
     function findPlatform(id) {
 
       return normalizedInvestments.find(
         function (item) {
-          return String(item.id) === String(id);
+
+          return String(item.id) ===
+            String(id);
+
         }
       );
 
     }
 
 
+
+    /* =====================================================
+       RISK CLASS
+       ===================================================== */
+
     function riskClass(value) {
 
       const text =
-        String(value || "").toLowerCase();
+        String(value || "")
+          .toLowerCase();
 
 
       if (
         text.includes("high") ||
         text.includes("significant")
       ) {
+
         return "risk-high";
+
       }
 
 
@@ -850,14 +1550,21 @@
         text.includes("low") ||
         text.includes("limited")
       ) {
+
         return "risk-low";
+
       }
 
 
-      return "risk-variable";
+      return "";
 
     }
 
+
+
+    /* =====================================================
+       OPEN DETAILS
+       ===================================================== */
 
     function openInvestmentDetails(id) {
 
@@ -865,192 +1572,164 @@
         findPlatform(id);
 
 
-      if (!item || !investmentModal) {
+      if (!item) {
         return;
       }
+
+
+      investmentModalCategory.textContent =
+        item.categoryName ||
+        "INVESTMENT PLATFORM";
 
 
       investmentModalTitle.textContent =
         item.name;
 
-      investmentModalCategory.textContent =
-        item.category;
-
 
       investmentModalBody.innerHTML = `
 
-        <div class="investment-detail-content">
+        <div class="investment-description">
 
-          <div class="status-badge">
-            ${escapeHTML(item.status)}
-          </div>
-
-
-          <div class="about-box">
-
-            <h2>
-              About
-            </h2>
-
-            <p>
-              ${escapeHTML(item.description)}
-            </p>
-
-          </div>
-
-
-          ${
-            item.objective
-              ? `
-                <div class="about-box">
-
-                  <h2>
-                    Objective
-                  </h2>
-
-                  <p>
-                    ${escapeHTML(item.objective)}
-                  </p>
-
-                </div>
-              `
-              : ""
-          }
-
-
-          <div class="investment-detail-facts">
-
-            <div class="investment-fact risk-fact">
-
-              <span>
-                Risk
-              </span>
-
-              <strong class="${riskClass(item.risk)}">
-                ${escapeHTML(item.risk)}
-              </strong>
-
-            </div>
-
-
-            <div class="investment-fact liquidity-fact">
-
-              <span>
-                Liquidity
-              </span>
-
-              <strong>
-                ${escapeHTML(item.liquidity)}
-              </strong>
-
-            </div>
-
-
-            <div class="investment-fact fees-fact">
-
-              <span>
-                Fees
-              </span>
-
-              <strong>
-                ${escapeHTML(item.fees)}
-              </strong>
-
-            </div>
-
-
-            <div class="investment-fact category-fact">
-
-              <span>
-                Category
-              </span>
-
-              <strong>
-                ${escapeHTML(item.category)}
-              </strong>
-
-            </div>
-
-          </div>
-
-
-          ${
-            item.considerations
-              ? `
-                <div class="investment-considerations">
-
-                  <h2>
-                    Risk / Considerations
-                  </h2>
-
-                  <p>
-                    ${escapeHTML(item.considerations)}
-                  </p>
-
-                </div>
-              `
-              : ""
-          }
-
-
-          ${
-            item.reviewNote
-              ? `
-                <div class="about-box">
-
-                  <h2>
-                    GTF Review Note
-                  </h2>
-
-                  <p>
-                    ${escapeHTML(item.reviewNote)}
-                  </p>
-
-                </div>
-              `
-              : ""
-          }
-
-
-          ${
-            item.provider
-              ? `
-                <div class="developer-box">
-
-                  <h2>
-                    Provider
-                  </h2>
-
-                  <p>
-                    ${escapeHTML(item.provider)}
-                  </p>
-
-                </div>
-              `
-              : ""
-          }
-
-
-          ${
-            item.website
-              ? `
-                <div class="card-actions">
-
-                  <a
-                    class="primary-button"
-                    href="${escapeHTML(item.website)}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Visit Provider
-                  </a>
-
-                </div>
-              `
-              : ""
-          }
+          ${escapeHTML(item.description)}
 
         </div>
+
+
+        <div class="investment-detail-grid">
+
+          <div class="investment-detail-item">
+
+            <div class="investment-detail-label">
+              Status
+            </div>
+
+            <div class="investment-detail-value">
+              ${escapeHTML(item.status)}
+            </div>
+
+          </div>
+
+
+          <div class="investment-detail-item">
+
+            <div class="investment-detail-label">
+              Risk
+            </div>
+
+            <div
+              class="investment-detail-value ${riskClass(
+                item.risk
+              )}"
+            >
+              ${escapeHTML(item.risk)}
+            </div>
+
+          </div>
+
+
+          <div class="investment-detail-item">
+
+            <div class="investment-detail-label">
+              Liquidity
+            </div>
+
+            <div class="investment-detail-value">
+              ${escapeHTML(item.liquidity)}
+            </div>
+
+          </div>
+
+
+          <div class="investment-detail-item">
+
+            <div class="investment-detail-label">
+              Fees
+            </div>
+
+            <div class="investment-detail-value">
+              ${escapeHTML(item.fees)}
+            </div>
+
+          </div>
+
+        </div>
+
+
+        ${
+          item.objective
+            ? `
+
+              <div class="investment-detail-item" style="margin-top:10px;">
+
+                <div class="investment-detail-label">
+                  Objective
+                </div>
+
+                <div class="investment-detail-value">
+                  ${escapeHTML(item.objective)}
+                </div>
+
+              </div>
+
+            `
+            : ""
+        }
+
+
+        ${
+          item.considerations
+            ? `
+
+              <div class="investment-detail-item" style="margin-top:10px;">
+
+                <div class="investment-detail-label">
+                  Considerations
+                </div>
+
+                <div class="investment-detail-value">
+                  ${escapeHTML(item.considerations)}
+                </div>
+
+              </div>
+
+            `
+            : ""
+        }
+
+
+        ${
+          item.reviewNote
+            ? `
+
+              <div class="investment-review-note">
+
+                ${escapeHTML(item.reviewNote)}
+
+              </div>
+
+            `
+            : ""
+        }
+
+
+        ${
+          item.website
+            ? `
+
+              <a
+                class="investment-official-link"
+                href="${escapeHTML(item.website)}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+
+                VISIT OFFICIAL WEBSITE
+
+              </a>
+
+            `
+            : ""
+        }
 
       `;
 
@@ -1059,111 +1738,76 @@
         "hidden"
       );
 
+
       investmentModal.setAttribute(
         "aria-hidden",
         "false"
       );
 
-      document.body.style.overflow = "hidden";
+
+      document.body.classList.add(
+        "modal-open"
+      );
 
     }
 
 
-    function closeInvestmentDetails() {
 
-      if (!investmentModal) {
-        return;
-      }
+    /* =====================================================
+       CLOSE DETAILS
+       ===================================================== */
+
+    function closeInvestmentDetails() {
 
       investmentModal.classList.add(
         "hidden"
       );
+
 
       investmentModal.setAttribute(
         "aria-hidden",
         "true"
       );
 
-      document.body.style.overflow = "";
+
+      document.body.classList.remove(
+        "modal-open"
+      );
 
     }
+
 
 
     /* =====================================================
-       SEE MORE DIRECTORY
-    ====================================================== */
+       GET ACTIVE DIRECTORY ITEMS
+       ===================================================== */
 
-    const directoryModal =
-      document.getElementById(
-        "directoryModal"
-      );
+    function getActiveDirectoryItems() {
 
-    const modalPlatformGrid =
-      document.getElementById(
-        "modalPlatformGrid"
-      );
+      if (!activeDirectoryCategory) {
 
-    const platformSearch =
-      document.getElementById(
-        "platformSearch"
-      );
+        return normalizedInvestments;
+
+      }
 
 
-    function createDirectoryTile(item) {
-
-      const tile =
-        document.createElement("article");
-
-      tile.className = "platform-tile";
-
-      tile.dataset.platformName =
-        item.name.toLowerCase();
+      const group =
+        investmentGroups[
+          activeDirectoryCategory
+        ];
 
 
-      tile.innerHTML = `
-
-        <button
-          type="button"
-          class="platform-icon-button"
-          data-action="details"
-          data-platform-id="${escapeHTML(item.id)}"
-          aria-label="View details for ${escapeHTML(item.name)}"
-        >
-
-          <span class="platform-icon">
-            ${escapeHTML(
-              item.name
-                .split(" ")
-                .map(word => word.charAt(0))
-                .join("")
-                .slice(0, 3)
-                .toUpperCase()
-            )}
-          </span>
-
-        </button>
-
-
-        <div class="platform-tile-name">
-          ${escapeHTML(item.name)}
-        </div>
-
-
-        <button
-          type="button"
-          class="platform-info-button"
-          data-action="details"
-          data-platform-id="${escapeHTML(item.id)}"
-        >
-          SEE DETAILS
-        </button>
-
-      `;
-
-      return tile;
+      return group
+        ? group.items
+        : [];
 
     }
 
+
+
+    /* =====================================================
+       RENDER DIRECTORY
+       ===================================================== */
 
     function renderDirectory(searchTerm = "") {
 
@@ -1172,117 +1816,252 @@
       }
 
 
-      modalPlatformGrid.innerHTML = "";
+      const sourceItems =
+        getActiveDirectoryItems();
 
 
       const query =
-        searchTerm.trim().toLowerCase();
+        String(searchTerm || "")
+          .trim()
+          .toLowerCase();
 
 
-      normalizedInvestments
-        .filter(function (item) {
+      const filteredItems =
+        sourceItems.filter(
+          function (item) {
 
-          if (!query) {
-            return true;
+            if (!query) {
+              return true;
+            }
+
+
+            return (
+
+              item.name
+                .toLowerCase()
+                .includes(query)
+
+              ||
+
+              item.categoryName
+                .toLowerCase()
+                .includes(query)
+
+              ||
+
+              item.description
+                .toLowerCase()
+                .includes(query)
+
+            );
+
           }
-
-          return (
-            item.name.toLowerCase().includes(query) ||
-            item.category.toLowerCase().includes(query)
-          );
-
-        })
-        .forEach(function (item) {
-
-          modalPlatformGrid.appendChild(
-            createDirectoryTile(item)
-          );
-
-        });
+        );
 
 
-      if (
-        !modalPlatformGrid.children.length
-      ) {
+      modalPlatformGrid.innerHTML = "";
+
+
+      if (!filteredItems.length) {
 
         modalPlatformGrid.innerHTML = `
 
-          <div class="status-notice">
+          <div class="directory-empty">
 
-            <strong>
-              No platform found.
-            </strong>
-
-            <p>
-              Try another search.
-            </p>
+            No investment platforms found.
 
           </div>
 
         `;
 
+
+        return;
+
       }
+
+
+      filteredItems.forEach(
+        function (item) {
+
+          const card =
+            document.createElement("article");
+
+
+          card.className =
+            "modal-platform-card";
+
+
+          const iconMarkup = item.website
+
+            ? `
+
+              <a
+                class="modal-platform-icon"
+                href="${escapeHTML(item.website)}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit ${escapeHTML(item.name)} official website"
+              >
+
+                ${createPlatformInitials(item)}
+
+              </a>
+
+            `
+
+            : `
+
+              <button
+                type="button"
+                class="modal-platform-icon"
+                data-action="details"
+                data-platform-id="${escapeHTML(item.id)}"
+                aria-label="View details for ${escapeHTML(item.name)}"
+              >
+
+                ${createPlatformInitials(item)}
+
+              </button>
+
+            `;
+
+
+          card.innerHTML = `
+
+            ${iconMarkup}
+
+
+            <div class="modal-platform-content">
+
+              <p class="modal-platform-name">
+
+                ${escapeHTML(item.name)}
+
+              </p>
+
+
+              <p class="modal-platform-category">
+
+                ${escapeHTML(item.categoryName)}
+
+              </p>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="modal-platform-details"
+              data-action="details"
+              data-platform-id="${escapeHTML(item.id)}"
+            >
+
+              DETAILS
+
+            </button>
+
+          `;
+
+
+          modalPlatformGrid.appendChild(
+            card
+          );
+
+        }
+      );
 
     }
 
 
-    function openDirectory(category = "") {
 
-      if (!directoryModal) {
-        return;
+    /* =====================================================
+       OPEN DIRECTORY
+       ===================================================== */
+
+    function openDirectory(categoryKey) {
+
+      activeDirectoryCategory =
+        categoryKey || null;
+
+
+      const group =
+        activeDirectoryCategory
+          ? investmentGroups[
+              activeDirectoryCategory
+            ]
+          : null;
+
+
+      if (group) {
+
+        directoryModalTitle.textContent =
+          group.name;
+
+      } else {
+
+        directoryModalTitle.textContent =
+          "Investment Platforms";
+
       }
+
+
+      platformSearch.value = "";
 
 
       renderDirectory("");
-
-
-      if (platformSearch) {
-        platformSearch.value = "";
-
-        setTimeout(function () {
-          platformSearch.focus();
-        }, 100);
-      }
 
 
       directoryModal.classList.remove(
         "hidden"
       );
 
+
       directoryModal.setAttribute(
         "aria-hidden",
         "false"
       );
 
-      document.body.style.overflow = "hidden";
+
+      document.body.classList.add(
+        "modal-open"
+      );
 
     }
 
 
+
+    /* =====================================================
+       CLOSE DIRECTORY
+       ===================================================== */
+
     function closeDirectory() {
-
-      if (!directoryModal) {
-        return;
-      }
-
 
       directoryModal.classList.add(
         "hidden"
       );
+
 
       directoryModal.setAttribute(
         "aria-hidden",
         "true"
       );
 
-      document.body.style.overflow = "";
+
+      activeDirectoryCategory =
+        null;
+
+
+      document.body.classList.remove(
+        "modal-open"
+      );
 
     }
 
 
+
     /* =====================================================
-       CLICK HANDLING
-    ====================================================== */
+       EVENT HANDLING
+       ===================================================== */
 
     document.addEventListener(
       "click",
@@ -1300,22 +2079,39 @@
 
 
         const action =
-          target.dataset.action;
+          target.getAttribute(
+            "data-action"
+          );
 
 
         if (action === "details") {
 
+          event.preventDefault();
+
           openInvestmentDetails(
-            target.dataset.platformId
+            target.getAttribute(
+              "data-platform-id"
+            )
           );
+
+          return;
 
         }
 
 
         if (action === "see-more") {
 
+          event.preventDefault();
+
+
+          const categoryKey =
+            target.getAttribute(
+              "data-category-key"
+            );
+
+
           openDirectory(
-            target.dataset.category
+            categoryKey
           );
 
         }
@@ -1324,20 +2120,31 @@
     );
 
 
+
+    /* =====================================================
+       SEARCH
+       ===================================================== */
+
+    if (platformSearch) {
+
+      platformSearch.addEventListener(
+        "input",
+        function () {
+
+          renderDirectory(
+            platformSearch.value
+          );
+
+        }
+      );
+
+    }
+
+
+
     /* =====================================================
        CLOSE BUTTONS
-    ====================================================== */
-
-    const investmentModalClose =
-      document.getElementById(
-        "investmentModalClose"
-      );
-
-    const directoryModalClose =
-      document.getElementById(
-        "directoryModalClose"
-      );
-
+       ===================================================== */
 
     if (investmentModalClose) {
 
@@ -1359,69 +2166,49 @@
     }
 
 
-    /* =====================================================
-       BACKDROP CLOSE
-    ====================================================== */
-
-    if (investmentModal) {
-
-      investmentModal.addEventListener(
-        "click",
-        function (event) {
-
-          if (
-            event.target === investmentModal
-          ) {
-            closeInvestmentDetails();
-          }
-
-        }
-      );
-
-    }
-
-
-    if (directoryModal) {
-
-      directoryModal.addEventListener(
-        "click",
-        function (event) {
-
-          if (
-            event.target === directoryModal
-          ) {
-            closeDirectory();
-          }
-
-        }
-      );
-
-    }
-
 
     /* =====================================================
-       SEARCH
-    ====================================================== */
+       CLICK OUTSIDE MODALS
+       ===================================================== */
 
-    if (platformSearch) {
+    investmentModal.addEventListener(
+      "click",
+      function (event) {
 
-      platformSearch.addEventListener(
-        "input",
-        function () {
+        if (
+          event.target ===
+          investmentModal
+        ) {
 
-          renderDirectory(
-            platformSearch.value
-          );
+          closeInvestmentDetails();
 
         }
-      );
 
-    }
+      }
+    );
+
+
+    directoryModal.addEventListener(
+      "click",
+      function (event) {
+
+        if (
+          event.target ===
+          directoryModal
+        ) {
+
+          closeDirectory();
+
+        }
+
+      }
+    );
+
 
 
     /* =====================================================
        ESCAPE KEY
-    ====================================================== */
+       ===================================================== */
 
     document.addEventListener(
       "keydown",
@@ -1433,19 +2220,26 @@
 
 
         if (
-          investmentModal &&
-          !investmentModal.classList.contains("hidden")
+          !investmentModal.classList.contains(
+            "hidden"
+          )
         ) {
+
           closeInvestmentDetails();
+
           return;
+
         }
 
 
         if (
-          directoryModal &&
-          !directoryModal.classList.contains("hidden")
+          !directoryModal.classList.contains(
+            "hidden"
+          )
         ) {
+
           closeDirectory();
+
         }
 
       }
@@ -1453,151 +2247,6 @@
 
   </script>
 
-
-  <!-- =====================================================
-       PAGE-SPECIFIC VISUAL FIXES
-
-       These are intentionally scoped only to this page.
-       They do NOT replace or modify style.css.
-  ====================================================== -->
-
-  <style>
-
-    /* -----------------------------------------------------
-       Investment details
-    ----------------------------------------------------- */
-
-    .investment-detail-content {
-      display: grid;
-      gap: 16px;
-    }
-
-
-    .investment-detail-facts {
-      display: grid;
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      gap: 12px;
-    }
-
-
-    .investment-fact {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-
-      padding: 16px;
-
-      background: var(--surface-2);
-
-      border: 1px solid var(--border);
-      border-radius: 14px;
-    }
-
-
-    .investment-fact span {
-      color: var(--muted-2);
-
-      font-size: .72rem;
-      font-weight: 850;
-
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-
-    .investment-fact strong {
-      color: var(--text);
-
-      font-size: .92rem;
-      line-height: 1.35;
-    }
-
-
-    /* Risk — immediately noticeable */
-
-    .investment-fact .risk-high {
-      color: #ef5350;
-    }
-
-
-    .investment-fact .risk-variable {
-      color: #f0b429;
-    }
-
-
-    .investment-fact .risk-low {
-      color: #35c76f;
-    }
-
-
-    /* Liquidity */
-
-    .liquidity-fact strong {
-      color: #35c76f;
-    }
-
-
-    /* Fees */
-
-    .fees-fact strong {
-      color: var(--accent);
-    }
-
-
-    /* Category */
-
-    .category-fact strong {
-      color: var(--info);
-    }
-
-
-    .investment-considerations {
-      padding: 18px;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(217, 83, 79, .10),
-          var(--surface)
-        );
-
-      border: 1px solid rgba(217, 83, 79, .35);
-      border-radius: 15px;
-    }
-
-
-    .investment-considerations h2 {
-      margin-bottom: 8px;
-
-      color: #ef5350;
-
-      font-size: 1.05rem;
-    }
-
-
-    .investment-considerations p {
-      margin: 0;
-
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-
-    /* -----------------------------------------------------
-       Mobile
-    ----------------------------------------------------- */
-
-    @media (max-width: 620px) {
-
-      .investment-detail-facts {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-  </style>
-
 </body>
+
 </html>
