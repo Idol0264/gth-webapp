@@ -1,0 +1,3113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>GT Connect Dashboard | GTH</title>
+
+
+  <style>
+
+    /* =====================================================
+       BASE
+       ===================================================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    :root {
+      color-scheme: light dark;
+    }
+
+
+    body {
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      min-height: 100vh;
+
+      background: #ffffff;
+      color: #000000;
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+
+    button,
+    a {
+      font-family: inherit;
+    }
+
+
+    /* =====================================================
+       DARK DEVICE MODE
+       ===================================================== */
+
+    @media (prefers-color-scheme: dark) {
+
+      body {
+        background: #000000;
+        color: #ffffff;
+      }
+
+    }
+
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    header {
+
+      padding: 18px 7%;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      border-bottom: 1px solid #dddddd;
+
+      position: relative;
+
+      background: #ffffff;
+
+      z-index: 1000;
+    }
+
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    .brand strong {
+
+      font-size: 22px;
+
+      letter-spacing: 1px;
+
+      color: #000000;
+
+    }
+
+
+    .brand span {
+
+      font-size: 12px;
+
+      color: #666666;
+
+      margin-top: 3px;
+
+    }
+
+
+    /* =====================================================
+       THREE-DASH MENU
+       ===================================================== */
+
+    .menu-button {
+
+      width: 44px;
+
+      height: 44px;
+
+      border: 1px solid #d8d8d8;
+
+      background: #ffffff;
+
+      color: #000000;
+
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 5px;
+
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+
+    }
+
+
+    .menu-button span {
+
+      display: block;
+
+      width: 20px;
+
+      height: 2px;
+
+      background: #000000;
+
+      border-radius: 2px;
+
+    }
+
+
+    .menu-button:hover {
+
+      background: #f0f0f0;
+
+    }
+
+
+    /* =====================================================
+       MENU PANEL
+       ===================================================== */
+
+    .menu-panel {
+
+      position: absolute;
+
+      top: 75px;
+
+      right: 7%;
+
+      width: 270px;
+
+      background: #ffffff;
+
+      border: 1px solid #dddddd;
+
+      border-radius: 16px;
+
+      padding: 10px;
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.14);
+
+      display: none;
+
+      z-index: 2000;
+
+    }
+
+
+    .menu-panel.open {
+      display: block;
+    }
+
+
+    .menu-label {
+
+      padding: 10px 12px 7px;
+
+      color: #777777;
+
+      font-size: 11px;
+
+      letter-spacing: 1.3px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .menu-panel a,
+    .menu-panel button {
+
+      width: 100%;
+
+      display: block;
+
+      padding: 12px;
+
+      border-radius: 10px;
+
+      border: none;
+
+      background: transparent;
+
+      color: #111111;
+
+      text-decoration: none;
+
+      text-align: left;
+
+      font-size: 14px;
+
+      cursor: pointer;
+
+    }
+
+
+    .menu-panel a:hover,
+    .menu-panel button:hover {
+
+      background: #eeeeee;
+
+      color: #000000;
+
+    }
+
+
+    .menu-divider {
+
+      height: 1px;
+
+      background: #e5e5e5;
+
+      margin: 8px 0;
+
+    }
+
+
+    /* =====================================================
+       DARK MODE HEADER / MENU
+       ===================================================== */
+
+    @media (prefers-color-scheme: dark) {
+
+      header {
+
+        background: #000000;
+
+        border-bottom-color: #222222;
+
+      }
+
+
+      .brand strong {
+        color: #ffffff;
+      }
+
+
+      .brand span {
+        color: #888888;
+      }
+
+
+      .menu-button {
+
+        background: #000000;
+
+        border-color: #2d2d2d;
+
+        color: #ffffff;
+
+      }
+
+
+      .menu-button span {
+        background: #ffffff;
+      }
+
+
+      .menu-button:hover {
+        background: #111111;
+      }
+
+
+      .menu-panel {
+
+        background: #111111;
+
+        border-color: #2a2a2a;
+
+        box-shadow:
+          0 20px 50px rgba(0,0,0,0.65);
+
+      }
+
+
+      .menu-label {
+        color: #777777;
+      }
+
+
+      .menu-panel a,
+      .menu-panel button {
+
+        color: #dddddd;
+
+      }
+
+
+      .menu-panel a:hover,
+      .menu-panel button:hover {
+
+        background: #202020;
+
+        color: #ffffff;
+
+      }
+
+
+      .menu-divider {
+        background: #252525;
+      }
+
+    }
+
+
+    /* =====================================================
+       MAIN
+       ===================================================== */
+
+    main {
+
+      max-width: 1120px;
+
+      margin: 0 auto;
+
+      padding:
+        55px 20px 80px;
+
+    }
+
+
+    /* =====================================================
+       WELCOME
+       ===================================================== */
+
+    .welcome {
+
+      margin-bottom: 36px;
+
+    }
+
+
+    .eyebrow {
+
+      color: #777777;
+
+      font-size: 12px;
+
+      letter-spacing: 1.7px;
+
+      margin-bottom: 10px;
+
+      font-weight: 700;
+
+    }
+
+
+    .welcome h1 {
+
+      font-size: 40px;
+
+      line-height: 1.1;
+
+      margin-bottom: 13px;
+
+      letter-spacing: -1px;
+
+    }
+
+
+    .welcome p {
+
+      color: #666666;
+
+      line-height: 1.65;
+
+      max-width: 700px;
+
+      font-size: 15px;
+
+    }
+
+
+    @media (prefers-color-scheme: dark) {
+
+      .welcome p {
+        color: #999999;
+      }
+
+    }
+
+
+    /* =====================================================
+       DASHBOARD GRID
+       ===================================================== */
+
+    .dashboard-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 18px;
+
+    }
+
+
+    .dashboard-card {
+
+      background: #f7f7f7;
+
+      border:
+        1px solid #e1e1e1;
+
+      border-radius: 20px;
+
+      padding: 27px;
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+
+    }
+
+
+    .dashboard-card:hover {
+
+      transform: translateY(-2px);
+
+      border-color: #c8c8c8;
+
+    }
+
+
+    .dashboard-card h2 {
+
+      font-size: 20px;
+
+      margin-bottom: 12px;
+
+      letter-spacing: -0.3px;
+
+    }
+
+
+    .dashboard-card h3 {
+
+      font-size: 16px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    .dashboard-card p {
+
+      color: #666666;
+
+      line-height: 1.6;
+
+      font-size: 14px;
+
+    }
+
+
+    @media (prefers-color-scheme: dark) {
+
+      .dashboard-card {
+
+        background: #111111;
+
+        border-color: #242424;
+
+      }
+
+
+      .dashboard-card:hover {
+
+        border-color: #3a3a3a;
+
+      }
+
+
+      .dashboard-card p {
+
+        color: #999999;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       CONNECTION BADGE
+       ===================================================== */
+
+    .connection-badge {
+
+      display: inline-block;
+
+      margin-top: 15px;
+
+      padding: 8px 13px;
+
+      border-radius: 30px;
+
+      background: #000000;
+
+      color: #ffffff;
+
+      border: 1px solid #000000;
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+    }
+
+
+    @media (prefers-color-scheme: dark) {
+
+      .connection-badge {
+
+        background: #ffffff;
+
+        color: #000000;
+
+        border-color: #ffffff;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       CONNECTION SWITCHER
+       ===================================================== */
+
+    .connection-list {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 9px;
+
+      margin-top: 18px;
+
+    }
+
+
+    .connection-item {
+
+      padding: 9px 13px;
+
+      border-radius: 10px;
+
+      background: #ffffff;
+
+      border: 1px solid #d8d8d8;
+
+      color: #111111;
+
+      font-size: 13px;
+
+      cursor: pointer;
+
+    }
+
+
+    .connection-item:hover {
+
+      background: #eeeeee;
+
+    }
+
+
+    .current-connection {
+
+      border-color: #000000;
+
+      background: #000000;
+
+      color: #ffffff;
+
+    }
+
+
+    @media (prefers-color-scheme: dark) {
+
+      .connection-item {
+
+        background: #171717;
+
+        border-color: #303030;
+
+        color: #eeeeee;
+
+      }
+
+
+      .connection-item:hover {
+
+        background: #222222;
+
+      }
+
+
+      .current-connection {
+
+        background: #ffffff;
+
+        color: #000000;
+
+        border-color: #ffffff;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       WORK TOGETHER
+       ===================================================== */
+
+    .work-together-intro {
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .platform-preview {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 12px;
+
+      margin-top: 20px;
+
+    }
+
+
+    /* =====================================================
+       PLATFORM ICON CARD
+       ===================================================== */
+
+    .platform-card {
+
+      min-height: 108px;
+
+      border-radius: 17px;
+
+      border: 1px solid #dddddd;
+
+      background: #ffffff;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-decoration: none;
+
+      position: relative;
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+
+    }
+
+
+    .platform-card:hover {
+
+      transform: translateY(-3px);
+
+      border-color: #000000;
+
+      background: #f5f5f5;
+
+    }
+
+
+    .platform-icon {
+
+      width: 52px;
+
+      height: 52px;
+
+      object-fit: contain;
+
+      filter:
+        grayscale(1)
+        contrast(1.2);
+
+    }
+
+
+    .platform-fallback {
+
+      width: 52px;
+
+      height: 52px;
+
+      border-radius: 14px;
+
+      border: 2px solid #000000;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 19px;
+
+      font-weight: 800;
+
+      color: #000000;
+
+    }
+
+
+    .platform-tooltip {
+
+      position: absolute;
+
+      left: 50%;
+
+      bottom: 8px;
+
+      transform: translateX(-50%);
+
+      font-size: 9px;
+
+      letter-spacing: 0.7px;
+
+      color: #777777;
+
+      opacity: 0;
+
+      transition: opacity 0.2s ease;
+
+      pointer-events: none;
+
+      white-space: nowrap;
+
+    }
+
+
+    .platform-card:hover .platform-tooltip {
+
+      opacity: 1;
+
+    }
+
+
+    @media (prefers-color-scheme: dark) {
+
+      .platform-card {
+
+        background: #080808;
+
+        border-color: #292929;
+
+      }
+
+
+      .platform-card:hover {
+
+        border-color: #ffffff;
+
+        background: #111111;
+
+      }
+
+
+      .platform-icon {
+
+        filter:
+          grayscale(1)
+          brightness(0)
+          invert(1)
+          contrast(1.1);
+
+      }
+
+
+      .platform-fallback {
+
+        border-color: #ffffff;
+
+        color: #ffffff;
+
+      }
+
+
+      .platform-tooltip {
+
+        color: #888888;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       PLATFORM CONTROLS
+       ===================================================== */
+
+    .platform-controls {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-top: 18px;
+
+    }
+
+
+    .platform-count {
+
+      color: #777777;
+
+      font-size: 12px;
+
+    }
+
+
+    .all-platforms-button {
+
+      border: 1px solid #000000;
+
+      background: #000000;
+
+      color: #ffffff;
+
+      padding: 11px 16px;
+
+      border-radius: 10px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+    }
+
+
+    .all-platforms-button:hover {
+
+      opacity: 0.82;
+
+    }
+
+
+    @media (prefers-color-scheme: dark) {
+
+      .all-platforms-button {
+
+        background: #ffffff;
+
+        color: #000000;
+
+        border-color: #ffffff;
+
+      }
+
+    }
+
+
+    .no-platforms {
+
+      grid-column: 1 / -1;
+
+      padding: 25px;
+
+      text-align: center;
+
+      border: 1px dashed #cccccc;
+
+      border-radius: 15px;
+
+      color: #777777;
+
+      font-size: 13px;
+
+    }
+
+
+    /* =====================================================
+       PLATFORM MODAL
+       ===================================================== */
+
+    .platform-modal {
+
+      position: fixed;
+
+      inset: 0;
+
+      background:
+        rgba(0,0,0,0.68);
+
+      display: none;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+
+      z-index: 5000;
+
+    }
+
+
+    .platform-modal.open {
+
+      display: flex;
+
+    }
+
+
+    .platform-modal-content {
+
+      width: min(700px, 100%);
+
+      max-height: 85vh;
+
+      overflow-y: auto;
+
+      background: #ffffff;
+
+      color: #000000;
+
+      border-radius: 22px;
+
+      border: 1px solid #dddddd;
+
+      padding: 25px;
+
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.35);
+
+    }
+
+
+    .platform-modal-header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-start;
+
+      gap: 15px;
+
+      margin-bottom: 22px;
+
+    }
+
+
+    .platform-modal-header h2 {
+
+      font-size: 23px;
+
+      margin-bottom: 6px;
+
+    }
+
+
+    .platform-modal-header p {
+
+      color: #666666;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+
+    }
+
+
+    .close-platform-modal {
+
+      width: 38px;
+
+      height: 38px;
+
+      border-radius: 10px;
+
+      border: 1px solid #dddddd;
+
+      background: #ffffff;
+
+      color: #000000;
+
+      cursor: pointer;
+
+      font-size: 20px;
+
+      flex-shrink: 0;
+
+    }
+
+
+    .close-platform-modal:hover {
+
+      background: #eeeeee;
+
+    }
+
+
+    .all-platform-list {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 10px;
+
+    }
+
+
+    .all-platform-item {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 13px;
+
+      padding: 13px;
+
+      border: 1px solid #dddddd;
+
+      border-radius: 14px;
+
+      background: #fafafa;
+
+      text-decoration: none;
+
+      color: #000000;
+
+    }
+
+
+    .all-platform-item:hover {
+
+      border-color: #000000;
+
+      background: #f2f2f2;
+
+    }
+
+
+    .all-platform-item img {
+
+      width: 34px;
+
+      height: 34px;
+
+      object-fit: contain;
+
+      filter:
+        grayscale(1)
+        contrast(1.2);
+
+    }
+
+
+    .all-platform-item strong {
+
+      display: block;
+
+      font-size: 14px;
+
+      margin-bottom: 3px;
+
+    }
+
+
+    .all-platform-item span {
+
+      display: block;
+
+      color: #777777;
+
+      font-size: 11px;
+
+    }
+
+
+    @media (prefers-color-scheme: dark) {
+
+      .platform-modal-content {
+
+        background: #0b0b0b;
+
+        color: #ffffff;
+
+        border-color: #292929;
+
+      }
+
+
+      .platform-modal-header p {
+
+        color: #999999;
+
+      }
+
+
+      .close-platform-modal {
+
+        background: #111111;
+
+        border-color: #303030;
+
+        color: #ffffff;
+
+      }
+
+
+      .close-platform-modal:hover {
+
+        background: #202020;
+
+      }
+
+
+      .all-platform-item {
+
+        background: #111111;
+
+        border-color: #292929;
+
+        color: #ffffff;
+
+      }
+
+
+      .all-platform-item:hover {
+
+        background: #1a1a1a;
+
+        border-color: #ffffff;
+
+      }
+
+
+      .all-platform-item img {
+
+        filter:
+          grayscale(1)
+          brightness(0)
+          invert(1)
+          contrast(1.1);
+
+      }
+
+
+      .all-platform-item span {
+
+        color: #888888;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       BUTTONS
+       ===================================================== */
+
+    .dashboard-button {
+
+      display: inline-block;
+
+      margin-top: 20px;
+
+      padding: 12px 18px;
+
+      border-radius: 10px;
+
+      background: #000000;
+
+      color: #ffffff;
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+      font-weight: bold;
+
+      border: 1px solid #000000;
+
+    }
+
+
+    .dashboard-button:hover {
+
+      opacity: 0.82;
+
+    }
+
+
+    .secondary-button {
+
+      background: transparent;
+
+      color: #000000;
+
+      border-color: #cccccc;
+
+    }
+
+
+    .secondary-button:hover {
+
+      background: #eeeeee;
+
+      opacity: 1;
+
+    }
+
+
+    @media (prefers-color-scheme: dark) {
+
+      .dashboard-button {
+
+        background: #ffffff;
+
+        color: #000000;
+
+        border-color: #ffffff;
+
+      }
+
+
+      .secondary-button {
+
+        background: transparent;
+
+        color: #ffffff;
+
+        border-color: #333333;
+
+      }
+
+
+      .secondary-button:hover {
+
+        background: #181818;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       ACCOUNT
+       ===================================================== */
+
+    .dashboard-actions {
+
+      margin-top: 25px;
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+    }
+
+
+    .logout-button {
+
+      border: 1px solid #cccccc;
+
+      background: transparent;
+
+      color: #666666;
+
+      padding: 12px 18px;
+
+      border-radius: 10px;
+
+      cursor: pointer;
+
+      font-size: 14px;
+
+    }
+
+
+    .logout-button:hover {
+
+      color: #000000;
+
+      border-color: #000000;
+
+    }
+
+
+    @media (prefers-color-scheme: dark) {
+
+      .logout-button {
+
+        border-color: #333333;
+
+        color: #999999;
+
+      }
+
+
+      .logout-button:hover {
+
+        color: #ffffff;
+
+        border-color: #ffffff;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    footer {
+
+      text-align: center;
+
+      padding: 25px 20px;
+
+      color: #777777;
+
+      font-size: 12px;
+
+      border-top: 1px solid #e5e5e5;
+
+    }
+
+
+    @media (prefers-color-scheme: dark) {
+
+      footer {
+
+        border-top-color: #202020;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+       ===================================================== */
+
+    @media (max-width: 750px) {
+
+      header {
+
+        padding: 17px 20px;
+
+      }
+
+
+      .menu-panel {
+
+        top: 70px;
+
+        right: 20px;
+
+        left: 20px;
+
+        width: auto;
+
+      }
+
+
+      main {
+
+        padding:
+          40px 18px 60px;
+
+      }
+
+
+      .welcome h1 {
+
+        font-size: 31px;
+
+      }
+
+
+      .dashboard-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .dashboard-card {
+
+        padding: 22px;
+
+        border-radius: 18px;
+
+      }
+
+
+      .platform-preview {
+
+        grid-template-columns:
+          repeat(3, minmax(0, 1fr));
+
+        gap: 9px;
+
+      }
+
+
+      .platform-card {
+
+        min-height: 92px;
+
+      }
+
+
+      .platform-icon,
+      .platform-fallback {
+
+        width: 43px;
+
+        height: 43px;
+
+      }
+
+
+      .platform-tooltip {
+
+        display: none;
+
+      }
+
+
+      .platform-controls {
+
+        align-items: stretch;
+
+        flex-direction: column;
+
+      }
+
+
+      .all-platforms-button {
+
+        width: 100%;
+
+      }
+
+
+      .all-platform-list {
+
+        grid-template-columns: 1fr;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       VERY SMALL PHONES
+       ===================================================== */
+
+    @media (max-width: 380px) {
+
+      .platform-preview {
+
+        gap: 6px;
+
+      }
+
+
+      .platform-card {
+
+        min-height: 82px;
+
+      }
+
+
+      .platform-icon,
+      .platform-fallback {
+
+        width: 38px;
+
+        height: 38px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <header>
+
+    <div class="brand">
+
+      <strong>GTH</strong>
+
+      <span>GT Connect</span>
+
+    </div>
+
+
+    <!-- KEEP THREE-DASH MENU -->
+
+    <button
+      type="button"
+      class="menu-button"
+      id="menuButton"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+    <!-- ===================================================
+         MENU PANEL
+         =================================================== -->
+
+    <div
+      class="menu-panel"
+      id="menuPanel"
+    >
+
+      <div class="menu-label">
+        GT Connect
+      </div>
+
+
+      <a href="gt-connect-dashboard.html">
+        Dashboard
+      </a>
+
+
+      <a href="#connectionCard">
+        My Connection
+      </a>
+
+
+      <a href="#responsibilitiesCard">
+        Responsibilities
+      </a>
+
+
+      <a href="#workTogetherCard">
+        Work Together
+      </a>
+
+
+      <a href="#connectionsCard">
+        Approved Connections
+      </a>
+
+
+      <div class="menu-divider"></div>
+
+
+      <div class="menu-label">
+        Connections
+      </div>
+
+
+      <a href="gt-connect.html">
+        Join Another Connection
+      </a>
+
+
+      <div class="menu-divider"></div>
+
+
+      <div class="menu-label">
+        Account
+      </div>
+
+
+      <a href="#accountCard">
+        My GT Connect Access
+      </a>
+
+
+      <button
+        type="button"
+        id="menuForgetDevice"
+      >
+        Forget This Device
+      </button>
+
+
+      <div class="menu-divider"></div>
+
+
+      <a href="gt-connect.html">
+        ← Back to GT Connect
+      </a>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =====================================================
+       MAIN
+       ===================================================== -->
+
+  <main>
+
+
+    <!-- ===================================================
+         WELCOME
+         =================================================== -->
+
+    <section class="welcome">
+
+      <p class="eyebrow">
+        GT CONNECT DASHBOARD
+      </p>
+
+
+      <h1 id="welcomeMessage">
+        Welcome
+      </h1>
+
+
+      <p>
+        Your approved GT Connect workspace.
+        From here you can view your connection,
+        responsibilities and available
+        collaboration resources.
+      </p>
+
+    </section>
+
+
+
+    <section class="dashboard-grid">
+
+
+      <!-- =================================================
+           CURRENT CONNECTION
+           ================================================= -->
+
+      <article
+        class="dashboard-card"
+        id="connectionCard"
+      >
+
+        <h2>
+          Your Connection
+        </h2>
+
+
+        <p>
+          This is the GT Connect connection
+          currently selected for your dashboard.
+        </p>
+
+
+        <span
+          id="currentConnection"
+          class="connection-badge"
+        >
+          Loading...
+        </span>
+
+      </article>
+
+
+
+      <!-- =================================================
+           ROLE
+           ================================================= -->
+
+      <article class="dashboard-card">
+
+        <h2>
+          Your Role
+        </h2>
+
+
+        <h3 id="roleTitle">
+          Loading...
+        </h3>
+
+
+        <p id="roleDescription">
+          Loading your role information...
+        </p>
+
+      </article>
+
+
+
+      <!-- =================================================
+           RESPONSIBILITIES
+           ================================================= -->
+
+      <article
+        class="dashboard-card"
+        id="responsibilitiesCard"
+      >
+
+        <h2>
+          Responsibilities
+        </h2>
+
+
+        <p id="duties">
+          Your responsibilities will appear
+          here according to your GT Connect
+          connection.
+        </p>
+
+      </article>
+
+
+
+      <!-- =================================================
+           WORK TOGETHER
+           ================================================= -->
+
+      <article
+        class="dashboard-card"
+        id="workTogetherCard"
+      >
+
+        <h2>
+          Work Together
+        </h2>
+
+
+        <p
+          id="workTogetherDescription"
+          class="work-together-intro"
+        >
+          Access the external platforms
+          available for your current GT Connect
+          connection.
+        </p>
+
+
+        <!-- EXACTLY THREE ICONS -->
+
+        <div
+          id="platformPreview"
+          class="platform-preview"
+        ></div>
+
+
+        <div class="platform-controls">
+
+          <span
+            id="platformCount"
+            class="platform-count"
+          >
+            Loading platforms...
+          </span>
+
+
+          <button
+            type="button"
+            id="allPlatformsButton"
+            class="all-platforms-button"
+          >
+            ALL PLATFORMS
+          </button>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- =================================================
+           APPROVED CONNECTIONS
+           ================================================= -->
+
+      <article
+        class="dashboard-card"
+        id="connectionsCard"
+      >
+
+        <h2>
+          Your Approved Connections
+        </h2>
+
+
+        <p>
+          Select an approved connection below
+          to switch the information displayed
+          on your dashboard.
+        </p>
+
+
+        <div
+          id="connectionList"
+          class="connection-list"
+        ></div>
+
+
+        <a
+          href="gt-connect.html"
+          class="dashboard-button secondary-button"
+        >
+          Join Another Connection →
+        </a>
+
+      </article>
+
+
+
+      <!-- =================================================
+           ACCOUNT
+           ================================================= -->
+
+      <article
+        class="dashboard-card"
+        id="accountCard"
+      >
+
+        <h2>
+          Your GT Connect Access
+        </h2>
+
+
+        <p>
+          Your Personal Key is associated with
+          this browser so that you can return to
+          your dashboard without entering the key
+          every time.
+        </p>
+
+
+        <div class="dashboard-actions">
+
+          <button
+            type="button"
+            class="logout-button"
+            id="forgetDeviceButton"
+          >
+            Forget This Device
+          </button>
+
+        </div>
+
+      </article>
+
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =====================================================
+       ALL PLATFORMS MODAL
+       ===================================================== -->
+
+  <div
+    class="platform-modal"
+    id="platformModal"
+    aria-hidden="true"
+  >
+
+    <div class="platform-modal-content">
+
+
+      <div class="platform-modal-header">
+
+        <div>
+
+          <h2>
+            Available Platforms
+          </h2>
+
+          <p id="platformModalDescription">
+            Platforms available for your current
+            GT Connect connection.
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="close-platform-modal"
+          id="closePlatformModal"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div
+        id="allPlatformList"
+        class="all-platform-list"
+      ></div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer>
+
+    © God’stime Holdings (GTH) · GT Connect
+
+  </footer>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <script>
+
+    /* =====================================================
+       MENU
+       ===================================================== */
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const menuPanel =
+      document.getElementById("menuPanel");
+
+
+    menuButton.addEventListener(
+      "click",
+      function () {
+
+        const isOpen =
+          menuPanel.classList.toggle("open");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          isOpen ? "true" : "false"
+        );
+
+      }
+    );
+
+
+    document.addEventListener(
+      "click",
+      function (event) {
+
+        if (
+          !menuPanel.contains(event.target) &&
+          !menuButton.contains(event.target)
+        ) {
+
+          menuPanel.classList.remove("open");
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       PERSONAL KEY DATA
+       ===================================================== */
+
+    const STORAGE_KEY =
+      "gth_gtconnect_person_v1";
+
+
+    const storedPerson =
+      localStorage.getItem(STORAGE_KEY);
+
+
+    if (!storedPerson) {
+
+      window.location.href =
+        "gt-connect-key.html";
+
+    }
+
+
+    let person;
+
+
+    try {
+
+      person =
+        JSON.parse(storedPerson);
+
+    } catch (error) {
+
+      localStorage.removeItem(STORAGE_KEY);
+
+      window.location.href =
+        "gt-connect-key.html";
+
+    }
+
+
+    if (!person) {
+
+      window.location.href =
+        "gt-connect-key.html";
+
+    }
+
+
+    /* =====================================================
+       WELCOME
+       ===================================================== */
+
+    const welcomeMessage =
+      document.getElementById("welcomeMessage");
+
+
+    if (person.name) {
+
+      welcomeMessage.textContent =
+        "Welcome, " + person.name;
+
+    }
+
+
+    /* =====================================================
+       CONNECTION DATA
+       ===================================================== */
+
+    const connections =
+      Array.isArray(person.connections)
+        ? person.connections
+        : [];
+
+
+    let activeConnection =
+      connections[0] || "No connection";
+
+
+    const currentConnection =
+      document.getElementById(
+        "currentConnection"
+      );
+
+
+    const connectionList =
+      document.getElementById(
+        "connectionList"
+      );
+
+
+    function formatConnection(connection) {
+
+      const labels = {
+
+        partner: "Partner",
+
+        worker: "Remote Worker",
+
+        "gtf-member": "GTF Member"
+
+      };
+
+
+      return (
+        labels[connection] ||
+        connection
+          .replace(/-/g, " ")
+          .replace(/\b\w/g, letter =>
+            letter.toUpperCase()
+          )
+      );
+
+    }
+
+
+    /* =====================================================
+       ROLE INFORMATION
+       ===================================================== */
+
+    const roleInformation = {
+
+      partner: {
+
+        title: "Partner",
+
+        description:
+          "You are connected with GTH as an approved partner.",
+
+        duties:
+          "Work with GTH according to your approved partnership, responsibilities and agreed activities."
+
+      },
+
+
+      worker: {
+
+        title: "Remote Worker",
+
+        description:
+          "You are approved to work remotely within the GT Connect network.",
+
+        duties:
+          "Carry out assigned remote activities, communicate with the appropriate teams and contribute to approved work."
+
+      },
+
+
+      "gtf-member": {
+
+        title: "GTF Member",
+
+        description:
+          "You are connected to the God’stime Fund through GT Connect.",
+
+        duties:
+          "Participate according to your approved GTF membership responsibilities and follow the applicable platform requirements."
+
+      }
+
+    };
+
+
+    /* =====================================================
+       PLATFORM CATALOG
+       ===================================================== */
+
+    const PLATFORM_CATALOG = {
+
+      slack: {
+
+        name: "Slack",
+
+        category: "Communication",
+
+        icon:
+          "https://cdn.simpleicons.org/slack",
+
+        url:
+          "https://slack.com/"
+
+      },
+
+
+      teams: {
+
+        name: "Microsoft Teams",
+
+        category: "Communication",
+
+        icon:
+          "https://cdn.simpleicons.org/microsoftteams",
+
+        url:
+          "https://www.microsoft.com/microsoft-teams/"
+
+      },
+
+
+      googleWorkspace: {
+
+        name: "Google Workspace",
+
+        category: "Workspace",
+
+        icon:
+          "https://cdn.simpleicons.org/google",
+
+        url:
+          "https://workspace.google.com/"
+
+      },
+
+
+      notion: {
+
+        name: "Notion",
+
+        category: "Workspace",
+
+        icon:
+          "https://cdn.simpleicons.org/notion",
+
+        url:
+          "https://www.notion.so/"
+
+      },
+
+
+      clickup: {
+
+        name: "ClickUp",
+
+        category: "Project Management",
+
+        icon:
+          "https://cdn.simpleicons.org/clickup",
+
+        url:
+          "https://clickup.com/"
+
+      },
+
+
+      zoom: {
+
+        name: "Zoom",
+
+        category: "Meetings",
+
+        icon:
+          "https://cdn.simpleicons.org/zoom",
+
+        url:
+          "https://zoom.us/"
+
+      },
+
+
+      meet: {
+
+        name: "Google Meet",
+
+        category: "Meetings",
+
+        icon:
+          "https://cdn.simpleicons.org/googlemeet",
+
+        url:
+          "https://meet.google.com/"
+
+      },
+
+
+      signal: {
+
+        name: "Signal",
+
+        category: "Private Communication",
+
+        icon:
+          "https://cdn.simpleicons.org/signal",
+
+        url:
+          "https://signal.org/"
+
+      },
+
+
+      protonMail: {
+
+        name: "Proton Mail",
+
+        category: "Email",
+
+        icon:
+          "https://cdn.simpleicons.org/protonmail",
+
+        url:
+          "https://proton.me/mail"
+
+      },
+
+
+      github: {
+
+        name: "GitHub",
+
+        category: "Development",
+
+        icon:
+          "https://cdn.simpleicons.org/github",
+
+        url:
+          "https://github.com/"
+
+      }
+
+    };
+
+
+    /* =====================================================
+       CONNECTION → PLATFORM ACCESS
+       ===================================================== */
+
+    const GT_CONNECT_ACCESS = {
+
+      partner: [
+
+        "slack",
+
+        "zoom",
+
+        "notion",
+
+        "googleWorkspace"
+
+      ],
+
+
+      worker: [
+
+        "slack",
+
+        "teams",
+
+        "clickup",
+
+        "zoom",
+
+        "notion",
+
+        "github"
+
+      ],
+
+
+      "gtf-member": [
+
+        "teams",
+
+        "meet",
+
+        "notion",
+
+        "signal",
+
+        "protonMail"
+
+      ]
+
+    };
+
+
+    /* =====================================================
+       GET PLATFORMS FOR ACTIVE CONNECTION
+       ===================================================== */
+
+    function getPlatformsForConnection() {
+
+      /*
+        If a Personal Key record eventually contains
+        its own "platforms" array, that takes priority.
+
+        Example:
+
+        person.platforms = [
+          "slack",
+          "notion",
+          "github"
+        ]
+
+        Otherwise the connection-type permissions
+        below are used.
+      */
+
+      if (
+        Array.isArray(person.platforms)
+      ) {
+
+        return person.platforms
+
+          .map(
+            id => PLATFORM_CATALOG[id]
+          )
+
+          .filter(Boolean);
+
+      }
+
+
+      const platformIds =
+        GT_CONNECT_ACCESS[
+          activeConnection
+        ] || [];
+
+
+      return platformIds
+
+        .map(
+          id => PLATFORM_CATALOG[id]
+        )
+
+        .filter(Boolean);
+
+    }
+
+
+    /* =====================================================
+       PLATFORM FALLBACK LETTER
+       ===================================================== */
+
+    function getPlatformInitial(name) {
+
+      if (!name) {
+        return "?";
+      }
+
+      return name
+        .trim()
+        .charAt(0)
+        .toUpperCase();
+
+    }
+
+
+    /* =====================================================
+       CREATE PREVIEW PLATFORM CARD
+       ===================================================== */
+
+    function createPlatformCard(platform) {
+
+      const link =
+        document.createElement("a");
+
+
+      link.className =
+        "platform-card";
+
+
+      link.href =
+        platform.url;
+
+
+      link.target =
+        "_blank";
+
+
+      link.rel =
+        "noopener noreferrer";
+
+
+      link.setAttribute(
+        "aria-label",
+        platform.name
+      );
+
+
+      link.title =
+        platform.name;
+
+
+      const image =
+        document.createElement("img");
+
+
+      image.className =
+        "platform-icon";
+
+
+      image.src =
+        platform.icon;
+
+
+      image.alt =
+        "";
+
+
+      image.loading =
+        "lazy";
+
+
+      image.onerror =
+        function () {
+
+          image.remove();
+
+
+          const fallback =
+            document.createElement("div");
+
+
+          fallback.className =
+            "platform-fallback";
+
+
+          fallback.textContent =
+            getPlatformInitial(
+              platform.name
+            );
+
+
+          link.insertBefore(
+            fallback,
+            link.firstChild
+          );
+
+        };
+
+
+      link.appendChild(image);
+
+
+      const tooltip =
+        document.createElement("span");
+
+
+      tooltip.className =
+        "platform-tooltip";
+
+
+      tooltip.textContent =
+        platform.name;
+
+
+      link.appendChild(tooltip);
+
+
+      return link;
+
+    }
+
+
+    /* =====================================================
+       UPDATE WORK TOGETHER
+       ===================================================== */
+
+    function updateWorkTogether() {
+
+      const preview =
+        document.getElementById(
+          "platformPreview"
+        );
+
+
+      const count =
+        document.getElementById(
+          "platformCount"
+        );
+
+
+      const allButton =
+        document.getElementById(
+          "allPlatformsButton"
+        );
+
+
+      const platforms =
+        getPlatformsForConnection();
+
+
+      preview.innerHTML =
+        "";
+
+
+      if (!platforms.length) {
+
+        const empty =
+          document.createElement("div");
+
+
+        empty.className =
+          "no-platforms";
+
+
+        empty.textContent =
+          "No collaboration platforms are currently assigned to this connection.";
+
+
+        preview.appendChild(empty);
+
+
+        count.textContent =
+          "0 platforms";
+
+
+        allButton.style.display =
+          "none";
+
+
+        return;
+
+      }
+
+
+      /* SHOW ONLY THREE */
+
+      platforms
+        .slice(0, 3)
+        .forEach(
+          platform => {
+
+            preview.appendChild(
+              createPlatformCard(platform)
+            );
+
+          }
+        );
+
+
+      count.textContent =
+        platforms.length === 1
+          ? "1 platform available"
+          : platforms.length +
+            " platforms available";
+
+
+      allButton.style.display =
+        platforms.length > 3
+          ? "block"
+          : "none";
+
+    }
+
+
+    /* =====================================================
+       ALL PLATFORMS MODAL
+       ===================================================== */
+
+    const platformModal =
+      document.getElementById(
+        "platformModal"
+      );
+
+
+    const allPlatformList =
+      document.getElementById(
+        "allPlatformList"
+      );
+
+
+    const allPlatformsButton =
+      document.getElementById(
+        "allPlatformsButton"
+      );
+
+
+    const closePlatformModal =
+      document.getElementById(
+        "closePlatformModal"
+      );
+
+
+    function openPlatformModal() {
+
+      const platforms =
+        getPlatformsForConnection();
+
+
+      allPlatformList.innerHTML =
+        "";
+
+
+      platforms.forEach(
+        platform => {
+
+          const item =
+            document.createElement("a");
+
+
+          item.className =
+            "all-platform-item";
+
+
+          item.href =
+            platform.url;
+
+
+          item.target =
+            "_blank";
+
+
+          item.rel =
+            "noopener noreferrer";
+
+
+          const icon =
+            document.createElement("img");
+
+
+          icon.src =
+            platform.icon;
+
+
+          icon.alt =
+            "";
+
+
+          icon.onerror =
+            function () {
+
+              icon.style.display =
+                "none";
+
+            };
+
+
+          const text =
+            document.createElement("div");
+
+
+          const name =
+            document.createElement("strong");
+
+
+          name.textContent =
+            platform.name;
+
+
+          const category =
+            document.createElement("span");
+
+
+          category.textContent =
+            platform.category;
+
+
+          text.appendChild(name);
+
+          text.appendChild(category);
+
+
+          item.appendChild(icon);
+
+          item.appendChild(text);
+
+
+          allPlatformList.appendChild(item);
+
+        }
+      );
+
+
+      platformModal.classList.add(
+        "open"
+      );
+
+
+      platformModal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+    }
+
+
+    function closePlatformModalWindow() {
+
+      platformModal.classList.remove(
+        "open"
+      );
+
+
+      platformModal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+    }
+
+
+    allPlatformsButton.addEventListener(
+      "click",
+      openPlatformModal
+    );
+
+
+    closePlatformModal.addEventListener(
+      "click",
+      closePlatformModalWindow
+    );
+
+
+    platformModal.addEventListener(
+      "click",
+      function (event) {
+
+        if (
+          event.target === platformModal
+        ) {
+
+          closePlatformModalWindow();
+
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          closePlatformModalWindow();
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       UPDATE ROLE
+       ===================================================== */
+
+    function updateRoleInformation() {
+
+      currentConnection.textContent =
+        formatConnection(
+          activeConnection
+        );
+
+
+      const information =
+        roleInformation[
+          activeConnection
+        ];
+
+
+      const roleTitle =
+        document.getElementById(
+          "roleTitle"
+        );
+
+
+      const roleDescription =
+        document.getElementById(
+          "roleDescription"
+        );
+
+
+      const duties =
+        document.getElementById(
+          "duties"
+        );
+
+
+      if (information) {
+
+        roleTitle.textContent =
+          information.title;
+
+
+        roleDescription.textContent =
+          information.description;
+
+
+        duties.textContent =
+          information.duties;
+
+      } else {
+
+        roleTitle.textContent =
+          "GT Connect Member";
+
+
+        roleDescription.textContent =
+          "Your approved GT Connect role.";
+
+
+        duties.textContent =
+          "Your responsibilities will appear according to your approved connection.";
+
+      }
+
+
+      updateWorkTogether();
+
+    }
+
+
+    /* =====================================================
+       CONNECTION SWITCHER
+       ===================================================== */
+
+    function updateActiveConnection() {
+
+      connectionList.innerHTML =
+        "";
+
+
+      if (!connections.length) {
+
+        connectionList.innerHTML =
+          "<span style='color:#777;font-size:13px;'>No approved connections.</span>";
+
+        return;
+
+      }
+
+
+      connections.forEach(
+        connection => {
+
+          const button =
+            document.createElement("button");
+
+
+          button.type =
+            "button";
+
+
+          button.className =
+            "connection-item";
+
+
+          if (
+            connection ===
+            activeConnection
+          ) {
+
+            button.classList.add(
+              "current-connection"
+            );
+
+          }
+
+
+          button.textContent =
+            formatConnection(
+              connection
+            );
+
+
+          button.addEventListener(
+            "click",
+            function () {
+
+              activeConnection =
+                connection;
+
+
+              updateActiveConnection();
+
+              updateRoleInformation();
+
+            }
+          );
+
+
+          connectionList.appendChild(
+            button
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =====================================================
+       FORGET DEVICE
+       ===================================================== */
+
+    function forgetDevice() {
+
+      const confirmed =
+        window.confirm(
+          "Forget this device and remove the saved GT Connect Personal Key?"
+        );
+
+
+      if (!confirmed) {
+        return;
+      }
+
+
+      localStorage.removeItem(
+        STORAGE_KEY
+      );
+
+
+      window.location.href =
+        "gt-connect-key.html";
+
+    }
+
+
+    document
+      .getElementById(
+        "forgetDeviceButton"
+      )
+      .addEventListener(
+        "click",
+        forgetDevice
+      );
+
+
+    document
+      .getElementById(
+        "menuForgetDevice"
+      )
+      .addEventListener(
+        "click",
+        forgetDevice
+      );
+
+
+    /* =====================================================
+       INITIALIZE
+       ===================================================== */
+
+    updateActiveConnection();
+
+    updateRoleInformation();
+
+  </script>
+
+
+</body>
+
+</html>
