@@ -7307,3 +7307,13 @@ tr:last-child td {
   }
 
 }
+
+/* =========================================================
+   HIDE GTH PLATFORMS WHILE AN ABOUT PANEL IS OPEN
+========================================================= */
+
+#platforms.gth-platforms-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
