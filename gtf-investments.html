@@ -1306,72 +1306,85 @@
 
     function createDirectoryTile(item) {
 
-      const tile =
-        document.createElement("article");
+  const tile =
+    document.createElement("article");
 
+  tile.className =
+    "directory-platform-tile";
 
-      tile.className =
-        "directory-platform-tile";
+  tile.dataset.platformName =
+    item.name.toLowerCase();
 
+  tile.dataset.platformCategory =
+    item.categoryName.toLowerCase();
 
-      tile.dataset.platformName =
-        item.name.toLowerCase();
+  tile.innerHTML = `
 
+    ${
+      item.website
+        ? `
+          <a
+            class="platform-icon-button platform-official-link"
+            href="${escapeHTML(item.website)}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit ${escapeHTML(item.name)} official website"
+          >
 
-      tile.dataset.platformCategory =
-        item.categoryName.toLowerCase();
+            <span class="platform-icon">
+              ${createPlatformInitials(item)}
+            </span>
 
+          </a>
+        `
+        : `
+          <button
+            type="button"
+            class="platform-icon-button"
+            data-action="details"
+            data-platform-id="${escapeHTML(item.id)}"
+            aria-label="View details for ${escapeHTML(item.name)}"
+          >
 
-      tile.innerHTML = `
+            <span class="platform-icon">
+              ${createPlatformInitials(item)}
+            </span>
 
-        <button
-          type="button"
-          class="platform-icon-button"
-          data-action="details"
-          data-platform-id="${escapeHTML(item.id)}"
-          aria-label="View details for ${escapeHTML(item.name)}"
-        >
-
-          <span class="platform-icon">
-
-            ${createPlatformInitials(item)}
-
-          </span>
-
-        </button>
-
-
-        <div class="platform-tile-name">
-
-          ${escapeHTML(item.name)}
-
-        </div>
-
-
-        <div class="directory-platform-category">
-
-          ${escapeHTML(item.categoryName)}
-
-        </div>
-
-
-        <button
-          type="button"
-          class="platform-info-button"
-          data-action="details"
-          data-platform-id="${escapeHTML(item.id)}"
-        >
-
-          SEE DETAILS
-
-        </button>
-
-      `;
-
-
-      return tile;
-
+          </button>
+        `
     }
+
+
+    <div class="platform-tile-name">
+
+      ${escapeHTML(item.name)}
+
+    </div>
+
+
+    <div class="directory-platform-category">
+
+      ${escapeHTML(item.categoryName)}
+
+    </div>
+
+
+    <button
+      type="button"
+      class="platform-info-button"
+      data-action="details"
+      data-platform-id="${escapeHTML(item.id)}"
+    >
+
+      SEE DETAILS
+
+    </button>
+
+  `;
+
+  return tile;
+
+}
 
 
 
