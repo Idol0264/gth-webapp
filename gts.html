@@ -210,11 +210,27 @@ if (
        GTS INFORMATION
   ====================================================== -->
 
-  <section class="content-section">
+  <!-- =====================================================
+       GTS ABOUT BOTTOM TAB
+  ====================================================== -->
 
-    <div class="gts-info-panel">
+  <aside
+    id="gtsAboutBar"
+    class="gts-about-bar"
+    aria-label="About GTS"
+  >
 
-      <div>
+    <div
+      class="gts-about-handle"
+      id="gtsAboutHandle"
+      role="button"
+      tabindex="0"
+      aria-expanded="false"
+      aria-controls="gtsAboutContent"
+      aria-label="Expand About GTS"
+    >
+
+      <div class="gts-about-heading">
 
         <p class="eyebrow">
           ABOUT GTS
@@ -224,15 +240,43 @@ if (
           A growing software directory
         </h2>
 
-        <p>
-          GTS brings software and digital applications
-          together in one place so users can discover,
-          explore and access useful tools.
-        </p>
-
       </div>
 
+
+      <button
+        type="button"
+        id="gtsAboutToggle"
+        class="gts-about-toggle"
+        aria-label="Expand About GTS"
+        aria-expanded="false"
+      >
+        ^
+      </button>
+
+    </div>
+
+
+    <div
+      id="gtsAboutContent"
+      class="gts-about-content"
+      aria-hidden="true"
+    >
+
+      <p>
+        GTS brings software and digital applications
+        together in one place so users can discover,
+        explore and access useful tools.
+      </p>
+
+      <p>
+        The directory is designed to make useful
+        software easier to discover by bringing
+        different applications and digital services
+        into one growing platform.
+      </p>
+
       <div class="gts-info-badge">
+
         <strong>
           GTS
         </strong>
@@ -240,12 +284,23 @@ if (
         <span>
           GT Softwares
         </span>
+
       </div>
 
     </div>
 
-  </section>
+  </aside>
 
+
+  <!-- Bottom safety fade.
+       This area does not receive pointer events,
+       helping prevent accidental interaction near
+       the phone's bottom gesture/navigation area. -->
+
+  <div
+    class="gts-bottom-safe-fade"
+    aria-hidden="true"
+  ></div>
 </main>
 
 
