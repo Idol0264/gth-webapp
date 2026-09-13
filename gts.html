@@ -972,7 +972,235 @@ buildCategoryFilters();
 displaySoftware();
 
 </script>
+  
+<script>
+/* =========================================================
+   GTS — ABOUT BOTTOM TAB
+========================================================= */
+
+(function () {
+
+  const aboutBar =
+    document.getElementById("gtsAboutBar");
+
+  const aboutHandle =
+    document.getElementById("gtsAboutHandle");
+
+  const aboutToggle =
+    document.getElementById("gtsAboutToggle");
+
+  const aboutContent =
+    document.getElementById("gtsAboutContent");
 
 
+  if (
+    !aboutBar ||
+    !aboutHandle ||
+    !aboutToggle ||
+    !aboutContent
+  ) {
+    return;
+  }
+
+
+  let startY = 0;
+  let currentY = 0;
+  let dragging = false;
+
+
+  function setExpanded(expanded) {
+
+    aboutBar.classList.toggle(
+      "is-expanded",
+      expanded
+    );
+
+    aboutHandle.setAttribute(
+      "aria-expanded",
+      String(expanded)
+    );
+
+    aboutToggle.setAttribute(
+      "aria-expanded",
+      String(expanded)
+    );
+
+    aboutToggle.setAttribute(
+      "aria-label",
+      expanded
+        ? "Collapse About GTS"
+        : "Expand About GTS"
+    );
+
+    aboutContent.setAttribute(
+      "aria-hidden",
+      String(!expanded)
+    );
+
+  }
+
+
+  function toggleAbout() {
+
+    setExpanded(
+      !aboutBar.classList.contains(
+        "is-expanded"
+      )
+    );
+
+  }
+
+
+  /* =======================================================
+     TAP / CLICK
+  ======================================================= */
+
+  aboutToggle.addEventListener(
+    "click",
+    function (event) {
+
+      event.stopPropagation();
+
+      toggleAbout();
+
+    }
+  );
+
+
+  aboutHandle.addEventListener(
+    "click",
+    function (event) {
+
+      if (
+        event.target === aboutToggle ||
+        aboutToggle.contains(event.target)
+      ) {
+        return;
+      }
+
+      toggleAbout();
+
+    }
+  );
+
+
+  /* =======================================================
+     KEYBOARD ACCESS
+  ======================================================= */
+
+  aboutHandle.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+
+        event.preventDefault();
+
+        toggleAbout();
+
+      }
+
+    }
+  );
+
+
+  /* =======================================================
+     SWIPE UP / DOWN
+  ======================================================= */
+
+  aboutHandle.addEventListener(
+    "touchstart",
+    function (event) {
+
+      if (!event.touches.length) {
+        return;
+      }
+
+      startY =
+        event.touches[0].clientY;
+
+      currentY = startY;
+
+      dragging = true;
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+  aboutHandle.addEventListener(
+    "touchmove",
+    function (event) {
+
+      if (!dragging || !event.touches.length) {
+        return;
+      }
+
+      currentY =
+        event.touches[0].clientY;
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+  aboutHandle.addEventListener(
+    "touchend",
+    function () {
+
+      if (!dragging) {
+        return;
+      }
+
+      dragging = false;
+
+
+      const distance =
+        currentY - startY;
+
+
+      const threshold = 45;
+
+
+      if (distance <= -threshold) {
+
+        setExpanded(true);
+
+        return;
+
+      }
+
+
+      if (distance >= threshold) {
+
+        setExpanded(false);
+
+        return;
+
+      }
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+  /* =======================================================
+     START COLLAPSED
+  ======================================================= */
+
+  setExpanded(false);
+
+})();
+</script>
+  
 </body>
 </html>
