@@ -886,6 +886,19 @@ document.addEventListener("DOMContentLoaded", function () {
   let activeTrigger = null;
 
 
+  function hidePlatforms() {
+  if (platformsSection) {
+    platformsSection.classList.add("gth-platforms-hidden");
+  }
+}
+
+function showPlatforms() {
+  if (platformsSection) {
+    platformsSection.classList.remove("gth-platforms-hidden");
+  }
+  }
+
+
   /* ---------------------------------------------------------
      MOVE THE PANEL LAYER INTO THE ABOUT SECTION
   --------------------------------------------------------- */
