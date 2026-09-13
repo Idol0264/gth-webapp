@@ -6569,3 +6569,741 @@ tr:last-child td {
   }
 
 }
+
+/* =========================================================
+   GTH ABOUT — PREMIUM FLOATING PANELS
+========================================================= */
+
+.gth-about-section {
+  position: relative;
+  overflow: visible;
+}
+
+
+/* ---------------------------------------------------------
+   FIVE ABOUT OPTIONS
+--------------------------------------------------------- */
+
+.gth-about-options {
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  margin-top: 30px;
+}
+
+
+.gth-about-trigger {
+  position: relative;
+
+  width: 100%;
+  min-height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--surface-2),
+      var(--surface)
+    );
+
+  color: var(--text);
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    border-color .28s ease,
+    box-shadow .28s ease,
+    transform .28s ease,
+    background .28s ease;
+}
+
+
+.gth-about-trigger::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent 0%,
+      var(--accent-faint) 45%,
+      transparent 70%
+    );
+
+  opacity: 0;
+
+  transform:
+    translateX(-100%);
+
+  transition:
+    opacity .3s ease,
+    transform .7s ease;
+
+  pointer-events: none;
+}
+
+
+.gth-about-trigger:hover::before,
+.gth-about-trigger:focus-visible::before {
+  opacity: 1;
+  transform: translateX(100%);
+}
+
+
+.gth-about-trigger:hover {
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 0 1px var(--accent-soft),
+    0 8px 25px var(--accent-faint);
+
+  transform: translateY(-2px);
+}
+
+
+.gth-about-trigger[aria-expanded="true"] {
+  border-color: var(--accent);
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--accent-soft),
+      var(--surface)
+    );
+
+  box-shadow:
+    0 0 0 1px var(--accent-soft),
+    0 0 25px var(--accent-soft),
+    inset 0 0 25px var(--accent-faint);
+}
+
+
+.gth-trigger-content {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+
+.gth-trigger-label {
+  display: block;
+
+  color: var(--accent);
+
+  font-size: .88rem;
+  font-weight: 850;
+
+  letter-spacing: .08em;
+}
+
+
+.gth-trigger-line {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: .84rem;
+  line-height: 1.45;
+}
+
+
+.gth-trigger-symbol {
+  position: relative;
+  z-index: 2;
+
+  flex: 0 0 auto;
+
+  width: 32px;
+  height: 32px;
+
+  display: grid;
+  place-items: center;
+
+  margin-left: 12px;
+
+  color: var(--accent);
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  font-size: 1.1rem;
+
+  transition:
+    transform .35s ease,
+    border-color .25s ease,
+    background .25s ease;
+}
+
+
+.gth-about-trigger[aria-expanded="true"]
+.gth-trigger-symbol {
+  transform: rotate(180deg);
+
+  background: var(--accent-soft);
+
+  border-color: var(--accent);
+}
+
+
+/* =========================================================
+   PANEL LAYER
+========================================================= */
+
+#gthInfoLayer.gth-info-layer {
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 50;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+}
+
+
+#gthInfoLayer.gth-info-layer.is-open {
+
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: none;
+}
+
+
+/* ---------------------------------------------------------
+   PANEL
+--------------------------------------------------------- */
+
+.gth-info-panel {
+
+  position: absolute;
+
+  margin: 0;
+
+  max-width: calc(100% - 28px);
+
+  max-height: min(70vh, 620px);
+
+  overflow-y: auto;
+
+  padding: 0;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--surface),
+      var(--surface-2)
+    );
+
+  color: var(--text);
+
+  border: 1px solid var(--border);
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, .35),
+    0 0 0 1px var(--accent-faint),
+    0 0 30px var(--accent-soft);
+
+  transform-origin:
+    top center;
+
+  transform:
+    translateY(-24px)
+    rotateX(-9deg)
+    rotateZ(-.4deg)
+    scale(.96);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    transform .38s cubic-bezier(.2,.8,.2,1),
+    opacity .28s ease,
+    box-shadow .35s ease;
+
+  scrollbar-width: thin;
+}
+
+
+.gth-info-panel.is-visible {
+
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    rotateX(0)
+    rotateZ(0)
+    scale(1);
+
+  pointer-events: auto;
+}
+
+
+.gth-info-panel.is-waving {
+
+  animation:
+    gthPanelFloat 4.8s ease-in-out infinite;
+}
+
+
+.gth-info-panel.is-closing {
+
+  opacity: 0;
+
+  transform:
+    translateY(-18px)
+    rotateX(-7deg)
+    rotateZ(.4deg)
+    scale(.97);
+
+  pointer-events: none;
+}
+
+
+/* ---------------------------------------------------------
+   PREMIUM EDGE LIGHT
+--------------------------------------------------------- */
+
+.gth-panel-edge {
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 2px;
+
+  overflow: hidden;
+
+  border-radius:
+    20px 20px 0 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--accent),
+      transparent
+    );
+
+  box-shadow:
+    0 0 8px var(--accent),
+    0 0 18px var(--accent-soft);
+
+  pointer-events: none;
+}
+
+
+.gth-panel-edge::after {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -35%;
+
+  width: 35%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--accent),
+      transparent
+    );
+
+  animation:
+    gthEdgeSweep 2.8s linear infinite;
+}
+
+
+/* ---------------------------------------------------------
+   PANEL HEADER
+--------------------------------------------------------- */
+
+.gth-panel-header {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  padding:
+    25px 22px 18px;
+
+  border-bottom:
+    1px solid var(--border);
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--accent-faint),
+      transparent
+    );
+}
+
+
+.gth-panel-header .eyebrow {
+  margin-bottom: 7px;
+}
+
+
+.gth-panel-header h2 {
+
+  margin: 0;
+
+  color: var(--text);
+
+  font-size:
+    clamp(1.45rem, 4vw, 2.15rem);
+
+  line-height: 1.05;
+}
+
+
+/* ---------------------------------------------------------
+   CLOSE BUTTON
+--------------------------------------------------------- */
+
+.gth-panel-close {
+
+  flex: 0 0 auto;
+
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  background: var(--surface-2);
+
+  color: var(--accent);
+
+  border: 1px solid var(--border);
+
+  border-radius: 50%;
+
+  font-size: 1.05rem;
+
+  cursor: pointer;
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+
+.gth-panel-close:hover {
+
+  transform: translateY(-2px);
+
+  background: var(--accent-soft);
+
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 15px var(--accent-soft);
+}
+
+
+/* ---------------------------------------------------------
+   PANEL CONTENT
+--------------------------------------------------------- */
+
+.gth-panel-content {
+
+  padding:
+    22px;
+
+  line-height: 1.7;
+}
+
+
+.gth-panel-content p {
+
+  margin:
+    0 0 17px;
+
+  color: var(--muted);
+}
+
+
+.gth-panel-content p:last-child {
+  margin-bottom: 0;
+}
+
+
+.gth-panel-feature {
+
+  padding:
+    16px 17px;
+
+  margin-bottom: 22px !important;
+
+  color: var(--text) !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent-soft),
+      transparent
+    );
+
+  border-left:
+    3px solid var(--accent);
+
+  border-radius:
+    0 12px 12px 0;
+
+  font-weight: 700;
+
+  line-height: 1.55;
+}
+
+
+.gth-platform-detail {
+
+  margin-bottom: 14px;
+
+  padding:
+    15px 16px;
+
+  background:
+    var(--surface-2);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    13px;
+
+  transition:
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+
+.gth-platform-detail:hover {
+
+  border-color:
+    var(--accent);
+
+  transform:
+    translateX(3px);
+}
+
+
+.gth-platform-detail strong {
+
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--accent);
+
+  font-size: .95rem;
+}
+
+
+.gth-platform-detail p {
+
+  margin: 0;
+
+  font-size: .9rem;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes gthPanelFloat {
+
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotateZ(0deg)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translateY(-5px)
+      rotateZ(-.18deg)
+      scale(1.002);
+  }
+}
+
+
+@keyframes gthEdgeSweep {
+
+  0% {
+    left: -35%;
+  }
+
+  100% {
+    left: 110%;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 620px) {
+
+  .gth-about-options {
+    gap: 10px;
+  }
+
+
+  .gth-about-trigger {
+
+    min-height: 72px;
+
+    padding:
+      14px 13px;
+
+    border-radius:
+      14px;
+  }
+
+
+  .gth-trigger-label {
+    font-size: .8rem;
+  }
+
+
+  .gth-trigger-line {
+    font-size: .77rem;
+  }
+
+
+  .gth-trigger-symbol {
+
+    width: 29px;
+    height: 29px;
+
+    margin-left: 8px;
+
+    font-size: .95rem;
+  }
+
+
+  .gth-info-panel {
+
+    max-width:
+      calc(100% - 20px);
+
+    max-height:
+      68vh;
+
+    border-radius:
+      17px;
+  }
+
+
+  .gth-panel-header {
+
+    padding:
+      20px 16px 15px;
+  }
+
+
+  .gth-panel-header h2 {
+
+    font-size:
+      1.45rem;
+  }
+
+
+  .gth-panel-content {
+
+    padding:
+      17px 16px;
+  }
+
+
+  .gth-panel-content p {
+
+    font-size:
+      .88rem;
+
+    line-height:
+      1.65;
+  }
+
+
+  .gth-panel-feature {
+
+    padding:
+      14px;
+
+    font-size:
+      .9rem;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .gth-info-panel.is-waving,
+  .gth-panel-edge::after {
+
+    animation:
+      none !important;
+  }
+
+}
