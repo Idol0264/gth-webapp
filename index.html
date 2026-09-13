@@ -975,12 +975,14 @@ function showPlatforms() {
 
   function closePanel() {
 
-    if (!activePanel) {
-      return;
-    }
+  if (!activePanel) {
+    return;
+  }
 
-    const panel =
-      activePanel;
+  showPlatforms();
+
+  const panel =
+    activePanel;
 
     const trigger =
       activeTrigger;
