@@ -7317,3 +7317,11 @@ tr:last-child td {
   visibility: hidden !important;
   pointer-events: none !important;
 }
+
+.gth-panel-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
