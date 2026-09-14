@@ -7973,6 +7973,78 @@ tr:last-child td {
 
 }
 
+/* =========================================================
+   GTH INDEX — NOTIFICATION PERMISSION BUTTON
+========================================================= */
+
+.gth-notification-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 40px;
+  padding: 8px 13px;
+
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  background: var(--surface);
+  color: var(--text);
+
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.gth-notification-button:hover {
+  transform: translateY(-2px);
+}
+
+.gth-notification-button:active {
+  transform: translateY(0);
+}
+
+.gth-notification-button span:first-child {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.gth-notification-button.hidden {
+  display: none;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .gth-notification-button {
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+
+    padding: 0;
+  }
+
+  .gth-notification-button span:last-child {
+    display: none;
+  }
+
+}
+
+
 
 
 
