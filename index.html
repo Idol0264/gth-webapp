@@ -1312,6 +1312,34 @@ function showPlatforms() {
   );
 
 });
+
+  /* =========================================================
+   GTH HERO → PLATFORMS
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const button =
+    document.getElementById("goToPlatformsButton");
+
+  const platforms =
+    document.getElementById("platforms");
+
+  if (!button || !platforms) {
+    return;
+  }
+
+  button.addEventListener("click", function () {
+
+    platforms.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+  });
+
+});
+  
 </script>
   
 </body>
