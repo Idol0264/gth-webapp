@@ -7744,6 +7744,74 @@ tr:last-child td {
 
 }
 
+/* =========================================================
+   GTH HOME HERO PLATFORM BUTTON
+========================================================= */
+
+.gth-home-hero {
+  text-align: center;
+}
+
+.gth-hero-description {
+  max-width: 760px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.gth-platforms-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 190px;
+  min-height: 54px;
+
+  margin-top: 28px;
+  padding: 15px 28px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: var(--accent-color, #2879d8);
+  color: #ffffff;
+
+  font: inherit;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.14);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.gth-platforms-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 16px 34px rgba(0, 0, 0, 0.18);
+}
+
+.gth-platforms-button:active {
+  transform: translateY(0);
+}
+
+#platforms {
+  scroll-margin-top: 100px;
+}
+
+
+
+
+
+
+
+
 
 
 
