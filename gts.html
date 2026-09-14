@@ -1209,6 +1209,55 @@ displaySoftware();
   setExpanded(false);
 
 })();
+
+
+  /* =========================================================
+   GTS HERO → SOFTWARE SEARCH
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const button =
+    document.getElementById("gtsSearchJump");
+
+  const search =
+    document.getElementById("softwareSearch");
+
+  if (!button || !search) {
+    return;
+  }
+
+  button.addEventListener("click", function () {
+
+    const searchSection =
+      search.closest(".gts-directory");
+
+    if (searchSection) {
+
+      searchSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    } else {
+
+      search.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+    }
+
+    setTimeout(function () {
+
+      search.focus();
+
+    }, 650);
+
+  });
+
+});
+  
 </script>
   
 </body>
