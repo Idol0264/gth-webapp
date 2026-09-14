@@ -7828,16 +7828,15 @@ tr:last-child td {
   appearance: none;
   -webkit-appearance: none;
 
-  animation: gtsDoubleVFloat 2.4s ease-in-out infinite;
-
   position: relative;
   z-index: 5;
+
+  animation: gtsDoubleVFloat 2.4s ease-in-out infinite;
 }
 
 /* Each V */
 .gts-v-shape {
   position: relative;
-
   display: block;
 
   width: min(340px, 76vw);
@@ -7846,7 +7845,7 @@ tr:last-child td {
   flex-shrink: 0;
 }
 
-/* The two arms of each V */
+/* V arms */
 .gts-v-shape::before,
 .gts-v-shape::after {
   content: "";
@@ -7855,17 +7854,17 @@ tr:last-child td {
   top: 8px;
 
   width: 52%;
-  height: 13px;
-
-  background: #000;
+  height: 8px;
 
   border-radius: 999px;
+
+  /* Light mode: dark */
+  background: rgba(0, 0, 0, 0.62);
 }
 
 /* Left arm */
 .gts-v-shape::before {
   left: 0;
-
   transform: rotate(20deg);
   transform-origin: right center;
 }
@@ -7873,7 +7872,6 @@ tr:last-child td {
 /* Right arm */
 .gts-v-shape::after {
   right: 0;
-
   transform: rotate(-20deg);
   transform-origin: left center;
 }
@@ -7881,12 +7879,30 @@ tr:last-child td {
 /* Second V */
 .gts-v-shape-two {
   margin-top: -10px;
-
   transform: scale(0.86);
   transform-origin: center top;
 }
 
-/* Both V shapes move together */
+
+/* =========================================================
+   DEVICE DARK MODE
+   Black → White
+========================================================= */
+
+@media (prefers-color-scheme: dark) {
+
+  .gts-v-shape::before,
+  .gts-v-shape::after {
+    background: rgba(255, 255, 255, 0.62);
+  }
+
+}
+
+
+/* =========================================================
+   V MOVEMENT
+========================================================= */
+
 @keyframes gtsDoubleVFloat {
   0%,
   100% {
@@ -7894,34 +7910,35 @@ tr:last-child td {
   }
 
   50% {
-    transform: translateY(8px);
+    transform: translateY(7px);
   }
 }
 
-/* Keep the second V synchronized with the first */
-.gts-search-jump .gts-v-shape-two {
-  animation: none;
-}
 
-/* Hover */
+/* =========================================================
+   HOVER / ACTIVE
+========================================================= */
+
 .gts-search-jump:hover {
   animation-duration: 2s;
 }
 
-/* Press */
 .gts-search-jump:active {
   animation-play-state: paused;
   transform: translateY(3px);
 }
 
-/* Keyboard accessibility */
 .gts-search-jump:focus-visible {
-  outline: 3px solid #000;
+  outline: 3px solid currentColor;
   outline-offset: 7px;
   border-radius: 18px;
 }
 
-/* Directory scroll position */
+
+/* =========================================================
+   SOFTWARE DIRECTORY SCROLL POSITION
+========================================================= */
+
 .gts-directory {
   scroll-margin-top: 90px;
 }
@@ -7936,7 +7953,6 @@ tr:last-child td {
   .gts-search-jump {
     width: 92vw;
     height: 92px;
-
     margin-top: 24px;
   }
 
@@ -7947,13 +7963,14 @@ tr:last-child td {
 
   .gts-v-shape::before,
   .gts-v-shape::after {
-    height: 11px;
+    height: 7px;
     top: 7px;
   }
 
   .gts-v-shape-two {
     margin-top: -8px;
   }
+
 }
 
 
