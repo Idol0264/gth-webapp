@@ -7806,64 +7806,155 @@ tr:last-child td {
 }
 
 /* =========================================================
-   GTS HERO SEARCH JUMP
+   GTS HERO SEARCH JUMP — DOUBLE V
 ========================================================= */
 
 .gts-search-jump {
   display: flex;
-
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  width: min(88%, 560px);
-  height: 68px;
+  width: min(440px, 88vw);
+  height: 105px;
 
-  margin: 30px auto 0;
+  margin: 28px auto 0;
+  padding: 0;
 
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 24px;
-
-  background: rgba(255, 255, 255, 0.72);
-
-  color: var(--accent-color, #2879d8);
+  border: 0;
+  background: transparent;
 
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
 
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.10);
+  animation: gtsDoubleVFloat 2.4s ease-in-out infinite;
 
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+  position: relative;
+  z-index: 5;
 }
 
-.gts-search-jump span {
+/* Each V */
+.gts-v-shape {
+  position: relative;
+
   display: block;
 
-  font-size: 42px;
-  line-height: 1;
+  width: min(340px, 76vw);
+  height: 38px;
 
-  transform: translateY(-5px);
-
-  font-weight: 700;
+  flex-shrink: 0;
 }
 
+/* The two arms of each V */
+.gts-v-shape::before,
+.gts-v-shape::after {
+  content: "";
+
+  position: absolute;
+  top: 8px;
+
+  width: 52%;
+  height: 13px;
+
+  background: #000;
+
+  border-radius: 999px;
+}
+
+/* Left arm */
+.gts-v-shape::before {
+  left: 0;
+
+  transform: rotate(20deg);
+  transform-origin: right center;
+}
+
+/* Right arm */
+.gts-v-shape::after {
+  right: 0;
+
+  transform: rotate(-20deg);
+  transform-origin: left center;
+}
+
+/* Second V */
+.gts-v-shape-two {
+  margin-top: -10px;
+
+  transform: scale(0.86);
+  transform-origin: center top;
+}
+
+/* Both V shapes move together */
+@keyframes gtsDoubleVFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* Keep the second V synchronized with the first */
+.gts-search-jump .gts-v-shape-two {
+  animation: none;
+}
+
+/* Hover */
 .gts-search-jump:hover {
-  transform: translateY(3px);
-
-  box-shadow:
-    0 14px 34px rgba(0, 0, 0, 0.15);
+  animation-duration: 2s;
 }
 
+/* Press */
 .gts-search-jump:active {
-  transform: translateY(6px);
+  animation-play-state: paused;
+  transform: translateY(3px);
 }
 
+/* Keyboard accessibility */
+.gts-search-jump:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 7px;
+  border-radius: 18px;
+}
+
+/* Directory scroll position */
 .gts-directory {
   scroll-margin-top: 90px;
 }
 
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .gts-search-jump {
+    width: 92vw;
+    height: 92px;
+
+    margin-top: 24px;
+  }
+
+  .gts-v-shape {
+    width: 80vw;
+    height: 32px;
+  }
+
+  .gts-v-shape::before,
+  .gts-v-shape::after {
+    height: 11px;
+    top: 7px;
+  }
+
+  .gts-v-shape-two {
+    margin-top: -8px;
+  }
+}
 
 
 
