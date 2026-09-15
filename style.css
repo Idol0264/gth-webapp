@@ -8232,7 +8232,104 @@ tr:last-child td {
 .gth-panel-close:active {
   transform: scale(.96);
 }
+/* =========================================================
+   GTH PREMIUM PLATFORM CARD VISUALS
+   Inline SVG artwork — NO IMAGE FILES REQUIRED
+========================================================= */
 
+.gth-card-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 8.7;
+  margin: 0 0 20px;
+  border-radius: 22px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #111;
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, .18),
+    inset 0 1px 0 rgba(255, 255, 255, .16);
+}
+
+.gth-card-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.16),
+      transparent 28%,
+      transparent 70%,
+      rgba(255,255,255,.06)
+    );
+  z-index: 2;
+}
+
+.gth-card-visual svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.gth-platform-card-content {
+  position: relative;
+  z-index: 3;
+}
+
+.gth-platform-card-content h3 {
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.gth-platform-card-content p {
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* Premium interaction */
+
+.platform-card {
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.platform-card:hover {
+  transform: translateY(-5px);
+}
+
+.platform-card:active {
+  transform: translateY(-1px) scale(.985);
+}
+
+.gth-card-visual svg .gth-glass {
+  fill: rgba(255,255,255,.10);
+  stroke: rgba(255,255,255,.30);
+  stroke-width: 2;
+}
+
+.gth-card-visual svg .gth-highlight {
+  fill: rgba(255,255,255,.20);
+}
+
+.gth-card-visual svg .gth-soft-light {
+  fill: rgba(255,255,255,.10);
+}
+
+@media (max-width: 600px) {
+
+  .gth-card-visual {
+    border-radius: 18px;
+    margin-bottom: 16px;
+  }
+
+  .platform-card:hover {
+    transform: none;
+  }
+
+}
 
 
 
