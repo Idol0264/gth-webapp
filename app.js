@@ -177,10 +177,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (newUserFormLink) {
 
-    newUserFormLink.href =
-      config.newUserFormUrl;
+  newUserFormLink.addEventListener("click", () => {
+    window.location.assign(
+      "https://tally.so/r/81XNzo"
+    );
+  });
 
-  }
+}
 
 
   /*
