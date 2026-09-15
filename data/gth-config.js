@@ -456,7 +456,7 @@ window.GTH_CONFIG = {
       "gth-customer-service-button hidden";
 
     button.href =
-      "https:https://wa.me/qr/VGCCQ6WUPR4SO1";
+      "https://wa.me/qr/VGCCQ6WUPR4SO1";
 
     button.target =
       "_blank";
@@ -471,15 +471,13 @@ window.GTH_CONFIG = {
 
 
     button.innerHTML = `
-      <span
-        class="gth-customer-service-icon"
-        aria-hidden="true"
-      >images/customer service.png</span>
-
-      <span class="gth-customer-service-text">
-        Customer Service
-      </span>
-    `;
+  <img
+    src="images/customer%20service.png"
+    alt=""
+    class="gth-customer-service-image"
+    aria-hidden="true"
+  >
+`;
 
 
     const themeControls =
