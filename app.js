@@ -192,10 +192,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (existingUserFormLink) {
 
-    existingUserFormLink.href =
-      config.existingUserFormUrl;
+  existingUserFormLink.addEventListener("click", () => {
+    window.location.assign(
+      "https://tally.so/r/gDEbqM"
+    );
+  });
 
-  }
+}
 
 
 
