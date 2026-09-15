@@ -369,12 +369,13 @@ window.GTH_CONFIG = {
      START
   ------------------------------------------------------- */
 
-  function start() {
+    function start() {
 
     addInstallButton();
+    addCustomerServiceButton();
 
     recheckInstallState();
-
+    updateCustomerServiceButton();
 
     document.addEventListener(
       "visibilitychange",
@@ -386,6 +387,7 @@ window.GTH_CONFIG = {
         ) {
 
           recheckInstallState();
+          updateCustomerServiceButton();
 
         }
 
@@ -395,32 +397,23 @@ window.GTH_CONFIG = {
 
     window.addEventListener(
       "focus",
-      recheckInstallState
+      function () {
+
+        recheckInstallState();
+        updateCustomerServiceButton();
+
+      }
     );
 
 
     window.addEventListener(
       "pageshow",
-      recheckInstallState
+      function () {
+
+        recheckInstallState();
+        updateCustomerServiceButton();
+
+      }
     );
 
   }
-
-
-  if (
-    document.readyState ===
-    "loading"
-  ) {
-
-    document.addEventListener(
-      "DOMContentLoaded",
-      start
-    );
-
-  } else {
-
-    start();
-
-  }
-
-})();
