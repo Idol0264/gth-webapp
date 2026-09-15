@@ -8192,7 +8192,46 @@ tr:last-child td {
   touch-action: pan-y;
 }
 
+/* =========================================================
+   GTH INFORMATION PANEL — FIXED HEADING + SCROLLING CONTENT
+========================================================= */
 
+#gthInfoLayer .gth-info-panel {
+  display: flex !important;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#gthInfoLayer .gth-panel-header {
+  flex: 0 0 auto;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--surface);
+}
+
+#gthInfoLayer .gth-panel-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+/* Fast panel button response */
+
+.gth-about-trigger,
+.gth-panel-close {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: none !important;
+}
+
+.gth-about-trigger:active,
+.gth-panel-close:active {
+  transform: scale(.96);
+}
 
 
 
