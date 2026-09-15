@@ -1,0 +1,531 @@
+/* =========================================================
+   GTH PLATFORM VISUAL EFFECTS
+   Shared animation system for:
+   GTH / GTF / GTC / GTS / GT CONNECT
+   ========================================================= */
+
+.platform-effect-target {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.platform-effect-target > .platform-effects-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.platform-effect-target > *:not(.platform-effects-layer) {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------------------------------------------------------
+   Floating visual field
+   --------------------------------------------------------- */
+
+.platform-effects-layer {
+  --effect-accent: #d09a33;
+  --effect-accent-soft: rgba(208, 154, 51, 0.18);
+  --effect-line: rgba(208, 154, 51, 0.08);
+}
+
+.effect-symbol {
+  position: absolute;
+  left: var(--left);
+  top: var(--top);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: var(--size);
+  height: var(--size);
+
+  border: 1px solid var(--effect-line);
+  border-radius: 18px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      var(--effect-accent-soft),
+      transparent 70%
+    );
+
+  color: var(--effect-accent);
+  font-family: Arial, sans-serif;
+  font-size: var(--font-size);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+
+  opacity: var(--opacity);
+
+  filter:
+    drop-shadow(0 0 8px var(--effect-accent-soft));
+
+  transform:
+    translate3d(0, 0, 0)
+    rotate(var(--rotation));
+
+  animation:
+    gthFloat
+    var(--duration)
+    ease-in-out
+    infinite;
+
+  animation-delay: var(--delay);
+}
+
+/* Small floating labels */
+
+.effect-label {
+  position: absolute;
+  left: var(--left);
+  top: var(--top);
+
+  padding: 6px 10px;
+
+  border: 1px solid var(--effect-line);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: var(--effect-accent);
+
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+
+  opacity: var(--opacity);
+
+  filter:
+    drop-shadow(0 0 7px var(--effect-accent-soft));
+
+  animation:
+    gthLabelFloat
+    var(--duration)
+    ease-in-out
+    infinite;
+
+  animation-delay: var(--delay);
+}
+
+/* AI / digital node */
+
+.effect-ai {
+  position: absolute;
+  left: var(--left);
+  top: var(--top);
+
+  width: var(--size);
+  height: var(--size);
+
+  border: 1px solid var(--effect-accent);
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--effect-accent-soft),
+      transparent 68%
+    );
+
+  box-shadow:
+    0 0 14px var(--effect-accent-soft),
+    inset 0 0 14px var(--effect-accent-soft);
+
+  opacity: var(--opacity);
+
+  animation:
+    gthAiPulse
+    var(--duration)
+    ease-in-out
+    infinite;
+
+  animation-delay: var(--delay);
+}
+
+.effect-ai::before {
+  content: "AI";
+
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--effect-accent);
+
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.effect-ai::after {
+  content: "";
+
+  position: absolute;
+  inset: 18%;
+
+  border:
+    1px solid var(--effect-accent);
+
+  border-radius: 45%;
+
+  opacity: 0.35;
+}
+
+/* Connecting digital lines */
+
+.effect-line {
+  position: absolute;
+
+  width: var(--length);
+  height: 1px;
+
+  left: var(--left);
+  top: var(--top);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--effect-accent),
+      transparent
+    );
+
+  opacity: var(--opacity);
+
+  transform:
+    rotate(var(--rotation));
+
+  transform-origin: left center;
+
+  animation:
+    gthLinePulse
+    var(--duration)
+    ease-in-out
+    infinite;
+
+  animation-delay: var(--delay);
+}
+
+/* Digital particles */
+
+.effect-particle {
+  position: absolute;
+
+  left: var(--left);
+  top: var(--top);
+
+  width: var(--size);
+  height: var(--size);
+
+  border-radius: 50%;
+
+  background: var(--effect-accent);
+
+  box-shadow:
+    0 0 9px var(--effect-accent-soft);
+
+  opacity: var(--opacity);
+
+  animation:
+    gthParticleFloat
+    var(--duration)
+    ease-in-out
+    infinite;
+
+  animation-delay: var(--delay);
+}
+
+/* ---------------------------------------------------------
+   GTH
+   --------------------------------------------------------- */
+
+body.platform-gth .platform-effects-layer {
+  --effect-accent: #d09a33;
+  --effect-accent-soft: rgba(208, 154, 51, 0.18);
+  --effect-line: rgba(208, 154, 51, 0.10);
+}
+
+/* ---------------------------------------------------------
+   GTF — finance
+   --------------------------------------------------------- */
+
+body.platform-gtf .platform-effects-layer {
+  --effect-accent: #cfa044;
+  --effect-accent-soft: rgba(207, 160, 68, 0.19);
+  --effect-line: rgba(207, 160, 68, 0.10);
+}
+
+/* Finance-specific upward chart line */
+
+body.platform-gtf .platform-effects-layer::after {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 120px;
+
+  right: -40px;
+  bottom: 35px;
+
+  opacity: 0.14;
+
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0 18%,
+      var(--effect-accent) 18% 19%,
+      transparent 19% 37%,
+      var(--effect-accent) 37% 38%,
+      transparent 38% 55%,
+      var(--effect-accent) 55% 56%,
+      transparent 56% 72%,
+      var(--effect-accent) 72% 73%,
+      transparent 73%
+    );
+
+  transform: rotate(-7deg);
+
+  filter:
+    drop-shadow(
+      0 0 8px var(--effect-accent-soft)
+    );
+}
+
+/* ---------------------------------------------------------
+   GTC — media
+   --------------------------------------------------------- */
+
+body.platform-gtc .platform-effects-layer {
+  --effect-accent: #d8a743;
+  --effect-accent-soft: rgba(216, 167, 67, 0.18);
+  --effect-line: rgba(216, 167, 67, 0.10);
+}
+
+/* Media play-button style */
+
+body.platform-gtc .effect-symbol {
+  border-radius: 50%;
+}
+
+/* ---------------------------------------------------------
+   GTS — technology
+   --------------------------------------------------------- */
+
+body.platform-gts .platform-effects-layer {
+  --effect-accent: #5da8ff;
+  --effect-accent-soft: rgba(93, 168, 255, 0.18);
+  --effect-line: rgba(93, 168, 255, 0.11);
+}
+
+body.platform-gts .effect-symbol {
+  border-radius: 14px;
+}
+
+/* ---------------------------------------------------------
+   GT CONNECT
+   --------------------------------------------------------- */
+
+body.platform-connect {
+  --gt-connect-purple: #9b5cff;
+  --gt-connect-purple-soft: rgba(155, 92, 255, 0.22);
+}
+
+body.platform-connect .platform-effects-layer {
+  --effect-accent: #9b5cff;
+  --effect-accent-soft: rgba(155, 92, 255, 0.22);
+  --effect-line: rgba(155, 92, 255, 0.13);
+}
+
+/* Purple digital edge lighting */
+
+body.platform-connect::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 9px;
+
+  border: 1px solid
+    rgba(155, 92, 255, 0.12);
+
+  border-radius: 10px;
+
+  pointer-events: none;
+
+  z-index: 9997;
+
+  box-shadow:
+    inset 0 0 24px
+      rgba(155, 92, 255, 0.04),
+    0 0 20px
+      rgba(155, 92, 255, 0.04);
+
+  animation:
+    gtConnectEdge
+    5s
+    ease-in-out
+    infinite;
+}
+
+body.platform-connect.platform-connect-dashboard::before {
+  border-color:
+    rgba(155, 92, 255, 0.28);
+
+  box-shadow:
+    inset 0 0 28px
+      rgba(155, 92, 255, 0.07),
+    0 0 28px
+      rgba(155, 92, 255, 0.08);
+}
+
+/* ---------------------------------------------------------
+   Animations
+   --------------------------------------------------------- */
+
+@keyframes gthFloat {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      rotate(var(--rotation));
+  }
+
+  50% {
+    transform:
+      translate3d(
+        var(--move-x),
+        var(--move-y),
+        0
+      )
+      rotate(
+        calc(var(--rotation) + 5deg)
+      );
+  }
+}
+
+@keyframes gthLabelFloat {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform:
+      translate3d(
+        0,
+        -9px,
+        0
+      );
+  }
+}
+
+@keyframes gthAiPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 14px var(--effect-accent-soft),
+      inset 0 0 14px var(--effect-accent-soft);
+  }
+
+  50% {
+    transform: scale(1.08);
+    box-shadow:
+      0 0 25px var(--effect-accent-soft),
+      inset 0 0 20px var(--effect-accent-soft);
+  }
+}
+
+@keyframes gthLinePulse {
+  0%,
+  100% {
+    opacity: 0.08;
+  }
+
+  50% {
+    opacity: 0.28;
+  }
+}
+
+@keyframes gthParticleFloat {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform:
+      translate3d(
+        8px,
+        -16px,
+        0
+      );
+  }
+}
+
+@keyframes gtConnectEdge {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ---------------------------------------------------------
+   Mobile
+   --------------------------------------------------------- */
+
+@media (max-width: 700px) {
+  .effect-symbol {
+    opacity: calc(var(--opacity) * 0.75);
+  }
+
+  .effect-label {
+    font-size: 8px;
+  }
+
+  .platform-effects-layer
+  .effect-symbol:nth-child(n + 9),
+  .platform-effects-layer
+  .effect-label:nth-child(n + 9),
+  .platform-effects-layer
+  .effect-particle:nth-child(n + 14) {
+    display: none;
+  }
+
+  body.platform-connect::before {
+    inset: 6px;
+  }
+}
+
+/* ---------------------------------------------------------
+   Accessibility
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .effect-symbol,
+  .effect-label,
+  .effect-ai,
+  .effect-line,
+  .effect-particle,
+  body.platform-connect::before {
+    animation: none !important;
+  }
+}
