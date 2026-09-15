@@ -1171,7 +1171,7 @@ document.addEventListener("DOMContentLoaded", function () {
           0,
           desiredScroll
         ),
-        behavior: "smooth"
+        behavior: "auto"
       });
 
 
@@ -1180,12 +1180,7 @@ document.addEventListener("DOMContentLoaded", function () {
         then lock the page.
       */
 
-      setTimeout(function () {
-
-        lockPageScroll();
-
-      }, 500);
-
+      lockPageScroll();
     });
 
   }
