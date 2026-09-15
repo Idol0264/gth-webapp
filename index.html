@@ -765,15 +765,282 @@
         <div class="platform-grid">
 
   <article class="platform-card">
-    <a href="gtf.html" style="text-decoration: none; color: inherit; display: block;">
+
+  <a href="gtf.html"
+     style="text-decoration:none; color:inherit; display:block;">
+
+    <div class="gth-card-visual">
+
+      <svg viewBox="0 0 800 435"
+           xmlns="http://www.w3.org/2000/svg"
+           role="img"
+           aria-label="God'stime Fund investment growth">
+
+        <defs>
+
+          <linearGradient id="gtfPremiumBg"
+                          x1="0" y1="0"
+                          x2="1" y2="1">
+            <stop offset="0%" stop-color="#063b55"/>
+            <stop offset="48%" stop-color="#087f91"/>
+            <stop offset="100%" stop-color="#0bbbc4"/>
+          </linearGradient>
+
+          <linearGradient id="gtfGold"
+                          x1="0" y1="0"
+                          x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffe98a"/>
+            <stop offset="45%" stop-color="#d8a72d"/>
+            <stop offset="100%" stop-color="#8d5d0c"/>
+          </linearGradient>
+
+          <filter id="gtfShadow">
+            <feDropShadow
+              dx="0"
+              dy="12"
+              stdDeviation="12"
+              flood-opacity=".30"/>
+          </filter>
+
+        </defs>
+
+        <!-- Premium background -->
+        <rect width="800"
+              height="435"
+              rx="28"
+              fill="url(#gtfPremiumBg)"/>
+
+        <!-- Ambient light -->
+        <circle cx="125"
+                cy="70"
+                r="150"
+                fill="#fff"
+                opacity=".06"/>
+
+        <circle cx="700"
+                cy="350"
+                r="180"
+                fill="#fff"
+                opacity=".05"/>
+
+        <!-- Elegant grid -->
+        <g stroke="#fff"
+           stroke-width="2"
+           opacity=".10">
+
+          <path d="M45 70H755"/>
+          <path d="M45 125H755"/>
+          <path d="M45 180H755"/>
+          <path d="M45 235H755"/>
+          <path d="M45 290H755"/>
+          <path d="M45 345H755"/>
+
+          <path d="M100 45V365"/>
+          <path d="M170 45V365"/>
+          <path d="M240 45V365"/>
+          <path d="M310 45V365"/>
+          <path d="M380 45V365"/>
+          <path d="M450 45V365"/>
+          <path d="M520 45V365"/>
+          <path d="M590 45V365"/>
+          <path d="M660 45V365"/>
+          <path d="M730 45V365"/>
+
+        </g>
+
+        <!-- LEFT GROWTH CHART -->
+
+        <g filter="url(#gtfShadow)">
+
+          <rect x="55"
+                y="50"
+                width="300"
+                height="310"
+                rx="22"
+                class="gth-glass"/>
+
+          <!-- Bars -->
+          <rect x="90"
+                y="265"
+                width="40"
+                height="55"
+                rx="8"
+                fill="url(#gtfGold)"/>
+
+          <rect x="150"
+                y="225"
+                width="40"
+                height="95"
+                rx="8"
+                fill="url(#gtfGold)"/>
+
+          <rect x="210"
+                y="175"
+                width="40"
+                height="145"
+                rx="8"
+                fill="url(#gtfGold)"/>
+
+          <rect x="270"
+                y="115"
+                width="40"
+                height="205"
+                rx="8"
+                fill="url(#gtfGold)"/>
+
+          <!-- Rising line -->
+          <path d="M90 250
+                   L170 205
+                   L230 145
+                   L290 85
+                   L330 55"
+                fill="none"
+                stroke="#fff"
+                stroke-width="11"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+
+          <!-- Arrow -->
+          <path d="M307 57
+                   L330 55
+                   L328 80"
+                fill="none"
+                stroke="#fff"
+                stroke-width="9"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+
+        </g>
+
+
+        <!-- RIGHT GROWTH CHART -->
+
+        <g filter="url(#gtfShadow)">
+
+          <rect x="385"
+                y="50"
+                width="300"
+                height="310"
+                rx="22"
+                class="gth-glass"/>
+
+          <rect x="420"
+                y="270"
+                width="40"
+                height="50"
+                rx="8"
+                fill="#f4c542"/>
+
+          <rect x="480"
+                y="220"
+                width="40"
+                height="100"
+                rx="8"
+                fill="#f4c542"/>
+
+          <rect x="540"
+                y="155"
+                width="40"
+                height="165"
+                rx="8"
+                fill="#f4c542"/>
+
+          <rect x="600"
+                y="90"
+                width="40"
+                height="230"
+                rx="8"
+                fill="#f4c542"/>
+
+          <!-- Separate rising line -->
+          <path d="M420 250
+                   L500 195
+                   L560 125
+                   L620 65
+                   L660 42"
+                fill="none"
+                stroke="#fff"
+                stroke-width="11"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+
+          <path d="M638 43
+                   L660 42
+                   L658 66"
+                fill="none"
+                stroke="#fff"
+                stroke-width="9"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+
+        </g>
+
+
+        <!-- LARGE MONEY BAG -->
+
+        <g transform="translate(630 250)"
+           filter="url(#gtfShadow)">
+
+          <!-- bag -->
+          <path d="
+            M-62 -25
+            C-85 10 -92 58 -77 90
+            C-63 121 -35 138 0 138
+            C35 138 63 121 77 90
+            C92 58 85 10 62 -25
+            Z"
+            fill="url(#gtfGold)"
+            stroke="#fff"
+            stroke-width="5"/>
+
+          <!-- tied top -->
+          <path d="
+            M-42 -25
+            C-37 -58 37 -58 42 -25
+            L30 5
+            C12 12 -12 12 -30 5
+            Z"
+            fill="#f8d76a"
+            stroke="#fff"
+            stroke-width="5"/>
+
+          <!-- tie -->
+          <path d="M-35 -20H35"
+                stroke="#9a6b13"
+                stroke-width="9"
+                stroke-linecap="round"/>
+
+          <!-- money symbol -->
+          <text x="0"
+                y="88"
+                text-anchor="middle"
+                font-size="78"
+                font-weight="900"
+                fill="#fff">₦</text>
+
+        </g>
+
+      </svg>
+
+    </div>
+
+    <div class="gth-platform-card-content">
+
       <span class="platform-code">GTF</span>
+
       <h3>God’stime Fund</h3>
+
       <p>
-        The GTH financial and investment platform.
+        Put your financial curiosity to work — explore
+        investment ideas, market knowledge and opportunities
+        in one tap.
       </p>
-      <strong>Open GTF →</strong>
-    </a>
-  </article>
+
+    </div>
+
+  </a>
+
+</article>
 
   <article class="platform-card">
   <a href="gtc.html" style="text-decoration: none; color: inherit; display: block;">
