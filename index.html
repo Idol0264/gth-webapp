@@ -864,349 +864,443 @@
 <script>
 
 /* =========================================================
-   GTH PREMIUM ABOUT PANELS
-   - Five ordered About items
-   - Panel opens directly below selected item
-   - Premium floating / waving animation
-   - Edge-light effect
-   - Mobile friendly
+   GTH — EXPANDABLE INFORMATION PANELS
+   =========================================================
+   
+   Covers ALL GTH floating information panels:
+
+   • About GTH
+   • Our Vision
+   • Our Platforms
+   • How GTH Grows
+   • Our Direction
+
+   Behaviour:
+
+   CLOSED
+   → Normal page scrolling.
+
+   OPEN
+   → Page automatically scrolls to position the panel.
+   → Main page scrolling becomes locked.
+   → Only the opened panel content can scroll.
+   → Closing the panel restores normal page scrolling.
+
+   The existing panel design/style is preserved.
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const aboutSection =
-    document.getElementById("about");
-
-  const layer =
+  const infoLayer =
     document.getElementById("gthInfoLayer");
 
-  const platformsSection =
-    document.getElementById("platforms");
-
   const triggers =
-    document.querySelectorAll(".gth-about-trigger");
+    document.querySelectorAll(
+      ".gth-about-trigger[data-gth-panel]"
+    );
 
   const panels =
-    document.querySelectorAll(".gth-info-panel");
-
-  let activePanel = null;
-  let activeTrigger = null;
-
-
-  function hidePlatforms() {
-  if (platformsSection) {
-    platformsSection.classList.add("gth-platforms-hidden");
-  }
-}
-
-function showPlatforms() {
-  if (platformsSection) {
-    platformsSection.classList.remove("gth-platforms-hidden");
-  }
-  }
+    document.querySelectorAll(
+      ".gth-info-panel"
+    );
 
 
-  /* ---------------------------------------------------------
-     MOVE THE PANEL LAYER INTO THE ABOUT SECTION
-  --------------------------------------------------------- */
-
-  if (aboutSection && layer) {
-    aboutSection.appendChild(layer);
-  }
-
-
-  /* ---------------------------------------------------------
-     POSITION PANEL DIRECTLY UNDER SELECTED ITEM
-  --------------------------------------------------------- */
-
-  function positionPanel(trigger, panel) {
-
-    if (!aboutSection || !panel || !trigger) {
-      return;
-    }
-
-    const aboutRect =
-      aboutSection.getBoundingClientRect();
-
-    const triggerRect =
-      trigger.getBoundingClientRect();
-
-    const aboutWidth =
-      aboutSection.clientWidth;
-
-    const gap = 14;
-    const sidePadding = 14;
-
-    const panelWidth =
-      Math.min(
-        680,
-        aboutWidth - (sidePadding * 2)
-      );
-
-    let left =
-      (triggerRect.left - aboutRect.left) +
-      (triggerRect.width / 2) -
-      (panelWidth / 2);
-
-    const maxLeft =
-      aboutWidth -
-      panelWidth -
-      sidePadding;
-
-    left =
-      Math.max(
-        sidePadding,
-        Math.min(left, maxLeft)
-      );
-
-    const top =
-      triggerRect.bottom -
-      aboutRect.top +
-      gap;
-
-
-    panel.style.width =
-      panelWidth + "px";
-
-    panel.style.left =
-      left + "px";
-
-    panel.style.top =
-      top + "px";
-  }
-
-
-  /* ---------------------------------------------------------
-     CLOSE PANEL
-  --------------------------------------------------------- */
-
-  function closePanel() {
-
-  if (!activePanel) {
+  if (!infoLayer || !triggers.length || !panels.length) {
     return;
   }
 
-  showPlatforms();
 
-  const panel =
-    activePanel;
+  /* =======================================================
+     STATE
+  ======================================================= */
 
-    const trigger =
-      activeTrigger;
+  let activePanel = null;
+
+  let savedScrollY = 0;
+
+  let pageLocked = false;
 
 
-    if (trigger) {
-      trigger.setAttribute(
-        "aria-expanded",
-        "false"
-      );
+  /* =======================================================
+     LOCK PAGE SCROLL
+  ======================================================= */
+
+  function lockPageScroll() {
+
+    if (pageLocked) {
+      return;
+    }
+
+    savedScrollY =
+      window.scrollY ||
+      window.pageYOffset ||
+      0;
+
+
+    /*
+      Lock the body in its current position.
+    */
+
+    document.body.style.position = "fixed";
+
+    document.body.style.top =
+      `-${savedScrollY}px`;
+
+    document.body.style.left = "0";
+
+    document.body.style.right = "0";
+
+    document.body.style.width = "100%";
+
+
+    /*
+      Prevent the document itself from scrolling.
+    */
+
+    document.documentElement.style.overflow =
+      "hidden";
+
+    document.body.style.overflow =
+      "hidden";
+
+
+    pageLocked = true;
+
+  }
+
+
+  /* =======================================================
+     RESTORE PAGE SCROLL
+  ======================================================= */
+
+  function unlockPageScroll() {
+
+    if (!pageLocked) {
+      return;
     }
 
 
-    panel.classList.remove(
-      "is-visible"
+    /*
+      Remove the temporary body lock.
+    */
+
+    document.body.style.position = "";
+
+    document.body.style.top = "";
+
+    document.body.style.left = "";
+
+    document.body.style.right = "";
+
+    document.body.style.width = "";
+
+    document.body.style.overflow = "";
+
+
+    document.documentElement.style.overflow =
+      "";
+
+
+    /*
+      Return the page to exactly where the
+      user was before the panel was opened.
+    */
+
+    window.scrollTo(
+      0,
+      savedScrollY
     );
 
-    panel.classList.remove(
-      "is-waving"
-    );
 
-    panel.classList.add(
-      "is-closing"
-    );
+    pageLocked = false;
+
+  }
 
 
-    setTimeout(function () {
+  /* =======================================================
+     CLOSE ALL PANELS
+  ======================================================= */
+
+  function closeAllPanels() {
+
+    panels.forEach(function (panel) {
 
       panel.hidden = true;
 
       panel.classList.remove(
-        "is-closing"
+        "is-open"
       );
 
-    }, 300);
+    });
 
 
-    layer.classList.remove(
+    triggers.forEach(function (trigger) {
+
+      trigger.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+    });
+
+
+    infoLayer.classList.remove(
       "is-open"
     );
 
-    layer.setAttribute(
+    infoLayer.setAttribute(
       "aria-hidden",
       "true"
     );
 
 
-    document.body.style.overflow = "";
-
-
     activePanel = null;
-    activeTrigger = null;
+
   }
 
 
-  /* ---------------------------------------------------------
-     OPEN PANEL
-  --------------------------------------------------------- */
+  /* =======================================================
+     POSITION PANEL
+  ======================================================= */
 
-  function openPanel(panel, trigger) {
+  function positionPanel(panel) {
 
-  if (activePanel) {
-    closePanel();
-  }
-
-  hidePlatforms();
+    if (!panel) {
+      return;
+    }
 
 
-  /* Close every other trigger */
+    /*
+      Give the browser a moment to render the
+      panel before measuring its position.
+    */
+
+    requestAnimationFrame(function () {
+
+      const header =
+        document.querySelector(
+          ".site-header"
+        );
 
 
-    /* Close every other trigger */
-    triggers.forEach(function (item) {
+      const headerHeight =
+        header
+          ? header.getBoundingClientRect().height
+          : 0;
 
-      item.setAttribute(
-        "aria-expanded",
-        "false"
-      );
+
+      const viewportHeight =
+        window.innerHeight;
+
+
+      /*
+        Small breathing space above and below.
+      */
+
+      const topSpace =
+        Math.max(
+          12,
+          headerHeight + 12
+        );
+
+
+      const bottomSpace =
+        12;
+
+
+      /*
+        Make sure the panel is positioned
+        inside the visible screen.
+
+        This does NOT change its existing
+        visual design.
+      */
+
+      const availableHeight =
+        Math.max(
+          220,
+          viewportHeight -
+          topSpace -
+          bottomSpace
+        );
+
+
+      panel.style.maxHeight =
+        `${availableHeight}px`;
+
+
+      /*
+        Find the trigger that opened this panel.
+      */
+
+      const trigger =
+        document.querySelector(
+          `[data-gth-panel="${CSS.escape(panel.id)}"]`
+        );
+
+
+      if (!trigger) {
+        return;
+      }
+
+
+      /*
+        Temporarily allow the page to move so
+        we can position the relevant area.
+      */
+
+      const triggerRect =
+        trigger.getBoundingClientRect();
+
+
+      const desiredScroll =
+        window.scrollY +
+        triggerRect.top -
+        topSpace;
+
+
+      /*
+        Since the panel is floating, scroll the
+        underlying page to the section containing
+        the trigger.
+
+        The page will then be locked.
+      */
+
+      unlockPageScroll();
+
+
+      window.scrollTo({
+        top: Math.max(
+          0,
+          desiredScroll
+        ),
+        behavior: "smooth"
+      });
+
+
+      /*
+        Wait for the smooth movement to finish,
+        then lock the page.
+      */
+
+      setTimeout(function () {
+
+        lockPageScroll();
+
+      }, 500);
 
     });
 
-
-    /* Open selected trigger */
-    trigger.setAttribute(
-      "aria-expanded",
-      "true"
-    );
+  }
 
 
-    activeTrigger =
-      trigger;
+  /* =======================================================
+     OPEN PANEL
+  ======================================================= */
+
+  function openPanel(
+    panelId,
+    trigger
+  ) {
+
+    const panel =
+      document.getElementById(
+        panelId
+      );
+
+
+    if (!panel) {
+      return;
+    }
+
+
+    /*
+      If another panel is already open,
+      close it first.
+    */
+
+    if (
+      activePanel &&
+      activePanel !== panel
+    ) {
+
+      closeAllPanels();
+
+    }
+
+
+    /*
+      Save the current page position BEFORE
+      opening the panel.
+    */
+
+    savedScrollY =
+      window.scrollY ||
+      window.pageYOffset ||
+      0;
+
 
     activePanel =
       panel;
 
 
-    /* Hide all panels */
-    panels.forEach(function (item) {
+    /*
+      Show the information layer.
+    */
 
-      item.hidden = true;
-
-      item.classList.remove(
-        "is-visible",
-        "is-waving",
-        "is-closing"
-      );
-
-    });
-
-
-    panel.hidden = false;
-
-
-    /* Position BEFORE animation */
-    positionPanel(
-      trigger,
-      panel
-    );
-
-
-    layer.classList.add(
+    infoLayer.classList.add(
       "is-open"
     );
 
-    layer.setAttribute(
+    infoLayer.setAttribute(
       "aria-hidden",
       "false"
     );
 
 
     /*
-      We intentionally do not lock the entire page.
-      This allows the user to continue scrolling naturally.
+      Show only the selected panel.
     */
 
+    panels.forEach(function (item) {
 
-    requestAnimationFrame(function () {
+      item.hidden =
+        item !== panel;
 
-      positionPanel(
-        trigger,
-        panel
+      item.classList.toggle(
+        "is-open",
+        item === panel
       );
-
-
-      requestAnimationFrame(function () {
-
-        panel.classList.add(
-          "is-visible"
-        );
-
-        panel.classList.add(
-          "is-waving"
-        );
-
-      });
 
     });
 
-  }
+
+    /*
+      Update trigger accessibility state.
+    */
+
+    triggers.forEach(function (item) {
+
+      item.setAttribute(
+        "aria-expanded",
+        String(item === trigger)
+      );
+
+    });
 
 
-  /* ---------------------------------------------------------
-     TRIGGER EVENTS
-  --------------------------------------------------------- */
+    /*
+      Scroll to the relevant section and
+      then lock the main page.
+    */
 
-  triggers.forEach(function (trigger) {
-
-    trigger.addEventListener(
-      "click",
-      function () {
-
-        const panelId =
-          trigger.getAttribute(
-            "data-gth-panel"
-          );
-
-        const panel =
-          document.getElementById(
-            panelId
-          );
+    positionPanel(panel);
 
 
-        if (!panel) {
-          return;
-        }
-
-
-        const isOpen =
-          trigger.getAttribute(
-            "aria-expanded"
-          ) === "true";
-
-
-        if (isOpen) {
-
-          closePanel();
-
-        } else {
-
-          openPanel(
-            panel,
-            trigger
-          );
-
-        }
-
-      }
-    );
-
-  });
-
-
-  /* ---------------------------------------------------------
-     CLOSE BUTTONS
-  --------------------------------------------------------- */
-
-  panels.forEach(function (panel) {
+    /*
+      Put keyboard focus on the close button.
+    */
 
     const closeButton =
       panel.querySelector(
@@ -1216,43 +1310,117 @@ function showPlatforms() {
 
     if (closeButton) {
 
-      closeButton.addEventListener(
-        "click",
-        function () {
+      setTimeout(function () {
+
+        closeButton.focus({
+          preventScroll: true
+        });
+
+      }, 550);
+
+    }
+
+  }
+
+
+  /* =======================================================
+     CLOSE PANEL
+  ======================================================= */
+
+  function closePanel() {
+
+    closeAllPanels();
+
+    unlockPageScroll();
+
+  }
+
+
+  /* =======================================================
+     TRIGGER BUTTONS
+  ======================================================= */
+
+  triggers.forEach(function (trigger) {
+
+    trigger.addEventListener(
+      "click",
+      function () {
+
+        const panelId =
+          trigger.dataset.gthPanel;
+
+
+        const panel =
+          document.getElementById(
+            panelId
+          );
+
+
+        /*
+          If this exact panel is already open,
+          clicking its trigger closes it.
+        */
+
+        if (
+          activePanel === panel &&
+          panel &&
+          !panel.hidden
+        ) {
 
           closePanel();
 
-        }
-      );
+          return;
 
-    }
+        }
+
+
+        openPanel(
+          panelId,
+          trigger
+        );
+
+      }
+    );
 
   });
 
 
-  /* ---------------------------------------------------------
-     CLICK OUTSIDE PANEL
-  --------------------------------------------------------- */
+  /* =======================================================
+     CLOSE BUTTONS
+  ======================================================= */
 
-  layer.addEventListener(
-    "click",
-    function (event) {
+  panels.forEach(function (panel) {
 
-      if (
-        event.target === layer
-      ) {
+    const closeButton =
+      panel.querySelector(
+        ".gth-panel-close"
+      );
+
+
+    if (!closeButton) {
+      return;
+    }
+
+
+    closeButton.addEventListener(
+      "click",
+      function (event) {
+
+        event.preventDefault();
+
+        event.stopPropagation();
 
         closePanel();
 
       }
+    );
 
-    }
-  );
+  });
 
 
-  /* ---------------------------------------------------------
-     ESCAPE KEY
-  --------------------------------------------------------- */
+  /* =======================================================
+     ESC KEY
+  ======================================================= */
 
   document.addEventListener(
     "keydown",
@@ -1271,24 +1439,24 @@ function showPlatforms() {
   );
 
 
-  /* ---------------------------------------------------------
-     KEEP PANEL UNDER ITS TRIGGER
-     WHEN SCREEN CHANGES SIZE / SCROLLS
-  --------------------------------------------------------- */
+  /* =======================================================
+     CLICK OUTSIDE
+     
+     Only the floating layer background closes
+     the panel.
 
-  window.addEventListener(
-    "resize",
-    function () {
+     Clicking inside the panel does NOT close it.
+  ======================================================= */
+
+  infoLayer.addEventListener(
+    "click",
+    function (event) {
 
       if (
-        activePanel &&
-        activeTrigger
+        event.target === infoLayer
       ) {
 
-        positionPanel(
-          activeTrigger,
-          activePanel
-        );
+        closePanel();
 
       }
 
@@ -1296,27 +1464,100 @@ function showPlatforms() {
   );
 
 
+  /* =======================================================
+     INTERNAL PANEL SCROLL
+     
+     The page is locked, but the panel content
+     remains independently scrollable.
+  ======================================================= */
+
+  panels.forEach(function (panel) {
+
+    const content =
+      panel.querySelector(
+        ".gth-panel-content"
+      );
+
+
+    if (!content) {
+      return;
+    }
+
+
+    /*
+      Prevent wheel/touch scrolling from leaking
+      into the locked document.
+    */
+
+    content.addEventListener(
+      "wheel",
+      function (event) {
+
+        event.stopPropagation();
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+    content.addEventListener(
+      "touchmove",
+      function (event) {
+
+        event.stopPropagation();
+
+      },
+      {
+        passive: true
+      }
+    );
+
+  });
+
+
+  /* =======================================================
+     SAFETY CLEANUP
+     
+     If the page is restored/reloaded while a
+     panel is open, never leave the body locked.
+  ======================================================= */
+
   window.addEventListener(
-    "scroll",
+    "beforeunload",
     function () {
 
-      if (
-        activePanel &&
-        activeTrigger
-      ) {
+      document.documentElement.style.overflow =
+        "";
 
-        positionPanel(
-          activeTrigger,
-          activePanel
-        );
+      document.body.style.position =
+        "";
 
-      }
+      document.body.style.top =
+        "";
 
-    },
-    {
-      passive: true
+      document.body.style.left =
+        "";
+
+      document.body.style.right =
+        "";
+
+      document.body.style.width =
+        "";
+
+      document.body.style.overflow =
+        "";
+
     }
   );
+
+
+  /* =======================================================
+     START CLEAN
+  ======================================================= */
+
+  closeAllPanels();
 
 });
 
