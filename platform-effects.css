@@ -1,0 +1,561 @@
+/* =========================================================
+   GTH PLATFORM VISUAL EFFECTS
+   VISIBLE / PREMIUM VERSION
+   ========================================================= */
+
+.platform-effect-target {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.platform-effect-target > .platform-effects-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.platform-effect-target > *:not(.platform-effects-layer) {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   BASE EFFECT FIELD
+   ========================================================= */
+
+.platform-effects-layer {
+  --effect-accent: #d09a33;
+  --effect-accent-soft: rgba(208, 154, 51, 0.32);
+  --effect-line: rgba(208, 154, 51, 0.24);
+}
+
+/* =========================================================
+   FLOATING SYMBOLS
+   ========================================================= */
+
+.effect-symbol {
+  position: absolute;
+
+  left: var(--left);
+  top: var(--top);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: var(--size);
+  height: var(--size);
+
+  border: 1px solid var(--effect-line);
+  border-radius: 18px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      var(--effect-accent-soft),
+      rgba(0, 0, 0, 0.08) 65%,
+      transparent 75%
+    );
+
+  color: var(--effect-accent);
+
+  font-family: Arial, sans-serif;
+  font-size: var(--font-size);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+
+  opacity: var(--opacity);
+
+  text-shadow:
+    0 0 8px var(--effect-accent-soft),
+    0 0 18px var(--effect-accent-soft);
+
+  box-shadow:
+    0 0 12px var(--effect-accent-soft),
+    inset 0 0 12px rgba(255, 255, 255, 0.025);
+
+  transform:
+    translate3d(0, 0, 0)
+    rotate(var(--rotation));
+
+  animation:
+    gthFloat
+    var(--duration)
+    ease-in-out
+    infinite;
+
+  animation-delay: var(--delay);
+}
+
+/* =========================================================
+   FLOATING LABELS
+   ========================================================= */
+
+.effect-label {
+  position: absolute;
+
+  left: var(--left);
+  top: var(--top);
+
+  padding: 7px 11px;
+
+  border: 1px solid var(--effect-line);
+  border-radius: 999px;
+
+  background:
+    rgba(0, 0, 0, 0.18);
+
+  color: var(--effect-accent);
+
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+
+  white-space: nowrap;
+
+  opacity: var(--opacity);
+
+  text-shadow:
+    0 0 8px var(--effect-accent-soft);
+
+  box-shadow:
+    0 0 12px var(--effect-accent-soft);
+
+  animation:
+    gthLabelFloat
+    var(--duration)
+    ease-in-out
+    infinite;
+
+  animation-delay: var(--delay);
+}
+
+/* =========================================================
+   AI NODE
+   ========================================================= */
+
+.effect-ai {
+  position: absolute;
+
+  left: var(--left);
+  top: var(--top);
+
+  width: var(--size);
+  height: var(--size);
+
+  border: 1px solid var(--effect-accent);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      var(--effect-accent-soft),
+      rgba(0, 0, 0, 0.05) 55%,
+      transparent 72%
+    );
+
+  box-shadow:
+    0 0 18px var(--effect-accent-soft),
+    0 0 35px var(--effect-accent-soft),
+    inset 0 0 18px var(--effect-accent-soft);
+
+  opacity: var(--opacity);
+
+  animation:
+    gthAiPulse
+    var(--duration)
+    ease-in-out
+    infinite;
+
+  animation-delay: var(--delay);
+}
+
+.effect-ai::before {
+  content: "AI";
+
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--effect-accent);
+
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+
+  text-shadow:
+    0 0 10px var(--effect-accent-soft);
+}
+
+.effect-ai::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 18%;
+
+  border: 1px solid var(--effect-accent);
+
+  border-radius: 45%;
+
+  opacity: 0.55;
+}
+
+/* =========================================================
+   DIGITAL CONNECTION LINES
+   ========================================================= */
+
+.effect-line {
+  position: absolute;
+
+  width: var(--length);
+  height: 1px;
+
+  left: var(--left);
+  top: var(--top);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--effect-accent),
+      transparent
+    );
+
+  box-shadow:
+    0 0 7px var(--effect-accent-soft);
+
+  opacity: var(--opacity);
+
+  transform:
+    rotate(var(--rotation));
+
+  transform-origin: left center;
+
+  animation:
+    gthLinePulse
+    var(--duration)
+    ease-in-out
+    infinite;
+
+  animation-delay: var(--delay);
+}
+
+/* =========================================================
+   PARTICLES
+   ========================================================= */
+
+.effect-particle {
+  position: absolute;
+
+  left: var(--left);
+  top: var(--top);
+
+  width: var(--size);
+  height: var(--size);
+
+  border-radius: 50%;
+
+  background: var(--effect-accent);
+
+  box-shadow:
+    0 0 6px var(--effect-accent),
+    0 0 14px var(--effect-accent-soft);
+
+  opacity: var(--opacity);
+
+  animation:
+    gthParticleFloat
+    var(--duration)
+    ease-in-out
+    infinite;
+
+  animation-delay: var(--delay);
+}
+
+/* =========================================================
+   GTH
+   ========================================================= */
+
+body.platform-gth .platform-effects-layer {
+  --effect-accent: #d09a33;
+  --effect-accent-soft: rgba(208, 154, 51, 0.32);
+  --effect-line: rgba(208, 154, 51, 0.22);
+}
+
+/* =========================================================
+   GTF
+   ========================================================= */
+
+body.platform-gtf .platform-effects-layer {
+  --effect-accent: #d7a63f;
+  --effect-accent-soft: rgba(215, 166, 63, 0.34);
+  --effect-line: rgba(215, 166, 63, 0.25);
+}
+
+/* Finance chart glow */
+
+body.platform-gtf .platform-effects-layer::after {
+  content: "";
+
+  position: absolute;
+
+  width: 330px;
+  height: 140px;
+
+  right: -30px;
+  bottom: 30px;
+
+  opacity: 0.30;
+
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0 18%,
+      var(--effect-accent) 18% 19%,
+      transparent 19% 37%,
+      var(--effect-accent) 37% 38%,
+      transparent 38% 55%,
+      var(--effect-accent) 55% 56%,
+      transparent 56% 72%,
+      var(--effect-accent) 72% 73%,
+      transparent 73%
+    );
+
+  transform: rotate(-7deg);
+
+  filter:
+    drop-shadow(
+      0 0 12px var(--effect-accent-soft)
+    );
+}
+
+/* =========================================================
+   GTC
+   ========================================================= */
+
+body.platform-gtc .platform-effects-layer {
+  --effect-accent: #e0ae48;
+  --effect-accent-soft: rgba(224, 174, 72, 0.34);
+  --effect-line: rgba(224, 174, 72, 0.25);
+}
+
+body.platform-gtc .effect-symbol {
+  border-radius: 50%;
+}
+
+/* =========================================================
+   GTS
+   ========================================================= */
+
+body.platform-gts .platform-effects-layer {
+  --effect-accent: #63adff;
+  --effect-accent-soft: rgba(99, 173, 255, 0.34);
+  --effect-line: rgba(99, 173, 255, 0.25);
+}
+
+body.platform-gts .effect-symbol {
+  border-radius: 14px;
+}
+
+/* =========================================================
+   GT CONNECT
+   ========================================================= */
+
+body.platform-connect {
+  --gt-connect-purple: #a76aff;
+  --gt-connect-purple-soft: rgba(167, 106, 255, 0.32);
+}
+
+body.platform-connect .platform-effects-layer {
+  --effect-accent: #a76aff;
+  --effect-accent-soft: rgba(167, 106, 255, 0.32);
+  --effect-line: rgba(167, 106, 255, 0.24);
+}
+
+/* Purple edge lighting */
+
+body.platform-connect::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 9px;
+
+  border: 1px solid
+    rgba(167, 106, 255, 0.20);
+
+  border-radius: 10px;
+
+  pointer-events: none;
+
+  z-index: 9997;
+
+  box-shadow:
+    inset 0 0 30px
+      rgba(167, 106, 255, 0.07),
+    0 0 24px
+      rgba(167, 106, 255, 0.08);
+
+  animation:
+    gtConnectEdge
+    5s
+    ease-in-out
+    infinite;
+}
+
+body.platform-connect.platform-connect-dashboard::before {
+  border-color:
+    rgba(167, 106, 255, 0.42);
+
+  box-shadow:
+    inset 0 0 35px
+      rgba(167, 106, 255, 0.10),
+    0 0 35px
+      rgba(167, 106, 255, 0.14);
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes gthFloat {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      rotate(var(--rotation));
+  }
+
+  50% {
+    transform:
+      translate3d(
+        var(--move-x),
+        var(--move-y),
+        0
+      )
+      rotate(
+        calc(var(--rotation) + 5deg)
+      );
+  }
+}
+
+@keyframes gthLabelFloat {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform:
+      translate3d(0, -9px, 0);
+  }
+}
+
+@keyframes gthAiPulse {
+  0%,
+  100% {
+    transform: scale(1);
+
+    box-shadow:
+      0 0 18px var(--effect-accent-soft),
+      0 0 35px var(--effect-accent-soft),
+      inset 0 0 18px var(--effect-accent-soft);
+  }
+
+  50% {
+    transform: scale(1.09);
+
+    box-shadow:
+      0 0 28px var(--effect-accent-soft),
+      0 0 50px var(--effect-accent-soft),
+      inset 0 0 24px var(--effect-accent-soft);
+  }
+}
+
+@keyframes gthLinePulse {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+
+  50% {
+    opacity: 0.50;
+  }
+}
+
+@keyframes gthParticleFloat {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform:
+      translate3d(8px, -16px, 0);
+  }
+}
+
+@keyframes gtConnectEdge {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .effect-symbol {
+    opacity: calc(var(--opacity) * 0.90);
+  }
+
+  .effect-label {
+    font-size: 8px;
+  }
+
+  .platform-effects-layer
+  .effect-symbol:nth-child(n + 10),
+  .platform-effects-layer
+  .effect-label:nth-child(n + 10),
+  .platform-effects-layer
+  .effect-particle:nth-child(n + 14) {
+    display: none;
+  }
+
+  body.platform-connect::before {
+    inset: 6px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .effect-symbol,
+  .effect-label,
+  .effect-ai,
+  .effect-line,
+  .effect-particle,
+  body.platform-connect::before {
+    animation: none !important;
+  }
+}
