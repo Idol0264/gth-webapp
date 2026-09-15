@@ -586,3 +586,7 @@ window.GTH_CONFIG = {
     );
 
   }
+
+  start();
+
+})();
