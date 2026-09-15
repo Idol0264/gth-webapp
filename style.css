@@ -7974,10 +7974,10 @@ tr:last-child td {
 }
 
 /* =========================================================
-   GTH INDEX — NOTIFICATION PERMISSION BUTTON
+   GTH INSTALL BUTTON
 ========================================================= */
 
-.gth-notification-button {
+.gth-install-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -8006,43 +8006,92 @@ tr:last-child td {
     opacity 0.2s ease;
 }
 
-.gth-notification-button:hover {
+.gth-install-button:hover {
   transform: translateY(-2px);
 }
 
-.gth-notification-button:active {
+.gth-install-button:active {
   transform: translateY(0);
 }
 
-.gth-notification-button span:first-child {
-  font-size: 15px;
+.gth-install-button span:first-child {
+  font-size: 17px;
   line-height: 1;
 }
 
-.gth-notification-button.hidden {
+.gth-install-button.hidden {
   display: none;
 }
 
 
-/* =========================================================
-   MOBILE
-========================================================= */
+/* ---------------------------------------------------------
+   INSTALL FALLBACK MESSAGE
+--------------------------------------------------------- */
+
+.gth-install-message {
+  position: fixed;
+
+  left: 50%;
+  bottom: 24px;
+
+  transform:
+    translate(-50%, 20px);
+
+  width: min(
+    calc(100% - 32px),
+    420px
+  );
+
+  padding: 14px 16px;
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  background: var(--surface);
+  color: var(--text);
+
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+
+  box-shadow: var(--shadow);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+
+  z-index: 99999;
+}
+
+.gth-install-message.show {
+  opacity: 1;
+
+  transform:
+    translate(-50%, 0);
+}
+
 
 @media (max-width: 700px) {
 
-  .gth-notification-button {
+  .gth-install-button {
+
     min-width: 40px;
     width: 40px;
     height: 40px;
 
     padding: 0;
+
   }
 
-  .gth-notification-button span:last-child {
+  .gth-install-button span:last-child {
     display: none;
   }
 
 }
+
 
 
 
