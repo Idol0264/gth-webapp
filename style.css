@@ -8092,7 +8092,58 @@ tr:last-child td {
 
 }
 
+/* =========================================================
+   CUSTOMER SERVICE IMAGE BUTTON
+========================================================= */
 
+.gth-customer-service-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  margin: 0 6px;
+  border: 0;
+  background: transparent;
+  border-radius: 50%;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.gth-customer-service-button.hidden {
+  display: none !important;
+}
+
+.gth-customer-service-image {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: block;
+}
+
+.gth-customer-service-button:hover {
+  transform: translateY(-2px);
+}
+
+.gth-customer-service-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .gth-customer-service-button {
+    width: 38px;
+    height: 38px;
+    margin: 0 4px;
+  }
+
+  .gth-customer-service-image {
+    width: 34px;
+    height: 34px;
+  }
+}
 
 
 
