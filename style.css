@@ -8145,7 +8145,25 @@ tr:last-child td {
   }
 }
 
+/* =========================================================
+   GTH INFORMATION PANELS — OPEN STATE FIX
+========================================================= */
 
+.gth-info-layer {
+  display: none;
+}
+
+.gth-info-layer.is-open {
+  display: flex;
+}
+
+.gth-info-panel {
+  display: none;
+}
+
+.gth-info-panel.is-open {
+  display: block !important;
+}
 
 
 
