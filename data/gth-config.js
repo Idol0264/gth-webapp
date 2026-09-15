@@ -365,6 +365,177 @@ window.GTH_CONFIG = {
   }
 
 
+    /* -------------------------------------------------------
+     GTH CUSTOMER SERVICE BUTTON
+     VISIBLE ONLY ON THE ACTUAL GTH HOME SCREEN
+  ------------------------------------------------------- */
+
+  function isActualGTHHomeVisible() {
+
+    if (!isIndexPage()) {
+      return false;
+    }
+
+    const homeScreen =
+      document.getElementById("homeScreen");
+
+    if (!homeScreen) {
+      return false;
+    }
+
+    return !homeScreen.classList.contains("hidden");
+
+  }
+
+
+  /* -------------------------------------------------------
+     UPDATE CUSTOMER SERVICE VISIBILITY
+  ------------------------------------------------------- */
+
+  function updateCustomerServiceButton() {
+
+    const button =
+      document.getElementById(
+        "gthCustomerServiceButton"
+      );
+
+    if (!button) {
+      return;
+    }
+
+    if (isActualGTHHomeVisible()) {
+
+      button.classList.remove("hidden");
+
+    } else {
+
+      button.classList.add("hidden");
+
+    }
+
+  }
+
+
+  /* -------------------------------------------------------
+     CREATE CUSTOMER SERVICE BUTTON
+  ------------------------------------------------------- */
+
+  function addCustomerServiceButton() {
+
+    if (!isIndexPage()) {
+      return;
+    }
+
+    const header =
+      document.querySelector(".site-header");
+
+    if (!header) {
+      return;
+    }
+
+
+    if (
+      document.getElementById(
+        "gthCustomerServiceButton"
+      )
+    ) {
+
+      updateCustomerServiceButton();
+      return;
+
+    }
+
+
+    const button =
+      document.createElement("a");
+
+    button.id =
+      "gthCustomerServiceButton";
+
+    button.className =
+      "gth-customer-service-button hidden";
+
+    button.href =
+      "https://wa.me/";
+
+    button.target =
+      "_blank";
+
+    button.rel =
+      "noopener noreferrer";
+
+    button.setAttribute(
+      "aria-label",
+      "Call GTH customer service on WhatsApp"
+    );
+
+
+    button.innerHTML = `
+      <span
+        class="gth-customer-service-icon"
+        aria-hidden="true"
+      >☎</span>
+
+      <span class="gth-customer-service-text">
+        Customer Service
+      </span>
+    `;
+
+
+    const themeControls =
+      header.querySelector(
+        ".theme-controls"
+      );
+
+
+    if (themeControls) {
+
+      header.insertBefore(
+        button,
+        themeControls
+      );
+
+    } else {
+
+      header.appendChild(
+        button
+      );
+
+    }
+
+
+    updateCustomerServiceButton();
+
+
+    /* Watch the Home screen's hidden/visible state */
+
+    const homeScreen =
+      document.getElementById("homeScreen");
+
+    if (homeScreen) {
+
+      const observer =
+        new MutationObserver(
+          function () {
+
+            updateCustomerServiceButton();
+
+          }
+        );
+
+      observer.observe(
+        homeScreen,
+        {
+          attributes: true,
+          attributeFilter: ["class"]
+        }
+      );
+
+    }
+
+  }
+
+  
   /* -------------------------------------------------------
      START
   ------------------------------------------------------- */
