@@ -6,60 +6,60 @@ window.GTH_CONFIG = {
 
 
 /* =========================================================
-   GTH INDEX-ONLY NOTIFICATION PERMISSION
+   GTH — INDEX-ONLY PWA INSTALL BUTTON
 ========================================================= */
 
 (function () {
 
+  let deferredInstallPrompt = null;
+
+
+  /* -------------------------------------------------------
+     INDEX PAGE CHECK
+  ------------------------------------------------------- */
+
   function isIndexPage() {
+
     const path = window.location.pathname;
 
     return (
       path.endsWith("/") ||
       path.endsWith("/index.html")
     );
-  }
-
-
-  function addManifestFallback() {
-
-    if (
-      document.querySelector(
-        'link[rel="manifest"]'
-      )
-    ) {
-      return;
-    }
-
-    const manifest =
-      document.createElement("link");
-
-    manifest.rel = "manifest";
-    manifest.href =
-      "manifest.webmanifest";
-
-    document.head.appendChild(manifest);
 
   }
 
 
-  function addNotificationButton() {
+  /* -------------------------------------------------------
+     CHECK WHETHER GTH IS ALREADY INSTALLED
+  ------------------------------------------------------- */
+
+  function isGTHInstalled() {
+
+    return (
+      window.matchMedia(
+        "(display-mode: standalone)"
+      ).matches ||
+
+      window.navigator.standalone === true
+    );
+
+  }
+
+
+  /* -------------------------------------------------------
+     CREATE INSTALL BUTTON
+  ------------------------------------------------------- */
+
+  function addInstallButton() {
 
     if (!isIndexPage()) {
       return;
     }
 
-    if (
-      typeof Notification === "undefined"
-    ) {
-      return;
-    }
-
 
     const header =
-      document.querySelector(
-        ".site-header"
-      );
+      document.querySelector(".site-header");
 
     if (!header) {
       return;
@@ -68,10 +68,10 @@ window.GTH_CONFIG = {
 
     if (
       document.getElementById(
-        "gthNotificationButton"
+        "gthInstallButton"
       )
     ) {
-      updateNotificationButton();
+      updateInstallButton();
       return;
     }
 
@@ -80,43 +80,28 @@ window.GTH_CONFIG = {
       document.createElement("button");
 
     button.id =
-      "gthNotificationButton";
+      "gthInstallButton";
 
-    button.type = "button";
+    button.type =
+      "button";
 
     button.className =
-      "gth-notification-button";
+      "gth-install-button";
 
     button.setAttribute(
       "aria-label",
-      "Allow GTH notifications"
+      "Install GTH"
     );
 
+
     button.innerHTML =
-      '<span aria-hidden="true">🔔</span>' +
-      '<span>Allow Notifications</span>';
+      '<span aria-hidden="true">＋</span>' +
+      '<span>Install GTH</span>';
 
 
     button.addEventListener(
       "click",
-      async function () {
-
-        try {
-
-          const permission =
-            await Notification.requestPermission();
-
-          updateNotificationButton(
-            permission
-          );
-
-        } catch (error) {
-
-          updateNotificationButton();
-
-        }
-
-      }
+      installGTH
     );
 
 
@@ -142,18 +127,20 @@ window.GTH_CONFIG = {
     }
 
 
-    updateNotificationButton();
+    updateInstallButton();
 
   }
 
 
-  function updateNotificationButton(
-    permission
-  ) {
+  /* -------------------------------------------------------
+     UPDATE BUTTON
+  ------------------------------------------------------- */
+
+  function updateInstallButton() {
 
     const button =
       document.getElementById(
-        "gthNotificationButton"
+        "gthInstallButton"
       );
 
     if (!button) {
@@ -161,18 +148,7 @@ window.GTH_CONFIG = {
     }
 
 
-    const currentPermission =
-      permission ||
-      (
-        typeof Notification !== "undefined"
-          ? Notification.permission
-          : "denied"
-      );
-
-
-    if (
-      currentPermission === "granted"
-    ) {
+    if (isGTHInstalled()) {
 
       button.classList.add(
         "hidden"
@@ -190,21 +166,215 @@ window.GTH_CONFIG = {
   }
 
 
-  function checkPermissionAgain() {
+  /* -------------------------------------------------------
+     REAL INSTALL ACTION
+  ------------------------------------------------------- */
+
+  async function installGTH() {
+
+    const button =
+      document.getElementById(
+        "gthInstallButton"
+      );
+
+    if (isGTHInstalled()) {
+
+      updateInstallButton();
+      return;
+
+    }
+
+
+    /*
+      Chrome/Chromium has provided the
+      real installation prompt.
+    */
+
+    if (deferredInstallPrompt) {
+
+      try {
+
+        deferredInstallPrompt.prompt();
+
+        const result =
+          await deferredInstallPrompt.userChoice;
+
+
+        deferredInstallPrompt = null;
+
+
+        if (
+          result &&
+          result.outcome === "accepted"
+        ) {
+
+          if (button) {
+            button.classList.add(
+              "hidden"
+            );
+          }
+
+        } else {
+
+          updateInstallButton();
+
+        }
+
+      } catch (error) {
+
+        updateInstallButton();
+
+      }
+
+      return;
+
+    }
+
+
+    /*
+      The browser has not supplied an
+      install prompt yet.
+
+      We do NOT request notification
+      permission and we do NOT pretend
+      that installation happened.
+    */
+
+    showInstallHelp();
+
+  }
+
+
+  /* -------------------------------------------------------
+     FALLBACK MESSAGE
+  ------------------------------------------------------- */
+
+  function showInstallHelp() {
+
+    let message =
+      document.getElementById(
+        "gthInstallMessage"
+      );
+
+
+    if (!message) {
+
+      message =
+        document.createElement("div");
+
+      message.id =
+        "gthInstallMessage";
+
+      message.className =
+        "gth-install-message";
+
+      message.setAttribute(
+        "role",
+        "status"
+      );
+
+
+      document.body.appendChild(
+        message
+      );
+
+    }
+
+
+    message.textContent =
+      "GTH can be installed from your browser menu. " +
+      "Open the browser menu and choose “Install app” or “Add to Home screen”.";
+
+
+    message.classList.add(
+      "show"
+    );
+
+
+    window.setTimeout(
+      function () {
+
+        message.classList.remove(
+          "show"
+        );
+
+      },
+      5000
+    );
+
+  }
+
+
+  /* -------------------------------------------------------
+     BROWSER INSTALL PROMPT
+  ------------------------------------------------------- */
+
+  window.addEventListener(
+    "beforeinstallprompt",
+    function (event) {
+
+      /*
+        Stop the browser from automatically
+        showing the prompt.
+
+        We will show it only when the user
+        taps "Install GTH".
+      */
+
+      event.preventDefault();
+
+      deferredInstallPrompt =
+        event;
+
+
+      updateInstallButton();
+
+    }
+  );
+
+
+  /* -------------------------------------------------------
+     APP INSTALLED
+  ------------------------------------------------------- */
+
+  window.addEventListener(
+    "appinstalled",
+    function () {
+
+      deferredInstallPrompt =
+        null;
+
+      updateInstallButton();
+
+    }
+  );
+
+
+  /* -------------------------------------------------------
+     RECHECK WHEN USER RETURNS TO THE SITE
+  ------------------------------------------------------- */
+
+  function recheckInstallState() {
 
     if (!isIndexPage()) {
       return;
     }
 
-    updateNotificationButton();
+    updateInstallButton();
 
   }
 
 
+  /* -------------------------------------------------------
+     START
+  ------------------------------------------------------- */
+
   function start() {
 
-    addManifestFallback();
-    addNotificationButton();
+    addInstallButton();
+
+    recheckInstallState();
+
 
     document.addEventListener(
       "visibilitychange",
@@ -215,16 +385,23 @@ window.GTH_CONFIG = {
           "visible"
         ) {
 
-          checkPermissionAgain();
+          recheckInstallState();
 
         }
 
       }
     );
 
+
     window.addEventListener(
       "focus",
-      checkPermissionAgain
+      recheckInstallState
+    );
+
+
+    window.addEventListener(
+      "pageshow",
+      recheckInstallState
     );
 
   }
