@@ -8166,47 +8166,30 @@ tr:last-child td {
 }
 
 /* =========================================================
-   GTH INFORMATION POPUP
-   Blur background, keep popup sharp
+   GTH INFORMATION PANEL — FIXED HEADING + SCROLLING CONTENT
 ========================================================= */
 
-#gthInfoLayer.gth-info-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-
-  /* Dark overlay */
-  background: rgba(0, 0, 0, 0.35);
-
-  /* Blur ONLY what is behind the popup layer */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-/* Keep the actual popup completely sharp */
 #gthInfoLayer .gth-info-panel {
-  position: relative;
-  z-index: 10000;
-
-  filter: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  display: flex !important;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-/* GTH POPUP — keep popup sharp while background is blurred */
-
-#gthInfoLayer.gth-info-layer {
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+#gthInfoLayer .gth-panel-header {
+  flex: 0 0 auto;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--surface);
 }
 
-/* The popup itself must remain sharp */
-#gthInfoLayer .gth-info-panel {
-  filter: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  opacity: 1 !important;
+#gthInfoLayer .gth-panel-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
 }
 
 
