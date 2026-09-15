@@ -456,7 +456,7 @@ window.GTH_CONFIG = {
       "gth-customer-service-button hidden";
 
     button.href =
-      "https://wa.me/";
+      "https:https://wa.me/qr/VGCCQ6WUPR4SO1";
 
     button.target =
       "_blank";
@@ -474,7 +474,7 @@ window.GTH_CONFIG = {
       <span
         class="gth-customer-service-icon"
         aria-hidden="true"
-      >☎</span>
+      >images/customer service.png</span>
 
       <span class="gth-customer-service-text">
         Customer Service
