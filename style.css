@@ -8652,7 +8652,13 @@ tr:last-child td {
   }
 }
 
+/* =========================================================
+   GTH PANEL — HIDDEN STATE MUST ALWAYS STAY HIDDEN
+========================================================= */
 
+#gthInfoLayer .gth-info-panel[hidden] {
+  display: none !important;
+}
 
 
 
