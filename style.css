@@ -8660,5 +8660,37 @@ tr:last-child td {
   display: none !important;
 }
 
+/* =========================================================
+   GTH CUSTOMER SERVICE — SLIGHTLY LARGER
+========================================================= */
+
+.gth-customer-service-button {
+  width: 46px;
+  height: 46px;
+}
+
+.gth-customer-service-image {
+  width: 40px;
+  height: 40px;
+}
+
+@media (max-width: 600px) {
+  .gth-customer-service-button {
+    width: 43px;
+    height: 43px;
+  }
+
+  .gth-customer-service-image {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+
+
+
+
+
+
 
 
