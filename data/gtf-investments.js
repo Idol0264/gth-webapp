@@ -510,6 +510,760 @@ const GTF_INVESTMENTS = [
 
     reviewNote:
       "GTF research status: Under Review."
+  },
+
+  /* =========================================================
+     GTF — ADDITIONAL INVESTMENT OPPORTUNITIES
+  ========================================================= */
+
+  {
+    id: "united-capital-mutual-funds",
+    name: "United Capital Asset Management",
+    shortName: "UC",
+    category: "mutual-funds",
+    categoryName: "Mutual Funds",
+    status: "Under Review",
+    website: "https://www.unitedcapitalassetmanagement.com/",
+    description:
+      "United Capital Asset Management provides professionally managed investment funds and portfolio solutions.",
+    objective:
+      "Investment options designed for different income, preservation and growth objectives.",
+    risk: "Varies by fund",
+    liquidity: "Depends on the selected fund",
+    fees: "Varies by fund",
+    considerations:
+      "Review the selected fund's objective, risk, fees and redemption terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "meristem-mutual-funds",
+    name: "Meristem Wealth Management",
+    shortName: "MER",
+    category: "mutual-funds",
+    categoryName: "Mutual Funds",
+    status: "Under Review",
+    website: "https://www.meristemng.com/",
+    description:
+      "Meristem provides investment management and fund solutions for investors.",
+    objective:
+      "Investment options covering different risk and investment objectives.",
+    risk: "Varies by product",
+    liquidity: "Depends on the selected product",
+    fees: "Varies by product",
+    considerations:
+      "Review the specific investment product and current terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "afrinvest-mutual-funds",
+    name: "Afrinvest Asset Management",
+    shortName: "AI",
+    category: "mutual-funds",
+    categoryName: "Mutual Funds",
+    status: "Under Review",
+    website: "https://www.afrinvest.com/",
+    description:
+      "Afrinvest provides investment management and asset management solutions.",
+    objective:
+      "Different investment products are designed for different investor objectives.",
+    risk: "Varies by product",
+    liquidity: "Depends on the selected product",
+    fees: "Varies by product",
+    considerations:
+      "Review the selected product's terms, risk and fees.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "cardinalstone-mutual-funds",
+    name: "CardinalStone Asset Management",
+    shortName: "CS",
+    category: "mutual-funds",
+    categoryName: "Mutual Funds",
+    status: "Under Review",
+    website: "https://www.cardinalstone.com/",
+    description:
+      "CardinalStone provides professionally managed investment and asset management solutions.",
+    objective:
+      "Fund options designed around different income, preservation and growth objectives.",
+    risk: "Varies by fund",
+    liquidity: "Depends on the selected fund",
+    fees: "Varies by fund",
+    considerations:
+      "Review the selected fund documentation before investing.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "vetiva-mutual-funds",
+    name: "Vetiva Asset Management",
+    shortName: "VET",
+    category: "mutual-funds",
+    categoryName: "Mutual Funds",
+    status: "Under Review",
+    website: "https://www.vetiva.com/",
+    description:
+      "Vetiva provides asset management and investment products for investors.",
+    objective:
+      "Investment options covering different objectives and risk levels.",
+    risk: "Varies by product",
+    liquidity: "Depends on the selected product",
+    fees: "Varies by product",
+    considerations:
+      "Review the selected product's current terms and fees.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "lotus-capital-funds",
+    name: "Lotus Capital",
+    shortName: "LOT",
+    category: "mutual-funds",
+    categoryName: "Mutual Funds",
+    status: "Under Review",
+    website: "https://lotuscapitallimited.com/",
+    description:
+      "Lotus Capital provides Sharia-compliant investment and asset management solutions.",
+    objective:
+      "Investment options structured around Sharia-compliant principles.",
+    risk: "Varies by product",
+    liquidity: "Depends on the selected product",
+    fees: "Varies by product",
+    considerations:
+      "Review the specific product structure and terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "aiico-mutual-funds",
+    name: "AIICO Capital",
+    shortName: "AIICO",
+    category: "mutual-funds",
+    categoryName: "Mutual Funds",
+    status: "Under Review",
+    website: "https://www.aiicocapital.com/",
+    description:
+      "AIICO Capital provides investment and asset management products.",
+    objective:
+      "Investment solutions designed around different investor objectives.",
+    risk: "Varies by product",
+    liquidity: "Depends on the selected product",
+    fees: "Varies by product",
+    considerations:
+      "Review the selected investment product and its current terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "fbnquest-mutual-funds",
+    name: "FBNQuest Asset Management",
+    shortName: "FBN",
+    category: "mutual-funds",
+    categoryName: "Mutual Funds",
+    status: "Under Review",
+    website: "https://www.fbnquest.com/",
+    description:
+      "FBNQuest provides asset management and investment solutions.",
+    objective:
+      "Investment products designed for different income and growth objectives.",
+    risk: "Varies by product",
+    liquidity: "Depends on the selected product",
+    fees: "Varies by product",
+    considerations:
+      "Review the specific fund and current documentation.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "pac-asset-management",
+    name: "PAC Asset Management",
+    shortName: "PAC",
+    category: "mutual-funds",
+    categoryName: "Mutual Funds",
+    status: "Under Review",
+    website: "https://pacassetmanagement.com/",
+    description:
+      "PAC Asset Management provides investment and asset management solutions.",
+    objective:
+      "Investment options designed for different investor objectives.",
+    risk: "Varies by product",
+    liquidity: "Depends on the selected product",
+    fees: "Varies by product",
+    considerations:
+      "Review the selected investment product before investing.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "norrenberger-investments",
+    name: "Norrenberger",
+    shortName: "NOR",
+    category: "mutual-funds",
+    categoryName: "Mutual Funds",
+    status: "Under Review",
+    website: "https://norrenberger.com/",
+    description:
+      "Norrenberger provides investment and financial solutions for individuals and businesses.",
+    objective:
+      "Investment solutions covering different objectives and time horizons.",
+    risk: "Varies by product",
+    liquidity: "Depends on the selected product",
+    fees: "Varies by product",
+    considerations:
+      "Review the selected investment product and current terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+
+  /* =========================================================
+     MONEY MARKET
+  ========================================================= */
+
+  {
+    id: "united-capital-money-market",
+    name: "United Capital Money Market Fund",
+    shortName: "UC",
+    category: "money-market",
+    categoryName: "Money Market",
+    status: "Under Review",
+    website: "https://www.unitedcapitalassetmanagement.com/",
+    description:
+      "A money market investment option managed by United Capital Asset Management.",
+    objective:
+      "Focused on short-term income and money market instruments.",
+    risk: "Generally lower relative risk, but not risk-free",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review current fund terms, fees and redemption conditions.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "meristem-money-market",
+    name: "Meristem Money Market Fund",
+    shortName: "MER",
+    category: "money-market",
+    categoryName: "Money Market",
+    status: "Under Review",
+    website: "https://www.meristemng.com/",
+    description:
+      "A money market investment option available through Meristem.",
+    objective:
+      "Focused on short-term income and money market instruments.",
+    risk: "Generally lower relative risk, but not risk-free",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review the fund's current terms and charges.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "afrinvest-money-market",
+    name: "Afrinvest Money Market Fund",
+    shortName: "AI",
+    category: "money-market",
+    categoryName: "Money Market",
+    status: "Under Review",
+    website: "https://www.afrinvest.com/",
+    description:
+      "A money market investment option available through Afrinvest.",
+    objective:
+      "Focused on short-term money market investments and income.",
+    risk: "Generally lower relative risk, but not risk-free",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review current fund documentation and redemption conditions.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "cardinalstone-money-market",
+    name: "CardinalStone Money Market Fund",
+    shortName: "CS",
+    category: "money-market",
+    categoryName: "Money Market",
+    status: "Under Review",
+    website: "https://www.cardinalstone.com/",
+    description:
+      "A money market investment option managed by CardinalStone Asset Management.",
+    objective:
+      "Focused on money market instruments and income-oriented investing.",
+    risk: "Generally lower relative risk, but not risk-free",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review current fund facts, fees and redemption terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "vetiva-money-market",
+    name: "Vetiva Money Market Fund",
+    shortName: "VET",
+    category: "money-market",
+    categoryName: "Money Market",
+    status: "Under Review",
+    website: "https://www.vetiva.com/",
+    description:
+      "A money market investment option available through Vetiva.",
+    objective:
+      "Focused on short-term income and money market instruments.",
+    risk: "Generally lower relative risk, but not risk-free",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review current fund terms and charges.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "lotus-money-market",
+    name: "Lotus Money Market Fund",
+    shortName: "LOT",
+    category: "money-market",
+    categoryName: "Money Market",
+    status: "Under Review",
+    website: "https://lotuscapitallimited.com/",
+    description:
+      "A Sharia-compliant money market investment option available through Lotus Capital.",
+    objective:
+      "Focused on Sharia-compliant short-term investment opportunities.",
+    risk: "Varies by investment",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review the fund structure and current terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "fbnquest-money-market",
+    name: "FBNQuest Money Market Fund",
+    shortName: "FBN",
+    category: "money-market",
+    categoryName: "Money Market",
+    status: "Under Review",
+    website: "https://www.fbnquest.com/",
+    description:
+      "A money market investment option available through FBNQuest Asset Management.",
+    objective:
+      "Focused on short-term income and money market instruments.",
+    risk: "Generally lower relative risk, but not risk-free",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review current fund terms and redemption conditions.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "aiico-money-market",
+    name: "AIICO Money Market Fund",
+    shortName: "AIICO",
+    category: "money-market",
+    categoryName: "Money Market",
+    status: "Under Review",
+    website: "https://www.aiicocapital.com/",
+    description:
+      "A money market investment option available through AIICO Capital.",
+    objective:
+      "Focused on short-term income and money market instruments.",
+    risk: "Generally lower relative risk, but not risk-free",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review current fund terms and charges.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+
+  /* =========================================================
+     FIXED INCOME
+  ========================================================= */
+
+  {
+    id: "stanbic-ibtc-bond-fund",
+    name: "Stanbic IBTC Bond Fund",
+    shortName: "SI",
+    category: "fixed-income",
+    categoryName: "Fixed Income",
+    status: "Under Review",
+    website: "https://www.stanbicibtcassetmanagement.com/",
+    description:
+      "A fixed-income investment option managed by Stanbic IBTC Asset Management.",
+    objective:
+      "Focused primarily on fixed-income securities and income generation.",
+    risk: "Generally lower than equity-focused funds, but not risk-free",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review duration, underlying securities, fees and redemption terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "arm-short-term-bond-fund",
+    name: "ARM Short Term Bond Fund",
+    shortName: "ARM",
+    category: "fixed-income",
+    categoryName: "Fixed Income",
+    status: "Under Review",
+    website: "https://www.arm.com.ng/arm-investment-managers/mutual-fund/",
+    description:
+      "A short-term bond investment option managed by ARM Investment Managers.",
+    objective:
+      "Focused on short-term fixed-income opportunities.",
+    risk: "Varies with underlying securities",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review the underlying portfolio, duration and redemption terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "arm-short-term-eurobond",
+    name: "ARM Short Term Eurobond Fund",
+    shortName: "ARM",
+    category: "fixed-income",
+    categoryName: "Fixed Income",
+    status: "Under Review",
+    website: "https://www.arm.com.ng/arm-investment-managers/mutual-fund/",
+    description:
+      "A short-term Eurobond-focused investment option managed by ARM Investment Managers.",
+    objective:
+      "Provides exposure to short-term international fixed-income opportunities.",
+    risk: "Varies with underlying securities and currency exposure",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review currency exposure, underlying securities, fees and redemption terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "stanbic-ibtc-dollar-fund",
+    name: "Stanbic IBTC Dollar Fund",
+    shortName: "SI",
+    category: "fixed-income",
+    categoryName: "Fixed Income",
+    status: "Under Review",
+    website: "https://www.stanbicibtcassetmanagement.com/",
+    description:
+      "A dollar-denominated investment option managed by Stanbic IBTC Asset Management.",
+    objective:
+      "Provides dollar-based investment exposure through fixed-income and related instruments.",
+    risk: "Varies with underlying investments and currency exposure",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review currency exposure, underlying investments, fees and redemption terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "stanbic-ibtc-guaranteed-investment",
+    name: "Stanbic IBTC Guaranteed Investment Fund",
+    shortName: "SI",
+    category: "fixed-income",
+    categoryName: "Fixed Income",
+    status: "Under Review",
+    website: "https://www.stanbicibtcassetmanagement.com/",
+    description:
+      "A managed investment option combining fixed-income, equity and money market exposure.",
+    objective:
+      "Designed around a diversified investment approach.",
+    risk: "Varies with the underlying portfolio",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review the current portfolio composition, fees and terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "united-capital-bond-fund",
+    name: "United Capital Bond Fund",
+    shortName: "UC",
+    category: "fixed-income",
+    categoryName: "Fixed Income",
+    status: "Under Review",
+    website: "https://www.unitedcapitalassetmanagement.com/",
+    description:
+      "A fixed-income investment option available through United Capital Asset Management.",
+    objective:
+      "Focused on bonds and other fixed-income opportunities.",
+    risk: "Varies with underlying securities",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review portfolio composition, duration, fees and redemption terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "coronation-fixed-income",
+    name: "Coronation Fixed Income Fund",
+    shortName: "COR",
+    category: "fixed-income",
+    categoryName: "Fixed Income",
+    status: "Under Review",
+    website: "https://www.coronation.ng/",
+    description:
+      "A fixed-income investment option available through Coronation Asset Management.",
+    objective:
+      "Focused on fixed-income securities and income-oriented investing.",
+    risk: "Varies with underlying securities",
+    liquidity: "Subject to current fund terms",
+    fees: "See current fund documentation",
+    considerations:
+      "Review the current investment strategy and redemption terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+
+  /* =========================================================
+     EQUITY & GROWTH
+  ========================================================= */
+
+  {
+    id: "bamboo",
+    name: "Bamboo",
+    shortName: "BAM",
+    category: "equity-growth",
+    categoryName: "Equity & Growth",
+    status: "Under Review",
+    website: "https://investbamboo.com/",
+    description:
+      "A digital investment platform providing access to Nigerian and international equities.",
+    objective:
+      "Designed for investors seeking equity and long-term growth opportunities.",
+    risk: "Higher than fixed-income investments",
+    liquidity: "Depends on the selected investment",
+    fees: "Platform and transaction charges may apply",
+    considerations:
+      "Review individual securities, charges and market risks.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "trove",
+    name: "Trove",
+    shortName: "TRV",
+    category: "equity-growth",
+    categoryName: "Equity & Growth",
+    status: "Under Review",
+    website: "https://trovefinance.com/",
+    description:
+      "A digital investment platform providing access to Nigerian and international investment opportunities.",
+    objective:
+      "Provides access to equities and other investment products for growth-oriented investors.",
+    risk: "Varies by investment",
+    liquidity: "Depends on the selected asset",
+    fees: "Transaction and platform charges may apply",
+    considerations:
+      "Review each asset's risk, fees and market conditions.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "hisa",
+    name: "Hisa",
+    shortName: "HISA",
+    category: "equity-growth",
+    categoryName: "Equity & Growth",
+    status: "Under Review",
+    website: "https://hisa.co/",
+    description:
+      "A digital investment platform providing access to market-based investment opportunities.",
+    objective:
+      "Designed for investors seeking access to equities and growth opportunities.",
+    risk: "Varies by investment",
+    liquidity: "Depends on the selected asset",
+    fees: "May vary by product",
+    considerations:
+      "Review the selected investment and applicable terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "chaka",
+    name: "Chaka",
+    shortName: "CHK",
+    category: "equity-growth",
+    categoryName: "Equity & Growth",
+    status: "Under Review",
+    website: "https://www.chaka.com/",
+    description:
+      "A digital investment platform providing access to market-based investment opportunities.",
+    objective:
+      "Designed for investors seeking access to equities and other growth-oriented assets.",
+    risk: "Varies by investment",
+    liquidity: "Depends on the selected asset",
+    fees: "May vary by product",
+    considerations:
+      "Review the current available investment products and terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "risevest",
+    name: "Risevest",
+    shortName: "RISE",
+    category: "equity-growth",
+    categoryName: "Equity & Growth",
+    status: "Under Review",
+    website: "https://risevest.com/",
+    description:
+      "A digital investment platform offering professionally managed investment portfolios.",
+    objective:
+      "Provides access to diversified investment strategies across different asset classes.",
+    risk: "Varies by portfolio",
+    liquidity: "Depends on the selected portfolio",
+    fees: "Varies by portfolio",
+    considerations:
+      "Review portfolio strategy, risk, fees and withdrawal terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "cordros-securities",
+    name: "Cordros Securities",
+    shortName: "COR",
+    category: "equity-growth",
+    categoryName: "Equity & Growth",
+    status: "Under Review",
+    website: "https://cordros.com/",
+    description:
+      "Cordros provides securities and investment services within the Nigerian capital market.",
+    objective:
+      "Provides access to market-based investment opportunities.",
+    risk: "Varies by investment",
+    liquidity: "Depends on the selected security",
+    fees: "Varies by transaction",
+    considerations:
+      "Review the selected security, charges and market conditions.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "cardinalstone-securities",
+    name: "CardinalStone Securities",
+    shortName: "CS",
+    category: "equity-growth",
+    categoryName: "Equity & Growth",
+    status: "Under Review",
+    website: "https://www.cardinalstone.com/",
+    description:
+      "CardinalStone provides securities and investment services within the capital market.",
+    objective:
+      "Provides access to market-based investment opportunities.",
+    risk: "Varies by investment",
+    liquidity: "Depends on the selected security",
+    fees: "Varies by transaction",
+    considerations:
+      "Review the selected security and applicable charges.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "gti-securities",
+    name: "GTI Securities",
+    shortName: "GTI",
+    category: "equity-growth",
+    categoryName: "Equity & Growth",
+    status: "Under Review",
+    website: "https://www.gti.com.ng/",
+    description:
+      "GTI provides securities and investment services within the Nigerian capital market.",
+    objective:
+      "Provides access to market-based investment opportunities.",
+    risk: "Varies by investment",
+    liquidity: "Depends on the selected security",
+    fees: "Varies by transaction",
+    considerations:
+      "Review the selected security and current transaction terms.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "arm-securities",
+    name: "ARM Securities",
+    shortName: "ARM",
+    category: "equity-growth",
+    categoryName: "Equity & Growth",
+    status: "Under Review",
+    website: "https://www.arm.com.ng/",
+    description:
+      "ARM provides securities and investment services within the Nigerian capital market.",
+    objective:
+      "Provides access to market-based investment opportunities.",
+    risk: "Varies by investment",
+    liquidity: "Depends on the selected security",
+    fees: "Varies by transaction",
+    considerations:
+      "Review the selected security, fees and market conditions.",
+    reviewNote:
+      "GTF research status: Under Review."
+  },
+
+  {
+    id: "stanbic-ibtc-stockbrokers",
+    name: "Stanbic IBTC Stockbrokers",
+    shortName: "SI",
+    category: "equity-growth",
+    categoryName: "Equity & Growth",
+    status: "Under Review",
+    website: "https://www.stanbicibtcstockbrokers.com/",
+    description:
+      "Stanbic IBTC Stockbrokers provides securities and investment services for investors.",
+    objective:
+      "Provides access to Nigerian capital-market investment opportunities.",
+    risk: "Varies by investment",
+    liquidity: "Depends on the selected security",
+    fees: "Varies by transaction",
+    considerations:
+      "Review the selected security, charges and market conditions.",
+    reviewNote:
+      "GTF research status: Under Review."
   }
 
 ];window.GTF_INVESTMENTS = GTF_INVESTMENTS;
