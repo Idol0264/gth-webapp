@@ -878,521 +878,222 @@
 
 <script>
 
+<script>
 /* =========================================================
-   GTH — EXPANDABLE INFORMATION PANELS
-   =========================================================
-   
-   Covers ALL GTH floating information panels:
-
-   • About GTH
-   • Our Vision
-   • Our Platforms
-   • How GTH Grows
-   • Our Direction
-
-   Behaviour:
-
-   CLOSED
-   → Normal page scrolling.
-
-   OPEN
-   → Page automatically scrolls to position the panel.
-   → Main page scrolling becomes locked.
-   → Only the opened panel content can scroll.
-   → Closing the panel restores normal page scrolling.
-
-   The existing panel design/style is preserved.
+   GTH — INFORMATION PANELS
+   Fixed panel + internal scrolling
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const infoLayer =
-    document.getElementById("gthInfoLayer");
+  const infoLayer = document.getElementById("gthInfoLayer");
 
-  const triggers =
-    document.querySelectorAll(
-      ".gth-about-trigger[data-gth-panel]"
-    );
+  const triggers = document.querySelectorAll(
+    ".gth-about-trigger[data-gth-panel]"
+  );
 
-  const panels =
-    document.querySelectorAll(
-      ".gth-info-panel"
-    );
-
+  const panels = document.querySelectorAll(
+    ".gth-info-panel"
+  );
 
   if (!infoLayer || !triggers.length || !panels.length) {
     return;
   }
 
-
-  /* =======================================================
-     STATE
-  ======================================================= */
-
   let activePanel = null;
-
   let savedScrollY = 0;
 
-  let pageLocked = false;
+  /* -------------------------------------------------------
+     LOCK MAIN PAGE
+  ------------------------------------------------------- */
 
-
-  /* =======================================================
-     LOCK PAGE SCROLL
-  ======================================================= */
-
-  function lockPageScroll() {
-
-    if (pageLocked) {
-      return;
-    }
-
+  function lockPage() {
     savedScrollY =
       window.scrollY ||
       window.pageYOffset ||
       0;
 
-
-    /*
-      Lock the body in its current position.
-    */
-
     document.body.style.position = "fixed";
-
-    document.body.style.top =
-      `-${savedScrollY}px`;
-
+    document.body.style.top = `-${savedScrollY}px`;
     document.body.style.left = "0";
-
     document.body.style.right = "0";
-
     document.body.style.width = "100%";
+    document.body.style.overflow = "hidden";
 
-
-    /*
-      Prevent the document itself from scrolling.
-    */
-
-    document.documentElement.style.overflow =
-      "hidden";
-
-    document.body.style.overflow =
-      "hidden";
-
-
-    pageLocked = true;
-
+    document.documentElement.style.overflow = "hidden";
   }
 
 
-  /* =======================================================
-     RESTORE PAGE SCROLL
-  ======================================================= */
+  /* -------------------------------------------------------
+     UNLOCK MAIN PAGE
+  ------------------------------------------------------- */
 
-  function unlockPageScroll() {
-
-    if (!pageLocked) {
-      return;
-    }
-
-
-    /*
-      Remove the temporary body lock.
-    */
+  function unlockPage() {
 
     document.body.style.position = "";
-
     document.body.style.top = "";
-
     document.body.style.left = "";
-
     document.body.style.right = "";
-
     document.body.style.width = "";
-
     document.body.style.overflow = "";
 
+    document.documentElement.style.overflow = "";
 
-    document.documentElement.style.overflow =
-      "";
-
-
-    /*
-      Return the page to exactly where the
-      user was before the panel was opened.
-    */
-
-    window.scrollTo(
-      0,
-      savedScrollY
-    );
-
-
-    pageLocked = false;
-
+    window.scrollTo(0, savedScrollY);
   }
 
 
-  /* =======================================================
-     CLOSE ALL PANELS
-  ======================================================= */
+  /* -------------------------------------------------------
+     CLOSE
+  ------------------------------------------------------- */
 
-  function closeAllPanels() {
+  function closePanel() {
 
     panels.forEach(function (panel) {
-
       panel.hidden = true;
-
-      panel.classList.remove(
-        "is-open"
-      );
-
+      panel.classList.remove("is-open");
     });
 
-
     triggers.forEach(function (trigger) {
-
       trigger.setAttribute(
         "aria-expanded",
         "false"
       );
-
     });
 
-
-    infoLayer.classList.remove(
-      "is-open"
-    );
+    infoLayer.classList.remove("is-open");
 
     infoLayer.setAttribute(
       "aria-hidden",
       "true"
     );
 
-
     activePanel = null;
 
+    unlockPage();
   }
 
 
-  /* =======================================================
-     POSITION PANEL
-  ======================================================= */
+  /* -------------------------------------------------------
+     OPEN
+  ------------------------------------------------------- */
 
-  function positionPanel(panel) {
-
-    if (!panel) {
-      return;
-    }
-
+  function openPanel(panelId, trigger) {
 
     /*
-      Give the browser a moment to render the
-      panel before measuring its position.
+      Do not allow another panel to open while
+      one is already active.
     */
-
-    requestAnimationFrame(function () {
-
-      const header =
-        document.querySelector(
-          ".site-header"
-        );
-
-
-      const headerHeight =
-        header
-          ? header.getBoundingClientRect().height
-          : 0;
-
-
-      const viewportHeight =
-        window.innerHeight;
-
-
-      /*
-        Small breathing space above and below.
-      */
-
-      const topSpace =
-        Math.max(
-          12,
-          headerHeight + 12
-        );
-
-
-      const bottomSpace =
-        12;
-
-
-      /*
-        Make sure the panel is positioned
-        inside the visible screen.
-
-        This does NOT change its existing
-        visual design.
-      */
-
-      const availableHeight =
-        Math.max(
-          220,
-          viewportHeight -
-          topSpace -
-          bottomSpace
-        );
-
-
-      panel.style.maxHeight =
-        `${availableHeight}px`;
-
-
-      /*
-        Find the trigger that opened this panel.
-      */
-
-      const trigger =
-        document.querySelector(
-          `[data-gth-panel="${CSS.escape(panel.id)}"]`
-        );
-
-
-      if (!trigger) {
-        return;
-      }
-
-
-      /*
-        Temporarily allow the page to move so
-        we can position the relevant area.
-      */
-
-      const triggerRect =
-        trigger.getBoundingClientRect();
-
-
-      const desiredScroll =
-        window.scrollY +
-        triggerRect.top -
-        topSpace;
-
-
-      /*
-        Since the panel is floating, scroll the
-        underlying page to the section containing
-        the trigger.
-
-        The page will then be locked.
-      */
-
-      unlockPageScroll();
-
-
-      window.scrollTo({
-        top: Math.max(
-          0,
-          desiredScroll
-        ),
-        behavior: "auto"
-      });
-
-
-      /*
-        Wait for the smooth movement to finish,
-        then lock the page.
-      */
-
-      lockPageScroll();
-    });
-
-  }
-
-
-  /* =======================================================
-     OPEN PANEL
-  ======================================================= */
-
-  function openPanel(
-    panelId,
-    trigger
-  ) {
+    if (activePanel) {
+      return;
+    }
 
     const panel =
-      document.getElementById(
-        panelId
-      );
-
+      document.getElementById(panelId);
 
     if (!panel) {
       return;
     }
-
-
-    /*
-      If another panel is already open,
-      close it first.
-    */
-
-    if (activePanel) {
-  return;
-}
-
-
-    /*
-      Save the current page position BEFORE
-      opening the panel.
-    */
 
     savedScrollY =
       window.scrollY ||
       window.pageYOffset ||
       0;
 
+    activePanel = panel;
 
-    activePanel =
-      panel;
+    /* Hide every panel first */
+    panels.forEach(function (item) {
+      item.hidden = true;
+      item.classList.remove("is-open");
+    });
 
+    /* Show selected panel */
+    panel.hidden = false;
+    panel.classList.add("is-open");
 
-    /*
-      Show the information layer.
-    */
-
-    infoLayer.classList.add(
-      "is-open"
-    );
+    /* Open overlay */
+    infoLayer.classList.add("is-open");
 
     infoLayer.setAttribute(
       "aria-hidden",
       "false"
     );
 
-
-    /*
-      Show only the selected panel.
-    */
-
-    panels.forEach(function (item) {
-
-      item.hidden =
-        item !== panel;
-
-      item.classList.toggle(
-        "is-open",
-        item === panel
-      );
-
-    });
-
-
-    /*
-      Update trigger accessibility state.
-    */
-
+    /* Update trigger */
     triggers.forEach(function (item) {
-
       item.setAttribute(
         "aria-expanded",
         String(item === trigger)
       );
-
     });
 
+    /*
+      Lock the actual page immediately.
+      The panel itself remains scrollable.
+    */
+    lockPage();
 
     /*
-      Scroll to the relevant section and
-      then lock the main page.
+      Put focus on close button without moving
+      the locked document.
     */
-
-    positionPanel(panel);
-
-
-    /*
-      Put keyboard focus on the close button.
-    */
-
     const closeButton =
-      panel.querySelector(
-        ".gth-panel-close"
-      );
-
+      panel.querySelector(".gth-panel-close");
 
     if (closeButton) {
-
       setTimeout(function () {
-
         closeButton.focus({
           preventScroll: true
         });
-
-      }, 550);
-
+      }, 50);
     }
-
   }
 
 
-  /* =======================================================
-     CLOSE PANEL
-  ======================================================= */
-
-  function closePanel() {
-
-    closeAllPanels();
-
-    unlockPageScroll();
-
-  }
-
-
-  /* =======================================================
+  /* -------------------------------------------------------
      TRIGGER BUTTONS
-  ======================================================= */
+  ------------------------------------------------------- */
 
   triggers.forEach(function (trigger) {
 
     trigger.addEventListener(
       "click",
-      function () {
+      function (event) {
+
+        event.preventDefault();
+        event.stopPropagation();
 
         const panelId =
           trigger.dataset.gthPanel;
 
-
         const panel =
-          document.getElementById(
-            panelId
-          );
-
+          document.getElementById(panelId);
 
         /*
-          If this exact panel is already open,
-          clicking its trigger closes it.
+          Same button closes its open panel.
         */
-
         if (
           activePanel === panel &&
           panel &&
           !panel.hidden
         ) {
-
           closePanel();
-
           return;
-
         }
-
 
         openPanel(
           panelId,
           trigger
         );
-
       }
     );
-
   });
 
 
-  /* =======================================================
+  /* -------------------------------------------------------
      CLOSE BUTTONS
-  ======================================================= */
+  ------------------------------------------------------- */
 
   panels.forEach(function (panel) {
 
@@ -1401,31 +1102,41 @@ document.addEventListener("DOMContentLoaded", function () {
         ".gth-panel-close"
       );
 
-
     if (!closeButton) {
       return;
     }
-
 
     closeButton.addEventListener(
       "click",
       function (event) {
 
         event.preventDefault();
-
         event.stopPropagation();
 
         closePanel();
-
       }
     );
-
   });
 
 
-  /* =======================================================
-     ESC KEY
-  ======================================================= */
+  /* -------------------------------------------------------
+     CLICK OVERLAY BACKGROUND
+  ------------------------------------------------------- */
+
+  infoLayer.addEventListener(
+    "click",
+    function (event) {
+
+      if (event.target === infoLayer) {
+        closePanel();
+      }
+    }
+  );
+
+
+  /* -------------------------------------------------------
+     ESC
+  ------------------------------------------------------- */
 
   document.addEventListener(
     "keydown",
@@ -1435,134 +1146,17 @@ document.addEventListener("DOMContentLoaded", function () {
         event.key === "Escape" &&
         activePanel
       ) {
-
         closePanel();
-
       }
-
     }
   );
 
 
-  /* =======================================================
-     CLICK OUTSIDE
-     
-     Only the floating layer background closes
-     the panel.
+  /* -------------------------------------------------------
+     INITIAL STATE
+  ------------------------------------------------------- */
 
-     Clicking inside the panel does NOT close it.
-  ======================================================= */
-
-  infoLayer.addEventListener(
-    "click",
-    function (event) {
-
-      if (
-        event.target === infoLayer
-      ) {
-
-        closePanel();
-
-      }
-
-    }
-  );
-
-
-  /* =======================================================
-     INTERNAL PANEL SCROLL
-     
-     The page is locked, but the panel content
-     remains independently scrollable.
-  ======================================================= */
-
-  panels.forEach(function (panel) {
-
-    const content =
-      panel.querySelector(
-        ".gth-panel-content"
-      );
-
-
-    if (!content) {
-      return;
-    }
-
-
-    /*
-      Prevent wheel/touch scrolling from leaking
-      into the locked document.
-    */
-
-    content.addEventListener(
-      "wheel",
-      function (event) {
-
-        event.stopPropagation();
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-    content.addEventListener(
-      "touchmove",
-      function (event) {
-
-        event.stopPropagation();
-
-      },
-      {
-        passive: true
-      }
-    );
-
-  });
-
-
-  /* =======================================================
-     SAFETY CLEANUP
-     
-     If the page is restored/reloaded while a
-     panel is open, never leave the body locked.
-  ======================================================= */
-
-  window.addEventListener(
-    "beforeunload",
-    function () {
-
-      document.documentElement.style.overflow =
-        "";
-
-      document.body.style.position =
-        "";
-
-      document.body.style.top =
-        "";
-
-      document.body.style.left =
-        "";
-
-      document.body.style.right =
-        "";
-
-      document.body.style.width =
-        "";
-
-      document.body.style.overflow =
-        "";
-
-    }
-  );
-
-
-  /* =======================================================
-     START CLEAN
-  ======================================================= */
-
-  closeAllPanels();
+  closePanel();
 
 });
 
