@@ -8331,7 +8331,166 @@ tr:last-child td {
 
 }
 
+/* =========================================================
+   GTH — PREMIUM PLATFORM GRAPHIC CARDS
+   Solid banner style / theme-aware SVG artwork
+========================================================= */
 
+.gth-premium-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #090909;
+  border: 1px solid color-mix(in srgb, var(--accent) 65%, #000);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, .30),
+    inset 0 1px 0 rgba(255,255,255,.08);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.gth-premium-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, .38),
+    0 0 0 1px var(--accent);
+}
+
+.gth-premium-card:active {
+  transform: translateY(-1px) scale(.985);
+}
+
+.gth-premium-art {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 8.6;
+  overflow: hidden;
+  background: #090909;
+}
+
+.gth-premium-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.gth-premium-card-info {
+  padding: 18px 20px 21px;
+  background: var(--surface);
+}
+
+.gth-premium-card-info .platform-code {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--accent);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.gth-premium-card-info h3 {
+  margin: 0 0 7px;
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.gth-premium-card-info p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .91rem;
+  line-height: 1.55;
+}
+
+/* Premium graphic details */
+
+.gth-premium-art .frame {
+  fill: #080808;
+  stroke: var(--accent);
+  stroke-width: 5;
+}
+
+.gth-premium-art .frame-inner {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  opacity: .55;
+}
+
+.gth-premium-art .metal {
+  fill: var(--accent);
+}
+
+.gth-premium-art .metal-dark {
+  fill: color-mix(in srgb, var(--accent) 55%, #111);
+}
+
+.gth-premium-art .shine {
+  fill: #fff;
+  opacity: .8;
+}
+
+.gth-premium-art .soft-shine {
+  fill: #fff;
+  opacity: .08;
+}
+
+.gth-premium-art .graphic-text {
+  fill: #fff;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+  font-weight: 900;
+}
+
+.gth-premium-art .accent-text {
+  fill: var(--accent);
+}
+
+.gth-premium-art .action-pill {
+  fill: var(--accent);
+  stroke: #080808;
+  stroke-width: 5;
+}
+
+.gth-premium-art .action-text {
+  fill: #080808;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+  font-weight: 950;
+}
+
+@media (max-width: 600px) {
+
+  .gth-premium-art {
+    aspect-ratio: 16 / 9;
+  }
+
+  .gth-premium-card-info {
+    padding: 16px 17px 18px;
+  }
+
+  .gth-premium-card-info h3 {
+    font-size: 1.05rem;
+  }
+
+  .gth-premium-card-info p {
+    font-size: .86rem;
+  }
+
+  .gth-premium-card:hover {
+    transform: none;
+  }
+
+}
 
 
 
