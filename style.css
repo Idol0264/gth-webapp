@@ -6799,7 +6799,7 @@ tr:last-child td {
   opacity: 1;
   visibility: visible;
 
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 
