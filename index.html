@@ -880,7 +880,7 @@
 <script>
 /* =========================================================
    GTH — INFORMATION PANELS
-   Fixed panel + internal scrolling
+   FIXED OVERLAY + INTERNAL PANEL SCROLL
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -902,15 +902,45 @@ document.addEventListener("DOMContentLoaded", function () {
   let activePanel = null;
   let savedScrollY = 0;
 
-  /* -------------------------------------------------------
+  /* =======================================================
+     CLOSE ALL
+  ======================================================= */
+
+  function closeAll() {
+
+    panels.forEach(function (panel) {
+      panel.hidden = true;
+      panel.classList.remove("is-open");
+      panel.style.display = "none";
+    });
+
+    triggers.forEach(function (trigger) {
+      trigger.setAttribute("aria-expanded", "false");
+    });
+
+    infoLayer.classList.remove("is-open");
+    infoLayer.setAttribute("aria-hidden", "true");
+
+    infoLayer.style.display = "none";
+    infoLayer.style.position = "";
+    infoLayer.style.zIndex = "";
+
+    activePanel = null;
+  }
+
+
+  /* =======================================================
      LOCK MAIN PAGE
-  ------------------------------------------------------- */
+  ======================================================= */
 
   function lockPage() {
+
     savedScrollY =
       window.scrollY ||
       window.pageYOffset ||
       0;
+
+    document.body.dataset.gthPanelLocked = "true";
 
     document.body.style.position = "fixed";
     document.body.style.top = `-${savedScrollY}px`;
@@ -923,11 +953,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* -------------------------------------------------------
+  /* =======================================================
      UNLOCK MAIN PAGE
-  ------------------------------------------------------- */
+  ======================================================= */
 
   function unlockPage() {
+
+    if (
+      document.body.dataset.gthPanelLocked !== "true"
+    ) {
+      return;
+    }
 
     document.body.style.position = "";
     document.body.style.top = "";
@@ -938,51 +974,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.documentElement.style.overflow = "";
 
+    delete document.body.dataset.gthPanelLocked;
+
     window.scrollTo(0, savedScrollY);
   }
 
 
-  /* -------------------------------------------------------
-     CLOSE
-  ------------------------------------------------------- */
-
-  function closePanel() {
-
-    panels.forEach(function (panel) {
-      panel.hidden = true;
-      panel.classList.remove("is-visible");
-    });
-
-    triggers.forEach(function (trigger) {
-      trigger.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-    });
-
-    infoLayer.classList.remove("is-open");
-
-    infoLayer.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-    activePanel = null;
-
-    unlockPage();
-  }
-
-
-  /* -------------------------------------------------------
-     OPEN
-  ------------------------------------------------------- */
+  /* =======================================================
+     OPEN PANEL
+  ======================================================= */
 
   function openPanel(panelId, trigger) {
 
-    /*
-      Do not allow another panel to open while
-      one is already active.
-    */
     if (activePanel) {
       return;
     }
@@ -1001,17 +1004,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     activePanel = panel;
 
-    /* Hide every panel first */
+    /* Hide all panels first */
     panels.forEach(function (item) {
+
       item.hidden = true;
       item.classList.remove("is-open");
+
+      item.style.display = "none";
     });
 
-    /* Show selected panel */
-    panel.hidden = false;
-    panel.classList.add("is-visible");
-    
-    /* Open overlay */
+
+    /* =====================================================
+       FORCE OVERLAY ABOVE EVERYTHING
+    ===================================================== */
+
+    infoLayer.hidden = false;
+
     infoLayer.classList.add("is-open");
 
     infoLayer.setAttribute(
@@ -1019,40 +1027,143 @@ document.addEventListener("DOMContentLoaded", function () {
       "false"
     );
 
-    /* Update trigger */
+    infoLayer.style.display = "flex";
+    infoLayer.style.position = "fixed";
+    infoLayer.style.inset = "0";
+    infoLayer.style.zIndex = "2000";
+    infoLayer.style.overflow = "hidden";
+
+
+    /* =====================================================
+       SHOW SELECTED PANEL
+    ===================================================== */
+
+    panel.hidden = false;
+
+    panel.classList.add("is-open");
+
+    panel.style.display = "block";
+    panel.style.position = "relative";
+    panel.style.zIndex = "2001";
+    panel.style.overflow = "hidden";
+
+
+    /* =====================================================
+       PANEL HEIGHT
+    ===================================================== */
+
+    const header =
+      document.querySelector(".site-header");
+
+    const headerHeight =
+      header
+        ? header.getBoundingClientRect().height
+        : 0;
+
+    const topSpace =
+      Math.max(12, headerHeight + 12);
+
+    const bottomSpace = 12;
+
+    const availableHeight =
+      Math.max(
+        220,
+        window.innerHeight -
+        topSpace -
+        bottomSpace
+      );
+
+    panel.style.maxHeight =
+      `${availableHeight}px`;
+
+
+    /* =====================================================
+       INTERNAL CONTENT SCROLL
+    ===================================================== */
+
+    const content =
+      panel.querySelector(
+        ".gth-panel-content"
+      );
+
+    if (content) {
+
+      content.style.overflowY = "auto";
+      content.style.overflowX = "hidden";
+      content.style.maxHeight =
+        `${Math.max(
+          150,
+          availableHeight - 100
+        )}px`;
+
+      content.style.webkitOverflowScrolling =
+        "touch";
+
+      content.style.touchAction =
+        "pan-y";
+    }
+
+
+    /* =====================================================
+       ACCESSIBILITY
+    ===================================================== */
+
     triggers.forEach(function (item) {
+
       item.setAttribute(
         "aria-expanded",
         String(item === trigger)
       );
+
     });
 
-    /*
-      Lock the actual page immediately.
-      The panel itself remains scrollable.
-    */
+
+    /* =====================================================
+       LOCK PAGE AFTER OPENING
+    ===================================================== */
+
     lockPage();
 
-    /*
-      Put focus on close button without moving
-      the locked document.
-    */
+
+    /* =====================================================
+       FOCUS CLOSE BUTTON
+    ===================================================== */
+
     const closeButton =
-      panel.querySelector(".gth-panel-close");
+      panel.querySelector(
+        ".gth-panel-close"
+      );
 
     if (closeButton) {
+
       setTimeout(function () {
+
         closeButton.focus({
           preventScroll: true
         });
+
       }, 50);
+
     }
+
   }
 
 
-  /* -------------------------------------------------------
+  /* =======================================================
+     CLOSE PANEL
+  ======================================================= */
+
+  function closePanel() {
+
+    closeAll();
+
+    unlockPage();
+  }
+
+
+  /* =======================================================
      TRIGGER BUTTONS
-  ------------------------------------------------------- */
+  ======================================================= */
 
   triggers.forEach(function (trigger) {
 
@@ -1069,14 +1180,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const panel =
           document.getElementById(panelId);
 
-        /*
-          Same button closes its open panel.
-        */
         if (
           activePanel === panel &&
           panel &&
           !panel.hidden
         ) {
+
           closePanel();
           return;
         }
@@ -1085,14 +1194,16 @@ document.addEventListener("DOMContentLoaded", function () {
           panelId,
           trigger
         );
+
       }
     );
+
   });
 
 
-  /* -------------------------------------------------------
+  /* =======================================================
      CLOSE BUTTONS
-  ------------------------------------------------------- */
+  ======================================================= */
 
   panels.forEach(function (panel) {
 
@@ -1113,14 +1224,16 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
 
         closePanel();
+
       }
     );
+
   });
 
 
-  /* -------------------------------------------------------
-     CLICK OVERLAY BACKGROUND
-  ------------------------------------------------------- */
+  /* =======================================================
+     CLICK OUTSIDE PANEL
+  ======================================================= */
 
   infoLayer.addEventListener(
     "click",
@@ -1129,13 +1242,14 @@ document.addEventListener("DOMContentLoaded", function () {
       if (event.target === infoLayer) {
         closePanel();
       }
+
     }
   );
 
 
-  /* -------------------------------------------------------
-     ESC
-  ------------------------------------------------------- */
+  /* =======================================================
+     ESC KEY
+  ======================================================= */
 
   document.addEventListener(
     "keydown",
@@ -1145,17 +1259,107 @@ document.addEventListener("DOMContentLoaded", function () {
         event.key === "Escape" &&
         activePanel
       ) {
+
         closePanel();
+
       }
+
     }
   );
 
 
-  /* -------------------------------------------------------
-     INITIAL STATE
-  ------------------------------------------------------- */
+  /* =======================================================
+     PREVENT SCROLL LEAKING
+  ======================================================= */
 
-  closePanel();
+  panels.forEach(function (panel) {
+
+    const content =
+      panel.querySelector(
+        ".gth-panel-content"
+      );
+
+    if (!content) {
+      return;
+    }
+
+    content.addEventListener(
+      "wheel",
+      function (event) {
+        event.stopPropagation();
+      },
+      { passive: true }
+    );
+
+    content.addEventListener(
+      "touchmove",
+      function (event) {
+        event.stopPropagation();
+      },
+      { passive: true }
+    );
+
+  });
+
+
+  /* =======================================================
+     WINDOW RESIZE
+  ======================================================= */
+
+  window.addEventListener(
+    "resize",
+    function () {
+
+      if (!activePanel) {
+        return;
+      }
+
+      const header =
+        document.querySelector(".site-header");
+
+      const headerHeight =
+        header
+          ? header.getBoundingClientRect().height
+          : 0;
+
+      const topSpace =
+        Math.max(12, headerHeight + 12);
+
+      const availableHeight =
+        Math.max(
+          220,
+          window.innerHeight -
+          topSpace -
+          12
+        );
+
+      activePanel.style.maxHeight =
+        `${availableHeight}px`;
+
+      const content =
+        activePanel.querySelector(
+          ".gth-panel-content"
+        );
+
+      if (content) {
+
+        content.style.maxHeight =
+          `${Math.max(
+            150,
+            availableHeight - 100
+          )}px`;
+
+      }
+
+    }
+  );
+
+
+  /* =======================================================
+     START CLEAN
+  ======================================================= */
+
+  closeAll();
 
 });
 
