@@ -2,7 +2,7 @@
   "name": "GTH | God’stime Holdings",
   "short_name": "GTH",
   "description": "God’stime Holdings digital ecosystem",
-  "start_url": "./index.html",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
