@@ -26,6 +26,23 @@
     }, 1400);
   });
 </script>
+  <script>
+  if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", function () {
+
+      navigator.serviceWorker
+        .register("./sw.js", {
+          scope: "./"
+        })
+        .catch(function () {
+          // GTH continues normally if service worker registration fails.
+        });
+
+    });
+
+  }
+</script>
 </head>
 
 <body>
