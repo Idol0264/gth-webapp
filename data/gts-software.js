@@ -270,14 +270,20 @@ page: "gts-software.html"
 
     image: "images/slack.jpg",
 
-    type: "web",
+    type: "web", "android", "ios", "mac", "linux"
 
     platforms: {
-      web: "https://app.slack.com/"
-    },
+  web: "https://slack.com/",
+  android: "https://slack.com/downloads/android",
+  ios: "https://slack.com/downloads/ios",
+  windows: "https://slack.com/downloads/windows",
+  macos: "https://slack.com/downloads/mac",
+  linux: "https://slack.com/downloads"
+},
 
     page: "gts-software.html"
   },
+  
 
 
     {
