@@ -143,7 +143,7 @@ type: [
   "web",
   "mobile",
   "desktop"
-]
+],
     
 
 platforms: {
@@ -240,7 +240,7 @@ page: "gts-software.html"
   "web",
   "mobile",
   "desktop"
-]
+],
 
     platforms: {
   web: "https://www.dropbox.com/",
@@ -293,7 +293,7 @@ page: "gts-software.html"
   "web",
   "mobile",
   "desktop"
-]
+],
 
     platforms: {
   web: "https://slack.com/",
