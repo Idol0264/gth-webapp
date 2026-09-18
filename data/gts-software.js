@@ -270,7 +270,11 @@ page: "gts-software.html"
 
     image: "images/slack.jpg",
 
-    type: "web", "android", "ios", "mac", "linux"
+    type: [
+  "web",
+  "mobile",
+  "desktop"
+]
 
     platforms: {
   web: "https://slack.com/",
