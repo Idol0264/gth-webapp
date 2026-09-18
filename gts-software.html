@@ -355,102 +355,71 @@ else {
 
 
   /* =======================================================
-     PLATFORM BUTTONS
-  ====================================================== */
+   PLATFORM BUTTONS
+======================================================= */
 
-  const platforms =
-    software.platforms || {};
+const platforms =
+  software.platforms || {};
 
+const platformLabels = {
 
-  let platformButtons = "";
+  web: "Open Web App →",
 
+  android: "Get Android App →",
 
-  const web =
-    validExternalUrl(platforms.web);
+  ios: "Get iOS App →",
 
+  windows: "Download for Windows →",
 
-  const android =
-    validExternalUrl(platforms.android);
+  mac: "Get Mac App →",
 
+  linux: "Get Linux App →"
 
-  const ios =
-    validExternalUrl(platforms.ios);
+};
 
+const platformOrder = [
 
-  const windows =
-    validExternalUrl(platforms.windows);
+  "web",
 
+  "android",
 
-  if (web) {
+  "ios",
 
-    platformButtons += `
+  "windows",
 
-      <a
-        href="${escapeHtml(web)}"
-        class="gts-detail-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Open Web App →
-      </a>
+  "mac",
 
-    `;
+  "linux"
 
+];
+
+let platformButtons = "";
+
+platformOrder.forEach(platform => {
+
+  const url =
+    validExternalUrl(
+      platforms[platform]
+    );
+
+  if (!url) {
+    return;
   }
 
+  platformButtons += `
 
-  if (android) {
+    <a
+      href="${escapeHtml(url)}"
+      class="gts-detail-button"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      ${platformLabels[platform]}
+    </a>
 
-    platformButtons += `
+  `;
 
-      <a
-        href="${escapeHtml(android)}"
-        class="gts-detail-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Get Android App →
-      </a>
-
-    `;
-
-  }
-
-
-  if (ios) {
-
-    platformButtons += `
-
-      <a
-        href="${escapeHtml(ios)}"
-        class="gts-detail-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Get iOS App →
-      </a>
-
-    `;
-
-  }
-
-
-  if (windows) {
-
-    platformButtons += `
-
-      <a
-        href="${escapeHtml(windows)}"
-        class="gts-detail-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Download for Windows →
-      </a>
-
-    `;
-
-  }
+});
 
 
   /* =======================================================
