@@ -54,14 +54,91 @@
     }
 
 
-    .offline {
+    .offline-symbol {
+  position: relative;
 
-      width: min(420px, 100%);
+  width: 58px;
+  height: 52px;
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+  margin-bottom: 12px;
+}
+
+
+/* Cloud */
+
+.offline-cloud {
+  position: absolute;
+
+  left: 9px;
+  top: 15px;
+
+  width: 40px;
+  height: 23px;
+
+  border: 3px solid #111;
+  border-radius: 18px;
+
+  background: #fff;
+}
+
+
+/* Cloud bumps */
+
+.offline-cloud::before {
+  content: "";
+
+  position: absolute;
+
+  left: 7px;
+  top: -14px;
+
+  width: 20px;
+  height: 20px;
+
+  border: 3px solid #111;
+  border-radius: 50%;
+
+  background: #fff;
+}
+
+
+.offline-cloud::after {
+  content: "";
+
+  position: absolute;
+
+  right: 3px;
+  top: -9px;
+
+  width: 17px;
+  height: 17px;
+
+  border: 3px solid #111;
+  border-radius: 50%;
+
+  background: #fff;
+}
+
+
+/* Strike */
+
+.offline-cloud-slash {
+  position: absolute;
+
+  left: 5px;
+  top: 7px;
+
+  width: 52px;
+  height: 3px;
+
+  background: #111;
+
+  transform: rotate(-48deg);
+
+  transform-origin: center;
+
+  z-index: 10;
+}
 
 
     .offline-logo {
