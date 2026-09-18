@@ -16,15 +16,43 @@
 
   <!-- GTH SPLASH CONTROL -->
 <script>
-  window.addEventListener("load", function () {
-    setTimeout(function () {
-      const splash = document.getElementById("gthSplash");
+(function () {
 
-      if (splash) {
-        splash.classList.add("gth-splash-hidden");
-      }
-    }, 1400);
-  });
+  function hideGTHSplash() {
+
+    const splash =
+      document.getElementById("gthSplash");
+
+    if (!splash) return;
+
+    splash.classList.add("gth-splash-hidden");
+
+    setTimeout(function () {
+      splash.style.display = "none";
+    }, 600);
+
+  }
+
+  if (document.readyState === "complete") {
+
+    setTimeout(hideGTHSplash, 1400);
+
+  } else {
+
+    window.addEventListener(
+      "load",
+      function () {
+        setTimeout(hideGTHSplash, 1400);
+      },
+      { once: true }
+    );
+
+  }
+
+  /* Safety fallback */
+  setTimeout(hideGTHSplash, 4000);
+
+})();
 </script>
 <script>
   if ("serviceWorker" in navigator) {
