@@ -606,88 +606,50 @@ function buildCategoryFilters() {
 
 function createPlatformButtons(software) {
 
-  const platforms =
-    software.platforms || {};
+  const platforms = software.platforms || {};
+
+  const platformLabels = {
+    web: "Open Web App →",
+    android: "Get Android App →",
+    ios: "Get iOS App →",
+    windows: "Download for Windows →",
+    mac: "Get Mac App →",
+    linux: "Get Linux App →"
+  };
+
+  const platformOrder = [
+    "web",
+    "android",
+    "ios",
+    "windows",
+    "mac",
+    "linux"
+  ];
 
   let html = "";
 
+  platformOrder.forEach(platform => {
 
-  const web =
-    validExternalUrl(platforms.web);
+    const url = validExternalUrl(
+      platforms[platform]
+    );
 
-  const android =
-    validExternalUrl(platforms.android);
-
-  const ios =
-    validExternalUrl(platforms.ios);
-
-  const windows =
-    validExternalUrl(platforms.windows);
-
-
-  if (web) {
+    if (!url) {
+      return;
+    }
 
     html += `
       <a
-        href="${escapeHtml(web)}"
+        href="${escapeHtml(url)}"
         class="gts-platform-button"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Open Web App →
+        ${platformLabels[platform]}
       </a>
     `;
 
-  }
-
-
-  if (android) {
-
-    html += `
-      <a
-        href="${escapeHtml(android)}"
-        class="gts-platform-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Get Android App →
-      </a>
-    `;
-
-  }
-
-
-  if (ios) {
-
-    html += `
-      <a
-        href="${escapeHtml(ios)}"
-        class="gts-platform-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Get iOS App →
-      </a>
-    `;
-
-  }
-
-
-  if (windows) {
-
-    html += `
-      <a
-        href="${escapeHtml(windows)}"
-        class="gts-platform-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Download for Windows →
-      </a>
-    `;
-
-  }
-
+  });
 
   if (!html) {
 
@@ -699,11 +661,8 @@ function createPlatformButtons(software) {
 
   }
 
-
   return html;
-
 }
-
 
 /* =========================================================
    SOFTWARE CARD
