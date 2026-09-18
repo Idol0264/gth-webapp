@@ -140,13 +140,11 @@ description:
 image: "images/zoom.jpg",  
 
 type: [
-      "web",
-      "android",
-      "ios",
-      "windows",
-      "mac",
-      "linux"
-    ]
+  "web",
+  "mobile",
+  "desktop"
+]
+    
 
 platforms: {
   web: "https://zoom.us/",
@@ -239,13 +237,10 @@ page: "gts-software.html"
     image: "images/dropbox.jpg",
 
     type: [
-      "web",
-      "android",
-      "ios",
-      "windows",
-      "mac",
-      "linux"
-    ]
+  "web",
+  "mobile",
+  "desktop"
+]
 
     platforms: {
   web: "https://www.dropbox.com/",
@@ -295,13 +290,10 @@ page: "gts-software.html"
     image: "images/slack.jpg",
 
     type: [
-      "web",
-      "android",
-      "ios",
-      "windows",
-      "mac",
-      "linux"
-    ]
+  "web",
+  "mobile",
+  "desktop"
+]
 
     platforms: {
   web: "https://slack.com/",
