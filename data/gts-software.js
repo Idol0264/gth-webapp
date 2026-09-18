@@ -139,11 +139,23 @@ description:
 
 image: "images/zoom.jpg",  
 
-type: "web",  
+type: [
+      "web",
+      "android",
+      "ios",
+      "windows",
+      "mac",
+      "linux"
+    ]
 
-platforms: {  
-  web: "https://zoom.us/"  
-},  
+platforms: {
+  web: "https://zoom.us/",
+  android: "https://zoom.us/download",
+  ios: "https://zoom.us/download",
+  windows: "https://zoom.us/download",
+  macos: "https://zoom.us/download",
+  linux: "https://zoom.us/download"
+},
 
 page: "gts-software.html"
 
@@ -226,11 +238,23 @@ page: "gts-software.html"
 
     image: "images/dropbox.jpg",
 
-    type: "web",
+    type: [
+      "web",
+      "android",
+      "ios",
+      "windows",
+      "mac",
+      "linux"
+    ]
 
     platforms: {
-      web: "https://www.dropbox.com/"
-    },
+  web: "https://www.dropbox.com/",
+  android: "https://www.dropbox.com/mobile",
+  ios: "https://www.dropbox.com/mobile",
+  windows: "https://www.dropbox.com/desktop",
+  macos: "https://www.dropbox.com/desktop",
+  linux: "https://www.dropbox.com/install-linux"
+},
 
     page: "gts-software.html"
   },
@@ -271,10 +295,13 @@ page: "gts-software.html"
     image: "images/slack.jpg",
 
     type: [
-  "web",
-  "mobile",
-  "desktop"
-]
+      "web",
+      "android",
+      "ios",
+      "windows",
+      "mac",
+      "linux"
+    ]
 
     platforms: {
   web: "https://slack.com/",
