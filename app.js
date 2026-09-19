@@ -524,6 +524,110 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
+   function getProtectedReturnPath() {
+
+  const RETURN_KEY =
+    "gth_return_to_v1";
+
+  let returnPath = "";
+
+
+  try {
+
+    returnPath =
+      sessionStorage.getItem(
+        RETURN_KEY
+      ) || "";
+
+  } catch (error) {
+
+    returnPath = "";
+
+  }
+
+
+  if (!returnPath) {
+    return "";
+  }
+
+
+  /*
+    Remove it after reading it.
+  */
+
+  try {
+
+    sessionStorage.removeItem(
+      RETURN_KEY
+    );
+
+  } catch (error) {
+
+    // Ignore cleanup errors.
+
+  }
+
+
+  /*
+    Only allow navigation to pages
+    inside this GTH website.
+  */
+
+  const target =
+    new URL(
+      returnPath,
+      window.location.origin
+    );
+
+
+  const siteRoot =
+    new URL(
+      "index.html",
+      window.location.href
+    ).pathname
+      .replace(/index\.html$/, "");
+
+
+  if (
+    target.origin !==
+      window.location.origin ||
+
+    !target.pathname.startsWith(
+      siteRoot
+    )
+  ) {
+
+    return "";
+
+  }
+
+
+  /*
+    Don't return to index.html.
+  */
+
+  if (
+    target.pathname ===
+    new URL(
+      "index.html",
+      window.location.href
+    ).pathname
+  ) {
+
+    return "";
+
+  }
+
+
+  return (
+    target.pathname +
+    target.search +
+    target.hash
+  );
+
+}
+
+
 
   /* -------------------------------------------------------
      TALLY RETURN STATUS
