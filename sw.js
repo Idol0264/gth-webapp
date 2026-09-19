@@ -1,4 +1,4 @@
-const CACHE_NAME = "gth-app-v2";
+const CACHE_NAME = "gth-app-v3";
 
 
 const APP_SHELL = [
@@ -101,11 +101,21 @@ self.addEventListener(
 
 
     /*
-      Navigation request:
-      try internet first.
-      If it fails, use cached page.
-      If no cached page exists,
-      show GTH offline screen.
+      GTH NAVIGATION RULE
+
+      When the user opens or navigates
+      to another page:
+
+      ONLINE:
+      → Load the requested page normally.
+
+      OFFLINE:
+      → NEVER load another cached GTH page.
+      → Show offline.html instead.
+
+      IMPORTANT:
+      We do not redirect the page that
+      the user is already viewing.
     */
 
     if (
@@ -115,6 +125,7 @@ self.addEventListener(
       event.respondWith(
 
         fetch(request)
+
           .then(response => {
 
             if (
@@ -145,18 +156,9 @@ self.addEventListener(
 
           .catch(() => {
 
-            return caches
-              .match(request)
-              .then(cached => {
-
-                return (
-                  cached ||
-                  caches.match(
-                    "./offline.html"
-                  )
-                );
-
-              });
+            return caches.match(
+              "./offline.html"
+            );
 
           })
 
@@ -168,9 +170,12 @@ self.addEventListener(
 
 
     /*
-      Normal files:
-      use cache when available,
-      otherwise try the network.
+      NORMAL FILES
+
+      Keep using cached files when
+      available so the page the user
+      is already viewing can continue
+      working while offline.
     */
 
     event.respondWith(
