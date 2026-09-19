@@ -711,6 +711,49 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
 
+  /*
+    Remove the gth_return parameter
+    from the address bar.
+  */
+
+  window.history.replaceState(
+    {},
+    document.title,
+    window.location.pathname
+  );
+
+
+  /*
+    If the visitor originally tried to
+    open another GTH page, send them there.
+  */
+
+  const protectedReturnPath =
+    getProtectedReturnPath();
+
+
+  if (protectedReturnPath) {
+
+    window.location.replace(
+      protectedReturnPath
+    );
+
+    return true;
+
+  }
+
+
+  /*
+    Normal entrance to GTH.
+  */
+
+  showHome();
+
+  return true;
+
+}
+
+
       /*
         Remove the query from the address bar.
       */
