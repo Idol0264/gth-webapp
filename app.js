@@ -646,126 +646,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function processTallyReturn() {
 
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const returnType =
+    params.get("gth_return");
 
 
-    const returnType =
-      params.get("gth_return");
+  /*
+    NEW USER COMPLETED REGISTRATION
+  */
+
+  if (returnType === "new") {
+
+    localStorage.setItem(
+      STORAGE.verified,
+      "true"
+    );
 
 
     /*
-      NEW USER COMPLETED REGISTRATION
+      Remove the gth_return parameter
+      from the address bar.
     */
 
-    if (returnType === "new") {
-
-  localStorage.setItem(
-    STORAGE.verified,
-    "true"
-  );
-
-
-  /*
-    Remove the gth_return parameter
-    from the address bar.
-  */
-
-  window.history.replaceState(
-    {},
-    document.title,
-    window.location.pathname
-  );
-
-
-  /*
-    If the visitor originally tried to
-    open another GTH page, send them there.
-  */
-
-  const protectedReturnPath =
-    getProtectedReturnPath();
-
-
-  if (protectedReturnPath) {
-
-    window.location.replace(
-      protectedReturnPath
+    window.history.replaceState(
+      {},
+      document.title,
+      window.location.pathname
     );
 
-    return true;
 
-  }
+    /*
+      If the visitor originally tried to
+      open another GTH page, send them there.
+    */
 
-
-  /*
-    Normal entrance to GTH.
-  */
-
-  showHome();
-
-  return true;
-
-}
+    const protectedReturnPath =
+      getProtectedReturnPath();
 
 
-  /*
-    Remove the gth_return parameter
-    from the address bar.
-  */
+    if (protectedReturnPath) {
 
-  window.history.replaceState(
-    {},
-    document.title,
-    window.location.pathname
-  );
-
-
-  /*
-    If the visitor originally tried to
-    open another GTH page, send them there.
-  */
-
-  const protectedReturnPath =
-    getProtectedReturnPath();
-
-
-  if (protectedReturnPath) {
-
-    window.location.replace(
-      protectedReturnPath
-    );
-
-    return true;
-
-  }
-
-
-  /*
-    Normal entrance to GTH.
-  */
-
-  showHome();
-
-  return true;
-
-}
-
-
-      /*
-        Remove the query from the address bar.
-      */
-
-      window.history.replaceState(
-        {},
-        document.title,
-        window.location.pathname
+      window.location.replace(
+        protectedReturnPath
       );
-
-
-      showHome();
 
       return true;
 
@@ -773,53 +700,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /*
-      EXISTING USER COMPLETED FORM
+      Normal entrance to GTH.
     */
 
-    if (returnType === "existing") {
+    showHome();
 
-      const now =
-        Date.now();
-
-
-      localStorage.setItem(
-        STORAGE.existingStarted,
-        "true"
-      );
-
-
-      localStorage.setItem(
-        STORAGE.existingStartTime,
-        String(now)
-      );
-
-
-      localStorage.removeItem(
-        STORAGE.verified
-      );
-
-
-      /*
-        Remove query from address bar.
-      */
-
-      window.history.replaceState(
-        {},
-        document.title,
-        window.location.pathname
-      );
-
-
-      showHolding();
-
-      return true;
-
-    }
-
-
-    return false;
+    return true;
 
   }
+
+
+  /*
+    EXISTING USER COMPLETED FORM
+  */
+
+  if (returnType === "existing") {
+
+    const now =
+      Date.now();
+
+
+    localStorage.setItem(
+      STORAGE.existingStarted,
+      "true"
+    );
+
+
+    localStorage.setItem(
+      STORAGE.existingStartTime,
+      String(now)
+    );
+
+
+    localStorage.removeItem(
+      STORAGE.verified
+    );
+
+
+    /*
+      Remove query from address bar.
+    */
+
+    window.history.replaceState(
+      {},
+      document.title,
+      window.location.pathname
+    );
+
+
+    showHolding();
+
+    return true;
+
+  }
+
+
+  return false;
+
+}
 
 
 
