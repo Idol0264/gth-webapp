@@ -9088,7 +9088,111 @@ tr:last-child td {
 
 }
 
+/* =========================================================
+   GTH TERMS & POLICIES
+========================================================= */
 
+.policy-read-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.gth-terms-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+}
+
+.gth-terms-panel.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gth-terms-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.gth-terms-modal {
+  position: relative;
+  z-index: 2;
+  width: min(920px, calc(100% - 28px));
+  max-height: 88vh;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--card-bg, #111);
+  color: var(--text-color, #fff);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
+}
+
+.gth-terms-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.gth-terms-header h2 {
+  margin: 4px 0 0;
+}
+
+.gth-terms-close {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.gth-terms-content {
+  max-height: calc(88vh - 100px);
+  overflow-y: auto;
+  padding: 24px;
+  line-height: 1.7;
+}
+
+.gth-terms-content h3 {
+  margin-top: 30px;
+  margin-bottom: 8px;
+}
+
+.gth-terms-content p {
+  margin: 0 0 14px;
+}
+
+.gth-terms-intro {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.gth-terms-footer {
+  margin-top: 35px !important;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  text-align: center;
+}
+
+body.terms-panel-open {
+  overflow: hidden;
+}
 
 
 
