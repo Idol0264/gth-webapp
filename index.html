@@ -14,100 +14,143 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="platform-effects.css">
 
-  <!-- GTH SPLASH CONTROL -->
+<!-- GTH SPLASH CONTROL -->
 <script>
 (function () {
 
   /*
     GTH SITE SESSION SPLASH
 
-    The splash is shown only once while the
-    user remains inside the GTH site.
+    The splash appears only once during the
+    current GTH browser session.
 
-    Moving between:
+    Moving between GTH pages such as:
+
       Home → GTC → Home
       Home → GTF → Home
       Home → GTS → Home
+      Home → GT Connect → Home
 
     will NOT show the splash again.
 
-    The flag is removed when the browser session ends.
+    Human verification is NOT changed by this code.
   */
 
-  const SPLASH_KEY = "gth_site_splash_shown_v1";
+  const SPLASH_KEY =
+    "gth_site_splash_shown_v1";
 
 
-  function hideGTHSplash() {
+  function runGTHSplashControl() {
 
     const splash =
       document.getElementById("gthSplash");
 
-    if (!splash) return;
 
-    splash.classList.add("gth-splash-hidden");
+    /*
+      If the splash element cannot be found,
+      stop safely.
+    */
+
+    if (!splash) {
+      return;
+    }
+
+
+    /*
+      THIS SESSION HAS ALREADY SHOWN THE SPLASH.
+
+      Hide it immediately.
+    */
+
+    if (
+      sessionStorage.getItem(SPLASH_KEY) === "true"
+    ) {
+
+      splash.classList.add(
+        "gth-splash-hidden"
+      );
+
+      setTimeout(function () {
+
+        splash.style.display = "none";
+
+      }, 350);
+
+      return;
+    }
+
+
+    /*
+      FIRST GTH PAGE OPENING
+    */
+
+    sessionStorage.setItem(
+      SPLASH_KEY,
+      "true"
+    );
+
+
+    /*
+      Let the splash appear briefly.
+    */
 
     setTimeout(function () {
 
+      splash.classList.add(
+        "gth-splash-hidden"
+      );
+
+      setTimeout(function () {
+
+        splash.style.display = "none";
+
+      }, 350);
+
+    }, 700);
+
+
+    /*
+      SAFETY FALLBACK
+
+      Never allow the splash to remain stuck.
+    */
+
+    setTimeout(function () {
+
+      splash.classList.add(
+        "gth-splash-hidden"
+      );
+
       splash.style.display = "none";
 
-    }, 350);
+    }, 2000);
 
   }
 
 
   /*
-    Check whether the GTH splash has already
-    been shown during this site session.
+    IMPORTANT:
+
+    The script is in <head>, so the splash HTML
+    does not exist yet.
+
+    Wait until the HTML has been created.
   */
 
   if (
-    sessionStorage.getItem(SPLASH_KEY) === "true"
+    document.readyState === "loading"
   ) {
 
-    hideGTHSplash();
+    document.addEventListener(
+      "DOMContentLoaded",
+      runGTHSplashControl
+    );
 
-    return;
+  } else {
+
+    runGTHSplashControl();
 
   }
-
-
-  /*
-    Mark the GTH site session immediately.
-
-    This prevents another GTH page from
-    showing the splash when the user returns
-    to Home.
-  */
-
-  sessionStorage.setItem(
-    SPLASH_KEY,
-    "true"
-  );
-
-
-  /*
-    First GTH page opening:
-    show splash briefly.
-  */
-
-  setTimeout(function () {
-
-    hideGTHSplash();
-
-  }, 700);
-
-
-  /*
-    Safety fallback.
-    The splash can never remain stuck
-    for longer than 2 seconds.
-  */
-
-  setTimeout(function () {
-
-    hideGTHSplash();
-
-  }, 2000);
 
 })();
 </script>
