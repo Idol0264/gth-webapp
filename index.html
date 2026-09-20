@@ -236,28 +236,64 @@
         </div>
 
         <!-- POLICY -->
-        <div id="policyStep" class="step hidden">
-          <h2>GTH Policies</h2>
+<div id="policyStep" class="step hidden">
 
-          <div class="policy-box">
-            <p>
-              By continuing, you agree to follow the policies,
-              rules and requirements of GTH.
-            </p>
-          </div>
+  <h2>GTH Terms &amp; Policies</h2>
 
-          <label class="policy-check">
-            <input id="policyCheckbox" type="checkbox">
-            <span>I agree to GTH Policies.</span>
-          </label>
+  <div class="policy-box">
 
-          <p id="policyError" class="error"></p>
+    <p>
+      GTH is a growing digital ecosystem operated by
+      God’stime Holdings. By continuing, you agree to use
+      GTH responsibly, respect other users, provide accurate
+      information when required, and follow the rules that
+      apply to the services you use.
+    </p>
 
-          <button id="policyButton" class="primary-button" type="button">
-            Continue
-          </button>
-        </div>
+    <p>
+      Different GTH platforms may have additional terms,
+      requirements or restrictions depending on their purpose.
+    </p>
 
+    <button
+      id="termsReadMore"
+      class="policy-read-more"
+      type="button"
+      onclick="openTermsPanel()"
+    >
+      Read More
+    </button>
+
+  </div>
+
+  <label class="policy-check">
+
+    <input
+      id="policyCheckbox"
+      type="checkbox"
+    >
+
+    <span>
+      I agree to GTH Terms &amp; Policies.
+    </span>
+
+  </label>
+
+  <p
+    id="policyError"
+    class="error"
+  ></p>
+
+  <button
+    id="policyButton"
+    class="primary-button"
+    type="button"
+  >
+    Continue
+  </button>
+
+</div>
+        
         <!-- ACCOUNT CHOICE -->
 <div id="choiceStep" class="step hidden">
 
