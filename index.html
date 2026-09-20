@@ -18,7 +18,24 @@
 <script>
 (function () {
 
-  const SPLASH_KEY = "gth_splash_shown_v1";
+  /*
+    GTH SITE SESSION SPLASH
+
+    The splash is shown only once while the
+    user remains inside the GTH site.
+
+    Moving between:
+      Home → GTC → Home
+      Home → GTF → Home
+      Home → GTS → Home
+
+    will NOT show the splash again.
+
+    The flag is removed when the browser session ends.
+  */
+
+  const SPLASH_KEY = "gth_site_splash_shown_v1";
+
 
   function hideGTHSplash() {
 
@@ -39,8 +56,8 @@
 
 
   /*
-    Splash already shown during
-    this browser session.
+    Check whether the GTH splash has already
+    been shown during this site session.
   */
 
   if (
@@ -55,8 +72,11 @@
 
 
   /*
-    Mark it immediately so returning
-    to Home will not show it again.
+    Mark the GTH site session immediately.
+
+    This prevents another GTH page from
+    showing the splash when the user returns
+    to Home.
   */
 
   sessionStorage.setItem(
@@ -66,8 +86,8 @@
 
 
   /*
-    Show splash briefly on the
-    first opening of the site.
+    First GTH page opening:
+    show splash briefly.
   */
 
   setTimeout(function () {
@@ -79,8 +99,8 @@
 
   /*
     Safety fallback.
-    Never allow the splash to remain
-    stuck on the screen.
+    The splash can never remain stuck
+    for longer than 2 seconds.
   */
 
   setTimeout(function () {
