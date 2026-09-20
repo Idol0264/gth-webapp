@@ -18,6 +18,9 @@
 <script>
 (function () {
 
+  const SPLASH_KEY = "gth_splash_shown_v1";
+
+
   function hideGTHSplash() {
 
     const splash =
@@ -28,29 +31,72 @@
     splash.classList.add("gth-splash-hidden");
 
     setTimeout(function () {
+
       splash.style.display = "none";
+
     }, 600);
 
   }
 
+
+  /*
+    If the splash has already been shown
+    during this browser session, skip it.
+  */
+
+  if (
+    sessionStorage.getItem(SPLASH_KEY) === "true"
+  ) {
+
+    hideGTHSplash();
+
+    return;
+
+  }
+
+
+  /*
+    First opening of GTH in this session.
+    Show the splash normally.
+  */
+
+  sessionStorage.setItem(
+    SPLASH_KEY,
+    "true"
+  );
+
+
   if (document.readyState === "complete") {
 
-    setTimeout(hideGTHSplash, 1400);
+    setTimeout(
+      hideGTHSplash,
+      1400
+    );
 
   } else {
 
     window.addEventListener(
       "load",
       function () {
-        setTimeout(hideGTHSplash, 1400);
+
+        setTimeout(
+          hideGTHSplash,
+          1400
+        );
+
       },
       { once: true }
     );
 
   }
 
+
   /* Safety fallback */
-  setTimeout(hideGTHSplash, 4000);
+
+  setTimeout(
+    hideGTHSplash,
+    4000
+  );
 
 })();
 </script>
