@@ -9132,8 +9132,8 @@ tr:last-child td {
   max-height: 88vh;
   overflow: hidden;
   border-radius: 20px;
-  background: var(--card-bg, #111);
-  color: var(--text-color, #fff);
+  background: var(--surface);
+  color: var(--text);
   box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
 }
 
